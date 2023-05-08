@@ -12,27 +12,33 @@ public class NoteDelay : MonoBehaviour
     public bool LeftDown;
     public bool RightUp;
     public bool RightDown;
-    // Start is called before the first frame update
+    
+
     void Start()
     {
         BeatTempo = BeatTempo / 60f;
     }
 
-    // Update is called once per frame
     void Update()
     {   
         if (Down == true) {
-            Invoke("DelayNoteDown", DelayTime);
+            // Invoke("DelayNoteDown", DelayTime);
+            this.Wait(DelayTime, DelayNoteDown);
         } else if (Up == true) {
-            Invoke("DelayNoteUp", DelayTime);
+            // Invoke("DelayNoteUp", DelayTime);
+            this.Wait(DelayTime, DelayNoteUp);
         } else if (LeftUp == true) {
-            Invoke("DelayNoteLeftUp", DelayTime);
+            // Invoke("DelayNoteLeftUp", DelayTime);
+            this.Wait(DelayTime, DelayNoteLeftUp);
         } else if (LeftDown == true) {
-            Invoke("DelayNoteLeftDown", DelayTime);
+            // Invoke("DelayNoteLeftDown", DelayTime);
+            this.Wait(DelayTime, DelayNoteLeftDown);
         } else if (RightUp == true) {
-            Invoke("DelayNoteRightUp", DelayTime);
+            // Invoke("DelayNoteRightUp", DelayTime);
+            this.Wait(DelayTime, DelayNoteRightUp);
         } else if (RightDown == true) {
-            Invoke("DelayNoteRightDown", DelayTime);
+            // Invoke("DelayNoteRightDown", DelayTime);
+            this.Wait(DelayTime, DelayNoteRightDown);
         }
     }
 
