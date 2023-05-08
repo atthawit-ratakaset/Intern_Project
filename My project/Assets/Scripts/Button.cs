@@ -8,8 +8,9 @@ public class Button : MonoBehaviour
     GameObject obj;
     private bool hit;
     private SpriteRenderer theSR;
-    public float pos1;
-    public float pos2;
+    private bool subNote1;
+    private bool subNote2;
+    private bool subNote3;
 
     void Awake() {
         theSR = GetComponent<SpriteRenderer>();
@@ -18,6 +19,9 @@ public class Button : MonoBehaviour
     void Start()
     {
         hit = false;
+        subNote1 = false;
+        subNote2 = false;
+        subNote3 = false;
 
     }
 
@@ -28,38 +32,38 @@ public class Button : MonoBehaviour
  
     void OnMouseDown() {  
         if (hit == true) {
-            Debug.Log(obj.transform.position.y);
-            if (obj.transform.position.y > pos1 && obj.transform.position.y < pos2) {
-                // Debug.Log("Perfect");
+            if ((subNote1 == true && subNote2 == true && subNote3 == true)) {
+                Debug.Log("Perfect");
                 Score.instance.AddPerfectScore();
             } else {
                 Debug.Log("Good");
                 Score.instance.AddGoodScore();
             }
-            DestoryNote();
-        }else {
-            // Debug.Log("Miss");
+            DestroyNote();
+        } else {
+            Debug.Log("Bad");
             Score.instance.AddMissScore();
         }
     }
 
     // void OnMouseUp() {
-    //     if (hit == true) {
-    //         if (Mathf.Abs(obj.transform.position.y) > pos) {
-    //             Debug.Log("Good");
-    //         } else {
-    //             Debug.Log("Perfect");
-    //         }
-    //         DestoryNote();
     //     }
     // }
 
 
 
     void OnTriggerEnter2D(Collider2D other) {
-        hit = true;
         if (other.gameObject.tag == "Notes") {
+            hit = true;
             obj = other.gameObject;
+        }
+
+        if (other.gameObject.tag == "SubNote1") {
+            subNote1 = true;
+        } else if (other.gameObject.tag == "SubNote2") {
+            subNote2 = true;
+        } else if (other.gameObject.tag == "SubNote3") {
+            subNote3 = true;
         }
     }
     
@@ -67,10 +71,18 @@ public class Button : MonoBehaviour
         if (other.gameObject.tag == "Notes") {
             hit = false;
         }
+
+        if (other.gameObject.tag == "SubNote1") {
+            subNote1 = false;
+        } else if (other.gameObject.tag == "SubNote2") {
+            subNote2 = false;
+        } else if (other.gameObject.tag == "SubNote3") {
+            subNote3 = false;
+        }
         
     }
 
-    void DestoryNote() {
+    void DestroyNote() {
         Destroy(obj);
     }
 

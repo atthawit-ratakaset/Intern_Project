@@ -7,6 +7,9 @@ TagManager:
   - Pad
   - Notes
   - Destroy
+  - SubNote1
+  - SubNote2
+  - SubNote3
   layers:
   - Default
   - TransparentFX
