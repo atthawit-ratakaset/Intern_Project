@@ -5,13 +5,15 @@ using TMPro;
 using UnityEngine.UI;
 
 public class Score : MonoBehaviour
-{
+{   
+    [SerializeField] GameObject popUp;
     public static Score instance;
     public TMP_Text MissNoteScoreText;
     public TMP_Text GoodScoreText;
     public  TMP_Text PerfectScoreText;
     public TMP_Text MissScoreText;
     public TMP_Text TotalScoreText;
+    public TMP_Text ShowScoreText;
     
     int TotalScore = 0;
     int MissNoteScore = 0;
@@ -30,11 +32,12 @@ public class Score : MonoBehaviour
         PerfectScoreText.text = "PERFECT: " + PerfectScore.ToString();
         MissScoreText.text = "MISS: " + MissScore.ToString();
         TotalScoreText.text = "SCORE: " + TotalScore.ToString();
+        popUp.SetActive(false);
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void FixedUpdate()
+    {   
         TotalScoreText.text = "SCORE: " + TotalScore.ToString();
         if (TotalScore < 0) {
             TotalScore = 0;
@@ -63,5 +66,11 @@ public class Score : MonoBehaviour
         MissScore += 1;
         TotalScore -= 10;
         MissScoreText.text = "MISS: " + MissScore.ToString();
+    }
+
+    public void ShowScore() {
+        popUp.SetActive(true);
+        ShowScoreText.text = TotalScore.ToString();
+        TotalScoreText.text = "SCORE: " + TotalScore.ToString();
     }
 }

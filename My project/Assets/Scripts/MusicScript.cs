@@ -5,6 +5,11 @@ using UnityEngine;
 public class MusicScript : MonoBehaviour
 {
     AudioSource gameMusic;
+    public static MusicScript instance;
+
+    private void Awake() {
+        instance = this;    
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +21,10 @@ public class MusicScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void DestroyMusic() {
+        Destroy(gameMusic);
     }
 
 }

@@ -7,18 +7,21 @@ public class Button : MonoBehaviour
 {   
     GameObject obj;
     private bool hit;
+    private bool end;
     private SpriteRenderer theSR;
     private bool subNote1;
     private bool subNote2;
     private bool subNote3;
+    public GameObject goodEffect, perfectEffect, missEffect;
 
     void Awake() {
         theSR = GetComponent<SpriteRenderer>();
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         hit = false;
+        end = false;
         subNote1 = false;
         subNote2 = false;
         subNote3 = false;
@@ -33,16 +36,27 @@ public class Button : MonoBehaviour
     void OnMouseDown() {  
         if (hit == true) {
             if ((subNote1 == true && subNote2 == true && subNote3 == true)) {
-                Debug.Log("Perfect");
+                // Debug.Log("Perfect");
                 Score.instance.AddPerfectScore();
+                Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
             } else {
-                Debug.Log("Good");
+                // Debug.Log("Good");
                 Score.instance.AddGoodScore();
+                
+                Instantiate(goodEffect, transform.position, goodEffect.transform.rotation);
+            }
+            
+            if (end == true) {
+                this.Wait(2f, ShowScore);
+                MusicScript.instance.DestroyMusic();
             }
             DestroyNote();
+
         } else {
-            Debug.Log("Bad");
+            // Debug.Log("Bad");
             Score.instance.AddMissScore();
+            
+                Instantiate(missEffect, transform.position, missEffect.transform.rotation);
         }
     }
 
@@ -53,8 +67,11 @@ public class Button : MonoBehaviour
 
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "Notes") {
+        if (other.gameObject.tag == "Notes" || other.gameObject.tag == "LastNote") {
             hit = true;
+            if (other.gameObject.tag == ("LastNote")) {
+                end = true;
+            }
             obj = other.gameObject;
         }
 
@@ -68,8 +85,11 @@ public class Button : MonoBehaviour
     }
     
     void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.tag == "Notes") {
+        if (other.gameObject.tag == "Notes" || other.gameObject.tag == "LastNote") {
             hit = false;
+            if (other.gameObject.tag == ("LastNote")) {
+                end = false;
+            }
         }
 
         if (other.gameObject.tag == "SubNote1") {
@@ -86,5 +106,8 @@ public class Button : MonoBehaviour
         Destroy(obj);
     }
 
+    void ShowScore() {
+        Score.instance.ShowScore();
+    }
 
 }

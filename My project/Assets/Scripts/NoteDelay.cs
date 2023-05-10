@@ -43,7 +43,7 @@ public class NoteDelay : MonoBehaviour
     }
 
     void DelayNoteDown() {
-        transform.position -= new Vector3(0f, BeatTempo * Time.deltaTime, 0f);
+        transform.position -= new Vector3(0f, BeatTempo * Time.deltaTime, 0f);  
     }
 
     void DelayNoteUp() {
