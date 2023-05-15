@@ -21,6 +21,7 @@ public class NoteMissDestroy : MonoBehaviour
         if (other.gameObject.tag == "Notes" || other.gameObject.tag == "LastNote") {
             obj = other.gameObject;
             Score.instance.AddMissNotePoint();
+            Score.instance.ReSetCombo();
             if (other.gameObject.tag == "LastNote") {
                 this.Wait(2f, ShowScore);
                 MusicScript.instance.DestroyMusic();

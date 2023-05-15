@@ -5,14 +5,14 @@ using UnityEngine.InputSystem;
 
 public class Button : MonoBehaviour
 {   
-    GameObject obj;
+    GameObject obj, obj2;
     private bool hit;
     private bool end;
     private SpriteRenderer theSR;
     private bool subNote1;
     private bool subNote2;
     private bool subNote3;
-    public GameObject goodEffect, perfectEffect, missEffect;
+    public GameObject goodEffect, perfectEffect, missEffect, badEffect;
 
     void Awake() {
         theSR = GetComponent<SpriteRenderer>();
@@ -25,6 +25,7 @@ public class Button : MonoBehaviour
         subNote1 = false;
         subNote2 = false;
         subNote3 = false;
+        transform.rotation = Quaternion.identity;
 
     }
 
@@ -33,17 +34,23 @@ public class Button : MonoBehaviour
     }
 
  
-    void OnMouseDown() {  
+    void OnMouseDown() {
         if (hit == true) {
             if ((subNote1 == true && subNote2 == true && subNote3 == true)) {
                 // Debug.Log("Perfect");
                 Score.instance.AddPerfectScore();
-                Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
-            } else {
+                Score.instance.AddCombo();
+                Instantiate(perfectEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
+            } else if ((subNote1 == true && subNote2 == false && subNote3 == false) || 
+                        (subNote3 == true && subNote2 == false && subNote3 == false)){
                 // Debug.Log("Good");
+                Instantiate(badEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
+                Score.instance.AddBadScore();
+                Score.instance.AddCombo();
+            } else {
                 Score.instance.AddGoodScore();
-                
-                Instantiate(goodEffect, transform.position, goodEffect.transform.rotation);
+                Score.instance.AddCombo();
+                Instantiate(goodEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
             }
             
             if (end == true) {
@@ -52,11 +59,12 @@ public class Button : MonoBehaviour
             }
             DestroyNote();
 
+
         } else {
-            // Debug.Log("Bad");
+            // Debug.Log("Miss");
             Score.instance.AddMissScore();
-            
-                Instantiate(missEffect, transform.position, missEffect.transform.rotation);
+            Instantiate(missEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
+            Score.instance.ReSetCombo();
         }
     }
 
@@ -73,6 +81,7 @@ public class Button : MonoBehaviour
                 end = true;
             }
             obj = other.gameObject;
+            
         }
 
         if (other.gameObject.tag == "SubNote1") {

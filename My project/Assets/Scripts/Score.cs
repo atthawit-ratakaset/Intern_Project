@@ -14,24 +14,30 @@ public class Score : MonoBehaviour
     public TMP_Text MissScoreText;
     public TMP_Text TotalScoreText;
     public TMP_Text ShowScoreText;
+    public TMP_Text BadScoreText;
+    public TMP_Text ComboText;
     
     int TotalScore = 0;
     int MissNoteScore = 0;
     int GoodScore = 0;
     int PerfectScore = 0;
     int MissScore = 0;
+    int BadScore = 0;
+    int Combo = 0;
 
     private void Awake(){
         instance = this;
     }
     
     void Start()
-    {
+    {   
+        BadScoreText.text = "BAD: " + BadScore.ToString();
         MissNoteScoreText.text = "MISS NOTE: " + MissNoteScore.ToString();
         GoodScoreText.text = "GOOD: " + GoodScore.ToString();
         PerfectScoreText.text = "PERFECT: " + PerfectScore.ToString();
         MissScoreText.text = "MISS: " + MissScore.ToString();
         TotalScoreText.text = "SCORE: " + TotalScore.ToString();
+        ComboText.text = "COMBO: x" + Combo.ToString();
         popUp.SetActive(false);
     }
 
@@ -68,9 +74,25 @@ public class Score : MonoBehaviour
         MissScoreText.text = "MISS: " + MissScore.ToString();
     }
 
+    public void AddBadScore(){
+        BadScore += 1;
+        TotalScore -= 10;
+        BadScoreText.text = "BAD: " + BadScore.ToString();
+    }
+
     public void ShowScore() {
         popUp.SetActive(true);
         ShowScoreText.text = TotalScore.ToString();
         TotalScoreText.text = "SCORE: " + TotalScore.ToString();
+    }
+
+    public void AddCombo() {
+        Combo += 1;
+        ComboText.text = "COMBO: x" + Combo.ToString();
+    }
+
+    public void ReSetCombo() {
+        Combo = 0;
+        ComboText.text = "COMBO: x" + Combo.ToString();
     }
 }

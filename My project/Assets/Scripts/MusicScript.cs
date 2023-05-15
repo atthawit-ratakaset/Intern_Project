@@ -6,6 +6,7 @@ public class MusicScript : MonoBehaviour
 {
     AudioSource gameMusic;
     public static MusicScript instance;
+    public float musicDelay;
 
     private void Awake() {
         instance = this;    
@@ -14,7 +15,7 @@ public class MusicScript : MonoBehaviour
     void Start()
     {
         gameMusic = GetComponent<AudioSource>();
-        gameMusic.PlayDelayed(2.0f);
+        gameMusic.PlayDelayed(musicDelay);
     }
 
     // Update is called once per frame
