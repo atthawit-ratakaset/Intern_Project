@@ -5,7 +5,9 @@ using UnityEngine.InputSystem;
 
 public class Button : MonoBehaviour
 {   
-    GameObject obj, obj2;
+    GameObject obj;
+    List<GameObject> objs = new List<GameObject>();
+    int CurrenttIndex = 0;
     private bool hit;
     private bool end;
     private SpriteRenderer theSR;
@@ -30,7 +32,6 @@ public class Button : MonoBehaviour
     }
 
     void Update() {
-        
     }
 
  
@@ -58,6 +59,7 @@ public class Button : MonoBehaviour
                 MusicScript.instance.DestroyMusic();
             }
             DestroyNote();
+            objs.Remove(objs[0]);
 
 
         } else {
@@ -81,24 +83,32 @@ public class Button : MonoBehaviour
                 end = true;
             }
             obj = other.gameObject;
-            
+            objs.Add(obj);
+            CurrenttIndex++;
+            }
+        
+        
+            if (other.gameObject.tag == "SubNote1") {
+                subNote1 = true;
+            } else if (other.gameObject.tag == "SubNote2") {
+                subNote2 = true;
+            } else if (other.gameObject.tag == "SubNote3") {
+                subNote3 = true;
+            }          
         }
-
-        if (other.gameObject.tag == "SubNote1") {
-            subNote1 = true;
-        } else if (other.gameObject.tag == "SubNote2") {
-            subNote2 = true;
-        } else if (other.gameObject.tag == "SubNote3") {
-            subNote3 = true;
-        }
-    }
     
     void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.tag == "Notes" || other.gameObject.tag == "LastNote") {
-            hit = false;
-            if (other.gameObject.tag == ("LastNote")) {
-                end = false;
+            CurrenttIndex -= 1;
+            if(CurrenttIndex != 0) {
+                hit = true;
+            } else {
+                hit = false;
+                if (other.gameObject.tag == ("LastNote")) {
+                    end = false;
+                }
             }
+
         }
 
         if (other.gameObject.tag == "SubNote1") {
@@ -112,7 +122,7 @@ public class Button : MonoBehaviour
     }
 
     void DestroyNote() {
-        Destroy(obj);
+        Destroy(objs[0]);
     }
 
     void ShowScore() {
