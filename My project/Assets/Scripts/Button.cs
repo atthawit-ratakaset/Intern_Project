@@ -59,7 +59,7 @@ public class Button : MonoBehaviour
                 MusicScript.instance.DestroyMusic();
             }
             DestroyNote();
-            objs.Remove(objs[0]);
+            
 
 
         } else {
@@ -100,6 +100,7 @@ public class Button : MonoBehaviour
     void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.tag == "Notes" || other.gameObject.tag == "LastNote") {
             CurrenttIndex -= 1;
+            objs.Remove(objs[0]);
             if(CurrenttIndex != 0) {
                 hit = true;
             } else {
@@ -107,6 +108,7 @@ public class Button : MonoBehaviour
                 if (other.gameObject.tag == ("LastNote")) {
                     end = false;
                 }
+
             }
 
         }

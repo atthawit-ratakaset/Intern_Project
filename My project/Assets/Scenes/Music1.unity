@@ -5950,7 +5950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8460924458331379409, guid: c4b88482d63e11247a0356f7bc83a1f6, type: 3}
       propertyPath: beatTempo
-      value: 0
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 8460924458331379410, guid: c4b88482d63e11247a0356f7bc83a1f6, type: 3}
       propertyPath: m_RootOrder
