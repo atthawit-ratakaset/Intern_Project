@@ -414,12 +414,24 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1162591648}
-        m_TargetAssemblyTypeName: SelectSong, Assembly-CSharp
-        m_MethodName: Song1
-        m_Mode: 1
+        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+        m_MethodName: PlayScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1162591648}
+        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+        m_MethodName: GetSong
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8696395805499770886, guid: 7a34ff75cc2296541a07c374fc883f2e, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -499,8 +511,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0021019, y: -110.86}
-  m_SizeDelta: {x: 1218.3, y: 1915.8}
+  m_AnchoredPosition: {x: 0.0021019, y: -165.5157}
+  m_SizeDelta: {x: 1218.3, y: 1806.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1059406530
 MonoBehaviour:
@@ -642,6 +654,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb8121c12f1f8704187daf9f03a2f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obj:
+  - {fileID: 6529617057151021623, guid: 4600fdfc75b4c9c43a7d723184e39034, type: 3}
+  - {fileID: 1593061107445963089, guid: 50640707e9475d348a7717e4eda7fd0e, type: 3}
 --- !u!1 &1499194997
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,12 +742,24 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1162591648}
-        m_TargetAssemblyTypeName: SelectSong, Assembly-CSharp
-        m_MethodName: Song2
-        m_Mode: 1
+        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+        m_MethodName: PlayScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1162591648}
+        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+        m_MethodName: GetSong
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1222201195950706999, guid: 7e327d0870446ef4a8a4e0223eadcd43, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

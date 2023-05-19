@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour
 {   
+    public GameObject[] obj;
+    public static MenuButton instance;
+
+    void Awake() {
+        instance = this;
+    }
+
     public void Resume() {
         Time.timeScale = 1f;
         AudioSource[] audio = FindObjectsOfType<AudioSource>();
@@ -36,11 +43,12 @@ public class MenuButton : MonoBehaviour
         SceneManager.LoadScene(GetCurrentBuildIndex());
     }
 
-    public void Song1() {
+    public void PlayScene(int numSong) {
+        GetValue.musicSongs = numSong;
         SceneManager.LoadScene(2);
     }
 
-    public void Song2() {
-        SceneManager.LoadScene(3);
+    public void GetSong(AudioSource audio) {
+        GetValue.audio = audio;
     }
 }

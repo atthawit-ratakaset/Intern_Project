@@ -17,6 +17,7 @@ public class Button : MonoBehaviour
     private bool subNote3;
     public GameObject goodEffect, perfectEffect, missEffect, badEffect;
     public ParticleSystem particEffect;
+    public AudioSource soundFX;
 
     void Awake() {
         theSR = GetComponent<SpriteRenderer>();
@@ -35,6 +36,7 @@ public class Button : MonoBehaviour
 
     void Update() {
         if (Input.GetKeyDown(key)) {
+            soundFX.Play();
             particEffect.Play();
             if (hit == true) {
                 if ((subNote1 == true && subNote2 == true && subNote3 == true)) {
@@ -72,6 +74,7 @@ public class Button : MonoBehaviour
     }
  
     void OnMouseDown() {
+        soundFX.Play();
         particEffect.Play();
         if (hit == true) {
             if ((subNote1 == true && subNote2 == true && subNote3 == true)) {
