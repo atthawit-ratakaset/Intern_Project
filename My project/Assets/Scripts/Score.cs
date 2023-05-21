@@ -48,6 +48,7 @@ public class Score : MonoBehaviour
         if (TotalScore < 0) {
             TotalScore = 0;
         }
+
     }
 
     public void AddMissNotePoint(){

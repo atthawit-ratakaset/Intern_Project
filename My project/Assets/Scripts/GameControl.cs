@@ -4,22 +4,19 @@ using UnityEngine;
 
 public class GameControl : MonoBehaviour
 {      
-    int numSong;
+    int numSongNote;
     AudioSource audio;
+
     void Awake() {
-        numSong = GetValue.musicSongs;
         audio = GetValue.audio;
+        numSongNote = GetValue.musicSongNote;
     }
     // Start is called before the first frame update
     void Start()
     {   
-        Instantiate(MenuButton.instance.obj[numSong], MenuButton.instance.obj[numSong].transform.position, Quaternion.identity);
+        Instantiate(SelectMusic.instance.obj[numSongNote], SelectMusic.instance.obj[numSongNote].transform.position, Quaternion.identity);
         Instantiate(audio, audio.transform.position, Quaternion.identity);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

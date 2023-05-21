@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GetValue : MonoBehaviour
-{
-    public static int musicSongs;
+{   
+    public static int musicSongNote;
     public static AudioSource audio;
 }

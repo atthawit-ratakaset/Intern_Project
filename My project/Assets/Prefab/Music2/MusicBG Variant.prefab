@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7063774644358616384, guid: 891e845d3e3efbd4289584d602488e3a, type: 3}
       propertyPath: m_Name
-      value: MusicBG
+      value: MusicBG Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7063774644358616386, guid: 891e845d3e3efbd4289584d602488e3a, type: 3}
       propertyPath: m_RootOrder
@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 6df74b7e415b0004cbe399d58899fdcc, type: 3}
     - target: {fileID: 7063774644358616413, guid: 891e845d3e3efbd4289584d602488e3a, type: 3}
       propertyPath: musicDelay
-      value: 3.5
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 891e845d3e3efbd4289584d602488e3a, type: 3}

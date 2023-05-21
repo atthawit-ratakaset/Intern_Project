@@ -414,7 +414,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1162591648}
-        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: SelectMusic, Assembly-CSharp
         m_MethodName: PlayScene
         m_Mode: 3
         m_Arguments:
@@ -426,7 +426,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1162591648}
-        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: SelectMusic, Assembly-CSharp
         m_MethodName: GetSong
         m_Mode: 2
         m_Arguments:
@@ -511,7 +511,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0021019, y: -165.5157}
+  m_AnchoredPosition: {x: 0.0021019, y: -55.326847}
   m_SizeDelta: {x: 1218.3, y: 1806.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1059406530
@@ -552,6 +552,7 @@ GameObject:
   - component: {fileID: 1162591646}
   - component: {fileID: 1162591645}
   - component: {fileID: 1162591644}
+  - component: {fileID: 1162591649}
   - component: {fileID: 1162591648}
   m_Layer: 5
   m_Name: Canvas
@@ -651,12 +652,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1162591643}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb8121c12f1f8704187daf9f03a2f153, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ed35fbbbd3167a4293caa051a00c282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   obj:
   - {fileID: 6529617057151021623, guid: 4600fdfc75b4c9c43a7d723184e39034, type: 3}
   - {fileID: 1593061107445963089, guid: 50640707e9475d348a7717e4eda7fd0e, type: 3}
+--- !u!114 &1162591649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162591643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb8121c12f1f8704187daf9f03a2f153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1499194997
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,7 +755,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1162591648}
-        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: SelectMusic, Assembly-CSharp
         m_MethodName: PlayScene
         m_Mode: 3
         m_Arguments:
@@ -754,7 +767,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1162591648}
-        m_TargetAssemblyTypeName: MenuButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: SelectMusic, Assembly-CSharp
         m_MethodName: GetSong
         m_Mode: 2
         m_Arguments:
