@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {   
     [SerializeField] GameObject popUp;
+    [SerializeField] List<GameObject> hide = new List<GameObject>();
     public static Score instance;
     public TMP_Text MissNoteScoreText;
     public TMP_Text GoodScoreText;
@@ -24,6 +25,7 @@ public class Score : MonoBehaviour
     int MissScore = 0;
     int BadScore = 0;
     int Combo = 0;
+
 
     private void Awake(){
         instance = this;
@@ -83,6 +85,14 @@ public class Score : MonoBehaviour
 
     public void ShowScore() {
         popUp.SetActive(true);
+        for(int i = 0; i < hide.Count; i++)
+        {
+            hide[i].SetActive(false);
+        }
+        Time.timeScale = 0;
+        if (TotalScore < 0) {
+            TotalScore = 0;
+        }
         ShowScoreText.text = TotalScore.ToString();
         TotalScoreText.text = "SCORE: " + TotalScore.ToString();
     }

@@ -66,6 +66,7 @@ public class Button : MonoBehaviour
 
             } else {
                 // Debug.Log("Miss");
+                GameControl.instance.CheckScene();
                 Score.instance.AddMissScore();
                 Instantiate(missEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
                 Score.instance.ReSetCombo();
@@ -104,6 +105,7 @@ public class Button : MonoBehaviour
 
         } else {
             // Debug.Log("Miss");
+            GameControl.instance.CheckScene();
             Score.instance.AddMissScore();
             Instantiate(missEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
             Score.instance.ReSetCombo();

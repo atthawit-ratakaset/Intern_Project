@@ -15,10 +15,14 @@ public class SelectMusic : MonoBehaviour
 
     public void PlayScene(int numSong) {
         GetValue.musicSongNote = numSong;
-        SceneManager.LoadScene(2);
     }
 
     public void GetSong(AudioSource audio) {
-        GetValue.audio = audio;
+        GetValue.song = audio;
+    }
+
+    public void GetMode(bool hard) {
+        GetValue.appear = hard;
+        SceneManager.LoadScene(2);
     }
 }

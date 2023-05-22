@@ -5,5 +5,6 @@ using UnityEngine;
 public class GetValue : MonoBehaviour
 {   
     public static int musicSongNote;
-    public static AudioSource audio;
+    public static AudioSource song;
+    public static bool appear;
 }

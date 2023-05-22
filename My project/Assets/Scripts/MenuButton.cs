@@ -8,12 +8,6 @@ public class MenuButton : MonoBehaviour
 
     public void Resume() {
         ContinousGame.instance.Coutinous();
-
-        // Time.timeScale = 1f;
-        // AudioSource[] audio = FindObjectsOfType<AudioSource>();
-        // foreach (AudioSource a in audio) {
-        //     a.Play();
-        // }
     }
 
     public void Pause() {

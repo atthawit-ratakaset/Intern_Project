@@ -7,20 +7,11 @@ public class NoteMissDestroy : MonoBehaviour
 {   
     GameObject obj;
    
-
-    private void Start() {
-        
-    }
-
-    private void Update() {
-
-    }
-
-
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Notes" || other.gameObject.tag == "LastNote") {
             obj = other.gameObject;
             Score.instance.AddMissNotePoint();
+            GameControl.instance.CheckScene();
             Score.instance.ReSetCombo();
             if (other.gameObject.tag == "LastNote") {
                 this.Wait(2f, ShowScore);
