@@ -5,31 +5,41 @@ using UnityEngine;
 public class GameControl : MonoBehaviour
 {   
     [SerializeField] GameObject CheckHp;
-    int numSongNote;
+    List<GameObject> Notes;
     public static GameControl instance;
     AudioSource musicSong;
-    bool have = false;
+    bool haveHp = false;
+    int getMode;
 
     void Awake() {
         instance = this;
+        Notes = GetValue.Notes;
+        getMode = GetValue.mode;
         musicSong = GetValue.song;
-        numSongNote = GetValue.musicSongNote;
-        have = GetValue.appear;
+
+        if (getMode == 2) {
+            haveHp = true;
+        } else {
+            haveHp = false;
+        }
+
     }
     // Start is called before the first frame update
     void Start()
     {   
-        Instantiate(SelectMusic.instance.obj[numSongNote], SelectMusic.instance.obj[numSongNote].transform.position, Quaternion.identity);
+        Instantiate(Notes[getMode], Notes[getMode].transform.position, Quaternion.identity);
         Instantiate(musicSong, musicSong.transform.position, Quaternion.identity);
-        if (have) {
+        if (haveHp) {
             CheckHp.SetActive(true);
+
         } else {
             CheckHp.SetActive(false);
         }
+
     }
 
     public void CheckScene() {
-        if (have) {
+        if (haveHp) {
             HpBar.instance.LoseHp();
         }
     }

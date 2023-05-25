@@ -5,24 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class SelectMusic : MonoBehaviour
 {   
-    public GameObject[] obj;
-    public static SelectMusic instance;
-
-
-    void Awake() {
-        instance = this;
-    }
-
-    public void PlayScene(int numSong) {
-        GetValue.musicSongNote = numSong;
-    }
 
     public void GetSong(AudioSource audio) {
         GetValue.song = audio;
     }
 
-    public void GetMode(bool hard) {
-        GetValue.appear = hard;
+    public void GetMode(int mode) {
+        GetValue.mode = mode;
         SceneManager.LoadScene(2);
     }
+
 }
