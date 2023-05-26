@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7063774644358616384, guid: 891e845d3e3efbd4289584d602488e3a, type: 3}
       propertyPath: m_Name
-      value: MusicBG
+      value: MusicBG Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7063774644358616386, guid: 891e845d3e3efbd4289584d602488e3a, type: 3}
       propertyPath: m_RootOrder

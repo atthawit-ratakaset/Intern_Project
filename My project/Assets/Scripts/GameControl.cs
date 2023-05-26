@@ -7,7 +7,6 @@ public class GameControl : MonoBehaviour
     [SerializeField] GameObject CheckHp;
     List<GameObject> Notes;
     public static GameControl instance;
-    AudioSource musicSong;
     bool haveHp = false;
     int getMode;
 
@@ -15,7 +14,6 @@ public class GameControl : MonoBehaviour
         instance = this;
         Notes = GetValue.Notes;
         getMode = GetValue.mode;
-        musicSong = GetValue.song;
 
         if (getMode == 2) {
             haveHp = true;
@@ -28,7 +26,7 @@ public class GameControl : MonoBehaviour
     void Start()
     {   
         Instantiate(Notes[getMode], Notes[getMode].transform.position, Quaternion.identity);
-        Instantiate(musicSong, musicSong.transform.position, Quaternion.identity);
+        // Instantiate(musicSong, musicSong.transform.position, Quaternion.identity);
         if (haveHp) {
             CheckHp.SetActive(true);
 
@@ -43,4 +41,5 @@ public class GameControl : MonoBehaviour
             HpBar.instance.LoseHp();
         }
     }
+    
 }

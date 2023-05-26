@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GetValue : MonoBehaviour
 {   
-    public static AudioSource song;
+    public static AudioClip song;
     public static int mode;
     public static List<GameObject> Notes;
+    public static float delay;
 }

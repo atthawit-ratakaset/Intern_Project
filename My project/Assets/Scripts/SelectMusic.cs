@@ -6,13 +6,17 @@ using UnityEngine.SceneManagement;
 public class SelectMusic : MonoBehaviour
 {   
 
-    public void GetSong(AudioSource audio) {
+    public void GetSong(AudioClip audio) {
         GetValue.song = audio;
     }
 
     public void GetMode(int mode) {
         GetValue.mode = mode;
         SceneManager.LoadScene(2);
+    }
+
+    public void MusicDelay(float time) {
+        GetValue.delay = time;
     }
 
 }

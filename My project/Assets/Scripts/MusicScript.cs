@@ -6,16 +6,21 @@ public class MusicScript : MonoBehaviour
 {
     AudioSource gameMusic;
     public static MusicScript instance;
+    AudioClip clip;
     public float musicDelay;
 
     private void Awake() {
-        instance = this;    
+        instance = this;
+        musicDelay = GetValue.delay;
+        clip = GetValue.song;
+        gameMusic = GetComponent<AudioSource>();
+        gameMusic.clip = clip;
     }
     // Start is called before the first frame update
     void Start()
-    {
-        gameMusic = GetComponent<AudioSource>();
+    {   
         gameMusic.PlayDelayed(musicDelay);
+
     }
 
     // Update is called once per frame
@@ -25,7 +30,7 @@ public class MusicScript : MonoBehaviour
     }
 
     public void DestroyMusic() {
-        Destroy(gameMusic);
+        gameMusic.Stop();
     }
 
 }
