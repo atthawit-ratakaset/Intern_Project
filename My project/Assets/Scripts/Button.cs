@@ -30,7 +30,6 @@ public class Button : MonoBehaviour
         subNote1 = false;
         subNote2 = false;
         subNote3 = false;
-        transform.rotation = Quaternion.identity;
 
     }
 
@@ -58,7 +57,7 @@ public class Button : MonoBehaviour
                 
                 if (end == true) {
                     this.Wait(2f, ShowScore);
-                    MusicScript.instance.DestroyMusic();
+                    MusicScript.instance.StopMusic();
                 }
                 DestroyNote();
                 
@@ -97,7 +96,7 @@ public class Button : MonoBehaviour
             
             if (end == true) {
                 this.Wait(2f, ShowScore);
-                MusicScript.instance.DestroyMusic();
+                MusicScript.instance.StopMusic();
             }
             DestroyNote();
             

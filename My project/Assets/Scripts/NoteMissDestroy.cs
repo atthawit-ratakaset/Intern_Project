@@ -15,7 +15,7 @@ public class NoteMissDestroy : MonoBehaviour
             Score.instance.ReSetCombo();
             if (other.gameObject.tag == "LastNote") {
                 this.Wait(2f, ShowScore);
-                MusicScript.instance.DestroyMusic();
+                MusicScript.instance.StopMusic();
             }
             Destroy(obj);
             // Debug.Log("Miss Notes");

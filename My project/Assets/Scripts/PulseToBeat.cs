@@ -4,27 +4,26 @@ using UnityEngine;
 
 public class PulseToBeat : MonoBehaviour
 {
-    [SerializeField] bool _useTestBeat;
-    [SerializeField] float _pulseSize = 1.15f;
-    [SerializeField] float _returnSpeed = 5f;
-    private Vector3 _startsize;
+    [SerializeField] bool useTestBeat;
+    [SerializeField] float pulseSize = 1.15f;
+    [SerializeField] float returnSpeed = 5f;
+    private Vector3 startsize;
 
     void Start()
     {
-        _startsize = transform.localScale;
-        if (_useTestBeat) {
+        startsize = transform.localScale;
+        if (useTestBeat) {
             StartCoroutine(TestBeat());
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, _startsize, Time.deltaTime * _returnSpeed);
+        transform.localScale = Vector3.Lerp(transform.localScale, startsize, Time.deltaTime * returnSpeed);
     }
 
     public void Pulse() {
-        transform.localScale = _startsize * _pulseSize;
+        transform.localScale = startsize * pulseSize;
     }
 
     IEnumerator TestBeat() {

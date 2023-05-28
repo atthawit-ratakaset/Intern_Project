@@ -6,34 +6,31 @@ using UnityEngine.Events;
 public class BeatManager : MonoBehaviour
 {
     [SerializeField] private float bpm;
-    [SerializeField] AudioSource _audioSource;
-    [SerializeField] private Intervals[] _intervals;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] private Intervals[] intervals;
 
-    private void Awake() {
-        // _audioSource = GameControl.instance.musicSong;
-    }
 
     private void Update() {
-        foreach (Intervals interval in _intervals) {
-            float sampledTime = (_audioSource.timeSamples / (_audioSource.clip.frequency * interval.GetIntervalLength(bpm)));
+        foreach (Intervals interval in intervals) {
+            float sampledTime = (audioSource.timeSamples / (audioSource.clip.frequency * interval.GetIntervalLength(bpm)));
             interval.CheckForNewInterval(sampledTime);
         }
     }
 
 [System.Serializable]
 public class Intervals {
-    [SerializeField] private float _steps;
-    [SerializeField] private UnityEvent _trigger;
-    private int _lastInterval;
+    [SerializeField] private float steps;
+    [SerializeField] private UnityEvent trigger;
+    private int lastInterval;
 
     public float GetIntervalLength(float bpm) {
-        return 60f / (bpm * _steps);
+        return 60f / (bpm * steps);
     }
 
     public void CheckForNewInterval (float interval) {
-        if (Mathf.FloorToInt(interval) != _lastInterval) {
-            _lastInterval = Mathf.FloorToInt(interval);
-            _trigger.Invoke();
+        if (Mathf.FloorToInt(interval) != lastInterval) {
+            lastInterval = Mathf.FloorToInt(interval);
+            trigger.Invoke();
         }
     }
 }

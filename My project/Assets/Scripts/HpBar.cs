@@ -34,7 +34,7 @@ public class HpBar : MonoBehaviour
         if (currentHealth <= 0) {
             this.Wait(1f, ShowScore);
             loseHp = false;
-            MusicScript.instance.DestroyMusic();
+            MusicScript.instance.StopMusic();
         }
     }   
 

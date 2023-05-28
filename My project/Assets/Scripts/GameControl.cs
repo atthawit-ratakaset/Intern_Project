@@ -26,7 +26,6 @@ public class GameControl : MonoBehaviour
     void Start()
     {   
         Instantiate(Notes[getMode], Notes[getMode].transform.position, Quaternion.identity);
-        // Instantiate(musicSong, musicSong.transform.position, Quaternion.identity);
         if (haveHp) {
             CheckHp.SetActive(true);
 

@@ -16,20 +16,14 @@ public class MusicScript : MonoBehaviour
         gameMusic = GetComponent<AudioSource>();
         gameMusic.clip = clip;
     }
-    // Start is called before the first frame update
+
     void Start()
     {   
         gameMusic.PlayDelayed(musicDelay);
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void DestroyMusic() {
+    public void StopMusic() {
         gameMusic.Stop();
     }
 
