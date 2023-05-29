@@ -659,7 +659,7 @@ GameObject:
   - component: {fileID: 1147265160}
   - component: {fileID: 1147265159}
   m_Layer: 0
-  m_Name: fantasyTales2
+  m_Name: Image1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
