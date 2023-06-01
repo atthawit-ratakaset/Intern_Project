@@ -9,8 +9,8 @@ public class NoteMissDestroy : MonoBehaviour
         if (other.gameObject.tag == "Notes" || other.gameObject.tag == "LastNote") {
             obj = other.gameObject;
             GameControl.instance.HpDecrease();
-            //Score.instance.ScoreCalculationCase("Miss");
-            //Score.instance.ScoreCalculationCase("ResetCombo");
+            Score.instance.ScoreCalculationCase(Score.GetScore.Miss);
+            Score.instance.ScoreCalculationCase(Score.GetScore.ResetCombo);
             Destroy(obj);
         }
     }

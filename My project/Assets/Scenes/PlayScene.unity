@@ -9942,6 +9942,7 @@ MonoBehaviour:
   perfectEffect: {fileID: 3561383532021608836, guid: 733d88a4d8c7f5c43972e2235b37fe37, type: 3}
   missEffect: {fileID: 1168161368432715833, guid: bdeee70e1867cd3418ab49e0de1ed535, type: 3}
   badEffect: {fileID: 2068540259403672548, guid: acc60104c77fa5f40b45c9d067055fcf, type: 3}
+  point: {fileID: 11400000, guid: ba89046f8ea652c42b48134b6c6bae97, type: 2}
   MissNoteScoreText: {fileID: 2515275313307814835}
   GoodScoreText: {fileID: 2515275313649840356}
   PerfectScoreText: {fileID: 2515275313953176489}

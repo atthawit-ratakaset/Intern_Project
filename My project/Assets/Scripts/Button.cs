@@ -36,15 +36,15 @@ public class Button : MonoBehaviour
             particEffect.Play();
             if (hit == true) {
                 if ((subNote1 == true && subNote2 == true && subNote3 == true)) {
-                    //Score.instance.ScoreCalculationCase("Perfect");
-                    //Score.instance.ScoreCalculationCase("Combo");
+                    Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
+                    Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
                 } else if ((subNote1 == true && subNote2 == false && subNote3 == false) || 
                             (subNote3 == true && subNote2 == false && subNote3 == false)){
-                    //Score.instance.ScoreCalculationCase("Bad");
-                    //Score.instance.ScoreCalculationCase("Combo");
+                    Score.instance.ScoreCalculationCase(Score.GetScore.Bad);
+                    Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
                 } else {
-                    //Score.instance.ScoreCalculationCase("Good");
-                    //Score.instance.ScoreCalculationCase("Combo");
+                    Score.instance.ScoreCalculationCase(Score.GetScore.Good);
+                    Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
                 }
                 DestroyNote();
                 
@@ -52,8 +52,8 @@ public class Button : MonoBehaviour
 
             } else {
                 GameControl.instance.HpDecrease();
-                //Score.instance.ScoreCalculationCase("Miss");
-                //Score.instance.ScoreCalculationCase("ResetCombo");
+                Score.instance.ScoreCalculationCase(Score.GetScore.Miss);
+                Score.instance.ScoreCalculationCase(Score.GetScore.ResetCombo);
             }            
         }
     }
@@ -63,15 +63,15 @@ public class Button : MonoBehaviour
         particEffect.Play();
         if (hit == true) {
             if ((subNote1 == true && subNote2 == true && subNote3 == true)) {
-                //Score.instance.ScoreCalculationCase("Perfect");
-                //Score.instance.ScoreCalculationCase("Combo");
+                Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
+                Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
             } else if ((subNote1 == true && subNote2 == false && subNote3 == false) || 
                         (subNote3 == true && subNote2 == false && subNote3 == false)){
-                //Score.instance.ScoreCalculationCase("Bad");
-                //Score.instance.ScoreCalculationCase("Combo");
+                Score.instance.ScoreCalculationCase(Score.GetScore.Bad);
+                Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
             } else {
-                //Score.instance.ScoreCalculationCase("Good");
-                //Score.instance.ScoreCalculationCase("Combo");
+                Score.instance.ScoreCalculationCase(Score.GetScore.Good);
+                Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
             }
             
             DestroyNote();
@@ -80,8 +80,8 @@ public class Button : MonoBehaviour
 
         } else {
             GameControl.instance.HpDecrease();
-            //Score.instance.ScoreCalculationCase("Miss");
-            //Score.instance.ScoreCalculationCase("ResetCombo");
+            Score.instance.ScoreCalculationCase(Score.GetScore.Miss);
+            Score.instance.ScoreCalculationCase(Score.GetScore.ResetCombo);
         }
     }
 
