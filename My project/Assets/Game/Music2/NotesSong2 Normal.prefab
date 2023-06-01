@@ -2630,7 +2630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3202081585012639511, guid: da97ce194b1e8c2418b67c1a17a8abec, type: 3}
       propertyPath: m_TagString
-      value: LastNote
+      value: Notes
       objectReference: {fileID: 0}
     - target: {fileID: 3496380245458316099, guid: da97ce194b1e8c2418b67c1a17a8abec, type: 3}
       propertyPath: m_IsActive
@@ -7688,7 +7688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8460924458331379408, guid: c4b88482d63e11247a0356f7bc83a1f6, type: 3}
       propertyPath: m_Name
-      value: NotesSong2
+      value: NotesSong2 Normal
       objectReference: {fileID: 0}
     - target: {fileID: 8460924458331379410, guid: c4b88482d63e11247a0356f7bc83a1f6, type: 3}
       propertyPath: m_RootOrder

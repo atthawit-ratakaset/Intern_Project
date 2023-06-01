@@ -2608,7 +2608,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3202081585012639511, guid: da97ce194b1e8c2418b67c1a17a8abec, type: 3}
       propertyPath: m_TagString
-      value: LastNote
+      value: Notes
       objectReference: {fileID: 0}
     - target: {fileID: 3496380245458316099, guid: da97ce194b1e8c2418b67c1a17a8abec, type: 3}
       propertyPath: m_IsActive

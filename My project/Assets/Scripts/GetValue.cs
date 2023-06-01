@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GetValue : MonoBehaviour
-{   
-    public static AudioClip song;
-    public static int mode;
-    public static List<GameObject> Notes;
-    public static float delay;
+[CreateAssetMenu(fileName = "MusicData", menuName = "My project/GetValue", order = 0)]
+public class GetValue : ScriptableObject {
+    public string songName;
+    public AudioClip song;
+    public List<GameObject> Notes;
+    public float delay;
+    public float timerEasy;
+    public float timerNormal;
+    public float timerHard;
+    
 }

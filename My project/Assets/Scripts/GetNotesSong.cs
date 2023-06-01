@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GetNotesSong : MonoBehaviour
-{
+{   
+    GetValue getValue;
     public List<GameObject> Notes;
     public static GetNotesSong instance;
 
@@ -12,6 +13,6 @@ public class GetNotesSong : MonoBehaviour
     }
     
     public void NotesSong () {
-        GetValue.Notes = Notes;
+        getValue.Notes = Notes;
     }
 }

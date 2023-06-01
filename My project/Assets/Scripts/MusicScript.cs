@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MusicScript : MonoBehaviour
-{
+{   
     AudioSource gameMusic;
     public static MusicScript instance;
     AudioClip clip;
@@ -11,8 +11,8 @@ public class MusicScript : MonoBehaviour
 
     private void Awake() {
         instance = this;
-        musicDelay = GetValue.delay;
-        clip = GetValue.song;
+        musicDelay = MusicButton.instance.musicData.delay;
+        clip = MusicButton.get.song;
         gameMusic = GetComponent<AudioSource>();
         gameMusic.clip = clip;
     }

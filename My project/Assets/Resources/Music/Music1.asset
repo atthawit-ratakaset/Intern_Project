@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ea285e3391d3544b94a3dfef1d240c, type: 3}
+  m_Name: Music1
+  m_EditorClassIdentifier: 
+  songName: Disco Funk
+  song: {fileID: 8300000, guid: cc2e06e78c2f00f40b3bd5f4f7ee1b96, type: 3}
+  Notes:
+  - {fileID: 1444183978483189805, guid: ef78d024895b54f40afdc2bf3e31db41, type: 3}
+  - {fileID: 6529617057151021623, guid: 4600fdfc75b4c9c43a7d723184e39034, type: 3}
+  - {fileID: 5813774977165777154, guid: 2611c63f5429f7642b7eb84ec55437a0, type: 3}
+  delay: 2.5
+  timerEasy: 35
+  timerNormal: 35
+  timerHard: 35

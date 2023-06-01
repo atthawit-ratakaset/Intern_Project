@@ -6,6 +6,7 @@ using TMPro;
 public class ContinousGame : MonoBehaviour
 {   
     public static ContinousGame instance;
+    public GameObject popUpPause, score, combo, button;
     public TMP_Text countDownText;
     int countDownTime = 3;
 
@@ -14,6 +15,10 @@ public class ContinousGame : MonoBehaviour
     }  
 
     void Start() {
+        score.SetActive(true);
+        combo.SetActive(true);
+        button.SetActive(true);
+        popUpPause.SetActive(false);
     }
 
     IEnumerator CountDownToStart() {
@@ -41,4 +46,19 @@ public class ContinousGame : MonoBehaviour
         StartCoroutine(CountDownToStart());
     }
 
+    public void PasueGame()
+    {
+        score.SetActive(false);
+        combo.SetActive(false);
+        button.SetActive(false);
+        popUpPause.SetActive(true);
+    }
+
+    public void BackToGame()
+    {
+        score.SetActive(true);
+        combo.SetActive(true);
+        button.SetActive(true);
+        popUpPause.SetActive(false);
+    }
 }

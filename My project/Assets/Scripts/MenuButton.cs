@@ -4,7 +4,21 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour
-{   
+{
+    public static MenuButton instance;
+    public int selectMode = 0;
+
+    void Start()
+    {
+        instance = this;
+
+    }
+
+    public void GetMode(int mode)
+    {
+        selectMode = mode;
+        SceneManager.LoadScene("PlayScene");
+    }
 
     public void Resume() {
         ContinousGame.instance.Coutinous();

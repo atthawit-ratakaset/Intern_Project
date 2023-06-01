@@ -12,7 +12,7 @@ public class TitleScript : MonoBehaviour
 
     void MenuScene() {
         if (Input.GetMouseButtonDown(0)) {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("Menu");
         } 
     }
 }

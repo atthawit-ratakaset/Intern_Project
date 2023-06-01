@@ -8,6 +8,7 @@ public class Score : MonoBehaviour
 {   
     [SerializeField] GameObject popUp;
     [SerializeField] List<GameObject> hide = new List<GameObject>();
+    public GameObject goodEffect, perfectEffect, missEffect, badEffect;
     public static Score instance;
     public TMP_Text MissNoteScoreText;
     public TMP_Text GoodScoreText;
@@ -26,7 +27,6 @@ public class Score : MonoBehaviour
     int BadScore = 0;
     int Combo = 0;
 
-
     private void Awake(){
         instance = this;
     }
@@ -43,44 +43,59 @@ public class Score : MonoBehaviour
         popUp.SetActive(false);
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {   
-        TotalScoreText.text = "SCORE: " + TotalScore.ToString();
-        if (TotalScore < 0) {
+    public void ScoreCalculationCase(string getScore) //enum
+    {
+        switch (getScore)
+        {
+            case "Miss":
+                MissNoteScore += 1;
+                TotalScore -= 10;
+                MissNoteScoreText.text = $"MISS NOTE: {MissNoteScore}";
+                Instantiate(missEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
+                break;
+
+            case "Good":
+                GoodScore += 1;
+                TotalScore += 10;
+                GoodScoreText.text = $"GOOD: {GoodScore}";
+                Instantiate(goodEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
+                break;
+
+            case "Perfect":
+                PerfectScore += 1;
+                TotalScore += 20;
+                PerfectScoreText.text = $"PERFECT: {PerfectScore}";
+                Instantiate(perfectEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
+                break;
+
+            case "Bad":
+                BadScore += 1;
+                TotalScore -= 10;
+                BadScoreText.text = $"BAD: {BadScore}";
+                Instantiate(badEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
+                break;
+
+            case "Combo":
+                Combo += 1;
+                ComboText.text = $"COMBO: x{Combo}";
+                break;
+
+            case "ResetCombo":
+                Combo = 0;
+                ComboText.text = $"COMBO: x{Combo}";
+                break;
+
+        }
+        CheckTotalScore();
+    }
+
+    public void CheckTotalScore()
+    {
+        if (TotalScore < 0)
+        {
             TotalScore = 0;
         }
-
-    }
-
-    public void AddMissNotePoint(){
-        MissNoteScore += 1;
-        TotalScore -= 10;
-        MissNoteScoreText.text = "MISS NOTE: " + MissNoteScore.ToString();
-    }
-
-    public void AddGoodScore(){
-        GoodScore += 1;
-        TotalScore += 10;
-        GoodScoreText.text = "GOOD: " + GoodScore.ToString();
-    }
-
-    public void AddPerfectScore(){
-        PerfectScore += 1;
-        TotalScore += 20;
-        PerfectScoreText.text = "PERFECT: " + PerfectScore.ToString();
-    }
-
-    public void AddMissScore(){
-        MissScore += 1;
-        TotalScore -= 10;
-        MissScoreText.text = "MISS: " + MissScore.ToString();
-    }
-
-    public void AddBadScore(){
-        BadScore += 1;
-        TotalScore -= 10;
-        BadScoreText.text = "BAD: " + BadScore.ToString();
+        TotalScoreText.text = "SCORE: " + TotalScore.ToString();
     }
 
     public void ShowScore() {
@@ -97,13 +112,4 @@ public class Score : MonoBehaviour
         TotalScoreText.text = "SCORE: " + TotalScore.ToString();
     }
 
-    public void AddCombo() {
-        Combo += 1;
-        ComboText.text = "COMBO: x" + Combo.ToString();
-    }
-
-    public void ReSetCombo() {
-        Combo = 0;
-        ComboText.text = "COMBO: x" + Combo.ToString();
-    }
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,15 +7,13 @@ public class Button : MonoBehaviour
 {   
     GameObject obj;
     List<GameObject> objs = new List<GameObject>();
-    int CurrenttIndex = 0;
     private bool hit;
-    private bool end;
     public KeyCode key;
     private SpriteRenderer theSR;
     private bool subNote1;
     private bool subNote2;
     private bool subNote3;
-    public GameObject goodEffect, perfectEffect, missEffect, badEffect;
+
     public ParticleSystem particEffect;
     public AudioSource soundFX;
 
@@ -26,7 +24,6 @@ public class Button : MonoBehaviour
     void Start()
     {
         hit = false;
-        end = false;
         subNote1 = false;
         subNote2 = false;
         subNote3 = false;
@@ -39,36 +36,24 @@ public class Button : MonoBehaviour
             particEffect.Play();
             if (hit == true) {
                 if ((subNote1 == true && subNote2 == true && subNote3 == true)) {
-                    // Debug.Log("Perfect");
-                    Score.instance.AddPerfectScore();
-                    Score.instance.AddCombo();
-                    Instantiate(perfectEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
+                    //Score.instance.ScoreCalculationCase("Perfect");
+                    //Score.instance.ScoreCalculationCase("Combo");
                 } else if ((subNote1 == true && subNote2 == false && subNote3 == false) || 
                             (subNote3 == true && subNote2 == false && subNote3 == false)){
-                    // Debug.Log("Good");
-                    Instantiate(badEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
-                    Score.instance.AddBadScore();
-                    Score.instance.AddCombo();
+                    //Score.instance.ScoreCalculationCase("Bad");
+                    //Score.instance.ScoreCalculationCase("Combo");
                 } else {
-                    Score.instance.AddGoodScore();
-                    Score.instance.AddCombo();
-                    Instantiate(goodEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
-                }
-                
-                if (end == true) {
-                    this.Wait(2f, ShowScore);
-                    MusicScript.instance.StopMusic();
+                    //Score.instance.ScoreCalculationCase("Good");
+                    //Score.instance.ScoreCalculationCase("Combo");
                 }
                 DestroyNote();
                 
 
 
             } else {
-                // Debug.Log("Miss");
-                GameControl.instance.CheckScene();
-                Score.instance.AddMissScore();
-                Instantiate(missEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
-                Score.instance.ReSetCombo();
+                GameControl.instance.HpDecrease();
+                //Score.instance.ScoreCalculationCase("Miss");
+                //Score.instance.ScoreCalculationCase("ResetCombo");
             }            
         }
     }
@@ -78,54 +63,35 @@ public class Button : MonoBehaviour
         particEffect.Play();
         if (hit == true) {
             if ((subNote1 == true && subNote2 == true && subNote3 == true)) {
-                // Debug.Log("Perfect");
-                Score.instance.AddPerfectScore();
-                Score.instance.AddCombo();
-                Instantiate(perfectEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
+                //Score.instance.ScoreCalculationCase("Perfect");
+                //Score.instance.ScoreCalculationCase("Combo");
             } else if ((subNote1 == true && subNote2 == false && subNote3 == false) || 
                         (subNote3 == true && subNote2 == false && subNote3 == false)){
-                // Debug.Log("Good");
-                Instantiate(badEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
-                Score.instance.AddBadScore();
-                Score.instance.AddCombo();
+                //Score.instance.ScoreCalculationCase("Bad");
+                //Score.instance.ScoreCalculationCase("Combo");
             } else {
-                Score.instance.AddGoodScore();
-                Score.instance.AddCombo();
-                Instantiate(goodEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
+                //Score.instance.ScoreCalculationCase("Good");
+                //Score.instance.ScoreCalculationCase("Combo");
             }
             
-            if (end == true) {
-                this.Wait(2f, ShowScore);
-                MusicScript.instance.StopMusic();
-            }
             DestroyNote();
             
 
 
         } else {
-            // Debug.Log("Miss");
-            GameControl.instance.CheckScene();
-            Score.instance.AddMissScore();
-            Instantiate(missEffect, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
-            Score.instance.ReSetCombo();
+            GameControl.instance.HpDecrease();
+            //Score.instance.ScoreCalculationCase("Miss");
+            //Score.instance.ScoreCalculationCase("ResetCombo");
         }
     }
-
-    // void OnMouseUp() {
-    //     }
-    // }
-
-
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Notes" || other.gameObject.tag == "LastNote") {
             hit = true;
-            if (other.gameObject.tag == ("LastNote")) {
-                end = true;
-            }
+            
             obj = other.gameObject;
             objs.Add(obj);
-            CurrenttIndex++;
+
             }
         
         
@@ -140,16 +106,11 @@ public class Button : MonoBehaviour
     
     void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.tag == "Notes" || other.gameObject.tag == "LastNote") {
-            CurrenttIndex -= 1;
             objs.Remove(objs[0]);
-            if(CurrenttIndex != 0) {
+            if(objs.Count != 0) {
                 hit = true;
             } else {
                 hit = false;
-                if (other.gameObject.tag == ("LastNote")) {
-                    end = false;
-                }
-
             }
 
         }
