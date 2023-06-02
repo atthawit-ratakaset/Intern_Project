@@ -10,7 +10,8 @@ TagManager:
   - SubNote1
   - SubNote2
   - SubNote3
-  - LastNote
+  - Pad2
+  - Pad3
   layers:
   - Default
   - TransparentFX

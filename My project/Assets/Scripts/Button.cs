@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class Button : MonoBehaviour
-{   
+{
     GameObject obj;
     List<GameObject> objs = new List<GameObject>();
     private bool hit;
@@ -14,15 +14,23 @@ public class Button : MonoBehaviour
     private bool subNote2;
     private bool subNote3;
 
+
     public ParticleSystem particEffect;
     public AudioSource soundFX;
 
     void Awake() {
+        
         theSR = GetComponent<SpriteRenderer>();
     }
 
     void Start()
     {
+
+        EventTrigger trigger = GetComponent<EventTrigger>();
+        EventTrigger.Entry entry = new EventTrigger.Entry();
+        entry.eventID = EventTriggerType.PointerDown;
+        entry.callback.AddListener((data) => { OnPointerDownDelegate((PointerEventData)data); });
+        trigger.triggers.Add(entry);
         hit = false;
         subNote1 = false;
         subNote2 = false;
@@ -56,9 +64,14 @@ public class Button : MonoBehaviour
                 Score.instance.ScoreCalculationCase(Score.GetScore.ResetCombo);
             }            
         }
+
+
     }
- 
-    void OnMouseDown() {
+
+
+    public void OnPointerDownDelegate(PointerEventData data)
+    {
+        Debug.Log("Hi");
         soundFX.Play();
         particEffect.Play();
         if (hit == true) {
@@ -132,5 +145,7 @@ public class Button : MonoBehaviour
     void ShowScore() {
         Score.instance.ShowScore();
     }
+
+
 
 }
