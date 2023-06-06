@@ -8,13 +8,15 @@ public class GameControl : MonoBehaviour
     List<GameObject> Notes;
     public static GameControl instance;
     bool haveHp = false;
-    int getMode;
 
     public int maxHealth = 100;
     int currentHealth;
     public HealthBar healthBar;
 
     public float musicPlayTime;
+
+    [HideInInspector]
+    public int getMode;
 
     void Awake() {
         instance = this;
@@ -25,7 +27,8 @@ public class GameControl : MonoBehaviour
     }
 
     void Start()
-    {   
+    {
+        Debug.Log(getMode);
         Instantiate(Notes[getMode], Notes[getMode].transform.position, Quaternion.identity);
         HpSetAtStart();
         MusicTimeCount();

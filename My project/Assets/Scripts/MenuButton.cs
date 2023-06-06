@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class MenuButton : MonoBehaviour
 {
     public static MenuButton instance;
+
     [HideInInspector]
-    public int selectMode = 0;
+    public int selectMode;
 
     void Start()
     {
@@ -46,6 +47,7 @@ public class MenuButton : MonoBehaviour
     public void Retry() {
         Time.timeScale = 1f;
         SceneManager.LoadScene(GetCurrentBuildIndex());
+        selectMode = GameControl.instance.getMode;
     }
 
 
