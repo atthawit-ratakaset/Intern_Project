@@ -28,7 +28,6 @@ public class GameControl : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(getMode);
         Instantiate(Notes[getMode], Notes[getMode].transform.position, Quaternion.identity);
         HpSetAtStart();
         MusicTimeCount();
