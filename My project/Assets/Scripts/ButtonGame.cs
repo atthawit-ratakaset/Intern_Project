@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Button : MonoBehaviour
+public class ButtonGame : MonoBehaviour
 {
     GameObject obj;
     List<GameObject> objs = new List<GameObject>();
@@ -71,7 +71,6 @@ public class Button : MonoBehaviour
 
     public void OnPointerDownDelegate(PointerEventData data)
     {
-        Debug.Log("Hi");
         soundFX.Play();
         particEffect.Play();
         if (hit == true) {

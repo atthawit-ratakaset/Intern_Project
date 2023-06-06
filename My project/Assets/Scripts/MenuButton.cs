@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuButton : MonoBehaviour
 {
     public static MenuButton instance;
+    [HideInInspector]
     public int selectMode = 0;
 
     void Start()
