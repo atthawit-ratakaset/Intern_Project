@@ -11,6 +11,9 @@ TagManager:
   - SubNote2
   - SubNote3
   - LastNote
+  - NotesLeft
+  - NotesRight
+  - FadeDetetor
   layers:
   - Default
   - TransparentFX

@@ -15,10 +15,10 @@ MonoBehaviour:
   songName: Disco Funk
   song: {fileID: 8300000, guid: cc2e06e78c2f00f40b3bd5f4f7ee1b96, type: 3}
   Notes:
-  - {fileID: 77265611891263859, guid: e9341268166c0974490f08a6247a8f3d, type: 3}
-  - {fileID: 1493882087670634871, guid: cf3b2f95b7de5814aa1303dee785dc0e, type: 3}
-  - {fileID: 1444183978483189805, guid: 738b319cb17b2bf40b6acb734aa306f8, type: 3}
+  - {fileID: 5817762041537119094, guid: 0a342ef912a688242bd843282676a2d1, type: 3}
+  - {fileID: 1876447268127943438, guid: 57b9e19931e0b664dab5bc31573c8469, type: 3}
+  - {fileID: 6126843102879336448, guid: c3e143ced964b1d43a61cbe37b84cc76, type: 3}
   delay: 2.5
-  timerEasy: 68
-  timerNormal: 100
-  timerHard: 130
+  timerEasy: 135
+  timerNormal: 135
+  timerHard: 135

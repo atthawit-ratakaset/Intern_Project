@@ -5,8 +5,8 @@ using UnityEngine;
 public class NoteMoveMent : MonoBehaviour
 {   
     public NoteSpeed noteSpeed;
-    public bool Down;
-    public bool Up;
+    public bool Left;
+    public bool Right;
 
     void Start()
     {
@@ -15,14 +15,14 @@ public class NoteMoveMent : MonoBehaviour
 
     void Update()
     {   
-        if (Down == true)
+        if (Left == true)
         {
-            transform.position -= new Vector3(0f, noteSpeed.beatTempo * Time.deltaTime, 0f);
+            transform.position -= new Vector3(noteSpeed.beatTempo * Time.deltaTime, 0f, 0f);
         }
-        else if (Up == true)
+        else if (Right == true)
         {
 
-            transform.position += new Vector3(0f, noteSpeed.beatTempo * Time.deltaTime, 0f);
+            transform.position += new Vector3(noteSpeed.beatTempo * Time.deltaTime, 0f, 0f);
         }
     }
 }
