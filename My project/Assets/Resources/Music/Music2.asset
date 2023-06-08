@@ -15,10 +15,10 @@ MonoBehaviour:
   songName: Dance Electro
   song: {fileID: 8300000, guid: 6df74b7e415b0004cbe399d58899fdcc, type: 3}
   Notes:
-  - {fileID: 5659504116360469403, guid: 7323646b7ff4eb44d9bb166053c67e7b, type: 3}
-  - {fileID: 3694794865660521353, guid: b8777e99d9f8b4943b66792535cdf4b7, type: 3}
-  - {fileID: 6921670974219304597, guid: 2f5f22b5d3554b243b122528a7117ab1, type: 3}
+  - {fileID: 5659504116360469403, guid: d487c9e2a4d1e984c915342b812588f6, type: 3}
+  - {fileID: 3694794865660521353, guid: a53e05568f35a704582eede9696caf9c, type: 3}
+  - {fileID: 6921670974219304597, guid: a93838c4b57bee54dad8dee842f04922, type: 3}
   delay: 4
-  timerEasy: 100
-  timerNormal: 100
-  timerHard: 100
+  timerEasy: 120
+  timerNormal: 120
+  timerHard: 120
