@@ -9,7 +9,7 @@ public class NoteSpeed : MonoBehaviour
 
     void Start()
     {
-        beatTempo = beatTempo / 60;
+        beatTempo = (beatTempo / 60) * 2;
     }
 
 }

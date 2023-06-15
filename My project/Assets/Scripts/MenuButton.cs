@@ -41,7 +41,7 @@ public class MenuButton : MonoBehaviour
 
     public void ReturnMenu() {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Menu");
     }
 
     public void Retry() {
