@@ -20,7 +20,7 @@ public class LeftButtonGame : MonoBehaviour
     public bool subNote3;
 
     void Awake() {
-        
+
         theSR = GetComponent<SpriteRenderer>();
     }
 
@@ -39,8 +39,8 @@ public class LeftButtonGame : MonoBehaviour
                 if ((subNote1 == true && subNote2 == true && subNote3 == true)) {
                     Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
                     Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
-                } else if ((subNote1 == true && subNote2 == false && subNote3 == false) || 
-                            (subNote3 == true && subNote2 == false && subNote3 == false)){
+                } else if ((subNote1 == true && subNote2 == false && subNote3 == false) ||
+                            (subNote3 == true && subNote2 == false && subNote3 == false)) {
                     Score.instance.ScoreCalculationCase(Score.GetScore.Bad);
                     Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
                 } else {
@@ -48,10 +48,10 @@ public class LeftButtonGame : MonoBehaviour
                     Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
                 }
                 DestroyNote();
-                
 
 
-            }           
+
+            }
         }
 
     }
@@ -59,34 +59,31 @@ public class LeftButtonGame : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "NotesLeft") {
             hit = true;
-            
+
             obj = other.gameObject;
             objs.Add(obj);
 
-            }
-        
-        
-            if (other.gameObject.tag == "SubNote1") {
-                subNote1 = true;
-            } else if (other.gameObject.tag == "SubNote2") {
-                subNote2 = true;
-            } else if (other.gameObject.tag == "SubNote3") {
-                subNote3 = true;
-            }          
         }
-    
+
+
+        if (other.gameObject.tag == "SubNote1") {
+            subNote1 = true;
+        } else if (other.gameObject.tag == "SubNote2") {
+            subNote2 = true;
+        } else if (other.gameObject.tag == "SubNote3") {
+            subNote3 = true;
+        }
+    }
+
     void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.tag == "NotesLeft") {
             objs.Remove(objs[0]);
-            if(objs.Count != 0) {
+            if (objs.Count != 0) {
                 hit = true;
             } else {
                 hit = false;
             }
-            GameControl.instance.HpDecrease();
-            Score.instance.ScoreCalculationCase(Score.GetScore.Miss);
-            Score.instance.ScoreCalculationCase(Score.GetScore.ResetCombo);
-            Destroy(obj);
+
 
         }
 
@@ -103,6 +100,7 @@ public class LeftButtonGame : MonoBehaviour
     public void DestroyNote() {
         Destroy(objs[0]);
     }
+
 
     void ShowScore() {
         Score.instance.ShowScore();

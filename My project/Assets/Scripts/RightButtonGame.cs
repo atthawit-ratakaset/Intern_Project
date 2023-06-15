@@ -108,10 +108,7 @@ public class RightButtonGame : MonoBehaviour
             {
                 hit = false;
             }
-            GameControl.instance.HpDecrease();
-            Score.instance.ScoreCalculationCase(Score.GetScore.Miss);
-            Score.instance.ScoreCalculationCase(Score.GetScore.ResetCombo);
-            Destroy(obj);
+
         }
 
         if (other.gameObject.tag == "SubNote1")
