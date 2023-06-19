@@ -65,14 +65,6 @@ public class LeftButtonGame : MonoBehaviour
 
         }
 
-
-        if (other.gameObject.tag == "SubNote1") {
-            subNote1 = true;
-        } else if (other.gameObject.tag == "SubNote2") {
-            subNote2 = true;
-        } else if (other.gameObject.tag == "SubNote3") {
-            subNote3 = true;
-        }
     }
 
     void OnTriggerExit2D(Collider2D other) {

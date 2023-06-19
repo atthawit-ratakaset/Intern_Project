@@ -20,7 +20,7 @@ public class FadeInNotes : MonoBehaviour
         if (other.gameObject.tag == "FadeDetetor")
         {
             Color color = note.material.color;
-            color.a = 0.5f;
+            color.a = 0.25f;
             note.material.color = color;
         }
     }
