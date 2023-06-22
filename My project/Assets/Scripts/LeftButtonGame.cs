@@ -30,6 +30,11 @@ public class LeftButtonGame : MonoBehaviour
         subNote1 = false;
         subNote2 = false;
         subNote3 = false;
+        
+        theSR.color = Color.blue;
+        Color color = theSR.material.color;
+        color.a = 0.25f;
+        theSR.material.color = color;
 
     }
 
@@ -40,7 +45,7 @@ public class LeftButtonGame : MonoBehaviour
                     Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
                     Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
                 } else if ((subNote1 == true && subNote2 == false && subNote3 == false) ||
-                            (subNote3 == true && subNote2 == false && subNote3 == false)) {
+                            (subNote3 == true && subNote2 == false && subNote1 == false)) {
                     Score.instance.ScoreCalculationCase(Score.GetScore.Bad);
                     Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
                 } else {
@@ -65,6 +70,29 @@ public class LeftButtonGame : MonoBehaviour
 
         }
 
+        if (other.gameObject.tag == "SubNote1Left")
+        {
+            subNote1 = true;
+            theSR.color = Color.white;
+            Color color = theSR.material.color;
+            color.a = 0.5f;
+            theSR.material.color = color;
+        }
+        else if (other.gameObject.tag == "SubNote2Left")
+        {
+            subNote2 = true;
+            Color color = theSR.material.color;
+            color.a = 0.75f;
+            theSR.material.color = color;
+        }
+        else if (other.gameObject.tag == "SubNote3Left")
+        {
+            subNote3 = true;
+            Color color = theSR.material.color;
+            color.a = 1f;
+            theSR.material.color = color;
+        }
+
     }
 
     void OnTriggerExit2D(Collider2D other) {
@@ -74,23 +102,41 @@ public class LeftButtonGame : MonoBehaviour
                 hit = true;
             } else {
                 hit = false;
+                
             }
 
 
         }
 
-        if (other.gameObject.tag == "SubNote1") {
+        if (other.gameObject.tag == "SubNote1Left") {
             subNote1 = false;
-        } else if (other.gameObject.tag == "SubNote2") {
+            Color color = theSR.material.color;
+            color.a = 0.75f;
+            theSR.material.color = color;
+        } else if (other.gameObject.tag == "SubNote2Left") {
             subNote2 = false;
-        } else if (other.gameObject.tag == "SubNote3") {
+            Color color = theSR.material.color;
+            color.a = 0.5f;
+            theSR.material.color = color;
+        } else if (other.gameObject.tag == "SubNote3Left") {
             subNote3 = false;
+            theSR.color = Color.blue;
+            Color color = theSR.material.color;
+            color.a = 0.25f;
+            theSR.material.color = color;
         }
 
     }
 
     public void DestroyNote() {
         Destroy(objs[0]);
+        if (hit == false)
+        {
+            theSR.color = Color.blue;
+            Color color = theSR.material.color;
+            color.a = 0.25f;
+            theSR.material.color = color;
+        }
     }
 
 

@@ -33,6 +33,10 @@ public class RightButtonGame : MonoBehaviour
         subNote2 = false;
         subNote3 = false;
 
+        theSR.color = Color.blue;
+        Color color = theSR.material.color;
+        color.a = 0.25f;
+        theSR.material.color = color;
     }
 
     void Update()
@@ -81,17 +85,27 @@ public class RightButtonGame : MonoBehaviour
         }
 
 
-        if (other.gameObject.tag == "SubNote1")
+        if (other.gameObject.tag == "SubNote1Right")
         {
             subNote1 = true;
+            theSR.color = Color.white;
+            Color color = theSR.material.color;
+            color.a = 0.5f;
+            theSR.material.color = color;
         }
-        else if (other.gameObject.tag == "SubNote2")
+        else if (other.gameObject.tag == "SubNote2Right")
         {
             subNote2 = true;
+            Color color = theSR.material.color;
+            color.a = 0.75f;
+            theSR.material.color = color;
         }
-        else if (other.gameObject.tag == "SubNote3")
+        else if (other.gameObject.tag == "SubNote3Right")
         {
             subNote3 = true;
+            Color color = theSR.material.color;
+            color.a = 1f;
+            theSR.material.color = color;
         }
     }
 
@@ -107,21 +121,32 @@ public class RightButtonGame : MonoBehaviour
             else
             {
                 hit = false;
+                
             }
 
         }
 
-        if (other.gameObject.tag == "SubNote1")
+        if (other.gameObject.tag == "SubNote1Right")
         {
             subNote1 = false;
+            Color color = theSR.material.color;
+            color.a = 0.75f;
+            theSR.material.color = color;
         }
-        else if (other.gameObject.tag == "SubNote2")
+        else if (other.gameObject.tag == "SubNote2Right")
         {
             subNote2 = false;
+            Color color = theSR.material.color;
+            color.a = 0.5f;
+            theSR.material.color = color;
         }
-        else if (other.gameObject.tag == "SubNote3")
+        else if (other.gameObject.tag == "SubNote3Right")
         {
             subNote3 = false;
+            theSR.color = Color.blue;
+            Color color = theSR.material.color;
+            color.a = 0.25f;
+            theSR.material.color = color;
         }
 
     }
@@ -129,6 +154,13 @@ public class RightButtonGame : MonoBehaviour
     public void DestroyNote()
     {
         Destroy(objs[0]);
+        if (hit == false)
+        {
+            theSR.color = Color.blue;
+            Color color = theSR.material.color;
+            color.a = 0.25f;
+            theSR.material.color = color;
+        }
     }
 
     void ShowScore()

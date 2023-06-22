@@ -15,6 +15,16 @@ TagManager:
   - FadeDetetor
   - ButtonLeft
   - ButtonRight
+  - NotesDown
+  - NotesUp
+  - ButtonUp
+  - ButtonDown
+  - SubNote1Left
+  - SubNote2Left
+  - SubNote3Left
+  - SubNote1Right
+  - SubNote2Right
+  - SubNote3Right
   layers:
   - Default
   - TransparentFX

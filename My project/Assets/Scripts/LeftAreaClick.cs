@@ -16,6 +16,7 @@ public class LeftAreaClick : MonoBehaviour
         entry.eventID = EventTriggerType.PointerDown;
         entry.callback.AddListener((data) => { OnPointerDownDelegate((PointerEventData)data); });
         trigger.triggers.Add(entry);
+        
     }
 
     public void OnPointerDownDelegate(PointerEventData data)
@@ -30,7 +31,7 @@ public class LeftAreaClick : MonoBehaviour
                 Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
             }
             else if ((button.subNote1 == true && button.subNote2 == false && button.subNote3 == false) ||
-                      (button.subNote3 == true && button.subNote2 == false && button.subNote3 == false))
+                      (button.subNote3 == true && button.subNote2 == false && button.subNote1 == false))
             {
                 Score.instance.ScoreCalculationCase(Score.GetScore.Bad);
                 Score.instance.ScoreCalculationCase(Score.GetScore.Combo);

@@ -19,7 +19,7 @@ public class MenuButton : MonoBehaviour
     public void GetMode(int mode)
     {
         selectMode = mode;
-        SceneManager.LoadScene("PlayScene");
+        SceneManager.LoadScene("PlayScene1");
     }
 
     public void Resume() {

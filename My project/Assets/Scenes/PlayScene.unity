@@ -1011,7 +1011,7 @@ GameObject:
   - component: {fileID: 319398120}
   - component: {fileID: 319398123}
   m_Layer: 0
-  m_Name: FadeInDetetor
+  m_Name: FadeInDetetorUp
   m_TagString: FadeDetetor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1085,7 +1085,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2056,7 +2056,7 @@ GameObject:
   - component: {fileID: 602384851}
   - component: {fileID: 602384850}
   m_Layer: 0
-  m_Name: FadeInDetetor (2)
+  m_Name: FadeInDetetorDown
   m_TagString: FadeDetetor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2500,7 +2500,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6df74b7e415b0004cbe399d58899fdcc, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3490,7 +3490,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1046738480}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.6042485, y: 1.8, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3499,10 +3499,10 @@ RectTransform:
   - {fileID: 1075251573}
   m_Father: {fileID: 2515275313538109947}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -644, y: 970}
+  m_AnchoredPosition: {x: -2146, y: 13}
   m_SizeDelta: {x: -4381.1084, y: -2240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1046738482
@@ -4763,7 +4763,7 @@ GameObject:
   - component: {fileID: 1818332206}
   - component: {fileID: 1818332205}
   m_Layer: 0
-  m_Name: FadeInDetetor (1)
+  m_Name: FadeInDetetorMid
   m_TagString: FadeDetetor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8108,7 +8108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2010, y: 696}
+  m_AnchoredPosition: {x: -1943, y: 696}
   m_SizeDelta: {x: 65.1967, y: 37.421}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2515275314139195845
@@ -8711,7 +8711,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 698, y: 961}
+  m_AnchoredPosition: {x: -110, y: 911}
   m_SizeDelta: {x: 1327.657, y: 131.1807}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7678200151643276606

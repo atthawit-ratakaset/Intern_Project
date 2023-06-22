@@ -18,7 +18,8 @@ public class MusicScript : MonoBehaviour
     }
 
     void Start()
-    {   
+    {
+        
         gameMusic.PlayDelayed(musicDelay);
 
     }
