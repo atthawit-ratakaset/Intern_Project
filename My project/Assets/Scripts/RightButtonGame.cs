@@ -19,17 +19,13 @@ public class RightButtonGame : MonoBehaviour
         NormalNote
 
     }
+
     NoteTypes noteType = NoteTypes.NormalNote;
 
 
     [HideInInspector]
-    public bool hit;
-    [HideInInspector]
-    public bool subNote1;
-    [HideInInspector]
-    public bool subNote2;
-    [HideInInspector]
-    public bool subNote3;
+    public bool hit, subNote1, subNote2, subNote3;
+
 
     void Awake()
     {

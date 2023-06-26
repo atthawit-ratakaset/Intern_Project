@@ -19,17 +19,13 @@ public class LeftButtonGame : MonoBehaviour
         NormalNote
        
     }
+
     NoteTypes noteType = NoteTypes.NormalNote;
     
 
     [HideInInspector]
-    public bool hit;
-    [HideInInspector]
-    public bool subNote1;
-    [HideInInspector]
-    public bool subNote2;
-    [HideInInspector]
-    public bool subNote3;
+    public bool hit, subNote1, subNote2, subNote3;
+
 
     void Awake() {
 
@@ -52,7 +48,7 @@ public class LeftButtonGame : MonoBehaviour
         Square.transform.localScale = new Vector3(0f, 0f, 1f);
 
     }
-
+    
     void Update() {
         if (Input.GetKeyDown(key)) {
             if (hit == true) {
