@@ -13,6 +13,6 @@ public class GetNotesSong : MonoBehaviour
     }
     
     public void NotesSong () {
-        getValue.Notes = Notes;
+        //getValue.Notes = Notes;
     }
 }

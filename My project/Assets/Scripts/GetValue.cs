@@ -6,10 +6,15 @@ using UnityEngine;
 public class GetValue : ScriptableObject {
     public string songName;
     public AudioClip song;
-    public List<GameObject> Notes;
+    public List<NoteData> Easy;
+    public List<NoteData> Normal;
+    public List<NoteData> Hard;
+
     public float delay;
     public float timerEasy;
     public float timerNormal;
     public float timerHard;
-    
+    public float easySpeed;
+    public float normalSpeed;
+    public float hardSpeed;
 }

@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
+
+
 
 public class GameControl : MonoBehaviour 
 {   
     [SerializeField] GameObject CheckHp;
-    List<GameObject> Notes;
+    List<NoteData> NotesEasy = new List<NoteData>();
+    List<NoteData> NotesNormal = new List<NoteData>();
+    List<NoteData> NotesHard = new List<NoteData>();
     public static GameControl instance;
     bool haveHp = false;
+    
 
     public int maxHealth = 100;
     int currentHealth;
@@ -18,17 +24,19 @@ public class GameControl : MonoBehaviour
     [HideInInspector]
     public int getMode;
 
+    float speed;
     void Awake() {
         instance = this;
-        Notes = MusicButton.get.Notes;
+        NotesEasy = MusicButton.get.Easy;
+        NotesNormal = MusicButton.get.Normal;
+        NotesHard = MusicButton.get.Hard;
         getMode = MenuButton.instance.selectMode;
-        GameModeCheck();
 
     }
 
     void Start()
     {
-        Instantiate(Notes[getMode], Notes[getMode].transform.position, Quaternion.identity);
+        GameModeCheck();
         HpSetAtStart();
         MusicTimeCount();
 
@@ -55,20 +63,68 @@ public class GameControl : MonoBehaviour
     {
         if (getMode == 2)
         {
+
+            for (int i = 0; i < NotesHard.Count; i++)
+            {
+
+                if (i == 0)
+                {
+                    speed = -MusicButton.get.hardSpeed;
+                }
+                else if (i == 1)
+                {
+                    speed = MusicButton.get.hardSpeed;
+                }
+                var note = Instantiate(NotesHard[i]);
+                note.gameObject.AddComponent<NoteSpeedUp>().setSpeed(speed);
+            }
             haveHp = true;
             CheckHp.SetActive(true);
             musicPlayTime = MusicButton.get.timerHard + MusicButton.get.delay;
+
         }
         else if (getMode == 1)
         {
+            
+            for (int i = 0; i < NotesNormal.Count; i++)
+            {
+
+                if (i == 0)
+                {
+                    speed = -MusicButton.get.normalSpeed;
+                }
+                else if (i == 1)
+                {
+                    speed = MusicButton.get.normalSpeed;
+                }
+                var note = Instantiate(NotesNormal[i]);
+                note.gameObject.AddComponent<NoteSpeedUp>().setSpeed(speed);
+            }
             haveHp = false;
             CheckHp.SetActive(false);
             musicPlayTime = MusicButton.get.timerNormal + MusicButton.get.delay;
-        } else
+
+        } else if (getMode == 0)
         {
+
+            for (int i = 0; i < NotesEasy.Count; i++)
+            {
+
+                if (i == 0)
+                {
+                    speed = -MusicButton.get.easySpeed;
+                }
+                else if (i == 1)
+                {
+                    speed = MusicButton.get.easySpeed;
+                }
+                var note = Instantiate(NotesEasy[i]);
+                note.gameObject.AddComponent<NoteSpeedUp>().setSpeed(speed);
+            }
             haveHp = false;
             CheckHp.SetActive(false);
             musicPlayTime = MusicButton.get.timerEasy + MusicButton.get.delay;
+
         }
     }
 
@@ -102,4 +158,6 @@ public class GameControl : MonoBehaviour
     {
         Score.instance.ShowScore();
     }
+
+
 }
