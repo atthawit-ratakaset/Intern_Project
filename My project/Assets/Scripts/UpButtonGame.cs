@@ -100,7 +100,9 @@ public class UpButtonGame : MonoBehaviour
             obj = other.gameObject;
             objs.Add(obj);
             
-        } else if (other.gameObject.tag == "DoubleTapNoteUp")
+        } 
+
+        if (other.gameObject.tag == "DoubleTapNoteUp")
         {
             noteType = NoteTypes.DoubleTapNote;
             noteSp1 = true;
@@ -112,7 +114,9 @@ public class UpButtonGame : MonoBehaviour
             obj = other.gameObject;
             objs.Add(obj);
             
-        } else if (other.gameObject.tag == "DonotTapUp")
+        } 
+        
+        if (other.gameObject.tag == "DonotTapUp")
         {
             noteType = NoteTypes.DonotTap;
             noteSp2 = true;
