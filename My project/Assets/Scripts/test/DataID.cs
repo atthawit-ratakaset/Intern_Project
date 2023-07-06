@@ -7,5 +7,6 @@ using UnityEngine;
 public class DataID : ScriptableObject
 {
     public string IDObject;
+    public GameObject button;
 
 }

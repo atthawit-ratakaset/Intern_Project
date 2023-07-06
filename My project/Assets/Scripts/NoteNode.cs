@@ -44,7 +44,9 @@ public class NoteNode : MonoBehaviour
      
 
         yield return new WaitForSeconds(note.time);
-        var s = Instantiate(note);
+        var s =Instantiate(note);
+       
+
 
 
         var target = gameObjects.Find(w => w.targetID == s.GetTargetEnd());

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Button1
   m_EditorClassIdentifier: 
   IDObject: B1
+  button: {fileID: 538835397418614421, guid: e21acbcd3dcb8b64ca14092b1fb66a38, type: 3}

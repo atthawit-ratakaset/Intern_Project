@@ -7,14 +7,9 @@ TagManager:
   - Pad
   - Notes
   - Destroy
-  - SubNote1
-  - SubNote2
-  - SubNote3
   - NotesLeft
   - NotesRight
   - FadeDetetor
-  - ButtonLeft
-  - ButtonRight
   - NotesDown
   - NotesUp
   - ButtonUp
@@ -25,6 +20,8 @@ TagManager:
   - SubNote1Right
   - SubNote2Right
   - SubNote3Right
+  - DoubleTapNote
+  - DonotTap
   layers:
   - Default
   - TransparentFX

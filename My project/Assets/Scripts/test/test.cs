@@ -5,10 +5,12 @@ using UnityEngine;
 public class test : MonoBehaviour
 {
     public DataID dataID;
-    string ID;
+    public static test instance;
+    public string ID;
 
     private void Awake()
     {
+        instance = this;
         ID = dataID.IDObject;
     }
 }

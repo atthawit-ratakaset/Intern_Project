@@ -37,7 +37,7 @@ public class GameControl : MonoBehaviour
     void Start()
     {
         GameModeCheck();
-        HpSetAtStart();
+        HpSetAtStart(); 
         MusicTimeCount();
 
     }
