@@ -12,7 +12,9 @@ public class DownButtonGame : UpButtonGame
         {
             noteType = NoteTypes.NormalNote;
             hit = true;
-
+            Color color = spiteRenderer.material.color;
+            color.a = 1f;
+            spiteRenderer.material.color = color;
             spiteRenderer.sprite = newSprite;
             subNote1 = true;
             Square.transform.localScale = new Vector3(0.35f, 0.35f, 1f);
@@ -20,31 +22,37 @@ public class DownButtonGame : UpButtonGame
             objs.Add(obj);
 
         }
-        else if (other.gameObject.tag == "DoubleTapNote")
+
+        if (other.gameObject.tag == "DoubleTapNote")
         {
             noteType = NoteTypes.DoubleTapNote;
             noteSp1 = true;
-
+            Color color = spiteRenderer.material.color;
+            color.a = 1f;
+            spiteRenderer.material.color = color;
             spiteRenderer.sprite = sp1;
             Square.transform.localScale = new Vector3(1f, 1f, 1f);
             obj = other.gameObject;
             objs.Add(obj);
 
         }
-        else if (other.gameObject.tag == "DonotTap")
+
+        if (other.gameObject.tag == "DonotTap")
         {
             noteType = NoteTypes.DonotTap;
             noteSp2 = true;
-
+            Color color = spiteRenderer.material.color;
+            color.a = 1f;
+            spiteRenderer.material.color = color;
             spiteRenderer.sprite = xTap;
             Square.transform.localScale = new Vector3(1f, 1f, 1f);
             obj = other.gameObject;
             objs.Add(obj);
 
         }
+        
 
-
-        if (hit == true || noteSp1 == true)
+        if ((hit == true && subNote1 == true) || (noteSp1 == true && subNote1 == false))
         {
             switch (noteType)
             {
@@ -65,10 +73,29 @@ public class DownButtonGame : UpButtonGame
                     break;
 
                 case NoteTypes.DoubleTapNote:
+                    if (other.gameObject.tag == "SubNote2Right")
+                    {
 
+                        Square.transform.localScale = new Vector3(1f, 1f, 1f);
+                    }
+                    else if (other.gameObject.tag == "SubNote3Right")
+                    {
+
+                        Square.transform.localScale = new Vector3(1f, 1f, 1f);
+                    }
                     break;
 
                 case NoteTypes.DonotTap:
+                    if (other.gameObject.tag == "SubNote2Right")
+                    {
+
+                        Square.transform.localScale = new Vector3(1f, 1f, 1f);
+                    }
+                    else if (other.gameObject.tag == "SubNote3Right")
+                    {
+
+                        Square.transform.localScale = new Vector3(1f, 1f, 1f);
+                    }
                     break;
             }
         }
@@ -81,8 +108,7 @@ public class DownButtonGame : UpButtonGame
         {
             objs.Remove(objs[0]);
             noteType = NoteTypes.NormalNote;
-            spiteRenderer.sprite = defaultSprite;
-            Square.transform.localScale = new Vector3(0f, 0f, 1f);
+            
             if (objs.Count != 0)
             {
                 hit = true;
@@ -90,6 +116,8 @@ public class DownButtonGame : UpButtonGame
             else
             {
                 hit = false;
+                spiteRenderer.sprite = defaultSprite;
+                Square.transform.localScale = new Vector3(0f, 0f, 1f);
 
             }
         }
@@ -98,8 +126,7 @@ public class DownButtonGame : UpButtonGame
             objs.Remove(objs[0]);
             hp = 2;
             noteType = NoteTypes.DoubleTapNote;
-            spiteRenderer.sprite = defaultSprite;
-            Square.transform.localScale = new Vector3(0f, 0f, 1f);
+
             if (objs.Count != 0)
             {
                 noteSp1 = true;
@@ -107,7 +134,8 @@ public class DownButtonGame : UpButtonGame
             else
             {
                 noteSp1 = false;
-                
+                spiteRenderer.sprite = defaultSprite;
+                Square.transform.localScale = new Vector3(0f, 0f, 1f);
 
             }
         }
@@ -116,8 +144,7 @@ public class DownButtonGame : UpButtonGame
             objs.Remove(objs[0]);
 
             noteType = NoteTypes.DonotTap;
-            spiteRenderer.sprite = defaultSprite;
-            Square.transform.localScale = new Vector3(0f, 0f, 1f);
+
             if (objs.Count != 0)
             {
                 noteSp2 = true;
@@ -125,7 +152,8 @@ public class DownButtonGame : UpButtonGame
             else
             {
                 noteSp2 = false;
-                
+                spiteRenderer.sprite = defaultSprite;
+                Square.transform.localScale = new Vector3(0f, 0f, 1f);
 
             }
         }
@@ -174,6 +202,9 @@ public class DownButtonGame : UpButtonGame
                 else if (other.gameObject.tag == "SubNote3Right")
                 {
                     subNote3 = false;
+                    Color color = spiteRenderer.material.color;
+                    color.a = 1f;
+                    spiteRenderer.material.color = color;
                     spiteRenderer.sprite = defaultSprite;
                     Square.transform.localScale = new Vector3(0f, 0f, 1f);
 

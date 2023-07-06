@@ -15,18 +15,18 @@ MonoBehaviour:
   songName: Disco Funk
   song: {fileID: 8300000, guid: cc2e06e78c2f00f40b3bd5f4f7ee1b96, type: 3}
   Easy:
-  - {fileID: 8126739619510212311, guid: 045676bcbbcff4c49a44cd0292656187, type: 3}
-  - {fileID: 4601441563003923069, guid: 676b2bd9ccab0cf46a15302ac90f0ecc, type: 3}
+  - {fileID: 6662504719375026099, guid: 045676bcbbcff4c49a44cd0292656187, type: 3}
+  - {fileID: 552019788604678541, guid: 676b2bd9ccab0cf46a15302ac90f0ecc, type: 3}
   Normal:
-  - {fileID: 8126739619510212311, guid: 0e4cd38213579f64dbb421e518a342e7, type: 3}
-  - {fileID: 4601441563003923069, guid: 9d5119c5f1066964286bc1c44150c411, type: 3}
+  - {fileID: 1642248707785259438, guid: 0e4cd38213579f64dbb421e518a342e7, type: 3}
+  - {fileID: 1618133630749961733, guid: 9d5119c5f1066964286bc1c44150c411, type: 3}
   Hard:
-  - {fileID: 8126739619510212311, guid: 101143b93fae6f444b421c8ad2eec60a, type: 3}
-  - {fileID: 4601441563003923069, guid: 1879caf4943730f4ab09a18e91ed375d, type: 3}
+  - {fileID: 6948461594670273019, guid: 101143b93fae6f444b421c8ad2eec60a, type: 3}
+  - {fileID: 5445402084426794098, guid: 1879caf4943730f4ab09a18e91ed375d, type: 3}
   delay: 0
-  timerEasy: 90
-  timerNormal: 50
-  timerHard: 40
+  timerEasy: 95
+  timerNormal: 55
+  timerHard: 45
   easySpeed: 240
   normalSpeed: 480
   hardSpeed: 600
