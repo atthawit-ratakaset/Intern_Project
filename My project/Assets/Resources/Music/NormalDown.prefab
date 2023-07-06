@@ -48,11 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 3635073005610428074}
-  - {fileID: 172364847452592021}
-  - {fileID: 4479992492058204016}
-  - {fileID: 9209268974342738449}
+  gameObjects: []
 --- !u!1 &53260474132677580
 GameObject:
   m_ObjectHideFlags: 0
@@ -2553,11 +2549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 379648931179347956}
-  - {fileID: 379648932806935012}
-  - {fileID: 379648932946168561}
-  - {fileID: 379648931318119364}
+  gameObjects: []
 --- !u!1 &379648931179347958
 GameObject:
   m_ObjectHideFlags: 0
@@ -2658,11 +2650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 8405421504186705662}
-  - {fileID: 8405421506008847873}
-  - {fileID: 8405421505540929267}
-  - {fileID: 8405421505318537231}
+  gameObjects: []
 --- !u!1 &379648931318119366
 GameObject:
   m_ObjectHideFlags: 0
@@ -2763,11 +2751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 8405421504895649144}
-  - {fileID: 8405421505392427670}
-  - {fileID: 8405421505622590059}
-  - {fileID: 8405421505721771377}
+  gameObjects: []
 --- !u!1 &379648931381131431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2816,11 +2800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 8405421504302815300}
-  - {fileID: 8405421505690985507}
-  - {fileID: 8405421504912704156}
-  - {fileID: 8405421504248692719}
+  gameObjects: []
 --- !u!1 &379648932252789501
 GameObject:
   m_ObjectHideFlags: 0
@@ -2869,11 +2849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 8405421504815464017}
-  - {fileID: 8405421505970852780}
-  - {fileID: 8405421505216853774}
-  - {fileID: 8405421505758378292}
+  gameObjects: []
 --- !u!1 &379648932269045935
 GameObject:
   m_ObjectHideFlags: 0
@@ -2922,11 +2898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 8405421505588264406}
-  - {fileID: 8405421506308777136}
-  - {fileID: 8405421504491321209}
-  - {fileID: 8405421505039113043}
+  gameObjects: []
 --- !u!1 &379648932592927327
 GameObject:
   m_ObjectHideFlags: 0
@@ -2975,11 +2947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 8405421506053110873}
-  - {fileID: 8405421504249695992}
-  - {fileID: 8405421506252472708}
-  - {fileID: 8405421504854830324}
+  gameObjects: []
 --- !u!1 &379648932806935014
 GameObject:
   m_ObjectHideFlags: 0
@@ -14394,11 +14362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 8794115512027246949}
-  - {fileID: 2810290691038109343}
-  - {fileID: 2274111876728494028}
-  - {fileID: 7021578780350176028}
+  gameObjects: []
 --- !u!1 &1550821719349239087
 GameObject:
   m_ObjectHideFlags: 0
@@ -18391,7 +18355,7 @@ GameObject:
   - component: {fileID: 3369664816098100543}
   m_Layer: 2
   m_Name: 2Mid
-  m_TagString: NotesRight
+  m_TagString: DonotTap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19245,11 +19209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 3642232466815631186}
-  - {fileID: 7844735512649877428}
-  - {fileID: 344463090704889145}
-  - {fileID: 3550124013924933373}
+  gameObjects: []
 --- !u!1 &2385601234118985723
 GameObject:
   m_ObjectHideFlags: 0
@@ -24751,11 +24711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 2165330667735793598}
-  - {fileID: 1588154312667887169}
-  - {fileID: 1201474724882562489}
-  - {fileID: 2308221381187207095}
+  gameObjects: []
 --- !u!1 &2962922103583082641
 GameObject:
   m_ObjectHideFlags: 0
@@ -31530,11 +31486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 4388435885954157393}
-  - {fileID: 6243824527315978600}
-  - {fileID: 1000377283233704046}
-  - {fileID: 5459820399616084990}
+  gameObjects: []
 --- !u!1 &4032822286823862655
 GameObject:
   m_ObjectHideFlags: 0
@@ -36119,11 +36071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 3068722542545085448}
-  - {fileID: 5896291813502829826}
-  - {fileID: 6183091108464841134}
-  - {fileID: 4299756368792058692}
+  gameObjects: []
 --- !u!1 &4671607514072361371
 GameObject:
   m_ObjectHideFlags: 0
@@ -39433,11 +39381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 1512178998591093946}
-  - {fileID: 6922994437344945275}
-  - {fileID: 1580593533233078403}
-  - {fileID: 5219385419289524896}
+  gameObjects: []
 --- !u!1 &5318965433701261692
 GameObject:
   m_ObjectHideFlags: 0
@@ -43047,11 +42991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 1953491098120319012}
-  - {fileID: 9205460323111529412}
-  - {fileID: 9203245241089393599}
-  - {fileID: 3539653126815362994}
+  gameObjects: []
 --- !u!1 &5710422991103051648
 GameObject:
   m_ObjectHideFlags: 0
@@ -47484,7 +47424,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteNodes: []
-  move: 1
 --- !u!1 &6288343579303618542
 GameObject:
   m_ObjectHideFlags: 0
@@ -50589,11 +50528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 6563981097617460512}
-  - {fileID: 2797313340967907308}
-  - {fileID: 5033302886384022054}
-  - {fileID: 5366885587961807375}
+  gameObjects: []
 --- !u!1 &6775376080282157512
 GameObject:
   m_ObjectHideFlags: 0
@@ -52524,11 +52459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 2093014368586319115}
-  - {fileID: 4908919670567585316}
-  - {fileID: 6877226134416881336}
-  - {fileID: 3375139765195533187}
+  gameObjects: []
 --- !u!1 &7047996645780856166
 GameObject:
   m_ObjectHideFlags: 0
@@ -53102,7 +53033,7 @@ GameObject:
   - component: {fileID: 3831572658387961994}
   m_Layer: 2
   m_Name: 4Mid
-  m_TagString: NotesRight
+  m_TagString: DonotTap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61453,11 +61384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80992323e1380458ed2e087d280671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjrcts:
-  - {fileID: 6044993233211275312}
-  - {fileID: 3707503792294869833}
-  - {fileID: 6823930159546950994}
-  - {fileID: 8121594646382867281}
+  gameObjects: []
 --- !u!1 &8136374520584235655
 GameObject:
   m_ObjectHideFlags: 0
@@ -71723,7 +71650,7 @@ GameObject:
   - component: {fileID: 8405421504547942151}
   m_Layer: 2
   m_Name: 2Mid
-  m_TagString: NotesRight
+  m_TagString: DoubleTapNote
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89794,7 +89721,7 @@ GameObject:
   - component: {fileID: 8405421505772450024}
   m_Layer: 2
   m_Name: 2left
-  m_TagString: NotesRight
+  m_TagString: DoubleTapNote
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97490,7 +97417,7 @@ GameObject:
   - component: {fileID: 3217460207528115116}
   m_Layer: 2
   m_Name: 4Mid
-  m_TagString: NotesRight
+  m_TagString: DonotTap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

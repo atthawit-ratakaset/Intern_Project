@@ -22,6 +22,8 @@ TagManager:
   - SubNote3Right
   - DoubleTapNote
   - DonotTap
+  - DoubleTapNoteUp
+  - DonotTapUp
   layers:
   - Default
   - TransparentFX

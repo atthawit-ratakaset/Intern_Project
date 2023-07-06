@@ -43,5 +43,27 @@ public class DownAreaClick : MonoBehaviour
             button.DestroyNote();
 
         }
+        else if (button.noteSp1 == true)
+        {
+
+            button.hp -= 1;
+            Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
+            Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
+            if (button.hp == 0)
+            {
+                button.DestroyNote();
+            }
+            else if (button.hp == 1)
+            {
+                button.spiteRenderer.sprite = button.sp2;
+
+            }
+        }
+        else if (button.noteSp2 == true)
+        {
+            Score.instance.ScoreCalculationCase(Score.GetScore.Miss);
+            Score.instance.ScoreCalculationCase(Score.GetScore.ResetCombo);
+            button.DestroyNote();
+        }
     }
 }

@@ -16,6 +16,22 @@ public class NoteMissDestroyRight : MonoBehaviour
             Score.instance.ScoreCalculationCase(Score.GetScore.ResetCombo);
             Destroy(obj);
         }
+        else if (other.gameObject.tag == "DoubleTapNote")
+        {
+            obj = other.gameObject;
+            GameControl.instance.HpDecrease();
+            Score.instance.ScoreCalculationCase(Score.GetScore.Miss);
+            Score.instance.ScoreCalculationCase(Score.GetScore.ResetCombo);
+            Destroy(obj);
+        }
+        else if (other.gameObject.tag == "DonotTap")
+        {
+            obj = other.gameObject;
+            Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
+            Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
+            Destroy(obj);
+
+        }
     }
 
     void ShowScore()
