@@ -8,7 +8,7 @@ public class NoteMissDestroyRight : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "NotesRight")
+        if (other.gameObject.tag == "NotesDown")
         {
             obj = other.gameObject;
             GameControl.instance.HpDecrease();
@@ -29,6 +29,12 @@ public class NoteMissDestroyRight : MonoBehaviour
             obj = other.gameObject;
             Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
             Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
+            Destroy(obj);
+
+        }
+        else if (other.gameObject.tag == "MutiTapDown")
+        {
+            obj = other.gameObject;
             Destroy(obj);
 
         }

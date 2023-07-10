@@ -7,7 +7,7 @@ public class NoteMissDestroyLeft : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "NotesLeft")
+        if (other.gameObject.tag == "NotesUp")
         {
             obj = other.gameObject;
             GameControl.instance.HpDecrease();
@@ -31,6 +31,13 @@ public class NoteMissDestroyLeft : MonoBehaviour
             Destroy(obj);
 
         }
+        else if (other.gameObject.tag == "MutiTapUp")
+        {
+            obj = other.gameObject;
+            Destroy(obj);
+
+        }
+
     }
 
     void ShowScore() {

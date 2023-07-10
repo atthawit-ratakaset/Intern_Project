@@ -66,6 +66,13 @@ public class UpAreaClick : MonoBehaviour
             Score.instance.ScoreCalculationCase(Score.GetScore.ResetCombo);
             button.DestroyNote();
         }
+        else if (button.noteSp3 == true)
+        {
+            Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
+            Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
+            
+        }
+
 
     }
 }

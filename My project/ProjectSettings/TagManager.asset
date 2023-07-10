@@ -24,6 +24,16 @@ TagManager:
   - DonotTap
   - DoubleTapNoteUp
   - DonotTapUp
+  - MutiTapUp
+  - MutiTapDown
+  - ButtonRight
+  - ButtonLeft
+  - SubNote1Down
+  - SubNote2Down
+  - SubNote3Down
+  - SubNote1Up
+  - SubNote2Up
+  - SubNote3Up
   layers:
   - Default
   - TransparentFX

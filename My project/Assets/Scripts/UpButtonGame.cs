@@ -12,14 +12,15 @@ public class UpButtonGame : MonoBehaviour
     public SpriteRenderer spiteRenderer;
     public Sprite newSprite;
     public Sprite defaultSprite;
-    public Sprite sp1, sp2, xTap;
+    public Sprite sp1, sp2, xTap, multiTap;
 
     [HideInInspector]
     public enum NoteTypes
     {
         NormalNote,
         DoubleTapNote,
-        DonotTap
+        DonotTap,
+        MutiTap
        
     }
 
@@ -28,7 +29,7 @@ public class UpButtonGame : MonoBehaviour
     
 
     [HideInInspector]
-    public bool hit, subNote1, subNote2, subNote3, noteSp1, noteSp2;
+    public bool hit, subNote1, subNote2, subNote3, noteSp1, noteSp2, noteSp3;
 
     [HideInInspector]
     public int hp = 2;
@@ -85,16 +86,58 @@ public class UpButtonGame : MonoBehaviour
 
     }
 
-
-
-    void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "NotesLeft") {
-            noteType = NoteTypes.NormalNote;
-            hit = true;
+    public void CheckNoteInTypes()
+    {
+        if (hit == true)
+        {
             Color color = spiteRenderer.material.color;
             color.a = 1f;
             spiteRenderer.material.color = color;
             spiteRenderer.sprite = newSprite;
+        } else if (noteSp1 == true)
+        {
+            Color color = spiteRenderer.material.color;
+            color.a = 1f;
+            spiteRenderer.material.color = color;
+            spiteRenderer.sprite = sp1;
+        } else if (noteSp2 == true) {
+            Color color = spiteRenderer.material.color;
+            color.a = 1f;
+            spiteRenderer.material.color = color;
+            spiteRenderer.sprite = xTap;
+        } else if (noteSp3 == true)
+        {
+            Color color = spiteRenderer.material.color;
+            color.a = 1f;
+            spiteRenderer.material.color = color;
+            spiteRenderer.sprite = multiTap;
+        }
+
+    }
+
+    public void CheckNoteOutTypes()
+    {
+        if (hit == false)
+        {
+            Square.transform.localScale = new Vector3(0f, 0f, 1f);
+        }
+        else if (noteSp1 == false)
+        {
+            spiteRenderer.sprite = defaultSprite;
+            Square.transform.localScale = new Vector3(0f, 0f, 1f);
+        }
+        else if (noteSp2 == false)
+        {
+            spiteRenderer.sprite = defaultSprite;
+            Square.transform.localScale = new Vector3(0f, 0f, 1f);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "NotesUp") {
+            noteType = NoteTypes.NormalNote;
+            hit = true;
+            CheckNoteInTypes();
             subNote1 = true;
             Square.transform.localScale = new Vector3(0.35f, 0.35f, 1f);
             obj = other.gameObject;
@@ -106,10 +149,7 @@ public class UpButtonGame : MonoBehaviour
         {
             noteType = NoteTypes.DoubleTapNote;
             noteSp1 = true;
-            Color color = spiteRenderer.material.color;
-            color.a = 1f;
-            spiteRenderer.material.color = color;
-            spiteRenderer.sprite = sp1;
+            CheckNoteInTypes();
             Square.transform.localScale = new Vector3(1f, 1f, 1f);
             obj = other.gameObject;
             objs.Add(obj);
@@ -120,29 +160,37 @@ public class UpButtonGame : MonoBehaviour
         {
             noteType = NoteTypes.DonotTap;
             noteSp2 = true;
-            Color color = spiteRenderer.material.color;
-            color.a = 1f;
-            spiteRenderer.material.color = color;
-            spiteRenderer.sprite = xTap;
+            CheckNoteInTypes();
             Square.transform.localScale = new Vector3(1f, 1f, 1f);
             obj = other.gameObject;
             objs.Add(obj);
 
         }
 
+        if (other.gameObject.tag == "MutiTapUp")
+        {
+            noteType = NoteTypes.MutiTap;
+            noteSp3 = true;
+            CheckNoteInTypes();
+            Square.transform.localScale = new Vector3(1f, 1f, 1f);
+            obj = other.gameObject;
+            objs.Add(obj);
+        }
 
-        if ((hit == true && subNote1 == true) || (noteSp1 == true && subNote1 == false))
+
+        if ((hit == true && subNote1 == true) || (noteSp1 == true && subNote1 == false) || 
+            (noteSp2 == true && subNote1 == false) || (noteSp3 == true && subNote1 == false))
         {
             switch (noteType)
             {
                 case NoteTypes.NormalNote:
-                    if (other.gameObject.tag == "SubNote2Left")
+                    if (other.gameObject.tag == "SubNote2Up")
                     {
                         subNote2 = true;
 
                         Square.transform.localScale = new Vector3(0.65f, 0.65f, 1f);
                     }
-                    else if (other.gameObject.tag == "SubNote3Left")
+                    else if (other.gameObject.tag == "SubNote3Up")
                     {
                         subNote3 = true;
 
@@ -152,12 +200,12 @@ public class UpButtonGame : MonoBehaviour
                     break;
 
                 case NoteTypes.DoubleTapNote:
-                    if (other.gameObject.tag == "SubNote2Left")
+                    if (other.gameObject.tag == "SubNote2Up")
                     {
                         
                         Square.transform.localScale = new Vector3(1f, 1f, 1f);
                     }
-                    else if (other.gameObject.tag == "SubNote3Left")
+                    else if (other.gameObject.tag == "SubNote3Up")
                     {
 
                         Square.transform.localScale = new Vector3(1f, 1f, 1f);
@@ -165,12 +213,25 @@ public class UpButtonGame : MonoBehaviour
                     break;
 
                 case NoteTypes.DonotTap:
-                    if (other.gameObject.tag == "SubNote2Left")
+                    if (other.gameObject.tag == "SubNote2Up")
                     {
 
                         Square.transform.localScale = new Vector3(1f, 1f, 1f);
                     }
-                    else if (other.gameObject.tag == "SubNote3Left")
+                    else if (other.gameObject.tag == "SubNote3Up")
+                    {
+
+                        Square.transform.localScale = new Vector3(1f, 1f, 1f);
+                    }
+                    break;
+
+                case NoteTypes.MutiTap:
+                    if (other.gameObject.tag == "SubNote2Up")
+                    {
+
+                        Square.transform.localScale = new Vector3(1f, 1f, 1f);
+                    }
+                    else if (other.gameObject.tag == "SubNote3Up")
                     {
 
                         Square.transform.localScale = new Vector3(1f, 1f, 1f);
@@ -184,7 +245,7 @@ public class UpButtonGame : MonoBehaviour
 
 
     void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.tag == "NotesLeft") {
+        if (other.gameObject.tag == "NotesUp") {
             objs.Remove(objs[0]);
             
             if (objs.Count != 0) {
@@ -232,24 +293,42 @@ public class UpButtonGame : MonoBehaviour
 
             }
         }
+        else if (other.gameObject.tag == "MutiTapUp")
+        {
+            objs.Remove(objs[0]);
+
+            noteType = NoteTypes.MutiTap;
+
+            if (objs.Count != 0)
+            {
+                noteSp3 = true;
+            }
+            else
+            {
+                noteSp3 = false;
+                spiteRenderer.sprite = defaultSprite;
+                Square.transform.localScale = new Vector3(0f, 0f, 1f);
+
+            }
+        }
 
         switch (noteType)
         {
             case NoteTypes.NormalNote:
-                if (other.gameObject.tag == "SubNote1Left")
+                if (other.gameObject.tag == "SubNote1Up")
                 {
                     subNote1 = false;
                     spiteRenderer.sprite = newSprite;
                     Square.transform.localScale = new Vector3(0.65f, 0.65f, 1f);
 
                 }
-                else if (other.gameObject.tag == "SubNote2Left")
+                else if (other.gameObject.tag == "SubNote2Up")
                 {
                     subNote2 = false;
 
                     Square.transform.localScale = new Vector3(0.35f, 0.35f, 1f);
                 }
-                else if (other.gameObject.tag == "SubNote3Left")
+                else if (other.gameObject.tag == "SubNote3Up")
                 {
                     subNote3 = false;
 
@@ -258,7 +337,7 @@ public class UpButtonGame : MonoBehaviour
                 break;
 
             case NoteTypes.DoubleTapNote:
-                if (other.gameObject.tag == "SubNote1Left")
+                if (other.gameObject.tag == "SubNote1Up")
                 {
                     subNote1 = false;
                     Color color = spiteRenderer.material.color;
@@ -266,7 +345,7 @@ public class UpButtonGame : MonoBehaviour
                     spiteRenderer.material.color = color;
 
                 }
-                else if (other.gameObject.tag == "SubNote2Left")
+                else if (other.gameObject.tag == "SubNote2Up")
                 {
                     subNote2 = false;
 
@@ -274,7 +353,7 @@ public class UpButtonGame : MonoBehaviour
                     color.a = 0.35f;
                     spiteRenderer.material.color = color;
                 }
-                else if (other.gameObject.tag == "SubNote3Left")
+                else if (other.gameObject.tag == "SubNote3Up")
                 {
                     subNote3 = false;
                     spiteRenderer.sprite = defaultSprite;
@@ -287,7 +366,7 @@ public class UpButtonGame : MonoBehaviour
                 break;
 
             case NoteTypes.DonotTap:
-                if (other.gameObject.tag == "SubNote1Left")
+                if (other.gameObject.tag == "SubNote1Up")
                 {
                     subNote1 = false;
                     Color color = spiteRenderer.material.color;
@@ -295,7 +374,7 @@ public class UpButtonGame : MonoBehaviour
                     spiteRenderer.material.color = color;
 
                 }
-                else if (other.gameObject.tag == "SubNote2Left")
+                else if (other.gameObject.tag == "SubNote2Up")
                 {
                     subNote2 = false;
 
@@ -303,7 +382,36 @@ public class UpButtonGame : MonoBehaviour
                     color.a = 0.35f;
                     spiteRenderer.material.color = color;
                 }
-                else if (other.gameObject.tag == "SubNote3Left")
+                else if (other.gameObject.tag == "SubNote3Up")
+                {
+                    subNote3 = false;
+                    Color color = spiteRenderer.material.color;
+                    color.a = 1f;
+                    spiteRenderer.material.color = color;
+                    spiteRenderer.sprite = defaultSprite;
+                    Square.transform.localScale = new Vector3(0f, 0f, 1f);
+
+                }
+                break;
+
+            case NoteTypes.MutiTap:
+                if (other.gameObject.tag == "SubNote1Up")
+                {
+                    subNote1 = false;
+                    Color color = spiteRenderer.material.color;
+                    color.a = 0.75f;
+                    spiteRenderer.material.color = color;
+
+                }
+                else if (other.gameObject.tag == "SubNote2Up")
+                {
+                    subNote2 = false;
+
+                    Color color = spiteRenderer.material.color;
+                    color.a = 0.35f;
+                    spiteRenderer.material.color = color;
+                }
+                else if (other.gameObject.tag == "SubNote3Up")
                 {
                     subNote3 = false;
                     Color color = spiteRenderer.material.color;
@@ -321,19 +429,7 @@ public class UpButtonGame : MonoBehaviour
 
     public void DestroyNote() {
         Destroy(objs[0]);
-        if (hit == false)
-        {
-            Square.transform.localScale = new Vector3(0f, 0f, 1f);
-        }
-        else if (noteSp1 == false)
-        {
-            spiteRenderer.sprite = defaultSprite;
-            Square.transform.localScale = new Vector3(0f, 0f, 1f);
-        } else if (noteSp2 == false)
-        {
-            spiteRenderer.sprite = defaultSprite;
-            Square.transform.localScale = new Vector3(0f, 0f, 1f);
-        }
+        CheckNoteOutTypes();
     }
 
 
