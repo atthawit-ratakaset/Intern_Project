@@ -53,7 +53,8 @@ public class DownButtonGame : UpButtonGame
         }
 
 
-        if ((hit == true && subNote1 == true) || (noteSp1 == true && subNote1 == false))
+        if ((hit == true && subNote1 == true) || (noteSp1 == true && subNote1 == false) ||
+            (noteSp2 == true && subNote1 == false) || (noteSp3 == true && subNote1 == false))
         {
             switch (noteType)
             {
