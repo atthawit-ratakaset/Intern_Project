@@ -10,7 +10,7 @@ public class UpButtonGame : MonoBehaviour
     private SpriteRenderer theSR;
     public GameObject Square;
     public SpriteRenderer spiteRenderer;
-    public Sprite newSprite;
+    public Sprite oneTap;
     public Sprite defaultSprite;
     public Sprite sp1, sp2, xTap, multiTap;
 
@@ -93,7 +93,7 @@ public class UpButtonGame : MonoBehaviour
             Color color = spiteRenderer.material.color;
             color.a = 1f;
             spiteRenderer.material.color = color;
-            spiteRenderer.sprite = newSprite;
+            spiteRenderer.sprite = defaultSprite;
         } else if (noteSp1 == true)
         {
             Color color = spiteRenderer.material.color;
@@ -194,7 +194,7 @@ public class UpButtonGame : MonoBehaviour
                     {
                         subNote3 = true;
 
-                        spiteRenderer.sprite = defaultSprite;
+                        spiteRenderer.sprite = oneTap;
                         Square.transform.localScale = new Vector3(4.5f, 4.5f, 1f);
                     }
                     break;
@@ -318,7 +318,7 @@ public class UpButtonGame : MonoBehaviour
                 if (other.gameObject.tag == "SubNote1Up")
                 {
                     subNote1 = false;
-                    spiteRenderer.sprite = newSprite;
+                    spiteRenderer.sprite = defaultSprite;
                     Square.transform.localScale = new Vector3(0.65f, 0.65f, 1f);
 
                 }

@@ -8,6 +8,7 @@ using UnityEngine;
 public class GameControl : MonoBehaviour 
 {   
     [SerializeField] GameObject CheckHp;
+    public TypesNote types;
     List<NoteData> NotesEasy = new List<NoteData>();
     List<NoteData> NotesNormal = new List<NoteData>();
     List<NoteData> NotesHard = new List<NoteData>();
