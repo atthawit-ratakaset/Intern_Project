@@ -6,8 +6,15 @@ using UnityEngine.EventSystems;
 public class UpAreaClick : MonoBehaviour
 {
     public UpButtonGame button;
+    public UpButtonGame button1;
+    public UpButtonGame button2;
+    public UpAreaClick click1;
+    public UpAreaClick click2;
     public ParticleSystem particEffect;
     public AudioSource soundFX;
+
+    [HideInInspector]
+    public bool unlock2 = false, unlock3 = false;
 
     void Start()
     {
@@ -47,7 +54,6 @@ public class UpAreaClick : MonoBehaviour
         }
         else if (button.noteSp1 == true)
         {
-          
             button.hp -= 1;
             Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
             Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
@@ -57,9 +63,7 @@ public class UpAreaClick : MonoBehaviour
             } 
             else if (button.hp == 1)
             {
-                
                 button.spiteRenderer.sprite = GameControl.instance.types.sp2;
-
             }
             GameControl.instance.EventTime();
         }
@@ -73,11 +77,50 @@ public class UpAreaClick : MonoBehaviour
         else if (button.noteSp3 == true)
         {
             Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
-            Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
-            
+            Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);   
         }
 
-        
+        else if (button.lock1 == true)
+        {
+            Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
+            Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
+            button.DestroyNote();
+            if (button1.lock2 == true)
+                {
+                    button1.spiteRenderer.sprite = GameControl.instance.types.unlock2;
+                    unlock2 = true;
+            } else if (button2.lock2 == true)
+                {
+                    button2.spiteRenderer.sprite = GameControl.instance.types.unlock2;
+                    unlock2 = true;
+                }              
+            
+        }
+        else if (button.lock2 == true && (click1.unlock2 == true || click2.unlock2 == true))
+        {
+            Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
+            Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
+            button.DestroyNote();
+
+                if (button1.lock3 == true)
+                {
+                    button1.spiteRenderer.sprite = GameControl.instance.types.unlock3;
+                    unlock3 = true;
+                }
+                else if (button2.lock3 == true)
+                {
+                    button2.spiteRenderer.sprite = GameControl.instance.types.unlock3;
+                    unlock3 = true;
+                }
+            
+        } 
+        else if (button.lock3 == true && (click1.unlock3 == true || click2.unlock3 == true))
+        {
+            Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
+            Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
+            button.DestroyNote();
+        }
+
 
     }
 }

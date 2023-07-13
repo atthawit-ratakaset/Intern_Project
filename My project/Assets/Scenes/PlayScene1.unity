@@ -275,6 +275,9 @@ MonoBehaviour:
   noteSp1: 0
   noteSp2: 0
   noteSp3: 0
+  lock1: 0
+  lock2: 0
+  lock3: 0
   hp: 2
   obj: {fileID: 0}
   objs: []
@@ -548,8 +551,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 916027177}
+  button1: {fileID: 952762333}
+  button2: {fileID: 1026254611}
+  click1: {fileID: 1103536317}
+  click2: {fileID: 790663879}
   particEffect: {fileID: 579810221}
   soundFX: {fileID: 1682066559}
+  unlock2: 0
+  unlock3: 0
 --- !u!212 &249373075
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1070,8 +1079,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 768901123}
+  button1: {fileID: 1928711729}
+  button2: {fileID: 49135048}
+  click1: {fileID: 861826895}
+  click2: {fileID: 560275244}
   particEffect: {fileID: 504419728}
   soundFX: {fileID: 1207377735}
+  unlock2: 0
+  unlock3: 0
 --- !u!212 &335972672
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1594,8 +1609,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 49135048}
+  button1: {fileID: 1928711729}
+  button2: {fileID: 768901123}
+  click1: {fileID: 861826895}
+  click2: {fileID: 335972671}
   particEffect: {fileID: 1403525391}
   soundFX: {fileID: 1552143931}
+  unlock2: 0
+  unlock3: 0
 --- !u!212 &560275245
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2507,6 +2528,9 @@ MonoBehaviour:
   noteSp1: 0
   noteSp2: 0
   noteSp3: 0
+  lock1: 0
+  lock2: 0
+  lock3: 0
   hp: 2
   obj: {fileID: 0}
   objs: []
@@ -2572,8 +2596,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1026254611}
+  button1: {fileID: 916027177}
+  button2: {fileID: 952762333}
+  click1: {fileID: 1103536317}
+  click2: {fileID: 249373074}
   particEffect: {fileID: 1841978699}
   soundFX: {fileID: 315000749}
+  unlock2: 0
+  unlock3: 0
 --- !u!212 &790663880
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2798,8 +2828,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1928711729}
+  button1: {fileID: 49135048}
+  button2: {fileID: 768901123}
+  click1: {fileID: 560275244}
+  click2: {fileID: 335972671}
   particEffect: {fileID: 1823947232}
   soundFX: {fileID: 311651849}
+  unlock2: 0
+  unlock3: 0
 --- !u!212 &861826896
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3030,6 +3066,9 @@ MonoBehaviour:
   noteSp1: 0
   noteSp2: 0
   noteSp3: 0
+  lock1: 0
+  lock2: 0
+  lock3: 0
   hp: 2
   obj: {fileID: 0}
   objs: []
@@ -3269,6 +3308,9 @@ MonoBehaviour:
   noteSp1: 0
   noteSp2: 0
   noteSp3: 0
+  lock1: 0
+  lock2: 0
+  lock3: 0
   hp: 2
   obj: {fileID: 0}
   objs: []
@@ -3424,6 +3466,9 @@ MonoBehaviour:
   noteSp1: 0
   noteSp2: 0
   noteSp3: 0
+  lock1: 0
+  lock2: 0
+  lock3: 0
   hp: 2
   obj: {fileID: 0}
   objs: []
@@ -3731,8 +3776,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 952762333}
+  button1: {fileID: 916027177}
+  button2: {fileID: 1026254611}
+  click1: {fileID: 249373074}
+  click2: {fileID: 790663879}
   particEffect: {fileID: 1789099682}
   soundFX: {fileID: 693596703}
+  unlock2: 0
+  unlock3: 0
 --- !u!212 &1103536318
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5149,6 +5200,9 @@ MonoBehaviour:
   noteSp1: 0
   noteSp2: 0
   noteSp3: 0
+  lock1: 0
+  lock2: 0
+  lock3: 0
   hp: 2
   obj: {fileID: 0}
   objs: []

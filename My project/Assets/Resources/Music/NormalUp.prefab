@@ -9180,7 +9180,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8386422560132121901
 Transform:
   m_ObjectHideFlags: 0
@@ -10247,7 +10247,7 @@ GameObject:
   - component: {fileID: 7523913540112494746}
   m_Layer: 2
   m_Name: 1Mid
-  m_TagString: MutiTapUp
+  m_TagString: DoubleTapNoteUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12175,7 +12175,7 @@ GameObject:
   - component: {fileID: 8354844209043245953}
   m_Layer: 2
   m_Name: 1left
-  m_TagString: NotesUp
+  m_TagString: Lock1Up
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49939,7 +49939,7 @@ GameObject:
   - component: {fileID: 3083270359827224243}
   m_Layer: 2
   m_Name: 4Right
-  m_TagString: NotesUp
+  m_TagString: DoubleTapNoteUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93426,7 +93426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3454967885985589218
 Transform:
   m_ObjectHideFlags: 0

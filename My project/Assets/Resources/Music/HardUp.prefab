@@ -40428,7 +40428,7 @@ GameObject:
   - component: {fileID: 5993306257825753654}
   m_Layer: 2
   m_Name: 1Mid
-  m_TagString: MutiTapUp
+  m_TagString: DoubleTapNoteUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

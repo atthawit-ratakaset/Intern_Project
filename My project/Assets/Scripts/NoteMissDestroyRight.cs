@@ -38,8 +38,31 @@ public class NoteMissDestroyRight : MonoBehaviour
             Destroy(obj);
 
         }
+        else if (other.gameObject.tag == "Lock1Down")
+        {
+            obj = other.gameObject;
+            GameControl.instance.HpDecrease();
+            Score.instance.ScoreCalculationCase(Score.GetScore.Miss);
+            Score.instance.ScoreCalculationCase(Score.GetScore.ResetCombo);
+            Destroy(obj);
+        }
+        else if (other.gameObject.tag == "Lock2Down")
+        {
+            obj = other.gameObject;
+            GameControl.instance.HpDecrease();
+            Score.instance.ScoreCalculationCase(Score.GetScore.Miss);
+            Score.instance.ScoreCalculationCase(Score.GetScore.ResetCombo);
+            Destroy(obj);
+        }
+        else if (other.gameObject.tag == "Lock3Down")
+        {
+            obj = other.gameObject;
+            GameControl.instance.HpDecrease();
+            Score.instance.ScoreCalculationCase(Score.GetScore.Miss);
+            Score.instance.ScoreCalculationCase(Score.GetScore.ResetCombo);
+            Destroy(obj);
+        }
 
-       
     }
 
     void ShowScore()

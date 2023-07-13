@@ -18,3 +18,8 @@ MonoBehaviour:
   sp2: {fileID: 21300000, guid: ed43f05ca285eac4595ccd69ba6704b4, type: 3}
   xTap: {fileID: 21300000, guid: 8aac9383527e8b0428af3f2a76395d98, type: 3}
   multiTap: {fileID: 21300000, guid: f836afaf4bd3118499ea7bad5ec8c570, type: 3}
+  unlock1: {fileID: 21300000, guid: 4b5846a58d3321249a6b597336ba9f53, type: 3}
+  lock2: {fileID: 21300000, guid: 7a9ac8ac19456b640b57dcdb1c73d4b8, type: 3}
+  unlock2: {fileID: 21300000, guid: fa6fda5fd2ae02541b0f29a631f3f84f, type: 3}
+  lock3: {fileID: 21300000, guid: 6b87599d5f42287408a1bea4c0678d7c, type: 3}
+  unlock3: {fileID: 21300000, guid: e6b5d7876d7deb843a2bbfd866e1282f, type: 3}

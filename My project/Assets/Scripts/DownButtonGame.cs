@@ -52,6 +52,36 @@ public class DownButtonGame : UpButtonGame
             objs.Add(obj);
         }
 
+        if (other.gameObject.tag == "Lock1Down")
+        {
+            noteType = NoteTypes.LockNote;
+            lock1 = true;
+            CheckNoteInTypes();
+            Square.transform.localScale = new Vector3(1f, 1f, 1f);
+            obj = other.gameObject;
+            objs.Add(obj);
+        }
+
+        if (other.gameObject.tag == "Lock2Down")
+        {
+            noteType = NoteTypes.LockNote;
+            lock2 = true;
+            CheckNoteInTypes();
+            Square.transform.localScale = new Vector3(1f, 1f, 1f);
+            obj = other.gameObject;
+            objs.Add(obj);
+        }
+
+        if (other.gameObject.tag == "Lock3Down")
+        {
+            noteType = NoteTypes.LockNote;
+            lock3 = true;
+            CheckNoteInTypes();
+            Square.transform.localScale = new Vector3(1f, 1f, 1f);
+            obj = other.gameObject;
+            objs.Add(obj);
+        }
+
 
         if ((hit == true && subNote1 == true) || (noteSp1 == true && subNote1 == false) ||
             (noteSp2 == true && subNote1 == false) || (noteSp3 == true && subNote1 == false) || (lock1 == true && subNote1 == true) ||
@@ -110,6 +140,17 @@ public class DownButtonGame : UpButtonGame
                     else if (other.gameObject.tag == "SubNote3Down")
                     {
 
+                        Square.transform.localScale = new Vector3(1f, 1f, 1f);
+                    }
+                    break;
+
+                case NoteTypes.LockNote:
+                    if (other.gameObject.tag == "SubNote2Down")
+                    {
+                        Square.transform.localScale = new Vector3(1f, 1f, 1f);
+                    }
+                    else if (other.gameObject.tag == "SubNote3Down")
+                    {
                         Square.transform.localScale = new Vector3(1f, 1f, 1f);
                     }
                     break;
@@ -185,6 +226,57 @@ public class DownButtonGame : UpButtonGame
                 noteSp3 = false;
                 spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
                 Square.transform.localScale = new Vector3(0f, 0f, 1f);
+
+            }
+        }
+        else if (other.gameObject.tag == "Lock1Down")
+        {
+            objs.Remove(objs[0]);
+
+            noteType = NoteTypes.LockNote;
+
+            if (objs.Count != 0)
+            {
+                lock1 = true;
+            }
+            else
+            {
+                lock1 = false;
+                CheckNoteOutTypes();
+
+            }
+        }
+        else if (other.gameObject.tag == "Lock2Down")
+        {
+            objs.Remove(objs[0]);
+
+            noteType = NoteTypes.LockNote;
+
+            if (objs.Count != 0)
+            {
+                lock2 = true;
+            }
+            else
+            {
+                lock2 = false;
+                CheckNoteOutTypes();
+
+            }
+        }
+        else if (other.gameObject.tag == "Lock3Down")
+        {
+            objs.Remove(objs[0]);
+
+            noteType = NoteTypes.LockNote;
+
+            if (objs.Count != 0)
+            {
+                lock3 = true;
+            }
+            else
+            {
+                lock3 = false;
+                CheckNoteOutTypes();
 
             }
         }
@@ -296,6 +388,36 @@ public class DownButtonGame : UpButtonGame
                     color.a = 1f;
                     spiteRenderer.material.color = color;
                     spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
+                    Square.transform.localScale = new Vector3(0f, 0f, 1f);
+
+                }
+                break;
+
+            case NoteTypes.LockNote:
+                if (other.gameObject.tag == "SubNote1Down")
+                {
+                    subNote1 = false;
+                    Color color = spiteRenderer.material.color;
+                    color.a = 0.75f;
+                    spiteRenderer.material.color = color;
+
+                }
+                else if (other.gameObject.tag == "SubNote2Down")
+                {
+                    subNote2 = false;
+
+                    Color color = spiteRenderer.material.color;
+                    color.a = 0.35f;
+                    spiteRenderer.material.color = color;
+                }
+                else if (other.gameObject.tag == "SubNote3Down")
+                {
+                    subNote3 = false;
+                    Color color = spiteRenderer.material.color;
+                    color.a = 1f;
+                    spiteRenderer.material.color = color;
+                    spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
+
                     Square.transform.localScale = new Vector3(0f, 0f, 1f);
 
                 }
