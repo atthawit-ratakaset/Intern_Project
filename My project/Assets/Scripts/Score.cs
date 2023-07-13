@@ -30,7 +30,7 @@ public class Score : MonoBehaviour
         ResetCombo
     }
 
-    int TotalScore = 0;
+    public int TotalScore = 0;
     int MissNoteScore = 0;
     int GoodScore = 0;
     int PerfectScore = 0;
@@ -122,6 +122,8 @@ public class Score : MonoBehaviour
         }
         ShowScoreText.text = TotalScore.ToString();
         TotalScoreText.text = "SCORE: " + TotalScore.ToString();
+        
     }
+    
 
 }

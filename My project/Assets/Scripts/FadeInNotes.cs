@@ -10,9 +10,9 @@ public class FadeInNotes : MonoBehaviour
     void Start()
     {
         note = GetComponent<SpriteRenderer>();
-        Color color = note.material.color;
-        color.a = 0f;
-        note.material.color = color;
+        //Color color = note.material.color;
+        //color.a = 0f;
+        //note.material.color = color;
     }
 
 

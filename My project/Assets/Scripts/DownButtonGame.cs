@@ -54,7 +54,8 @@ public class DownButtonGame : UpButtonGame
 
 
         if ((hit == true && subNote1 == true) || (noteSp1 == true && subNote1 == false) ||
-            (noteSp2 == true && subNote1 == false) || (noteSp3 == true && subNote1 == false))
+            (noteSp2 == true && subNote1 == false) || (noteSp3 == true && subNote1 == false) || (lock1 == true && subNote1 == true) ||
+            (lock2 == true && subNote1 == true) || (lock3 == true && subNote1 == true))
         {
             switch (noteType)
             {
@@ -69,7 +70,7 @@ public class DownButtonGame : UpButtonGame
                     {
                         subNote3 = true;
 
-                        spiteRenderer.sprite = oneTap;
+                        spiteRenderer.sprite = GameControl.instance.types.OneTap;
                         Square.transform.localScale = new Vector3(4.5f, 4.5f, 1f);
                     }
                     break;
@@ -131,8 +132,7 @@ public class DownButtonGame : UpButtonGame
             else
             {
                 hit = false;
-                spiteRenderer.sprite = defaultSprite;
-                Square.transform.localScale = new Vector3(0f, 0f, 1f);
+                CheckNoteOutTypes();
 
             }
         }
@@ -149,8 +149,7 @@ public class DownButtonGame : UpButtonGame
             else
             {
                 noteSp1 = false;
-                spiteRenderer.sprite = defaultSprite;
-                Square.transform.localScale = new Vector3(0f, 0f, 1f);
+                CheckNoteOutTypes();
 
             }
         }
@@ -167,8 +166,7 @@ public class DownButtonGame : UpButtonGame
             else
             {
                 noteSp2 = false;
-                spiteRenderer.sprite = defaultSprite;
-                Square.transform.localScale = new Vector3(0f, 0f, 1f);
+                CheckNoteOutTypes();
 
             }
         }
@@ -185,7 +183,7 @@ public class DownButtonGame : UpButtonGame
             else
             {
                 noteSp3 = false;
-                spiteRenderer.sprite = defaultSprite;
+                spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
                 Square.transform.localScale = new Vector3(0f, 0f, 1f);
 
             }
@@ -197,7 +195,7 @@ public class DownButtonGame : UpButtonGame
                 if (other.gameObject.tag == "SubNote1Down")
                 {
                     subNote1 = false;
-                    spiteRenderer.sprite = defaultSprite;
+                    spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
                     Square.transform.localScale = new Vector3(0.65f, 0.65f, 1f);
 
                 }
@@ -238,7 +236,7 @@ public class DownButtonGame : UpButtonGame
                     Color color = spiteRenderer.material.color;
                     color.a = 1f;
                     spiteRenderer.material.color = color;
-                    spiteRenderer.sprite = defaultSprite;
+                    spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
                     Square.transform.localScale = new Vector3(0f, 0f, 1f);
 
                 }
@@ -264,11 +262,11 @@ public class DownButtonGame : UpButtonGame
                 else if (other.gameObject.tag == "SubNote3Down")
                 {
                     subNote3 = false;
-                    spiteRenderer.sprite = defaultSprite;
+                    spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
+                    
                     Color color = spiteRenderer.material.color;
                     color.a = 1f;
-                    spiteRenderer.material.color = color;
-                    spiteRenderer.sprite = defaultSprite;
+                    spiteRenderer.material.color = color;                    
                     Square.transform.localScale = new Vector3(0f, 0f, 1f);
 
                 }
@@ -297,7 +295,7 @@ public class DownButtonGame : UpButtonGame
                     Color color = spiteRenderer.material.color;
                     color.a = 1f;
                     spiteRenderer.material.color = color;
-                    spiteRenderer.sprite = defaultSprite;
+                    spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
                     Square.transform.localScale = new Vector3(0f, 0f, 1f);
 
                 }

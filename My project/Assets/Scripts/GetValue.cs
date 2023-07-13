@@ -9,6 +9,7 @@ public class GetValue : ScriptableObject {
     public List<NoteData> Easy;
     public List<NoteData> Normal;
     public List<NoteData> Hard;
+    public List<NoteData> Event;
 
     public float delay;
     public float timerEasy;
@@ -17,4 +18,5 @@ public class GetValue : ScriptableObject {
     public float easySpeed;
     public float normalSpeed;
     public float hardSpeed;
+    public float eventSpeed;
 }

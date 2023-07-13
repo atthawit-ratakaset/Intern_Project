@@ -41,6 +41,8 @@ public class DownAreaClick : MonoBehaviour
                 Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
             }
             button.DestroyNote();
+            GameControl.instance.EventTime();
+
 
         }
         else if (button.noteSp1 == true)
@@ -55,15 +57,17 @@ public class DownAreaClick : MonoBehaviour
             }
             else if (button.hp == 1)
             {
-                button.spiteRenderer.sprite = button.sp2;
-
+                
+                button.spiteRenderer.sprite = GameControl.instance.types.sp2;
             }
+            GameControl.instance.EventTime();
         }
         else if (button.noteSp2 == true)
         {
             Score.instance.ScoreCalculationCase(Score.GetScore.Miss);
             Score.instance.ScoreCalculationCase(Score.GetScore.ResetCombo);
             button.DestroyNote();
+            GameControl.instance.EventTime();
         }
         else if (button.noteSp3 == true)
         {
@@ -71,5 +75,7 @@ public class DownAreaClick : MonoBehaviour
             Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
 
         }
+
+        
     }
 }

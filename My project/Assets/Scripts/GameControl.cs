@@ -12,7 +12,9 @@ public class GameControl : MonoBehaviour
     List<NoteData> NotesEasy = new List<NoteData>();
     List<NoteData> NotesNormal = new List<NoteData>();
     List<NoteData> NotesHard = new List<NoteData>();
+    List<NoteData> NotesEvent = new List<NoteData>();
     public static GameControl instance;
+    public SpriteRenderer borderGame;
     bool haveHp = false;
     
 
@@ -25,6 +27,9 @@ public class GameControl : MonoBehaviour
     [HideInInspector]
     public int getMode;
 
+    [HideInInspector]
+    public bool eventTime;
+    
     float speed;
     void Awake() {
         instance = this;
@@ -32,6 +37,7 @@ public class GameControl : MonoBehaviour
         NotesNormal = MusicButton.get.Normal;
         NotesHard = MusicButton.get.Hard;
         getMode = MenuButton.instance.selectMode;
+        NotesEvent = MusicButton.get.Event;
 
     }
 
@@ -40,18 +46,42 @@ public class GameControl : MonoBehaviour
         GameModeCheck();
         HpSetAtStart(); 
         MusicTimeCount();
-
+        
     }
 
     void MusicTimeCount()
     {
-        if(musicPlayTime > 0)
+        if (eventTime == true)
+        {
+            if (musicPlayTime < 3)
+            {
+                borderGame.color = Color.green;
+                for (int i = 0; i < NotesHard.Count; i++)
+                {
+
+                    if (i == 0)
+                    {
+                        speed = -MusicButton.get.eventSpeed;
+                    }
+                    else if (i == 1)
+                    {
+                        speed = MusicButton.get.eventSpeed;
+                    }
+                    var note = Instantiate(NotesEvent[i]);
+                    note.gameObject.AddComponent<NoteSpeedUp>().setSpeed(speed);
+                }
+                eventTime = false;
+                musicPlayTime += 5;
+                //borderGame.color = Color.green;
+
+            }
+        }
+        if (musicPlayTime > 0)
         {   
             
             musicPlayTime--;
             Invoke("MusicTimeCount", 1.0f);
         }
-
         else
         {
             this.Wait(2f, ShowScore);
@@ -78,6 +108,7 @@ public class GameControl : MonoBehaviour
                 }
                 var note = Instantiate(NotesHard[i]);
                 note.gameObject.AddComponent<NoteSpeedUp>().setSpeed(speed);
+                
             }
             haveHp = true;
             CheckHp.SetActive(true);
@@ -160,5 +191,12 @@ public class GameControl : MonoBehaviour
         Score.instance.ShowScore();
     }
 
+    public void EventTime()
+    {
+        if (Score.instance.TotalScore >= 500)
+        {
+            eventTime = true;
+        }
+    }
 
 }

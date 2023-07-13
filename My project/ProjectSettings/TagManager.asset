@@ -24,6 +24,12 @@ TagManager:
   - SubNote1Up
   - SubNote2Up
   - SubNote3Up
+  - Lock1Up
+  - Lock2Up
+  - Lock3Up
+  - Lock1Down
+  - Lock2Down
+  - Lock3Down
   layers:
   - Default
   - TransparentFX

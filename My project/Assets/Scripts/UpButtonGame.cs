@@ -10,9 +10,6 @@ public class UpButtonGame : MonoBehaviour
     private SpriteRenderer theSR;
     public GameObject Square;
     public SpriteRenderer spiteRenderer;
-    public Sprite oneTap;
-    public Sprite defaultSprite;
-    public Sprite sp1, sp2, xTap, multiTap;
 
     [HideInInspector]
     public enum NoteTypes
@@ -20,7 +17,8 @@ public class UpButtonGame : MonoBehaviour
         NormalNote,
         DoubleTapNote,
         DonotTap,
-        MutiTap
+        MutiTap,
+        LockNote
        
     }
 
@@ -29,7 +27,7 @@ public class UpButtonGame : MonoBehaviour
     
 
     [HideInInspector]
-    public bool hit, subNote1, subNote2, subNote3, noteSp1, noteSp2, noteSp3;
+    public bool hit, subNote1, subNote2, subNote3, noteSp1, noteSp2, noteSp3, lock1, lock2, lock3;
 
     [HideInInspector]
     public int hp = 2;
@@ -51,6 +49,10 @@ public class UpButtonGame : MonoBehaviour
         hit = false;
         noteSp1 = false;
         noteSp2 = false;
+        noteSp3 = false;
+        lock1 = false;
+        lock2 = false;
+        lock3 = false;
 
         subNote1 = false;
         subNote2 = false;
@@ -93,24 +95,43 @@ public class UpButtonGame : MonoBehaviour
             Color color = spiteRenderer.material.color;
             color.a = 1f;
             spiteRenderer.material.color = color;
-            spiteRenderer.sprite = defaultSprite;
+            spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
         } else if (noteSp1 == true)
         {
             Color color = spiteRenderer.material.color;
             color.a = 1f;
             spiteRenderer.material.color = color;
-            spiteRenderer.sprite = sp1;
+
+            spiteRenderer.sprite = GameControl.instance.types.sp1;
         } else if (noteSp2 == true) {
             Color color = spiteRenderer.material.color;
             color.a = 1f;
             spiteRenderer.material.color = color;
-            spiteRenderer.sprite = xTap;
+            spiteRenderer.sprite = GameControl.instance.types.xTap;
         } else if (noteSp3 == true)
         {
             Color color = spiteRenderer.material.color;
             color.a = 1f;
+            spiteRenderer.material.color = color; 
+            spiteRenderer.sprite = GameControl.instance.types.multiTap;
+        } else if (lock1 == true)
+        {
+            Color color = spiteRenderer.material.color;
+            color.a = 1f;
             spiteRenderer.material.color = color;
-            spiteRenderer.sprite = multiTap;
+            spiteRenderer.sprite = GameControl.instance.types.unlock1;
+        } else if (lock2 == true)
+        {
+            Color color = spiteRenderer.material.color;
+            color.a = 1f;
+            spiteRenderer.material.color = color;
+            spiteRenderer.sprite = GameControl.instance.types.lock2;
+        } else if (lock3 == true)
+        {
+            Color color = spiteRenderer.material.color;
+            color.a = 1f;
+            spiteRenderer.material.color = color;
+            spiteRenderer.sprite = GameControl.instance.types.lock3;
         }
 
     }
@@ -119,18 +140,40 @@ public class UpButtonGame : MonoBehaviour
     {
         if (hit == false)
         {
+            spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
             Square.transform.localScale = new Vector3(0f, 0f, 1f);
         }
         else if (noteSp1 == false)
         {
-            spiteRenderer.sprite = defaultSprite;
+            spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
             Square.transform.localScale = new Vector3(0f, 0f, 1f);
         }
         else if (noteSp2 == false)
         {
-            spiteRenderer.sprite = defaultSprite;
+            spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
             Square.transform.localScale = new Vector3(0f, 0f, 1f);
         }
+        else if (noteSp3 == false)
+        {
+            spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
+            Square.transform.localScale = new Vector3(0f, 0f, 1f);
+        }
+        else if (lock1 == false)
+        {
+            spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
+            Square.transform.localScale = new Vector3(0f, 0f, 1f);
+        }
+        else if (lock2 == false)
+        {
+            spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
+            Square.transform.localScale = new Vector3(0f, 0f, 1f);
+        }
+        else if (lock3 == false)
+        {
+            spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
+            Square.transform.localScale = new Vector3(0f, 0f, 1f);
+        }
+
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -177,9 +220,40 @@ public class UpButtonGame : MonoBehaviour
             objs.Add(obj);
         }
 
+        if (other.gameObject.tag == "Lock1Up")
+        {
+            noteType = NoteTypes.LockNote;
+            lock1 = true;
+            CheckNoteInTypes();
+            Square.transform.localScale = new Vector3(1f, 1f, 1f);
+            obj = other.gameObject;
+            objs.Add(obj);
+        }
 
-        if ((hit == true && subNote1 == true) || (noteSp1 == true && subNote1 == false) || 
-            (noteSp2 == true && subNote1 == false) || (noteSp3 == true && subNote1 == false))
+        if (other.gameObject.tag == "Lock2Up")
+        {
+            noteType = NoteTypes.LockNote;
+            lock2 = true;
+            CheckNoteInTypes();
+            Square.transform.localScale = new Vector3(1f, 1f, 1f);
+            obj = other.gameObject;
+            objs.Add(obj);
+        }
+
+        if (other.gameObject.tag == "Lock3Up")
+        {
+            noteType = NoteTypes.LockNote;
+            lock3 = true;
+            CheckNoteInTypes();
+            Square.transform.localScale = new Vector3(1f, 1f, 1f);
+            obj = other.gameObject;
+            objs.Add(obj);
+        }
+
+
+        if ((hit == true && subNote1 == true) || (noteSp1 == true && subNote1 == true) || 
+            (noteSp2 == true && subNote1 == true) || (noteSp3 == true && subNote1 == true) || (lock1 == true && subNote1 == true) ||
+            (lock2 == true && subNote1 == true) || (lock3 == true && subNote1 == true))
         {
             switch (noteType)
             {
@@ -187,14 +261,12 @@ public class UpButtonGame : MonoBehaviour
                     if (other.gameObject.tag == "SubNote2Up")
                     {
                         subNote2 = true;
-
                         Square.transform.localScale = new Vector3(0.65f, 0.65f, 1f);
                     }
                     else if (other.gameObject.tag == "SubNote3Up")
                     {
                         subNote3 = true;
-
-                        spiteRenderer.sprite = oneTap;
+                        spiteRenderer.sprite = GameControl.instance.types.OneTap;
                         Square.transform.localScale = new Vector3(4.5f, 4.5f, 1f);
                     }
                     break;
@@ -202,12 +274,10 @@ public class UpButtonGame : MonoBehaviour
                 case NoteTypes.DoubleTapNote:
                     if (other.gameObject.tag == "SubNote2Up")
                     {
-                        
                         Square.transform.localScale = new Vector3(1f, 1f, 1f);
                     }
                     else if (other.gameObject.tag == "SubNote3Up")
                     {
-
                         Square.transform.localScale = new Vector3(1f, 1f, 1f);
                     }
                     break;
@@ -215,7 +285,17 @@ public class UpButtonGame : MonoBehaviour
                 case NoteTypes.DonotTap:
                     if (other.gameObject.tag == "SubNote2Up")
                     {
+                        Square.transform.localScale = new Vector3(1f, 1f, 1f);
+                    }
+                    else if (other.gameObject.tag == "SubNote3Up")
+                    {
+                        Square.transform.localScale = new Vector3(1f, 1f, 1f);
+                    }
+                    break;
 
+                case NoteTypes.MutiTap:
+                    if (other.gameObject.tag == "SubNote2Up")
+                    {
                         Square.transform.localScale = new Vector3(1f, 1f, 1f);
                     }
                     else if (other.gameObject.tag == "SubNote3Up")
@@ -225,15 +305,13 @@ public class UpButtonGame : MonoBehaviour
                     }
                     break;
 
-                case NoteTypes.MutiTap:
+                case NoteTypes.LockNote:
                     if (other.gameObject.tag == "SubNote2Up")
                     {
-
                         Square.transform.localScale = new Vector3(1f, 1f, 1f);
                     }
                     else if (other.gameObject.tag == "SubNote3Up")
                     {
-
                         Square.transform.localScale = new Vector3(1f, 1f, 1f);
                     }
                     break;
@@ -252,12 +330,11 @@ public class UpButtonGame : MonoBehaviour
                 hit = true;
             } else {
                 hit = false;
-                noteType = NoteTypes.NormalNote;
-                spiteRenderer.sprite = defaultSprite;
-                Square.transform.localScale = new Vector3(0f, 0f, 1f);
+                CheckNoteOutTypes();
 
             }
-        } else if (other.gameObject.tag == "DoubleTapNoteUp")
+        } 
+        else if (other.gameObject.tag == "DoubleTapNoteUp")
         {
             objs.Remove(objs[0]);
             hp = 2;
@@ -270,8 +347,7 @@ public class UpButtonGame : MonoBehaviour
             else
             {
                 noteSp1 = false;
-                spiteRenderer.sprite = defaultSprite;
-                Square.transform.localScale = new Vector3(0f, 0f, 1f);
+                CheckNoteOutTypes();
 
             }
         }
@@ -288,8 +364,7 @@ public class UpButtonGame : MonoBehaviour
             else
             {
                 noteSp2 = false;
-                spiteRenderer.sprite = defaultSprite;
-                Square.transform.localScale = new Vector3(0f, 0f, 1f);
+                CheckNoteOutTypes();
 
             }
         }
@@ -306,8 +381,58 @@ public class UpButtonGame : MonoBehaviour
             else
             {
                 noteSp3 = false;
-                spiteRenderer.sprite = defaultSprite;
-                Square.transform.localScale = new Vector3(0f, 0f, 1f);
+                CheckNoteOutTypes();
+
+            }
+        }
+        else if (other.gameObject.tag == "Lock1Up")
+        {
+            objs.Remove(objs[0]);
+
+            noteType = NoteTypes.LockNote;
+
+            if (objs.Count != 0)
+            {
+                lock1 = true;
+            }
+            else
+            {
+                lock1 = false;
+                CheckNoteOutTypes();
+
+            }
+        }
+        else if (other.gameObject.tag == "Lock2Up")
+        {
+            objs.Remove(objs[0]);
+
+            noteType = NoteTypes.LockNote;
+
+            if (objs.Count != 0)
+            {
+                lock2 = true;
+            }
+            else
+            {
+                lock2 = false;
+                CheckNoteOutTypes();
+
+            }
+        }
+        else if (other.gameObject.tag == "Lock3Up")
+        {
+            objs.Remove(objs[0]);
+
+            noteType = NoteTypes.LockNote;
+
+            if (objs.Count != 0)
+            {
+                lock3 = true;
+            }
+            else
+            {
+                lock3 = false;
+                CheckNoteOutTypes();
 
             }
         }
@@ -318,7 +443,8 @@ public class UpButtonGame : MonoBehaviour
                 if (other.gameObject.tag == "SubNote1Up")
                 {
                     subNote1 = false;
-                    spiteRenderer.sprite = defaultSprite;
+
+                    spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
                     Square.transform.localScale = new Vector3(0.65f, 0.65f, 1f);
 
                 }
@@ -356,7 +482,8 @@ public class UpButtonGame : MonoBehaviour
                 else if (other.gameObject.tag == "SubNote3Up")
                 {
                     subNote3 = false;
-                    spiteRenderer.sprite = defaultSprite;
+
+                    spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
                     Color color = spiteRenderer.material.color;
                     color.a = 1f;
                     spiteRenderer.material.color = color;
@@ -388,7 +515,8 @@ public class UpButtonGame : MonoBehaviour
                     Color color = spiteRenderer.material.color;
                     color.a = 1f;
                     spiteRenderer.material.color = color;
-                    spiteRenderer.sprite = defaultSprite;
+
+                    spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
                     Square.transform.localScale = new Vector3(0f, 0f, 1f);
 
                 }
@@ -417,7 +545,38 @@ public class UpButtonGame : MonoBehaviour
                     Color color = spiteRenderer.material.color;
                     color.a = 1f;
                     spiteRenderer.material.color = color;
-                    spiteRenderer.sprite = defaultSprite;
+                    spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
+
+                    Square.transform.localScale = new Vector3(0f, 0f, 1f);
+
+                }
+                break;
+
+            case NoteTypes.LockNote:
+                if (other.gameObject.tag == "SubNote1Up")
+                {
+                    subNote1 = false;
+                    Color color = spiteRenderer.material.color;
+                    color.a = 0.75f;
+                    spiteRenderer.material.color = color;
+
+                }
+                else if (other.gameObject.tag == "SubNote2Up")
+                {
+                    subNote2 = false;
+
+                    Color color = spiteRenderer.material.color;
+                    color.a = 0.35f;
+                    spiteRenderer.material.color = color;
+                }
+                else if (other.gameObject.tag == "SubNote3Up")
+                {
+                    subNote3 = false;
+                    Color color = spiteRenderer.material.color;
+                    color.a = 1f;
+                    spiteRenderer.material.color = color;
+                    spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
+
                     Square.transform.localScale = new Vector3(0f, 0f, 1f);
 
                 }

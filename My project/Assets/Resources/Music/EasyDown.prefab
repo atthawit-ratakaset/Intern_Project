@@ -12800,7 +12800,7 @@ GameObject:
   - component: {fileID: 2210197010366816086}
   m_Layer: 2
   m_Name: '3Mid '
-  m_TagString: DoubleTapNoteUp
+  m_TagString: DoubleTapNote
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

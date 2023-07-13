@@ -4611,10 +4611,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CheckHp: {fileID: 1046738480}
   types: {fileID: 11400000, guid: 301a62819d0fd8245856afa0242044c0, type: 2}
+  borderGame: {fileID: 1532927859}
   maxHealth: 100
   healthBar: {fileID: 1046738482}
   musicPlayTime: 0
   getMode: 0
+  eventTime: 0
 --- !u!4 &1713391211
 Transform:
   m_ObjectHideFlags: 0
@@ -6998,6 +7000,7 @@ MonoBehaviour:
   ShowScoreText: {fileID: 8719301201210557691}
   BadScoreText: {fileID: 2515275313492958108}
   ComboText: {fileID: 2515275314139195843}
+  TotalScore: 0
 --- !u!224 &2515275313538109947
 RectTransform:
   m_ObjectHideFlags: 0

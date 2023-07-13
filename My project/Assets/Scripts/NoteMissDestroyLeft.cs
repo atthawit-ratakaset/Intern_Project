@@ -38,6 +38,8 @@ public class NoteMissDestroyLeft : MonoBehaviour
 
         }
 
+        
+
     }
 
     void ShowScore() {
