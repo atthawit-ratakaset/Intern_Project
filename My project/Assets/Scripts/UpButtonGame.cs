@@ -117,19 +117,19 @@ public class UpButtonGame : MonoBehaviour
         } else if (lock1 == true)
         {
             Color color = spiteRenderer.material.color;
-            color.a = 1f;
+            color.a = 0.8f;
             spiteRenderer.material.color = color;
             spiteRenderer.sprite = GameControl.instance.types.unlock1;
         } else if (lock2 == true)
         {
             Color color = spiteRenderer.material.color;
-            color.a = 1f;
+            color.a = 0.8f;
             spiteRenderer.material.color = color;
             spiteRenderer.sprite = GameControl.instance.types.lock2;
         } else if (lock3 == true)
         {
             Color color = spiteRenderer.material.color;
-            color.a = 1f;
+            color.a = 0.8f;
             spiteRenderer.material.color = color;
             spiteRenderer.sprite = GameControl.instance.types.lock3;
         }

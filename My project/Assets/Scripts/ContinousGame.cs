@@ -50,7 +50,7 @@ public class ContinousGame : MonoBehaviour
     {
         score.SetActive(false);
         combo.SetActive(false);
-        button.SetActive(false);
+        //button.SetActive(false);
         popUpPause.SetActive(true);
     }
 

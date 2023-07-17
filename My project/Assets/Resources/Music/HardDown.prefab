@@ -15029,7 +15029,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4620021753680904925
 Transform:
   m_ObjectHideFlags: 0
@@ -54171,7 +54171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2577556678777365211
 Transform:
   m_ObjectHideFlags: 0
@@ -83464,11 +83464,11 @@ GameObject:
   - component: {fileID: 1595780550611484024}
   m_Layer: 2
   m_Name: 3Right
-  m_TagString: NotesDown
+  m_TagString: Lock2Down
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5811557646269399822
 Transform:
   m_ObjectHideFlags: 0
@@ -89521,7 +89521,7 @@ GameObject:
   - component: {fileID: 8945421311444687366}
   m_Layer: 2
   m_Name: '3Mid '
-  m_TagString: DoubleTapNote
+  m_TagString: Lock3Down
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95489,11 +95489,11 @@ GameObject:
   - component: {fileID: 5768478223670258305}
   m_Layer: 2
   m_Name: 3left
-  m_TagString: NotesDown
+  m_TagString: Lock1Down
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2478227193503172920
 Transform:
   m_ObjectHideFlags: 0
