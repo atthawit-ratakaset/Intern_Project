@@ -10249,11 +10249,11 @@ GameObject:
   - component: {fileID: 8407638611645265960}
   m_Layer: 2
   m_Name: 3Right
-  m_TagString: NotesDown
+  m_TagString: Lock3Up
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3615963694271432286
 Transform:
   m_ObjectHideFlags: 0
@@ -12800,7 +12800,7 @@ GameObject:
   - component: {fileID: 2210197010366816086}
   m_Layer: 2
   m_Name: '3Mid '
-  m_TagString: DoubleTapNote
+  m_TagString: Lock2Up
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17487,11 +17487,11 @@ GameObject:
   - component: {fileID: 3640447061631234001}
   m_Layer: 2
   m_Name: 3left
-  m_TagString: NotesDown
+  m_TagString: Lock1Up
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4678353469867658344
 Transform:
   m_ObjectHideFlags: 0
