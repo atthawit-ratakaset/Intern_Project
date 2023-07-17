@@ -76,6 +76,8 @@ public class GameControl : MonoBehaviour
 
             }
         }
+
+
         if (musicPlayTime > 0)
         {   
             

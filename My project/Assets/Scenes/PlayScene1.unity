@@ -2244,6 +2244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 748693900}
   - component: {fileID: 748693899}
+  - component: {fileID: 748693902}
   - component: {fileID: 748693901}
   m_Layer: 0
   m_Name: MusicBG
@@ -2376,6 +2377,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicDelay: 0
+--- !u!114 &748693902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748693896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aae1ab02211ecb4faa048bf230873e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bpm: 120
+  audioSource: {fileID: 748693899}
+  intervals:
+    steps: 1
+    trigger:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1532927861}
+          m_TargetAssemblyTypeName: PulseToBeat, Assembly-CSharp
+          m_MethodName: Pulse
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &768901117
 GameObject:
   m_ObjectHideFlags: 0
@@ -4640,7 +4672,6 @@ GameObject:
   - component: {fileID: 1713391211}
   - component: {fileID: 1713391210}
   - component: {fileID: 1713391212}
-  - component: {fileID: 1713391213}
   m_Layer: 0
   m_Name: GameControl
   m_TagString: Untagged
@@ -4700,37 +4731,6 @@ MonoBehaviour:
   combo: {fileID: 2515275314139195845}
   button: {fileID: 526404679}
   countDownText: {fileID: 1949184340}
---- !u!114 &1713391213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713391209}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aae1ab02211ecb4faa048bf230873e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bpm: 120
-  audioSource: {fileID: 748693899}
-  intervals:
-    steps: 1
-    trigger:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1532927861}
-          m_TargetAssemblyTypeName: PulseToBeat, Assembly-CSharp
-          m_MethodName: Pulse
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1001 &1789099681
 PrefabInstance:
   m_ObjectHideFlags: 0
