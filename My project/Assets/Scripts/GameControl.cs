@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using TMPro;
 
 
 
@@ -15,6 +16,10 @@ public class GameControl : MonoBehaviour
     List<NoteData> NotesEvent = new List<NoteData>();
     public static GameControl instance;
     public SpriteRenderer borderGame;
+    
+    public TMP_Text targetScore;
+    int goalScore;
+
     bool haveHp = false;
     
 
@@ -23,6 +28,7 @@ public class GameControl : MonoBehaviour
     public HealthBar healthBar;
 
     public float musicPlayTime;
+
 
     [HideInInspector]
     public int getMode;
@@ -38,7 +44,8 @@ public class GameControl : MonoBehaviour
         NotesHard = MusicButton.get.Hard;
         getMode = MenuButton.instance.selectMode;
         NotesEvent = MusicButton.get.Event;
-
+        goalScore = MusicButton.get.targetScore;
+        
     }
 
     void Start()
@@ -46,7 +53,7 @@ public class GameControl : MonoBehaviour
         GameModeCheck();
         HpSetAtStart(); 
         MusicTimeCount();
-        
+        targetScore.text = $"TARGET: {goalScore}";
     }
 
     void MusicTimeCount()
@@ -72,15 +79,12 @@ public class GameControl : MonoBehaviour
                 }
                 eventTime = false;
                 musicPlayTime += 5;
-                //borderGame.color = Color.green;
-
             }
         }
 
 
         if (musicPlayTime > 0)
         {   
-            
             musicPlayTime--;
             Invoke("MusicTimeCount", 1.0f);
         }
@@ -88,7 +92,6 @@ public class GameControl : MonoBehaviour
         {
             this.Wait(2f, ShowScore);
             MusicScript.instance.StopMusic();
-
         }
     }
 
@@ -158,7 +161,6 @@ public class GameControl : MonoBehaviour
             haveHp = false;
             CheckHp.SetActive(false);
             musicPlayTime = MusicButton.get.timerEasy + MusicButton.get.delay;
-
         }
     }
 
@@ -173,7 +175,7 @@ public class GameControl : MonoBehaviour
             if (currentHealth <= 0)
             {
                 this.Wait(1f, ShowScore);
-                
+         
                 MusicScript.instance.StopMusic();
             }
         }
@@ -195,7 +197,7 @@ public class GameControl : MonoBehaviour
 
     public void EventTime()
     {
-        if (Score.instance.TotalScore >= 500)
+        if (Score.instance.TotalScore >= MusicButton.get.targetScore)
         {
             eventTime = true;
         }

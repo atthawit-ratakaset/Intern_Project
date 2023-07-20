@@ -30,7 +30,9 @@ public class Score : MonoBehaviour
         ResetCombo
     }
 
+    [HideInInspector]
     public int TotalScore = 0;
+
     int MissNoteScore = 0;
     int GoodScore = 0;
     int PerfectScore = 0;

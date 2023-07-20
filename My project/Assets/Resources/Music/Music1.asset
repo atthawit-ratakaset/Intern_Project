@@ -26,11 +26,12 @@ MonoBehaviour:
   Event:
   - {fileID: 9017009745824447844, guid: 303101709c3c941428f9602898ede421, type: 3}
   - {fileID: 8725365031948808650, guid: dbd0ca682ce3fe749b63809747e0f498, type: 3}
-  delay: 0
+  delay: 4
   timerEasy: 97
-  timerNormal: 55
-  timerHard: 45
+  timerNormal: 50
+  timerHard: 40
   easySpeed: 240
   normalSpeed: 480
   hardSpeed: 600
   eventSpeed: 480
+  targetScore: 500

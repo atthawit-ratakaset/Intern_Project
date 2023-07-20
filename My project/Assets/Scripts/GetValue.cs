@@ -19,4 +19,5 @@ public class GetValue : ScriptableObject {
     public float normalSpeed;
     public float hardSpeed;
     public float eventSpeed;
+    public int targetScore;
 }

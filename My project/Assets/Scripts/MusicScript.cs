@@ -7,11 +7,12 @@ public class MusicScript : MonoBehaviour
     AudioSource gameMusic;
     public static MusicScript instance;
     AudioClip clip;
-    public float musicDelay;
+    private float musicDelay;
 
     private void Awake() {
         instance = this;
-        musicDelay = MusicButton.instance.musicData.delay;
+        Debug.Log(MusicButton.get);
+        musicDelay = MusicButton.get.delay;
         clip = MusicButton.get.song;
         gameMusic = GetComponent<AudioSource>();
         gameMusic.clip = clip;
@@ -19,7 +20,7 @@ public class MusicScript : MonoBehaviour
 
     void Start()
     {
-        
+        Debug.Log(musicDelay);
         gameMusic.PlayDelayed(musicDelay);
 
     }
