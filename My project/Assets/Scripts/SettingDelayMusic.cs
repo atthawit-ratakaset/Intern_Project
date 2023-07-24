@@ -5,18 +5,27 @@ using UnityEngine;
 public class SettingDelayMusic : MonoBehaviour
 {
     AudioSource gameMusic;
-    AudioClip clip;
     public float musicDelay;
+    private float musicVolum = 1f;
 
     private void Awake()
     {
         gameMusic = GetComponent<AudioSource>();
-        gameMusic.clip = clip;
     }
 
     void Start()
     {
         gameMusic.PlayDelayed(musicDelay);
 
+    }
+
+    private void Update()
+    {
+        gameMusic.volume = musicVolum;
+    }
+
+    public void SetVolum(float vol)
+    {
+        musicVolum = vol;
     }
 }

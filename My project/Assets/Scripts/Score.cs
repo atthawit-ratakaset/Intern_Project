@@ -56,7 +56,7 @@ public class Score : MonoBehaviour
         popUp.SetActive(false);
     }
 
-    public void ScoreCalculationCase(GetScore get) //enum
+    public void ScoreCalculationCase(GetScore get)
     {
         switch (get)
         {

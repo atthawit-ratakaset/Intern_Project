@@ -12,8 +12,6 @@ TagManager:
   - NotesUp
   - ButtonUp
   - ButtonDown
-  - DoubleTapNote
-  - DonotTap
   - DoubleTapNoteUp
   - DonotTapUp
   - MutiTapUp
@@ -30,6 +28,8 @@ TagManager:
   - Lock1Down
   - Lock2Down
   - Lock3Down
+  - DoubleTapNoteDown
+  - DonotTapDown
   layers:
   - Default
   - TransparentFX

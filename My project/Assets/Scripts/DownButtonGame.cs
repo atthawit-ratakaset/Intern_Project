@@ -20,7 +20,7 @@ public class DownButtonGame : UpButtonGame
 
         }
 
-        if (other.gameObject.tag == "DoubleTapNote")
+        if (other.gameObject.tag == "DoubleTapNoteDown")
         {
             noteType = NoteTypes.DoubleTapNote;
             noteSp1 = true;
@@ -31,7 +31,7 @@ public class DownButtonGame : UpButtonGame
 
         }
 
-        if (other.gameObject.tag == "DonotTap")
+        if (other.gameObject.tag == "DonotTapDown")
         {
             noteType = NoteTypes.DonotTap;
             noteSp2 = true;
@@ -177,7 +177,7 @@ public class DownButtonGame : UpButtonGame
 
             }
         }
-        else if (other.gameObject.tag == "DoubleTapNote")
+        else if (other.gameObject.tag == "DoubleTapNoteDown")
         {
             objs.Remove(objs[0]);
             hp = 2;
@@ -194,7 +194,7 @@ public class DownButtonGame : UpButtonGame
 
             }
         }
-        else if (other.gameObject.tag == "DonotTap")
+        else if (other.gameObject.tag == "DonotTapDown")
         {
             objs.Remove(objs[0]);
 

@@ -48,17 +48,17 @@ public class ContinousGame : MonoBehaviour
 
     public void PasueGame()
     {
-        score.SetActive(false);
-        combo.SetActive(false);
+        //score.SetActive(false);
+        //combo.SetActive(false);
         //button.SetActive(false);
         popUpPause.SetActive(true);
     }
 
     public void BackToGame()
     {
-        score.SetActive(true);
-        combo.SetActive(true);
-        button.SetActive(true);
+        //score.SetActive(true);
+        //combo.SetActive(true);
+        //button.SetActive(true);
         popUpPause.SetActive(false);
     }
 }

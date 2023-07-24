@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-using TMPro;
+using TMPro;    
 
 
 
@@ -17,18 +17,19 @@ public class GameControl : MonoBehaviour
     public static GameControl instance;
     public SpriteRenderer borderGame;
     
+
     public TMP_Text targetScore;
     int goalScore;
 
     bool haveHp = false;
-    
+    float speed;
 
     public int maxHealth = 100;
     int currentHealth;
     public HealthBar healthBar;
 
+    [HideInInspector]
     public float musicPlayTime;
-
 
     [HideInInspector]
     public int getMode;
@@ -36,7 +37,6 @@ public class GameControl : MonoBehaviour
     [HideInInspector]
     public bool eventTime;
     
-    float speed;
     void Awake() {
         instance = this;
         NotesEasy = MusicButton.get.Easy;
@@ -50,10 +50,12 @@ public class GameControl : MonoBehaviour
 
     void Start()
     {
+        
         GameModeCheck();
         HpSetAtStart(); 
         MusicTimeCount();
         targetScore.text = $"TARGET: {goalScore}";
+      
     }
 
     void MusicTimeCount()
@@ -169,7 +171,6 @@ public class GameControl : MonoBehaviour
     {
         if (haveHp)
         {
-            
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
             if (currentHealth <= 0)

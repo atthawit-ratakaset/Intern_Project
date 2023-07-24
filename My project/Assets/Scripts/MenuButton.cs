@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class MenuButton : MonoBehaviour
 {
     public static MenuButton instance;
+    public GameObject setting;
+    public GameObject pause;
 
     [HideInInspector]
     public int selectMode;
@@ -50,6 +52,17 @@ public class MenuButton : MonoBehaviour
         selectMode = GameControl.instance.getMode;
     }
 
+    public void SettingVoloum()
+    {
+        pause.SetActive(false);
+        setting.SetActive(true);
+    }
+
+    public void BackToPause()
+    {
+        pause.SetActive(true);
+        setting.SetActive(false);
+    }
 
     
 }

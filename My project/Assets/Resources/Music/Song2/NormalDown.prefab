@@ -43570,7 +43570,7 @@ GameObject:
   - component: {fileID: 8300374929237532710}
   m_Layer: 2
   m_Name: '3Mid '
-  m_TagString: DoubleTapNote
+  m_TagString: DoubleTapNoteDown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59560,7 +59560,7 @@ GameObject:
   - component: {fileID: 4401389401533251829}
   m_Layer: 2
   m_Name: 4Right
-  m_TagString: DoubleTapNote
+  m_TagString: DoubleTapNoteDown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

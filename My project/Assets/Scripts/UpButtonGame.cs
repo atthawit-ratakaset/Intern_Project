@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 public class UpButtonGame : MonoBehaviour
 {
 
-    public KeyCode key;
     private SpriteRenderer theSR;
     public GameObject Square;
     public SpriteRenderer spiteRenderer;
@@ -65,26 +64,6 @@ public class UpButtonGame : MonoBehaviour
 
         Square.transform.localScale = new Vector3(0f, 0f, 1f);
         
-
-    }
-    
-    void Update() {
-        if (Input.GetKeyDown(key)) {
-            if (hit == true) {
-                if ((subNote1 == true && subNote2 == true && subNote3 == true)) {
-                    Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
-                    Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
-                } else if ((subNote1 == true && subNote2 == false && subNote3 == false) ||
-                            (subNote3 == true && subNote2 == false && subNote1 == false)) {
-                    Score.instance.ScoreCalculationCase(Score.GetScore.Bad);
-                    Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
-                } else {
-                    Score.instance.ScoreCalculationCase(Score.GetScore.Good);
-                    Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
-                }
-                DestroyNote();
-            }
-        }
 
     }
 

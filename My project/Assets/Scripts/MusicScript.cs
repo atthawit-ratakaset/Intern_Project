@@ -8,6 +8,7 @@ public class MusicScript : MonoBehaviour
     public static MusicScript instance;
     AudioClip clip;
     private float musicDelay;
+    private float musicVolum = 1f; 
 
     private void Awake() {
         instance = this;
@@ -25,8 +26,18 @@ public class MusicScript : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        gameMusic.volume = musicVolum;
+    }
+
     public void StopMusic() {
         gameMusic.Stop();
+    }
+
+    public void SetVolum(float vol)
+    {
+        musicVolum = vol;
     }
 
 }

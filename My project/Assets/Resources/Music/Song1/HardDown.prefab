@@ -23898,7 +23898,7 @@ GameObject:
   - component: {fileID: 8838897356202002467}
   m_Layer: 2
   m_Name: 1Right
-  m_TagString: DoubleTapNote
+  m_TagString: DoubleTapNoteDown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24619,7 +24619,7 @@ GameObject:
   - component: {fileID: 5108617951658140301}
   m_Layer: 2
   m_Name: 2left
-  m_TagString: DonotTap
+  m_TagString: DonotTapDown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57477,7 +57477,7 @@ GameObject:
   - component: {fileID: 1612518692687433580}
   m_Layer: 2
   m_Name: 3left
-  m_TagString: DoubleTapNote
+  m_TagString: DoubleTapNoteDown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75668,7 +75668,7 @@ GameObject:
   - component: {fileID: 141249309118579112}
   m_Layer: 2
   m_Name: '3Mid '
-  m_TagString: DoubleTapNote
+  m_TagString: DoubleTapNoteDown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91868,7 +91868,7 @@ GameObject:
   - component: {fileID: 5264272743741886291}
   m_Layer: 2
   m_Name: 2Right
-  m_TagString: DonotTap
+  m_TagString: DonotTapDown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
