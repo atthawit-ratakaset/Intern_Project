@@ -7,6 +7,7 @@ public class UpButtonGame : MonoBehaviour
 {
 
     private SpriteRenderer theSR;
+    [Header ("NOTE OBJECT DISPLAY")]
     public GameObject Square;
     public SpriteRenderer spiteRenderer;
 
@@ -57,9 +58,9 @@ public class UpButtonGame : MonoBehaviour
         subNote2 = false;
         subNote3 = false;
         
-        theSR.color = Color.blue;
+        //theSR.color = Color.blue;
         Color color = theSR.material.color;
-        color.a = 0.25f;
+        color.a = 0.5f;
         theSR.material.color = color;
 
         Square.transform.localScale = new Vector3(0f, 0f, 1f);

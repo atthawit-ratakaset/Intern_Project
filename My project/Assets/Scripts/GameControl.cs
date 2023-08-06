@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using TMPro;    
 
@@ -8,22 +6,27 @@ using TMPro;
 
 public class GameControl : MonoBehaviour 
 {   
-    [SerializeField] GameObject CheckHp;
+    [Header ("TYPES NOTE DATA")]
     public TypesNote types;
     List<NoteData> NotesEasy = new List<NoteData>();
     List<NoteData> NotesNormal = new List<NoteData>();
     List<NoteData> NotesHard = new List<NoteData>();
     List<NoteData> NotesEvent = new List<NoteData>();
     public static GameControl instance;
+
+    [Header ("SYNC NOTE")]
     public SpriteRenderer borderGame;
     
-
+    [Header ("TARGET SCORE")]
     public TMP_Text targetScore;
     int goalScore;
 
     bool haveHp = false;
     float speed;
 
+
+    [Header ("HP BAR")]
+    [SerializeField] GameObject CheckHp;
     public int maxHealth = 100;
     int currentHealth;
     public HealthBar healthBar;
@@ -54,7 +57,7 @@ public class GameControl : MonoBehaviour
         GameModeCheck();
         HpSetAtStart(); 
         MusicTimeCount();
-        targetScore.text = $"TARGET: {goalScore}";
+        targetScore.text = $"Target: {goalScore}";
       
     }
 

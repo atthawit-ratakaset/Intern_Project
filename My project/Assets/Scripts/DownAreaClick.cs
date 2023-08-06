@@ -4,12 +4,17 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DownAreaClick : MonoBehaviour
-{
+{   
+    [Header ("BUTTON SCRIPTS")]
     public DownButtonGame button;
     public DownButtonGame button1;
     public DownButtonGame button2;
+
+    [Header ("AREA SCRIPTS")]
     public DownAreaClick click1;
     public DownAreaClick click2;
+
+    [Header ("EFFECT")]
     public ParticleSystem particEffect;
     public AudioSource soundFX;
 

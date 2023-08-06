@@ -5,11 +5,16 @@ using UnityEngine.EventSystems;
 
 public class UpAreaClick : MonoBehaviour
 {
+    [Header ("BUTTON SCRIPTS")]
     public UpButtonGame button;
     public UpButtonGame button1;
     public UpButtonGame button2;
+
+    [Header ("AREA SCRIPTS")]
     public UpAreaClick click1;
     public UpAreaClick click2;
+
+    [Header ("EFFECT")]
     public ParticleSystem particEffect;
     public AudioSource soundFX;
 

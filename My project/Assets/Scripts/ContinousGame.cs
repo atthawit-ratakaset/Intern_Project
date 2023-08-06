@@ -7,6 +7,8 @@ public class ContinousGame : MonoBehaviour
 {   
     public static ContinousGame instance;
     public GameObject popUpPause, score, combo, button;
+
+    [Header ("COUNDOWN TEXT")]
     public TMP_Text countDownText;
     int countDownTime = 3;
 
@@ -43,6 +45,7 @@ public class ContinousGame : MonoBehaviour
     public void Coutinous() {
         countDownTime = 3;
         countDownText.gameObject.SetActive(true);
+        popUpPause.SetActive(false);
         StartCoroutine(CountDownToStart());
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuButton : MonoBehaviour
 {
@@ -9,8 +10,15 @@ public class MenuButton : MonoBehaviour
     public GameObject setting;
     public GameObject pause;
 
+    [Header("LoadScene")]
+    public GameObject load;
+    public Image loadImage;
+
     [HideInInspector]
     public int selectMode;
+
+    [HideInInspector]
+    public string scene;
 
     void Start()
     {
@@ -21,7 +29,18 @@ public class MenuButton : MonoBehaviour
     public void GetMode(int mode)
     {
         selectMode = mode;
-        SceneManager.LoadScene("PlayScene1");
+        scene = "PlayScene1";
+        StartCoroutine("LoadScene");
+    }
+    
+    public IEnumerator LoadScene()
+    {
+        load.SetActive(true);
+        AsyncOperation loadScene = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Single);
+        while (!loadScene.isDone)
+        {
+            yield return null;
+        }
     }
 
     public void Resume() {
@@ -43,13 +62,25 @@ public class MenuButton : MonoBehaviour
 
     public void ReturnMenu() {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Menu");
+        scene = "Menu";
+        StartCoroutine("LoadScene");
     }
 
     public void Retry() {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(GetCurrentBuildIndex());
+        StartCoroutine("LoadRetry");
         selectMode = GameControl.instance.getMode;
+    }
+
+    public IEnumerator LoadRetry()
+    {
+        load.SetActive(true);
+        AsyncOperation loadScene = SceneManager.LoadSceneAsync(GetCurrentBuildIndex(), LoadSceneMode.Single);
+        while (!loadScene.isDone)
+        {
+            loadImage.fillAmount = loadScene.progress;
+            yield return null;
+        }
     }
 
     public void SettingVoloum()
