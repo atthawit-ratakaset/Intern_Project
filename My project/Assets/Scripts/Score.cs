@@ -31,6 +31,7 @@ public class Score : MonoBehaviour
     public TMP_Text ShowScoreText;
     public TMP_Text BadScoreText;
     public TMP_Text ComboText;
+    public TMP_Text maxComboText;
     
     public enum GetScore
     {
@@ -50,6 +51,7 @@ public class Score : MonoBehaviour
     int PerfectScore = 0;
     int BadScore = 0;
     int Combo = 0;
+    int maxCombo = 0;
 
     private void Awake(){
         instance = this;
@@ -105,6 +107,11 @@ public class Score : MonoBehaviour
                 break;
 
             case GetScore.ResetCombo:
+                
+                if (Combo > maxCombo)
+                {
+                    maxCombo = Combo;
+                }
                 Combo = 0;
                 ComboText.text = $"COMBO: x{Combo}";
                 break;
@@ -114,7 +121,8 @@ public class Score : MonoBehaviour
     }
 
     public void CheckTotalScore()
-    {
+    {   
+
         if (TotalScore < 0)
         {
             TotalScore = 0;
@@ -124,6 +132,13 @@ public class Score : MonoBehaviour
 
     public void ShowScore() {
         popUp.SetActive(true);
+        if (maxCombo < Combo)
+        {
+            maxCombo = Combo;
+        } else
+        {
+        }
+        
         for(int i = 0; i < hide.Count; i++)
         {
             hide[i].SetActive(false);
@@ -133,6 +148,7 @@ public class Score : MonoBehaviour
             TotalScore = 0;
         }
         ShowScoreText.text = TotalScore.ToString();
+        maxComboText.text = maxCombo.ToString();
         TotalScoreText.text = (TotalScore < 10) ? "0" + TotalScore : TotalScore.ToString();
 
     }

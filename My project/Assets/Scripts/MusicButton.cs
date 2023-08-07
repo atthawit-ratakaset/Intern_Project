@@ -12,7 +12,7 @@ public class MusicButton : MonoBehaviour
     public static GetValue get;
     public TMP_Text songName;
     public Image image;
-    public GameObject setTrueObj1, setTrueObj2;
+   
 
 
 
@@ -20,7 +20,6 @@ public class MusicButton : MonoBehaviour
     {   
         instance = this;
         Button btn = GetComponent<Button>();
-        btn.onClick.AddListener(OnClick);
         btn.onClick.AddListener(delegate () { SetDataMusic(musicData); });
         image.gameObject.GetComponent<Image>().sprite = musicData.image;
         songName.text = musicData.songName.ToString();
@@ -30,13 +29,6 @@ public class MusicButton : MonoBehaviour
     public void SetDataMusic(GetValue getValue)
     {   
         get = getValue;
-
-    }
-
-    public void OnClick()
-    {
-        setTrueObj1.SetActive(true);
-        setTrueObj2.SetActive(true);
 
     }
 

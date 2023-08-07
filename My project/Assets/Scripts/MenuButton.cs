@@ -38,10 +38,16 @@ public class MenuButton : MonoBehaviour
     }
 
     public void PlayScene()
-    {
-        SceneManager.LoadScene("PlayScene1");
-        //scene = "PlayScene1";
-        //StartCoroutine("LoadScene");
+    {   
+        if (MusicButton.get != null)
+        {
+            scene = "PlayScene1";
+            StartCoroutine("LoadScene");
+        } else
+        {
+            Debug.Log("Please choose music");
+        }
+        
     }
 
     public void GetEasyMode()
@@ -74,6 +80,7 @@ public class MenuButton : MonoBehaviour
         AsyncOperation loadScene = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Single);
         while (!loadScene.isDone)
         {
+            loadImage.GetComponent<Image>().sprite = MusicButton.get.image;
             yield return null;
         }
     }
@@ -83,6 +90,7 @@ public class MenuButton : MonoBehaviour
     }
 
     public void Pause() {
+        pause.SetActive(true);
         Time.timeScale = 0f;
         AudioSource[] audio = FindObjectsOfType<AudioSource>();
         foreach (AudioSource a in audio) {
@@ -113,7 +121,7 @@ public class MenuButton : MonoBehaviour
         AsyncOperation loadScene = SceneManager.LoadSceneAsync(GetCurrentBuildIndex(), LoadSceneMode.Single);
         while (!loadScene.isDone)
         {
-            loadImage.fillAmount = loadScene.progress;
+            loadImage.GetComponent<Image>().sprite = MusicButton.get.image;
             yield return null;
         }
     }

@@ -7,6 +7,11 @@ public class Swipe : MonoBehaviour
     float scorll_pos = 0;
     float[] pos;
 
+    private void Start()
+    {
+       
+        
+    }
 
     void Update()
     {
