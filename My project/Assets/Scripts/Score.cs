@@ -27,7 +27,6 @@ public class Score : MonoBehaviour
     public TMP_Text MissNoteScoreText;
     public TMP_Text GoodScoreText;
     public  TMP_Text PerfectScoreText;
-    public TMP_Text MissScoreText;
     public TMP_Text TotalScoreText;
     public TMP_Text ShowScoreText;
     public TMP_Text BadScoreText;
@@ -49,7 +48,6 @@ public class Score : MonoBehaviour
     int MissNoteScore = 0;
     int GoodScore = 0;
     int PerfectScore = 0;
-    int MissScore = 0;
     int BadScore = 0;
     int Combo = 0;
 
@@ -59,11 +57,10 @@ public class Score : MonoBehaviour
     
     void Start()
     {
-        BadScoreText.text = "BAD: " + BadScore.ToString();
-        MissNoteScoreText.text = "MISS NOTE: " + MissNoteScore.ToString();
-        GoodScoreText.text = "GOOD: " + GoodScore.ToString();
-        PerfectScoreText.text = "PERFECT: " + PerfectScore.ToString();
-        MissScoreText.text = "MISS: " + MissScore.ToString();
+        BadScoreText.text = BadScore.ToString();
+        MissNoteScoreText.text = MissNoteScore.ToString();
+        GoodScoreText.text = GoodScore.ToString();
+        PerfectScoreText.text = PerfectScore.ToString();
         TotalScoreText.text = (TotalScore < 10) ? "0" + TotalScore : TotalScore.ToString();
         ComboText.text = "COMBO: x" + Combo.ToString();
         popUp.SetActive(false);
@@ -76,28 +73,28 @@ public class Score : MonoBehaviour
             case GetScore.Miss:
                 MissNoteScore += 1;
                 TotalScore -= point.missScore;
-                MissNoteScoreText.text = $"MISS NOTE: {MissNoteScore}";
+                MissNoteScoreText.text = $"{MissNoteScore}";
                 Instantiate(missEffect, new Vector3(0f, 4.2f, 0f), Quaternion.identity);
                 break;
 
             case GetScore.Good:
                 GoodScore += 1;
                 TotalScore += point.goodScore;
-                GoodScoreText.text = $"GOOD: {GoodScore}";
+                GoodScoreText.text = $"{GoodScore}";
                 Instantiate(goodEffect, new Vector3(0f, 4.2f, 0f), Quaternion.identity);
                 break;
 
             case GetScore.Perfect:
                 PerfectScore += 1;
                 TotalScore += point.perfectScore;
-                PerfectScoreText.text = $"PERFECT: {PerfectScore}";
+                PerfectScoreText.text = $"{PerfectScore}";
                 Instantiate(perfectEffect, new Vector3(0f, 4.2f, 0f), Quaternion.identity);
                 break;
 
             case GetScore.Bad:
                 BadScore += 1;
                 TotalScore -= point.badScore;
-                BadScoreText.text = $"BAD: {BadScore}";
+                BadScoreText.text = $"{BadScore}";
                 Instantiate(badEffect, new Vector3(0f, 4.2f, 0f), Quaternion.identity);
                 break;
 

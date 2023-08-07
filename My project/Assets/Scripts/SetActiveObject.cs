@@ -5,17 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class SetActiveObject : MonoBehaviour
 {
-    public GameObject mainMenu, popUpMode;
+    public GameObject selectMusic, uiSelectMusic, uiButton, update, flashSale, modeQuit, selectButton;
     void Start()
     {
-        mainMenu.SetActive(true);
-        popUpMode.SetActive(false);
+        
     }
 
-    public void ReturnMenuSong()
+    public void Play()
     {
-        popUpMode.SetActive(false);
-        mainMenu.SetActive(true);
+        uiButton.SetActive(false);
+        update.SetActive(false);
+        flashSale.SetActive(false);
+        selectMusic.SetActive(true);
+        uiSelectMusic.SetActive(true);
+    }
+
+    public void ModeQuit()
+    {
+        modeQuit.SetActive(false);
+        selectButton.SetActive(false);
+
     }
 
     public void ReturnToTitle()

@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MusicData", menuName = "My project/GetValue", order = 0)]
 public class GetValue : ScriptableObject {
     public string songName;
+    public Sprite image;
     public AudioClip song;
     public List<NoteData> Easy;
     public List<NoteData> Normal;

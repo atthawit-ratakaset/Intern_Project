@@ -53,7 +53,7 @@ public class GameControl : MonoBehaviour
 
     void Start()
     {
-        
+        Debug.Log(getMode);
         GameModeCheck();
         HpSetAtStart(); 
         MusicTimeCount();

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Music1
   m_EditorClassIdentifier: 
   songName: Disco Funk
+  image: {fileID: 21300000, guid: 949c0c3c685fec14482a1df148a64404, type: 3}
   song: {fileID: 8300000, guid: cc2e06e78c2f00f40b3bd5f4f7ee1b96, type: 3}
   Easy:
   - {fileID: -4224427041127809441, guid: 045676bcbbcff4c49a44cd0292656187, type: 3}

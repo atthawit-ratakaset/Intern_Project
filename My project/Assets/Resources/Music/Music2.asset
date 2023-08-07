@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Music2
   m_EditorClassIdentifier: 
   songName: Dance Electro
+  image: {fileID: 0}
   song: {fileID: 8300000, guid: 6df74b7e415b0004cbe399d58899fdcc, type: 3}
   Easy:
   - {fileID: 1963153502432437372, guid: 4be77b268032efd4ca464aa1e6670f6d, type: 3}

@@ -14,6 +14,17 @@ public class MenuButton : MonoBehaviour
     public GameObject load;
     public Image loadImage;
 
+    [Header("ModeSprite")]
+    public Image easyImage;
+    public Sprite easySelect;
+    public Sprite easyQuit;
+    public Image normalImage;
+    public Sprite normalSelect;
+    public Sprite normalQuit;
+    public Image hardImage;
+    public Sprite hardSelect;
+    public Sprite hardQuit;
+
     [HideInInspector]
     public int selectMode;
 
@@ -26,13 +37,37 @@ public class MenuButton : MonoBehaviour
 
     }
 
-    public void GetMode(int mode)
+    public void PlayScene()
     {
-        selectMode = mode;
-        scene = "PlayScene1";
-        StartCoroutine("LoadScene");
+        SceneManager.LoadScene("PlayScene1");
+        //scene = "PlayScene1";
+        //StartCoroutine("LoadScene");
     }
-    
+
+    public void GetEasyMode()
+    {
+        selectMode = 0;
+        easyImage.GetComponent<Image>().sprite = easySelect;
+        normalImage.GetComponent<Image>().sprite = normalQuit;
+        hardImage.GetComponent<Image>().sprite = hardQuit;
+    }
+
+    public void GetNormalMode()
+    {
+        selectMode = 1;
+        easyImage.GetComponent<Image>().sprite = easyQuit;
+        normalImage.GetComponent<Image>().sprite = normalSelect;
+        hardImage.GetComponent<Image>().sprite = hardQuit;
+    }
+
+    public void GetHardMode()
+    {
+        selectMode = 2;
+        easyImage.GetComponent<Image>().sprite = easyQuit;
+        normalImage.GetComponent<Image>().sprite = normalQuit;
+        hardImage.GetComponent<Image>().sprite = hardSelect;
+    }
+
     public IEnumerator LoadScene()
     {
         load.SetActive(true);
