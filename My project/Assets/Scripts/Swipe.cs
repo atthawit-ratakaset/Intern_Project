@@ -7,11 +7,6 @@ public class Swipe : MonoBehaviour
     float scorll_pos = 0;
     float[] pos;
 
-    private void Start()
-    {
-       
-        
-    }
 
     void Update()
     {
@@ -40,11 +35,11 @@ public class Swipe : MonoBehaviour
         {
             if (scorll_pos < pos[i] + (distance / 2) && scorll_pos > pos[i] - (distance / 2))
             {
-                transform.GetChild(i).localScale = Vector2.Lerp(transform.GetChild(i).localScale, new Vector2(1f, 1f), 0.1f);
+                transform.GetChild(i).localScale = Vector2.Lerp(transform.GetChild(i).localScale, new Vector2(1.0f, 1.0f), 0.1f);
                 for (int a = 0; a < pos.Length; a++)
                 {
                     if (a != i) {
-                        transform.GetChild(a).localScale = Vector2.Lerp(transform.GetChild(i).localScale, new Vector2(0.125f, 0.125f), 0.1f);
+                        transform.GetChild(a).localScale = Vector2.Lerp(transform.GetChild(i).localScale, new Vector2(0.05f, 0.05f), 0.1f);
                     }
                 }
             }

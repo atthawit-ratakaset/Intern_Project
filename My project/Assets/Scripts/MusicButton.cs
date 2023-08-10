@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class MusicButton : MonoBehaviour
 {
@@ -12,6 +10,7 @@ public class MusicButton : MonoBehaviour
     public static GetValue get;
     public TMP_Text songName;
     public Image image;
+    public Outline outline;
    
 
 
@@ -23,7 +22,6 @@ public class MusicButton : MonoBehaviour
         btn.onClick.AddListener(delegate () { SetDataMusic(musicData); });
         image.gameObject.GetComponent<Image>().sprite = musicData.image;
         songName.text = musicData.songName.ToString();
-        
     }
 
     public void SetDataMusic(GetValue getValue)
@@ -31,5 +29,7 @@ public class MusicButton : MonoBehaviour
         get = getValue;
 
     }
+
+
 
 }

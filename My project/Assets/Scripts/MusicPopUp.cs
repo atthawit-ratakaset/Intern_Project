@@ -11,11 +11,13 @@ public class MusicPopUp : MonoBehaviour
 
     void Start()
     {
+        
         getValue = Resources.Load<AllMusicData>("Music/MusicData");
         
         for (int i = 0; i < getValue.getMusicData.Length; i++)
         {
             MusicButton newButton = Instantiate(buttonPrefab, buttonParent.transform);
+            newButton.name = $"Music{i}";
             newButton.musicData = getValue.getMusicData[i];
 
             if (i == 0)
@@ -24,7 +26,7 @@ public class MusicPopUp : MonoBehaviour
             }
             
         }
-
+        
     }
 
   
