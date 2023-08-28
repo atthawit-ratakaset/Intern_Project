@@ -32,6 +32,8 @@ public class Score : MonoBehaviour
     public TMP_Text BadScoreText;
     public TMP_Text ComboText;
     public TMP_Text maxComboText;
+    public TMP_Text coinsText;
+    
     
     public enum GetScore
     {
@@ -53,6 +55,7 @@ public class Score : MonoBehaviour
     int Combo = 0;
     int maxCombo = 0;
 
+    CurrencyData currencyData;
     private void Awake(){
         instance = this;
     }
@@ -131,13 +134,23 @@ public class Score : MonoBehaviour
     }
 
     public void ShowScore() {
+        ServerApi.GetPlayerData((d) => { currencyData = d; }, (e) => { });
         popUp.SetActive(true);
+        if (TotalScore < 1000)
+        {
+            coinsText.text = "20";
+            currencyData.coins += int.Parse(coinsText.text);
+            currencyData.SaveCoins(currencyData.coins);
+        } else if (TotalScore < 10000)
+        {
+            coinsText.text = "50";
+            currencyData.coins += int.Parse(coinsText.text);
+            currencyData.SaveCoins(currencyData.coins);
+        }
         if (maxCombo < Combo)
         {
             maxCombo = Combo;
-        } else
-        {
-        }
+        } 
         
         for(int i = 0; i < hide.Count; i++)
         {

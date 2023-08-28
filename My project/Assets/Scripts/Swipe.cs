@@ -7,9 +7,14 @@ public class Swipe : MonoBehaviour
     float scorll_pos = 0;
     float[] pos;
 
+    public void Start()
+    {
+
+    }
 
     void Update()
     {
+
         pos = new float[transform.childCount];
         float distance = 1f / (pos.Length - 1f);
         for (int i = 0; i < pos.Length; i++)
@@ -30,6 +35,8 @@ public class Swipe : MonoBehaviour
 
             }
         }
+
+     
 
         for (int i = 0; i < pos.Length; i++)
         {

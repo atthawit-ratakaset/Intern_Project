@@ -3,12 +3,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class PlaySceneMenu : MonoBehaviour
 {
     public static PlaySceneMenu instance;
     public GameObject setting;
     public GameObject pause;
+    public GameObject popUpRetry;
+    public GameObject alertPopUp;
+    public TMP_Text currencyTypes;
+    CurrencyData playerData;
+    int currentEnergy;
 
     [Header("LoadScene")]
     public GameObject load;
@@ -94,12 +100,51 @@ public class PlaySceneMenu : MonoBehaviour
         }
     }
 
+    public void PopUpRetry()
+    {
+        popUpRetry.SetActive(true);
+    }
+
+    public void ClosePopUpRetry()
+    {
+        popUpRetry.SetActive(false);
+    }
+
     public void Retry()
     {
-        Time.timeScale = 1f;
-        StartCoroutine("LoadRetry");
-        selectMode = GameControl.instance.getMode;
+        ServerApi.GetPlayerData((d) => { playerData = d; }, (e) => { });
+        currentEnergy = playerData.energy;
+        if (currentEnergy >= 1)
+        {
+            currentEnergy--;
+          
+            playerData.SaveEnergy(currentEnergy);
+            //if (Energy.instance.isRestoring == false)
+            //{
+                //if (Energy.instance.currentEnergy + 1 == Energy.instance.maxEnergy)
+                //{
+                    //Energy.instance.nextEnergyTime = Energy.instance.AddDuration(DateTime.Now, Energy.instance.restoreDuration);
+                //}
+
+                //StartCoroutine(Energy.instance.RestoreEnergy());
+            //}
+            Time.timeScale = 1f;
+            StartCoroutine("LoadRetry");
+            selectMode = GameControl.instance.getMode;
+        }
+        else
+        {
+            alertPopUp.SetActive(true);
+            currencyTypes.text = "Energy";
+        }
+
     }
+
+    public void CloseAlert()
+    {
+        alertPopUp.SetActive(false);
+    }
+
 
     public IEnumerator LoadRetry()
     {

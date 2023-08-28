@@ -1,14 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class MenuButton : MonoBehaviour
 {
     public static MenuButton instance;
-    
+    CurrencyData currencyData;
+    int currentEnergy;
 
     [Header("LoadScene")]
     public GameObject load;
@@ -39,16 +40,15 @@ public class MenuButton : MonoBehaviour
     }
 
     public void PlayScene()
-    {   
+    {
+
+
         if (MusicButton.get != null)
         {
             scene = "PlayScene1";
             StartCoroutine("LoadScene");
-        } else
-        {
-            Debug.Log("Please choose music");
         }
-        
+
     }
 
     public void GetEasyMode()
@@ -75,6 +75,27 @@ public class MenuButton : MonoBehaviour
         hardImage.GetComponent<Image>().sprite = hardSelect;
     }
 
+    public void Test()
+    {
+        ServerApi.GetPlayerData((d) => { currencyData = d; }, (e) => { });
+        currentEnergy = currencyData.energy;
+        if (currentEnergy >= 1)
+        {
+            currentEnergy--;
+            currencyData.SaveEnergy(currentEnergy);
+
+            if (MusicButton.get != null)
+            {
+                scene = "PlayScene1";
+                StartCoroutine("LoadScene");
+            }
+
+        }
+        else
+        {
+            Debug.Log("Don't have Energy!");
+        }
+    }
     public IEnumerator LoadScene()
     {
         load.SetActive(true);
