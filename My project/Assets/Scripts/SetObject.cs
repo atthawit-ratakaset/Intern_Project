@@ -23,7 +23,6 @@ public class SetObject : MonoBehaviour
     public GameObject returnBtn;
     public GameObject update;
     public GameObject flashSale;
-    public GameObject resetCurrency;
     public GameObject buttonUI;
 
     [Header("STORAGE TEXT AND MENU")]
@@ -146,11 +145,10 @@ public class SetObject : MonoBehaviour
         update.SetActive(false);
         flashSale.SetActive(false);
         buttonUI.SetActive(false);
-        resetCurrency.SetActive(false);
         
         ServerApi.GetStorageButtonSkinData((d) => { currentButtonSkin = d; }, (e) => { });
-        
-        if (itemCountButtonSkin > currentButtonSkin.skinData.Count)
+
+        if (itemCountButtonSkin < currentButtonSkin.skinData.Count)
         {
             StorageShow.instance.CheckSkin("Storage/Button/ThemeData");
         }
@@ -169,7 +167,6 @@ public class SetObject : MonoBehaviour
         update.SetActive(true);
         flashSale.SetActive(true);
         buttonUI.SetActive(true);
-        resetCurrency.SetActive(true);
 
     }
 

@@ -8,6 +8,7 @@ public class PopUpBuy : MonoBehaviour
     private static PopUpBuy instance;
 
     public GameObject popUpBuy;
+    public GameObject popUpFinsh;
     public string IdObject;
     private CurrencyData playerData;
 
@@ -18,7 +19,7 @@ public class PopUpBuy : MonoBehaviour
         {
             IdObject = ButtonSkinDisplay.get.ID;
             GetID(IdObject);
-
+           
         }
 
 
@@ -30,18 +31,23 @@ public class PopUpBuy : MonoBehaviour
             if (ItemDisplay.get.types == CurrencytypesItmes.Coin)
             {
                 CoinsRefill();
+                
+                
             }
             else if (ItemDisplay.get.types == CurrencytypesItmes.Stamina)
             {
                 EnergyRefill();
+                
             }
             else if (ItemDisplay.get.types == CurrencytypesItmes.Diamond)
             {
                 DiamondsRefill();
+                
             }
         }
-
         Cancel();
+        FinshBuy();
+        
     }
 
     public void Cancel()
@@ -102,5 +108,15 @@ public class PopUpBuy : MonoBehaviour
 
         }
 
+    }
+
+    public void FinshBuy()
+    {
+        popUpFinsh.SetActive(true);
+    }
+
+    public void CloseFinshPopUp()
+    {
+        popUpFinsh.SetActive(false);
     }
 }
