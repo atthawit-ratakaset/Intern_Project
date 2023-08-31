@@ -41,7 +41,7 @@ public class MockUPGameServerAPI : IGameServersAdapter
 
     public async UniTask GetPlayerData(UnityAction<CurrencyData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
-        CurrencyData data = Resources.Load<CurrencyData>("Currency/CurrencyData");
+        CurrencyData data = Resources.Load<CurrencyData>("Currency/PlayerData");
 
         onComplete?.Invoke(data);
     }
@@ -109,7 +109,7 @@ public class MockUPGameServerAPI : IGameServersAdapter
 
     public async UniTask Test(IDObject idObject, UnityAction<ThemeData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
-        CurrencyData data = Resources.Load<CurrencyData>("Currency/CurrencyData");
+        CurrencyData data = Resources.Load<CurrencyData>("Currency/PlayerData");
         int currencyDimonds = data.diamonds;
         ThemeData themeShop = Resources.Load<ThemeData>("Shop/Theme/ButtonSkinData");
         ThemeData storageButtonSkinData = Resources.Load<ThemeData>("Storage/Button/ThemeData");

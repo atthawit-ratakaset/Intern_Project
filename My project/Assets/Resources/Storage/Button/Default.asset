@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Default
   m_EditorClassIdentifier: 
   ID: D01
+  equip: 0
   alreadyBuy: 1
   itemName: DefaultSkin
   itemImg: {fileID: 21300000, guid: 8a2059292c894a146be0e8d3e0c48e42, type: 3}

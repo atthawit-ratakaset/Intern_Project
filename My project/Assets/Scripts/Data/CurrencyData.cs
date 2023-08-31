@@ -8,10 +8,10 @@ using System;
 public class CurrencyData : ScriptableObject
 {
     public int energy;
-
-
     public int coins;
     public int diamonds;
+
+    public ThemeButtonSkinInfo playerButtonSkin;
 
 
     public void SaveEnergy(int num)
@@ -58,4 +58,13 @@ public class CurrencyData : ScriptableObject
     {
         diamond = diamonds;
     }
+
+    public void SaveButtonSkin(ThemeButtonSkinInfo data)
+    {
+        playerButtonSkin.equip = false;
+        data.equip = true;
+        playerButtonSkin = data;
+    }
+
+
 }

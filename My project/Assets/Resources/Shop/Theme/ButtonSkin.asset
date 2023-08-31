@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ButtonSkin
   m_EditorClassIdentifier: 
   ID: BS001
+  equip: 0
   alreadyBuy: 0
   itemName: Galaxy Pack
   itemImg: {fileID: 21300000, guid: 8945630442695e54ca687a36d2eb8dad, type: 3}

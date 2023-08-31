@@ -16,7 +16,8 @@ public class DataCurrency : MonoBehaviour
     void Start()
     {
         instance = this;
-        getData = Resources.Load<CurrencyData>("Currency/CurrencyData");
+        ServerApi.GetPlayerData((d) => { getData = d; }, (e) => { });
+
     }
 
     void Update()

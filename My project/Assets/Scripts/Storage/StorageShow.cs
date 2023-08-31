@@ -17,6 +17,9 @@ public class StorageShow : MonoBehaviour
     public Image itemImg;
     public TMP_Text itemInfo;
     public GameObject previewPopup;
+    public GameObject use;
+    public GameObject equipped;
+    public Button useButton;
     
   
     void Start()
@@ -38,7 +41,10 @@ public class StorageShow : MonoBehaviour
                 newButton.itemImg = itemImg;
                 newButton.itemInfo = itemInfo;
                 newButton.previewPopup = previewPopup;
-
+                newButton.use = use;
+                newButton.equipped = equipped;
+                newButton.useButton = useButton;
+                
                 if (i == 0)
                 {
                     newButton.SetDataItem(getData.skinData[i]);
@@ -60,7 +66,12 @@ public class StorageShow : MonoBehaviour
         newButton.itemImg = itemImg;
         newButton.itemInfo = itemInfo;
         newButton.previewPopup = previewPopup;
+        newButton.use = use;
+        newButton.equipped = equipped;
+        newButton.useButton = useButton;
 
+        newButton.SetDataItem(getData.skinData[0]);
+       
         
     }
 

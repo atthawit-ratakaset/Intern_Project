@@ -6,10 +6,12 @@ using UnityEngine.EventSystems;
 public class UpButtonGame : MonoBehaviour
 {
 
-    private SpriteRenderer theSR;
+    public SpriteRenderer theSR;
     [Header ("NOTE OBJECT DISPLAY")]
     public GameObject Square;
     public SpriteRenderer spiteRenderer;
+    CurrencyData playerData;
+
 
     [HideInInspector]
     public enum NoteTypes
@@ -44,8 +46,10 @@ public class UpButtonGame : MonoBehaviour
     }
 
     void Start()
-    {   
-       
+    {
+        ServerApi.GetPlayerData((d) => { playerData = d; }, (e) => { });
+
+
         hit = false;
         noteSp1 = false;
         noteSp2 = false;
@@ -57,12 +61,13 @@ public class UpButtonGame : MonoBehaviour
         subNote1 = false;
         subNote2 = false;
         subNote3 = false;
-        
-        //theSR.color = Color.blue;
-        Color color = theSR.material.color;
-        color.a = 0.5f;
-        theSR.material.color = color;
 
+        //theSR.color = Color.blue;
+        theSR.sprite = playerData.playerButtonSkin.itemImg;
+        //Color color = theSR.material.color;
+        //color.a = 0.5f;
+        //theSR.material.color = color;
+         
         Square.transform.localScale = new Vector3(0f, 0f, 1f);
         
 

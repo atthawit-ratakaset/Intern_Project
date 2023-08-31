@@ -81,7 +81,7 @@ public class PopUpBuy : MonoBehaviour
         ServerApi.Test(id, (d) => { }, (e) => { });
         if (id.canBuy == false)
         {
-            types = "Dimond";
+            types = "Diamond";
             alertText.text = $"Not enough {types}, want to buy more?";
             alertPopUp.SetActive(true);
         } else if (id.canBuy == true)
