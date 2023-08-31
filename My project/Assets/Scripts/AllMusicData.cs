@@ -7,7 +7,20 @@ using UnityEngine;
 
 public class AllMusicData : ScriptableObject
 {
-    public GetValue[] getMusicData;
-    
-    
+    public List<GetValue> getMusicData;
+
+    public void Remove(GetValue name)
+    {
+        getMusicData.Remove(name);
+    }
+
+    public void Add(GetValue name)
+    {
+        getMusicData.Add(name);
+    }
+
+    public void Save(AllMusicData musicData)
+    {
+        getMusicData = musicData.getMusicData;
+    }
 }

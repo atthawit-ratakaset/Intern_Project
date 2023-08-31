@@ -22,38 +22,12 @@ public class StorageShow : MonoBehaviour
     void Start()
     {
         instance = this;
-        getData = Resources.Load<ThemeData>(path);
-        itemCount = getData.skinData.Count;
-        if (itemCount == getData.skinData.Count)
-        {
-            for (int i = 0; i < getData.skinData.Count; i++)
-            {
-                StorageDisplay newButton = Instantiate(buttonPrefab, buttonParent.transform);
-                newButton.name = $"Music{i}";
-                newButton.items = getData.skinData[i];
-                newButton.itemName = itemName;
-                newButton.itemImg = itemImg;
-                newButton.itemInfo = itemInfo;
-                newButton.previewPopup = previewPopup;
-
-                if (i == 0)
-                {
-                    newButton.SetDataItem(getData.skinData[i]);
-
-                }
-
-
-            }
-        } else
-        {
-            CheckSkin(path);
-        }
         
     }
 
-    public void CheckSkin(string path)
+    public void CheckSkin()
     {
-        getData = Resources.Load<ThemeData>(path);
+        ServerApi.GetStorageButtonSkinData((d) => { getData = d; }, (e) => { });
         DestroyObject(buttonParent);
             for (int i = 0; i < getData.skinData.Count; i++)
             {
@@ -74,10 +48,20 @@ public class StorageShow : MonoBehaviour
             
         }
            
+    }
+
+    public void DefaultButtonSkin()
+    {
+        ServerApi.GetStorageButtonSkinData((d) => { getData = d; }, (e) => { });
+        StorageDisplay newButton = Instantiate(buttonPrefab, buttonParent.transform);
+        newButton.name = $"Music{0}";
+        newButton.items = getData.skinData[0];
+        newButton.itemName = itemName;
+        newButton.itemImg = itemImg;
+        newButton.itemInfo = itemInfo;
+        newButton.previewPopup = previewPopup;
+
         
-      
-
-
     }
 
     public void DestroyObject(GameObject gameObject)

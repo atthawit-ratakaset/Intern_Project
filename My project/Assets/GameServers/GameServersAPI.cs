@@ -25,6 +25,11 @@ public class GameServersAPI : IGameServersAdapter
         throw new System.NotImplementedException();
     }
 
+    public async UniTask GetMusicData(UnityAction<AllMusicData> onComplete, UnityAction<ErrorRequest> onFailed)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public async UniTask GetPlayerData(UnityAction<CurrencyData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
         throw new System.NotImplementedException();
@@ -45,7 +50,22 @@ public class GameServersAPI : IGameServersAdapter
         onComplete?.Invoke(rewardAll);
     }
 
-    public UniTask GetStorageButtonSkinData(UnityAction<ThemeData> onComplete, UnityAction<ErrorRequest> onFailed)
+    public async UniTask GetShopMusicData(UnityAction<AllMusicData> onComplete, UnityAction<ErrorRequest> onFailed)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public async UniTask GetStorageButtonSkinData(UnityAction<ThemeData> onComplete, UnityAction<ErrorRequest> onFailed)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public UniTask GetStorageMusicData(UnityAction<AllMusicData> onComplete, UnityAction<ErrorRequest> onFailed)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public async UniTask IdMusic(IDObject idObject, UnityAction<AllMusicData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
         throw new System.NotImplementedException();
     }

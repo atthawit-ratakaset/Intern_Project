@@ -11,7 +11,9 @@ public class MusicButton : MonoBehaviour
     public TMP_Text songName;
     public Image image;
     public Outline outline;
-   
+    public TMP_Text highScore;
+    public TMP_Text playCounts;
+    public GameObject frame;
 
 
 
@@ -20,14 +22,49 @@ public class MusicButton : MonoBehaviour
         instance = this;
         Button btn = GetComponent<Button>();
         btn.onClick.AddListener(delegate () { SetDataMusic(musicData); });
-        image.gameObject.GetComponent<Image>().sprite = musicData.image;
-        songName.text = musicData.songName.ToString();
+        if (musicData.alreadyBuy == false)
+        {
+            image.gameObject.GetComponent<Image>().sprite = musicData.imageLock;
+            songName.text = musicData.songName.ToString();
+        }
+        else
+        {
+            image.gameObject.GetComponent<Image>().sprite = musicData.image;
+            songName.text = musicData.songName.ToString();
+
+        }
+
     }
 
     public void SetDataMusic(GetValue getValue)
     {   
         get = getValue;
+        frame.SetActive(true);
+        if (musicData.alreadyBuy == false)
+        {
+            highScore.text = "No record";
+            playCounts.text = "No record";
+        }
+        else
+        {
+            if (musicData.highScore <= 0)
+            {
+                highScore.text = "No record";
+            }
+            else if (musicData.highScore > 0)
+            {
+                highScore.text = musicData.highScore.ToString();
+            }
 
+            if (musicData.playCount <= 0)
+            {
+                playCounts.text = "No record";
+            }
+            else if (musicData.playCount > 0)
+            {
+                playCounts.text = musicData.playCount.ToString();
+            }
+        }
     }
 
 

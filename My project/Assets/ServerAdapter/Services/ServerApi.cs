@@ -168,6 +168,75 @@ public static class ServerApi
         );
     }
 
+    public static async UniTask GetShopMusicData(UnityAction<AllMusicData> onComplete, UnityAction<ErrorRequest> onFailed)
+    {
+        string code = $"GetShopMusicData";
+        gameServersAPI.GetShopMusicData((data) =>
+        {
+            ClearCountAutoRetry(code);
+
+            onComplete?.Invoke(data);
+        }, async (error) =>
+        {
+            Debug.Log("error");
+            await ErrorRequestCall(code, async () => { await GetShopMusicData(onComplete, onFailed); }, () =>
+            {
+                onFailed?.Invoke(error);
+
+                Debug.LogWarning($"Failed to get data from server. \n{error.messege}");
+
+                return;
+            });
+        }
+        );
+    }
+
+    public static async UniTask GetStorageMusicData(UnityAction<AllMusicData> onComplete, UnityAction<ErrorRequest> onFailed)
+    {
+        string code = $"GetStorageMusicData";
+        gameServersAPI.GetStorageMusicData((data) =>
+        {
+            ClearCountAutoRetry(code);
+
+            onComplete?.Invoke(data);
+        }, async (error) =>
+        {
+            Debug.Log("error");
+            await ErrorRequestCall(code, async () => { await GetStorageMusicData(onComplete, onFailed); }, () =>
+            {
+                onFailed?.Invoke(error);
+
+                Debug.LogWarning($"Failed to get data from server. \n{error.messege}");
+
+                return;
+            });
+        }
+        );
+    }
+
+    public static async UniTask GetMusicData(UnityAction<AllMusicData> onComplete, UnityAction<ErrorRequest> onFailed)
+    {
+        string code = $"GetMusicData";
+        gameServersAPI.GetMusicData((data) =>
+        {
+            ClearCountAutoRetry(code);
+
+            onComplete?.Invoke(data);
+        }, async (error) =>
+        {
+            Debug.Log("error");
+            await ErrorRequestCall(code, async () => { await GetMusicData(onComplete, onFailed); }, () =>
+            {
+                onFailed?.Invoke(error);
+
+                Debug.LogWarning($"Failed to get data from server. \n{error.messege}");
+
+                return;
+            });
+        }
+        );
+    }
+
     public static async UniTask GetPlayerData(UnityAction<CurrencyData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
         string code = $"GetPlayerData";
@@ -219,7 +288,7 @@ public static class ServerApi
          gameServersAPI.Test(idObject, (data) =>
           {
               ClearCountAutoRetry(code);
-
+              
               onComplete?.Invoke(data);
           }, async (error) =>
           {
@@ -233,6 +302,29 @@ public static class ServerApi
                   return;
               });
           });
+
+    }
+
+    public static async UniTask IdMusic(IDObject idObject, UnityAction<AllMusicData> onComplete, UnityAction<ErrorRequest> onFailed)
+    {
+        string code = $"IdMusic";
+        gameServersAPI.IdMusic(idObject, (data) =>
+        {
+            ClearCountAutoRetry(code);
+
+            onComplete?.Invoke(data);
+        }, async (error) =>
+        {
+            Debug.Log("error");
+            await ErrorRequestCall(code, async () => { await IdMusic(idObject, onComplete, onFailed); }, () =>
+            {
+                onFailed?.Invoke(error);
+
+                Debug.LogWarning($"Failed to get data from server. \n{error.messege}");
+
+                return;
+            });
+        });
 
     }
 

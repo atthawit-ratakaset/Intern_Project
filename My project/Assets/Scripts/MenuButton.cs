@@ -10,6 +10,9 @@ public class MenuButton : MonoBehaviour
     public static MenuButton instance;
     CurrencyData currencyData;
     int currentEnergy;
+    public GameObject alertPopUp;
+    public TMP_Text alertText;
+    public TMP_Text name;
 
     [Header("LoadScene")]
     public GameObject load;
@@ -39,16 +42,41 @@ public class MenuButton : MonoBehaviour
 
     }
 
-    public void PlayScene()
+
+    public void AlertPopShow()
     {
-
-
-        if (MusicButton.get != null)
+        alertPopUp.SetActive(true);
+        if (MusicButton.get.alreadyBuy == true)
         {
-            scene = "PlayScene1";
-            StartCoroutine("LoadScene");
+            name.text = null; 
+            alertText.text = $"Not enough Energy, want to buy more?";
         }
+        else
+        {
+            name.text = MusicButton.get.songName;
+            alertText.text = $"You do not have this music! \n Do you want to buy?";
+        }
+    }
 
+    public void Cancel()
+    {
+        alertPopUp.SetActive(false);
+        
+    }
+
+    public void AlertBuy()
+    {
+        Cancel();
+        if (MusicButton.get.alreadyBuy == true)
+        {
+            SetObject.instance.EnergyMenu();
+        }
+        else
+        {
+            SetObject.instance.MusicMenu();
+        }
+        name.text = null;
+      
     }
 
     public void GetEasyMode()
@@ -79,21 +107,30 @@ public class MenuButton : MonoBehaviour
     {
         ServerApi.GetPlayerData((d) => { currencyData = d; }, (e) => { });
         currentEnergy = currencyData.energy;
-        if (currentEnergy >= 1)
+        if (MusicButton.get.alreadyBuy == true)
         {
-            currentEnergy--;
-            currencyData.SaveEnergy(currentEnergy);
-
-            if (MusicButton.get != null)
+            if (currentEnergy >= 1)
             {
-                scene = "PlayScene1";
-                StartCoroutine("LoadScene");
-            }
+                currentEnergy--;
+                currencyData.SaveEnergy(currentEnergy);
 
+                if (MusicButton.get != null)
+                {
+                    scene = "PlayScene1";
+                    StartCoroutine("LoadScene");
+                }
+
+            }
+            else
+            {
+                AlertPopShow();
+                Debug.Log("Don't have Energy!");
+            }
         }
-        else
+        else if (MusicButton.get.alreadyBuy == false)
         {
-            Debug.Log("Don't have Energy!");
+            AlertPopShow();
+            Debug.Log("You do not have this music");
         }
     }
     public IEnumerator LoadScene()

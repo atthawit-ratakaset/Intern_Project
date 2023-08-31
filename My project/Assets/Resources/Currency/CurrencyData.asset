@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75f6f0168e2d7a419a21c39b0ba6583, type: 3}
   m_Name: CurrencyData
   m_EditorClassIdentifier: 
-  energy: 10
-  coins: 10000
-  diamonds: 10000
+  energy: 0
+  coins: 10500
+  diamonds: 0

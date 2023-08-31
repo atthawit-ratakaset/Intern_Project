@@ -21,7 +21,7 @@ public class ButtonSkinDisplay : MonoBehaviour
     {
         instance = this;
         
-        button.onClick.AddListener(delegate () { PopUpBuy(info); });
+        button.onClick.AddListener(delegate () { PopUpToBuy(info); });
         if(info.alreadyBuy == false)
         {
             itemImg.gameObject.GetComponent<Image>().sprite = info.itemImg;
@@ -39,15 +39,12 @@ public class ButtonSkinDisplay : MonoBehaviour
         
     }
 
-    public void PopUpBuy(ThemeButtonSkinInfo data)
+    public void PopUpToBuy(ThemeButtonSkinInfo data)
     {
-        popUpBuy.SetActive(true);
+        SetObject.instance.PopUpComfirm();
         get = data;
+        PopUpBuy.instance.idName.text = get.itemName;
 
     }
 
-    public void Cancel()
-    {
-        popUpBuy.SetActive(false);
-    }
 }

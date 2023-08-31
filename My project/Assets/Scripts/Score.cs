@@ -163,7 +163,8 @@ public class Score : MonoBehaviour
         ShowScoreText.text = TotalScore.ToString();
         maxComboText.text = maxCombo.ToString();
         TotalScoreText.text = (TotalScore < 10) ? "0" + TotalScore : TotalScore.ToString();
-
+        MusicButton.get.SaveHighSroce(TotalScore);
+        MusicButton.get.AddPlayCount();
     }
     
 

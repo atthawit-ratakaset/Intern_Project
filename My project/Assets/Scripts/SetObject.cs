@@ -6,7 +6,7 @@ using TMPro;
 public class SetObject : MonoBehaviour
 {
     public static SetObject instance;
-
+    public AudioSource audioSource;
 
     [Header("SCENCE")]
     public GameObject menuScene;
@@ -29,6 +29,8 @@ public class SetObject : MonoBehaviour
     public TMP_Text buttonStorageText;
     public TMP_Text themeStorageText;
     public TMP_Text musicStorageText;
+    public GameObject buttonSkinShow;
+    public GameObject musicShow;
     public GameObject buttonStorage;
     public GameObject themeStorage;
     public GameObject musicStorage;
@@ -38,15 +40,23 @@ public class SetObject : MonoBehaviour
 
     [Header("PLAY POPUP")]
     public GameObject helpPanel;
+    int itemCountMusic;
+    AllMusicData musicData;
+    AllMusicData currentMusicData;
 
     [Header("SHOP MENU")]
     public GameObject special;
+    public GameObject music;
     public GameObject theme;
     public GameObject currency;
     public GameObject energyPack;
+    public GameObject popUpBuy;
+    public GameObject popUpComfirm;
+    public GameObject popUpFinsh;
 
     [Header("SHOP TEXT")]
     public TMP_Text specialText;
+    public TMP_Text musicText;
     public TMP_Text themeText;
     public TMP_Text currencyText;
     public TMP_Text energyPackText;
@@ -81,12 +91,15 @@ public class SetObject : MonoBehaviour
     public void Start()
     {
         ServerApi.GetStorageButtonSkinData((d) => { data = d; }, (e) => { });
+        ServerApi.GetMusicData((d) => { musicData = d; }, (e) => { });
         itemCountButtonSkin = data.skinData.Count;
+        itemCountMusic = musicData.getMusicData.Count;
         test = StateScene.menu;
         if (whatScene != test)
         {
             menuScene.SetActive(false);
             selectMusicScene.SetActive(true);
+            
         }
     }
 
@@ -98,7 +111,7 @@ public class SetObject : MonoBehaviour
         play = true;
         menuScene.SetActive(false);
         selectMusicScene.SetActive(true);
-
+        MusicPopUp.instance.CheckMusic();
     }
 
     public void Help()
@@ -132,7 +145,7 @@ public class SetObject : MonoBehaviour
     }
 
     public void Storage()
-    {
+    {   
         storagePopUp.SetActive(true);
         returnBtn.SetActive(true);
         buttonStorageText.color = new Color32(253, 6, 83, 255);
@@ -145,13 +158,19 @@ public class SetObject : MonoBehaviour
         update.SetActive(false);
         flashSale.SetActive(false);
         buttonUI.SetActive(false);
-        
+        buttonSkinShow.SetActive(true);
+        musicShow.SetActive(false);
         ServerApi.GetStorageButtonSkinData((d) => { currentButtonSkin = d; }, (e) => { });
 
-        if (itemCountButtonSkin < currentButtonSkin.skinData.Count)
+        if (itemCountButtonSkin <= currentButtonSkin.skinData.Count)
         {
-            StorageShow.instance.CheckSkin("Storage/Button/ThemeData");
+            StorageShow.instance.CheckSkin();
+
+        } else if (itemCountButtonSkin == 1)
+        {
+            StorageShow.instance.DefaultButtonSkin();
         }
+
         
     }
     public void ReturnLobby()
@@ -167,12 +186,16 @@ public class SetObject : MonoBehaviour
         update.SetActive(true);
         flashSale.SetActive(true);
         buttonUI.SetActive(true);
-
+        audioSource.clip = null;
     }
 
     public void StorageButton()
     {
-        
+        buttonSkinShow.SetActive(true);
+        musicShow.SetActive(false);
+        StorageShow.instance.CheckSkin();
+        audioSource.clip = null;
+
         buttonStorageText.color = new Color32(253, 6, 83, 255);
         themeStorageText.color = Color.white;
         musicStorageText.color = Color.white;
@@ -182,7 +205,11 @@ public class SetObject : MonoBehaviour
     }
 
     public void StorageTheme()
-    {
+    {   
+        buttonSkinShow.SetActive(false);
+        musicShow.SetActive(false);
+        audioSource.clip = null;
+
         buttonStorageText.color = Color.white;
         themeStorageText.color = new Color32(253, 6, 83, 255);
         musicStorageText.color = Color.white;
@@ -193,6 +220,11 @@ public class SetObject : MonoBehaviour
 
     public void StorageMusic()
     {
+        buttonSkinShow.SetActive(false);
+        musicShow.SetActive(true);
+        MusicStorageShow.instance.CheckMusic();
+
+
         buttonStorageText.color = Color.white;
         themeStorageText.color = Color.white;
         musicStorageText.color = new Color32(253, 6, 83, 255);
@@ -217,11 +249,13 @@ public class SetObject : MonoBehaviour
         selectMusicScene.SetActive(false);
         shopScene.SetActive(true);
         special.SetActive(true);
+        music.SetActive(false);
         theme.SetActive(false);
         currency.SetActive(false);
         energyPack.SetActive(false);
         specialText.color = Color.white;
         themeText.color = new Color32(253, 6, 83, 255);
+        musicText.color = new Color32(253, 6, 83, 255);
         currencyText.color = new Color32(253, 6, 83, 255);
         energyPackText.color = new Color32(253, 6, 83, 255);
 
@@ -247,10 +281,12 @@ public class SetObject : MonoBehaviour
         selectMusicScene.SetActive(false);
         shopScene.SetActive(true);
         special.SetActive(true);
+        music.SetActive(false);
         theme.SetActive(false);
         currency.SetActive(false);
         energyPack.SetActive(false);
         specialText.color = Color.white;
+        musicText.color = new Color32(253, 6, 83, 255);
         themeText.color = new Color32(253, 6, 83, 255);
         currencyText.color = new Color32(253, 6, 83, 255);
         energyPackText.color = new Color32(253, 6, 83, 255);
@@ -262,10 +298,12 @@ public class SetObject : MonoBehaviour
         selectMusicScene.SetActive(false);
         shopScene.SetActive(true);
         special.SetActive(false);
+        music.SetActive(false);
         theme.SetActive(false);
         currency.SetActive(false);
         energyPack.SetActive(true);
         specialText.color = new Color32(253, 6, 83, 255);
+        musicText.color = new Color32(253, 6, 83, 255);
         themeText.color = new Color32(253, 6, 83, 255);
         currencyText.color = new Color32(253, 6, 83, 255);
         energyPackText.color = Color.white;
@@ -277,10 +315,12 @@ public class SetObject : MonoBehaviour
         selectMusicScene.SetActive(false);
         shopScene.SetActive(true);
         special.SetActive(false);
+        music.SetActive(false);
         theme.SetActive(false);
         currency.SetActive(true);
         energyPack.SetActive(false);
         specialText.color = new Color32(253, 6, 83, 255);
+        musicText.color = new Color32(253, 6, 83, 255);
         themeText.color = new Color32(253, 6, 83, 255);
         currencyText.color = Color.white;
         energyPackText.color = new Color32(253, 6, 83, 255);
@@ -297,10 +337,12 @@ public class SetObject : MonoBehaviour
         selectMusicScene.SetActive(false);
         shopScene.SetActive(true);
         special.SetActive(false);
+        music.SetActive(false);
         theme.SetActive(false);
         currency.SetActive(true);
         energyPack.SetActive(false);
         specialText.color = new Color32(253, 6, 83, 255);
+        musicText.color = new Color32(253, 6, 83, 255);
         themeText.color = new Color32(253, 6, 83, 255);
         currencyText.color = Color.white;
         energyPackText.color = new Color32(253, 6, 83, 255);
@@ -317,14 +359,33 @@ public class SetObject : MonoBehaviour
         selectMusicScene.SetActive(false);
         shopScene.SetActive(true);
         special.SetActive(false);
+        music.SetActive(false);
         theme.SetActive(true);
         currency.SetActive(false);
         energyPack.SetActive(false);
         specialText.color = new Color32(253, 6, 83, 255);
+        musicText.color = new Color32(253, 6, 83, 255);
         themeText.color = Color.white;
         currencyText.color = new Color32(253, 6, 83, 255);
         energyPackText.color = new Color32(253, 6, 83, 255);
         ButtonMenu();
+    }
+
+    public void MusicMenu()
+    {
+        menuScene.SetActive(false);
+        selectMusicScene.SetActive(false);
+        shopScene.SetActive(true);
+        special.SetActive(false);
+        music.SetActive(true);
+        theme.SetActive(false);
+        currency.SetActive(false);
+        energyPack.SetActive(false);
+        specialText.color = new Color32(253, 6, 83, 255);
+        musicText.color = Color.white;
+        themeText.color = new Color32(253, 6, 83, 255);
+        currencyText.color = new Color32(253, 6, 83, 255);
+        energyPackText.color = new Color32(253, 6, 83, 255);
     }
 
     public void ButtonMenu()
@@ -376,5 +437,12 @@ public class SetObject : MonoBehaviour
         themeMenuText.color = Color.white;
     }
 
+    public void PopUpComfirm()
+    {
+        popUpBuy.SetActive(true);
+        popUpComfirm.SetActive(true);
+        popUpFinsh.SetActive(false);
+        
+    }
 }
 

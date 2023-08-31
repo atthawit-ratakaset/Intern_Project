@@ -31,7 +31,7 @@ public class ItemDisplay : MonoBehaviour
         } else if (info.types == CurrencytypesItmes.Coin || info.types == CurrencytypesItmes.Diamond ||
                info.types == CurrencytypesItmes.Stamina)
         {
-            button.onClick.AddListener(delegate () { PopUpBuy(info); });
+            button.onClick.AddListener(delegate () { PopUpToBuy(info); });
             itemImg.gameObject.GetComponent<Image>().sprite = info.itemImg;
             itemName.text = info.itemName;
             itemValue.text = info.itemValue.ToString();
@@ -41,16 +41,12 @@ public class ItemDisplay : MonoBehaviour
         
     }
     
-    public void PopUpBuy(CurrencyItemInfo data)
-    {   
-        popUpBuy.SetActive(true);
-        get = data;
-        
-    }
-
-    public void Cancel()
+    public void PopUpToBuy(CurrencyItemInfo data)
     {
-        popUpBuy.SetActive(false);
+        SetObject.instance.PopUpComfirm();
+        get = data;
+        PopUpBuy.instance.idName.text = get.itemName;
+        
     }
 
     

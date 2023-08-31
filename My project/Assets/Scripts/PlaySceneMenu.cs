@@ -10,11 +10,13 @@ public class PlaySceneMenu : MonoBehaviour
     public static PlaySceneMenu instance;
     public GameObject setting;
     public GameObject pause;
-    public GameObject popUpRetry;
+    public GameObject popUpFinsh;
+    public TMP_Text finshBuyText;
     public GameObject alertPopUp;
     public TMP_Text currencyTypes;
     CurrencyData playerData;
     int currentEnergy;
+    int currentDiamond;
 
     [Header("LoadScene")]
     public GameObject load;
@@ -64,6 +66,7 @@ public class PlaySceneMenu : MonoBehaviour
         Time.timeScale = 1f;
         scene = "Menu";
         StartCoroutine("LoadScene");
+        
 
     }
 
@@ -100,14 +103,31 @@ public class PlaySceneMenu : MonoBehaviour
         }
     }
 
-    public void PopUpRetry()
+    public void AlertBuy()
     {
-        popUpRetry.SetActive(true);
+        alertPopUp.SetActive(false);
+        ServerApi.GetPlayerData((d) => { playerData = d; }, (e) => { });
+        currentEnergy = playerData.energy;
+        currentDiamond = playerData.diamonds;
+        if (currentDiamond >= 10)
+        {
+            currentDiamond -= 10;
+            currentEnergy += 5;
+            playerData.SaveDiamonds(currentDiamond);
+            playerData.SaveEnergy(currentEnergy);
+            alertPopUp.SetActive(false);
+            popUpFinsh.SetActive(true);
+            finshBuyText.text = "Complete Buy!";
+        } else
+        {
+            popUpFinsh.SetActive(true);
+            finshBuyText.text = "You do not have enough diamond to buy!";
+        }
     }
 
-    public void ClosePopUpRetry()
+    public void CloseFinshPopUp()
     {
-        popUpRetry.SetActive(false);
+        popUpFinsh.SetActive(false);
     }
 
     public void Retry()
@@ -135,7 +155,8 @@ public class PlaySceneMenu : MonoBehaviour
         else
         {
             alertPopUp.SetActive(true);
-            currencyTypes.text = "Energy";
+            currencyTypes.text = "Oop! Sorry Not enough energy \nDo you want to buy 5 energy use 10 dimonds?";
+
         }
 
     }
