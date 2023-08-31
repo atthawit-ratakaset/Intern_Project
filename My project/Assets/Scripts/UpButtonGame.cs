@@ -42,7 +42,7 @@ public class UpButtonGame : MonoBehaviour
 
     void Awake() {
 
-        theSR = GetComponent<SpriteRenderer>();
+        
     }
 
     void Start()
@@ -64,6 +64,7 @@ public class UpButtonGame : MonoBehaviour
 
         //theSR.color = Color.blue;
         theSR.sprite = playerData.playerButtonSkin.itemImg;
+        Debug.Log(playerData.playerButtonSkin.itemImg);
         //Color color = theSR.material.color;
         //color.a = 0.5f;
         //theSR.material.color = color;
