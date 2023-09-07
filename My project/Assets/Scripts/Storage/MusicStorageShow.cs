@@ -17,6 +17,7 @@ public class MusicStorageShow : MonoBehaviour
     public GameObject previewPopup;
     public GameObject play;
     public GameObject pause;
+    public Button selectSong;
     public Button playButton;
     public Button pauseButton;
     public AudioSource audioSource;
@@ -45,6 +46,7 @@ public class MusicStorageShow : MonoBehaviour
             newButton.pasueButton = pauseButton;
             newButton.play = play;
             newButton.pasue = pause;
+            newButton.selectSong = selectSong;
             if (i == 0)
             {
                 newButton.SetDataItem(getData.getMusicData[i]);

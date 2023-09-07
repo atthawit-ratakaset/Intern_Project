@@ -13,6 +13,9 @@ public class MenuButton : MonoBehaviour
     public GameObject alertPopUp;
     public TMP_Text alertText;
     public TMP_Text name;
+    public TMP_Text highScore;
+    public TMP_Text highScoreLoad;
+    public TMP_Text playCounts;
 
     [Header("LoadScene")]
     public GameObject load;
@@ -20,18 +23,15 @@ public class MenuButton : MonoBehaviour
     public TMP_Text levelMode;
 
     [Header("ModeSprite")]
-    public Image easyImage;
-    public Sprite easySelect;
-    public Sprite easyQuit;
-    public Image normalImage;
-    public Sprite normalSelect;
-    public Sprite normalQuit;
-    public Image hardImage;
-    public Sprite hardSelect;
-    public Sprite hardQuit;
+    public GameObject easy;
+    public Button easyBtn;
+    public GameObject normal;
+    public Button normalBtn;
+    public GameObject hard;
+    public Button hardBtn;
 
     [HideInInspector]
-    public int selectMode;
+    public static int selectMode;
 
     [HideInInspector]
     public string scene;
@@ -39,7 +39,16 @@ public class MenuButton : MonoBehaviour
     void Start()
     {
         instance = this;
-
+        if (selectMode == 0)
+        {
+            easyBtn.onClick.Invoke();
+        } else if (selectMode == 1)
+        {
+            normalBtn.onClick.Invoke();
+        } else if (selectMode == 2)
+        {
+            hardBtn.onClick.Invoke();
+        }
     }
 
 
@@ -82,25 +91,106 @@ public class MenuButton : MonoBehaviour
     public void GetEasyMode()
     {
         selectMode = 0;
-        easyImage.GetComponent<Image>().sprite = easySelect;
-        normalImage.GetComponent<Image>().sprite = normalQuit;
-        hardImage.GetComponent<Image>().sprite = hardQuit;
+        easy.SetActive(true);
+        normal.SetActive(false);
+        hard.SetActive(false);
+        if (MusicButton.get.alreadyBuy == false)
+        {
+            highScore.text = "No record";
+            playCounts.text = "No record";
+        }
+        else
+        {
+            if (MusicButton.get.highScoreEasy <= 0)
+            {
+                highScore.text = "No record";
+                highScoreLoad.text = "No record";
+            }
+            else if (MusicButton.get.highScoreEasy > 0)
+            {
+                highScore.text = MusicButton.get.highScoreEasy.ToString();
+                
+            }
+
+            if (MusicButton.get.playCountEasy <= 0)
+            {
+                playCounts.text = "No record";
+            }
+            else if (MusicButton.get.playCountEasy > 0)
+            {
+                playCounts.text = MusicButton.get.playCountEasy.ToString();
+            }
+        }
     }
 
     public void GetNormalMode()
-    { 
+    {
         selectMode = 1;
-        easyImage.GetComponent<Image>().sprite = easyQuit;
-        normalImage.GetComponent<Image>().sprite = normalSelect;
-        hardImage.GetComponent<Image>().sprite = hardQuit;
+        easy.SetActive(false);
+        normal.SetActive(true);
+        hard.SetActive(false);
+        if (MusicButton.get.alreadyBuy == false)
+        {
+            highScore.text = "No record";
+            playCounts.text = "No record";
+        }
+        else
+        {
+            if (MusicButton.get.highScoreNormal <= 0)
+            {
+                highScore.text = "No record";
+                highScoreLoad.text = "No record";
+            }
+            else if (MusicButton.get.highScoreNormal > 0)
+            {
+                highScore.text = MusicButton.get.highScoreNormal.ToString();
+                
+            }
+
+            if (MusicButton.get.playCountNormal <= 0)
+            {
+                playCounts.text = "No record";
+            }
+            else if (MusicButton.get.playCountNormal > 0)
+            {
+                playCounts.text = MusicButton.get.playCountNormal.ToString();
+            }
+        }
     }
 
     public void GetHardMode()
     {
         selectMode = 2;
-        easyImage.GetComponent<Image>().sprite = easyQuit;
-        normalImage.GetComponent<Image>().sprite = normalQuit;
-        hardImage.GetComponent<Image>().sprite = hardSelect;
+        easy.SetActive(false);
+        normal.SetActive(false);
+        hard.SetActive(true);
+        if (MusicButton.get.alreadyBuy == false)
+        {
+            highScore.text = "No record";
+            playCounts.text = "No record";
+        }
+        else
+        {
+            if (MusicButton.get.highScoreHard <= 0)
+            {
+                highScore.text = "No record";
+                highScoreLoad.text = "No record";
+            }
+            else if (MusicButton.get.highScoreHard > 0)
+            {
+                highScore.text = MusicButton.get.highScoreHard.ToString();
+                
+            }
+
+            if (MusicButton.get.playCountHard <= 0)
+            {
+                playCounts.text = "No record";
+            }
+            else if (MusicButton.get.playCountHard > 0)
+            {
+                playCounts.text = MusicButton.get.playCountHard.ToString();
+            }
+        }
     }
 
     public void Test()
@@ -113,7 +203,7 @@ public class MenuButton : MonoBehaviour
             {
                 currentEnergy--;
                 currencyData.SaveEnergy(currentEnergy);
-
+                currencyData.Save();
                 if (MusicButton.get != null)
                 {
                     scene = "PlayScene1";
@@ -143,14 +233,17 @@ public class MenuButton : MonoBehaviour
             if (selectMode == 0)
             {
                 levelMode.text = "Easy";
+                highScoreLoad.text = MusicButton.get.highScoreEasy.ToString();
             }
             else if (selectMode == 1)
             {
                 levelMode.text = "Normal";
+                highScoreLoad.text = MusicButton.get.highScoreNormal.ToString();
             }
             else if (selectMode == 2)
             {
                 levelMode.text = "Hard";
+                highScoreLoad.text = MusicButton.get.highScoreHard.ToString();
             }
             yield return null;
         }

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75f6f0168e2d7a419a21c39b0ba6583, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  energy: 3
-  coins: 10500
-  diamonds: 83
+  saveKey: PlayerData
+  playerName: 
+  energy: 5
+  coins: 10000
+  diamonds: 100
   playerButtonSkin: {fileID: 11400000, guid: 892cc656faf2964499115fc32df293e3, type: 2}

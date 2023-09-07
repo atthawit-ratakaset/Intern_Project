@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class AllMusicData : ScriptableObject
 {
+    public string saveKey;
     public List<GetValue> getMusicData;
 
     public void Remove(GetValue name)
@@ -22,5 +23,23 @@ public class AllMusicData : ScriptableObject
     public void Save(AllMusicData musicData)
     {
         getMusicData = musicData.getMusicData;
+    }
+
+    public void Load()
+    {
+        JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(saveKey), this);
+        Debug.Log("overwrite data");
+    }
+
+
+    public void Save()
+    {
+        if (saveKey.Equals(""))
+            saveKey = this.name;
+
+        string jsonData = JsonUtility.ToJson(this, true);
+        PlayerPrefs.SetString(saveKey, jsonData);
+        PlayerPrefs.Save();
+
     }
 }

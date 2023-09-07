@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b034481b9d3c014e8e11f60152d45e2, type: 3}
   m_Name: ShopMusic
   m_EditorClassIdentifier: 
+  saveKey: ShopMusic
   getMusicData:
   - {fileID: 11400000, guid: 6880e628d160f5941aa2606e92d74fe1, type: 2}
   - {fileID: 11400000, guid: c7bfb56c7f487bd4bb3054d4f02b7b54, type: 2}

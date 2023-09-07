@@ -64,10 +64,10 @@ public class UpButtonGame : MonoBehaviour
 
         //theSR.color = Color.blue;
         theSR.sprite = playerData.playerButtonSkin.itemImg;
-        Debug.Log(playerData.playerButtonSkin.itemImg);
-        //Color color = theSR.material.color;
-        //color.a = 0.5f;
-        //theSR.material.color = color;
+     
+        Color color = theSR.material.color;
+        color.a = 0.75f;
+        theSR.material.color = color;
          
         Square.transform.localScale = new Vector3(0f, 0f, 1f);
         

@@ -32,7 +32,6 @@ public class ShopMusicDisplay : MonoBehaviour
         }
         else
         {
-            theSR.color = Color.black;
             itemImg.gameObject.GetComponent<Image>().sprite = info.image;
             itemName.text = info.songName;
             priceButton.SetActive(false);

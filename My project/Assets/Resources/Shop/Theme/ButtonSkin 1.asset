@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ButtonSkin 1
   m_EditorClassIdentifier: 
   ID: BS002
+  equip: 0
   alreadyBuy: 0
   itemName: Cyber Punk Set
   itemImg: {fileID: 21300000, guid: 37b7f8bba74fade4da2622a5d28569cc, type: 3}

@@ -6,7 +6,27 @@ using UnityEngine;
 
 public class ThemeData : ScriptableObject
 {
+    public string saveKey;
     public List<ThemeButtonSkinInfo> skinData;
+
+
+    public void Load()
+    {
+        JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(saveKey), this);
+        Debug.Log("overwrite data");
+    }
+
+
+    public void Save()
+    {
+        if (saveKey.Equals(""))
+            saveKey = this.name;
+
+        string jsonData = JsonUtility.ToJson(this, true);
+        PlayerPrefs.SetString(saveKey, jsonData);
+        PlayerPrefs.Save();
+
+    }
 
     public void Remove(ThemeButtonSkinInfo name)
     {

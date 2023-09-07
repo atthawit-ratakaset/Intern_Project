@@ -50,8 +50,13 @@ public class Swipe : MonoBehaviour
                         
                         transform.GetChild(a).localScale = Vector2.Lerp(transform.GetChild(i).localScale, new Vector2(0.005f, 0.005f), 0.1f);
                         Color color = transform.GetChild(a).gameObject.GetComponent<MusicButton>().image.color;
-                        
-                        color.a = 0.5f;
+                        if (transform.GetChild(a).gameObject.GetComponent<MusicButton>().musicData.alreadyBuy == true)
+                        {
+                            color.a = 1f;
+                        } else
+                        {
+                            color.a = 0.5f;
+                        }
                         transform.GetChild(a).gameObject.GetComponent<MusicButton>().image.color = color;
                         transform.GetChild(a).gameObject.GetComponent<MusicButton>().frame.SetActive(false);
                     } else

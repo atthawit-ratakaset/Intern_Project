@@ -118,6 +118,7 @@ public class PopUpBuy : MonoBehaviour
         currencyDimonds += ItemDisplay.get.itemValue;
 
         playerData.SaveDiamonds(currencyDimonds);
+        playerData.Save();
         popUpComfirm.SetActive(false);
         FinshBuy();
     }
@@ -136,6 +137,7 @@ public class PopUpBuy : MonoBehaviour
 
             currencyCoins += ItemDisplay.get.itemValue;
             playerData.SaveCoins(currencyCoins);
+            playerData.Save();
             popUpComfirm.SetActive(false);
             FinshBuy();
         } else if (currencyDimonds != ItemDisplay.get.price)
@@ -176,6 +178,7 @@ public class PopUpBuy : MonoBehaviour
 
             currencyEnergy += ItemDisplay.get.itemValue;
             playerData.SaveEnergy(currencyEnergy);
+            playerData.Save();
             popUpComfirm.SetActive(false);
             FinshBuy();
         }

@@ -11,6 +11,7 @@ public class MusicStorage : MonoBehaviour
     public Image image;
     public TMP_Text songName;
     AudioClip clip;
+    public int songNum;
 
     [Header("PopUp")]
     public TMP_Text itemName;
@@ -19,6 +20,7 @@ public class MusicStorage : MonoBehaviour
     public GameObject previewPopup;
     public GameObject play;
     public GameObject pasue;
+    public Button selectSong;
     public Button playButton;
     public Button pasueButton;
     public AudioSource audioSource;
@@ -43,11 +45,12 @@ public class MusicStorage : MonoBehaviour
         itemInfo.text = get.songInfo;
         playButton.onClick.RemoveAllListeners();
         pasueButton.onClick.RemoveAllListeners();
-        playButton.onClick.AddListener(delegate () { Play(); });
+        selectSong.onClick.AddListener(delegate () { Play(); });
+        playButton.onClick.AddListener(delegate () { PlayTestMusic(); });
         pasueButton.onClick.AddListener(delegate () { Pause(); });
     }
 
-    public void Play()
+    public void PlayTestMusic()
     {
         play.SetActive(false);
         pasue.SetActive(true);
@@ -61,5 +64,11 @@ public class MusicStorage : MonoBehaviour
         audioSource.Pause();
         pasue.SetActive(false);
         play.SetActive(true);
+    }
+
+    public void Play()
+    {
+        songNum = 2;
+        SetObject.instance.Play();
     }
 }

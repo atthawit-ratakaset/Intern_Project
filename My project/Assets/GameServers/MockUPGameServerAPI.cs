@@ -35,6 +35,8 @@ public class MockUPGameServerAPI : IGameServersAdapter
     public async UniTask GetMusicData(UnityAction<AllMusicData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
         AllMusicData data = Resources.Load<AllMusicData>("Music/MusicData");
+        data.Load();
+
 
         onComplete?.Invoke(data);
     }
@@ -42,7 +44,8 @@ public class MockUPGameServerAPI : IGameServersAdapter
     public async UniTask GetPlayerData(UnityAction<CurrencyData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
         CurrencyData data = Resources.Load<CurrencyData>("Currency/PlayerData");
-
+        data.Save();
+        data.Load();
         onComplete?.Invoke(data);
     }
 
@@ -57,27 +60,27 @@ public class MockUPGameServerAPI : IGameServersAdapter
     public async UniTask GetShopMusicData(UnityAction<AllMusicData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
         AllMusicData data = Resources.Load<AllMusicData>("Shop/Music/ShopMusic");
-
+        data.Load();
         onComplete?.Invoke(data);
     }
 
     public async UniTask GetStorageButtonSkinData(UnityAction<ThemeData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
         ThemeData data = Resources.Load<ThemeData>("Storage/Button/ThemeData");
-
+        data.Load();
         onComplete?.Invoke(data);
     }
 
     public async UniTask GetStorageMusicData(UnityAction<AllMusicData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
         AllMusicData data = Resources.Load<AllMusicData>("Storage/Music/StorageMusic");
-
+        data.Load();
         onComplete?.Invoke(data);
     }
 
     public async UniTask IdMusic(IDObject idObject, UnityAction<AllMusicData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
-        CurrencyData data = Resources.Load<CurrencyData>("Currency/CurrencyData");
+        CurrencyData data = Resources.Load<CurrencyData>("Currency/PlayerData");
         int currencyDimonds = data.diamonds;
         AllMusicData shopMusic = Resources.Load<AllMusicData>("Shop/Music/ShopMusic");
         AllMusicData storageMusic = Resources.Load<AllMusicData>("Storage/Music/StorageMusic");
@@ -98,6 +101,9 @@ public class MockUPGameServerAPI : IGameServersAdapter
                     data.SaveDiamonds(currencyDimonds);
                     storageMusic.Add(value);
                     storageMusic.Save(storageMusic);
+                    data.Save();
+                    shopMusic.Save();
+                    storageMusic.Save();
                     MusicShopShow.instance.CheckSkin();
 
                 } else if (currencyDimonds < value.price){
@@ -129,6 +135,9 @@ public class MockUPGameServerAPI : IGameServersAdapter
                     idObject.canBuy = true;
                     storageButtonSkinData.Add(buttonSkin);
                     storageButtonSkinData.Save(storageButtonSkinData);
+                    data.Save();
+                    themeShop.Save();
+                    storageButtonSkinData.Save();
                     ThemeShow.instance.CheckSkin();
                 } else if (currencyDimonds < buttonSkin.price)
                 {

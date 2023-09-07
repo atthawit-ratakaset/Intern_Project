@@ -30,6 +30,12 @@ MonoBehaviour:
   Event:
   - {fileID: 9017009745824447844, guid: 303101709c3c941428f9602898ede421, type: 3}
   - {fileID: 8725365031948808650, guid: dbd0ca682ce3fe749b63809747e0f498, type: 3}
+  highScoreEasy: 4000
+  playCountEasy: 6
+  highScoreNormal: 5000
+  playCountNormal: 5
+  highScoreHard: 6000
+  playCountHard: 4
   delay: 4
   timerEasy: 95
   timerNormal: 50

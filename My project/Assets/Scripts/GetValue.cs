@@ -14,8 +14,13 @@ public class GetValue : ScriptableObject {
     public List<NoteData> Normal;
     public List<NoteData> Hard;
     public List<NoteData> Event;
-    public int highScore;
-    public int playCount;
+    [Header("High Score")]
+    public int highScoreEasy;
+    public int playCountEasy;
+    public int highScoreNormal;
+    public int playCountNormal;
+    public int highScoreHard;
+    public int playCountHard;
 
     [Header("Setting In Game")]
     public float delay;
@@ -35,14 +40,45 @@ public class GetValue : ScriptableObject {
 
     public void SaveHighSroce(int num)
     {
-        if(num > highScore)
+        int getMode = MenuButton.selectMode;
+        
+        if (getMode == 0)
+        {  
+            if (num > highScoreEasy)
+            {
+                highScoreEasy = num;
+            }
+        } else if (getMode == 1)
         {
-            highScore = num;
+            if (num > highScoreNormal)
+            {
+                highScoreNormal = num;
+            }
+        } else if (getMode == 2)
+        {
+            if (num > highScoreHard)
+            {
+                highScoreHard = num;
+            }
         }
+
     }
 
     public void AddPlayCount()
     {
-        playCount++;
+        int getMode = MenuButton.selectMode;
+
+        if (getMode == 0)
+        {
+            playCountEasy++;
+        }
+        else if (getMode == 1)
+        {
+            playCountNormal++;
+        }
+        else if (getMode == 2)
+        {
+            playCountHard++;
+        }
     }
 }

@@ -7,12 +7,31 @@ using System;
 [CreateAssetMenu(fileName = "CurrencyData", menuName = "My project/CurrencyData", order = 0)]
 public class CurrencyData : ScriptableObject
 {
+    public string saveKey;
+    public string playerName;
     public int energy;
     public int coins;
     public int diamonds;
 
     public ThemeButtonSkinInfo playerButtonSkin;
 
+    public void Load()
+    {
+        JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(saveKey), this);
+        Debug.Log("overwrite data");
+    }
+
+
+    public void Save()
+    {
+        if (saveKey.Equals(""))
+            saveKey = this.name;
+
+        string jsonData = JsonUtility.ToJson(this, true);
+        PlayerPrefs.SetString(saveKey, jsonData);
+        PlayerPrefs.Save();
+
+    }
 
     public void SaveEnergy(int num)
     {

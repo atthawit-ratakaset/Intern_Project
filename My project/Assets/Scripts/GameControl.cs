@@ -45,7 +45,7 @@ public class GameControl : MonoBehaviour
         NotesEasy = MusicButton.get.Easy;
         NotesNormal = MusicButton.get.Normal;
         NotesHard = MusicButton.get.Hard;
-        getMode = MenuButton.instance.selectMode;
+        getMode = MenuButton.selectMode;
         NotesEvent = MusicButton.get.Event;
         goalScore = MusicButton.get.targetScore;
         

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22596c9d192842e4385fd9ad458cbf9f, type: 3}
   m_Name: ButtonSkinData
   m_EditorClassIdentifier: 
+  saveKey: ShopButton
   skinData:
   - {fileID: 11400000, guid: 3c6d8fb6537035d479147fa4f08b41bb, type: 2}
   - {fileID: 11400000, guid: 50677d72ad4283048a3a0f7bce60ea19, type: 2}

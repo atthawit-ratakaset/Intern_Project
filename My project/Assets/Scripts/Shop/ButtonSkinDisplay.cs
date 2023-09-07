@@ -30,7 +30,6 @@ public class ButtonSkinDisplay : MonoBehaviour
             price.text = info.price.ToString();
         } else
         {
-            theSR.color = Color.black;
             itemImg.gameObject.GetComponent<Image>().sprite = info.itemImg;
             itemName.text = info.itemName;
             priceButton.SetActive(false);

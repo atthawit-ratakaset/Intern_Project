@@ -22,6 +22,7 @@ public class PlaySceneMenu : MonoBehaviour
     public GameObject load;
     public Image loadImage;
     public TMP_Text levelMode;
+    public TMP_Text score;
 
     [HideInInspector]
     public int selectMode;
@@ -90,14 +91,17 @@ public class PlaySceneMenu : MonoBehaviour
             if (selectMode == 0)
             {
                 levelMode.text = "Easy";
+                score.text = MusicButton.get.highScoreEasy.ToString();
             }
             else if (selectMode == 1)
             {
                 levelMode.text = "Normal";
+                score.text = MusicButton.get.highScoreNormal.ToString();
             }
             else if (selectMode == 2)
             {
                 levelMode.text = "Hard";
+                score.text = MusicButton.get.highScoreHard.ToString();
             }
             yield return null;
         }
@@ -115,6 +119,7 @@ public class PlaySceneMenu : MonoBehaviour
             currentEnergy += 5;
             playerData.SaveDiamonds(currentDiamond);
             playerData.SaveEnergy(currentEnergy);
+            playerData.Save();
             alertPopUp.SetActive(false);
             popUpFinsh.SetActive(true);
             finshBuyText.text = "Complete Buy!";
@@ -139,6 +144,7 @@ public class PlaySceneMenu : MonoBehaviour
             currentEnergy--;
           
             playerData.SaveEnergy(currentEnergy);
+            playerData.Save();
             //if (Energy.instance.isRestoring == false)
             //{
                 //if (Energy.instance.currentEnergy + 1 == Energy.instance.maxEnergy)
@@ -177,14 +183,17 @@ public class PlaySceneMenu : MonoBehaviour
             if (selectMode == 0)
             {
                 levelMode.text = "Easy";
+                score.text = MusicButton.get.highScoreEasy.ToString();
             }
             else if (selectMode == 1)
             {
                 levelMode.text = "Normal";
+                score.text = MusicButton.get.highScoreNormal.ToString();
             }
             else if (selectMode == 2)
             {
                 levelMode.text = "Hard";
+                score.text = MusicButton.get.highScoreHard.ToString();
             }
             yield return null;
         }
