@@ -6,7 +6,6 @@ using UnityEngine;
 public class GetValue : ScriptableObject {
     public string idSong;
     public string songName;
-    public bool alreadyBuy;
     public Sprite image;
     public Sprite imageLock;
     public AudioClip song;

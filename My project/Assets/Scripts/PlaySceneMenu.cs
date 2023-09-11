@@ -14,7 +14,7 @@ public class PlaySceneMenu : MonoBehaviour
     public TMP_Text finshBuyText;
     public GameObject alertPopUp;
     public TMP_Text currencyTypes;
-    CurrencyData playerData;
+    PlayerData playerData;
     int currentEnergy;
     int currentDiamond;
 
@@ -68,6 +68,7 @@ public class PlaySceneMenu : MonoBehaviour
         scene = "Menu";
         StartCoroutine("LoadScene");
         
+        
 
     }
 
@@ -110,7 +111,7 @@ public class PlaySceneMenu : MonoBehaviour
     public void AlertBuy()
     {
         alertPopUp.SetActive(false);
-        ServerApi.GetPlayerData((d) => { playerData = d; }, (e) => { });
+        playerData = ServerApi.Load();
         currentEnergy = playerData.energy;
         currentDiamond = playerData.diamonds;
         if (currentDiamond >= 10)
@@ -119,7 +120,7 @@ public class PlaySceneMenu : MonoBehaviour
             currentEnergy += 5;
             playerData.SaveDiamonds(currentDiamond);
             playerData.SaveEnergy(currentEnergy);
-            playerData.Save();
+            ServerApi.Save();
             alertPopUp.SetActive(false);
             popUpFinsh.SetActive(true);
             finshBuyText.text = "Complete Buy!";
@@ -137,14 +138,15 @@ public class PlaySceneMenu : MonoBehaviour
 
     public void Retry()
     {
-        ServerApi.GetPlayerData((d) => { playerData = d; }, (e) => { });
+        playerData = ServerApi.Load();
         currentEnergy = playerData.energy;
         if (currentEnergy >= 1)
         {
             currentEnergy--;
           
             playerData.SaveEnergy(currentEnergy);
-            playerData.Save();
+            ServerApi.Save();
+           
             //if (Energy.instance.isRestoring == false)
             //{
                 //if (Energy.instance.currentEnergy + 1 == Energy.instance.maxEnergy)

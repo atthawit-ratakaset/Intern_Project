@@ -12,6 +12,9 @@ public class ShopMusicDisplay : MonoBehaviour
     public static GetValue get;
     public TMP_Text itemName;
     public GameObject priceButton, alreadyBuy;
+    PlayerData playerData;
+    bool buy;
+
 
     public Image itemImg;
     public Image icon;
@@ -21,9 +24,24 @@ public class ShopMusicDisplay : MonoBehaviour
     public void Start()
     {
         instance = this;
-
+        playerData = ServerApi.Load();
         button.onClick.AddListener(delegate () { PopUpToBuy(info); });
-        if (info.alreadyBuy == false)
+
+        for (int i = 0; i < playerData.storageMusicData.Count; i++)
+        {
+            if (playerData.storageMusicData[i] == info.idSong)
+            {
+                buy = true;
+                break;
+            }
+            else
+            {
+                buy = false;
+
+            }
+        }
+
+        if (buy == false)
         {
             itemImg.gameObject.GetComponent<Image>().sprite = info.image;
             itemName.text = info.songName;

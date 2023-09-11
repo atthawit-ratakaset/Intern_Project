@@ -6,25 +6,21 @@ using System;
 
 public class DataCurrency : MonoBehaviour
 {
-    public static DataCurrency instance;
-    public CurrencyData getData;
+    private PlayerData playerData;
 
     [SerializeField] TMP_Text coinsText;
     [SerializeField] TMP_Text diamondsText;
     [SerializeField] TMP_Text energyText;
- 
     void Start()
     {
-        instance = this;
-        ServerApi.GetPlayerData((d) => { getData = d; }, (e) => { });
-
+        playerData = ServerApi.Load();
     }
 
     void Update()
     {
-        getData.UpdateCoins(coinsText);
-        getData.UpdateDiamonds(diamondsText);
-        getData.UpdateEnergy(energyText);
+        playerData.UpdateCoins(coinsText);
+        playerData.UpdateDiamonds(diamondsText);
+        playerData.UpdateEnergy(energyText);
     }
 
 }

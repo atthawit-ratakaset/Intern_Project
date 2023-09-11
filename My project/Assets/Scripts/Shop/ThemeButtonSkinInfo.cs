@@ -8,7 +8,6 @@ public class ThemeButtonSkinInfo : ScriptableObject
 {
     public string ID;
     public bool equip;
-    public bool alreadyBuy;
     public string itemName;
     public Sprite itemImg;
     public Sprite currencyIcon;

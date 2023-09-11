@@ -15,24 +15,47 @@ public class MusicButton : MonoBehaviour
     public TMP_Text playCounts;
     public GameObject frame;
 
-
+    PlayerData playerData;
+    public static bool buy = false;
 
     void Start()
     {   
         instance = this;
+        playerData = ServerApi.Load();
         Button btn = GetComponent<Button>();
         btn.onClick.AddListener(delegate () { SetDataMusic(musicData); });
         btn.onClick.AddListener(delegate () { MenuButton.instance.Test(); });
-        if (musicData.alreadyBuy == false)
+
+        for (int i = 0; i < playerData.storageMusicData.Count; i++)
         {
+            if (playerData.storageMusicData[i] == musicData.idSong)
+            {
+                buy = true;
+                break;
+            }
+            else
+            {
+                buy = false;
+
+            }
+        }
+
+        if (buy == false)
+        {   
+
             image.gameObject.GetComponent<Image>().sprite = musicData.imageLock;
             songName.text = musicData.songName.ToString();
+            Color color = image.color;
+            color.a = 0.5f;
+            image.color = color;
         }
         else
         {
             image.gameObject.GetComponent<Image>().sprite = musicData.image;
             songName.text = musicData.songName.ToString();
-
+            Color color = image.color;
+            color.a = 1f;
+            image.color = color;
         }
 
 
@@ -45,13 +68,7 @@ public class MusicButton : MonoBehaviour
         frame.SetActive(true);
         if (MenuButton.selectMode == 0)
         {
-            if (get.alreadyBuy == false)
-            {
-                highScore.text = "No record";
-                playCounts.text = "No record";
-            }
-            else
-            {
+
                 if (get.highScoreEasy <= 0)
                 {
                     highScore.text = "No record";
@@ -69,17 +86,12 @@ public class MusicButton : MonoBehaviour
                 {
                     playCounts.text = get.playCountEasy.ToString();
                 }
-            }
+            
         } 
         else if (MenuButton.selectMode == 1)
         {
-            if (get.alreadyBuy == false)
-            {
-                highScore.text = "No record";
-                playCounts.text = "No record";
-            }
-            else
-            {
+
+
                 if (get.highScoreNormal <= 0)
                 {
                     highScore.text = "No record";
@@ -96,17 +108,11 @@ public class MusicButton : MonoBehaviour
                 else if (get.playCountNormal > 0)
                 {
                     playCounts.text = get.playCountNormal.ToString();
-                }
+                
             }
         } else if (MenuButton.selectMode == 2)
         {
-            if (get.alreadyBuy == false)
-            {
-                highScore.text = "No record";
-                playCounts.text = "No record";
-            }
-            else
-            {
+
                 if (get.highScoreHard <= 0)
                 {
                     highScore.text = "No record";
@@ -124,7 +130,7 @@ public class MusicButton : MonoBehaviour
                 {
                     playCounts.text = get.playCountHard.ToString();
                 }
-            }
+            
         }
     }
 

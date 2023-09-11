@@ -1,13 +1,12 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using System;
+using UnityEngine;
+using Newtonsoft.Json;
 
-[CreateAssetMenu(fileName = "CurrencyData", menuName = "My project/CurrencyData", order = 0)]
-public class CurrencyData : ScriptableObject
+public class PlayerData 
 {
-    public string saveKey;
+    public string saveKey = "PlayerData";
     public string playerName;
     public int energy;
     public int coins;
@@ -17,10 +16,21 @@ public class CurrencyData : ScriptableObject
     public List<string> storageMusicData = new List<string>();
     public string btnSkinData;
 
-    
-    
+    public void Load()
+    {
 
-    public void SaveEnergy(int num)
+    }
+
+
+    public void Save()
+    {
+        string jsonData = JsonConvert.SerializeObject(this);// JsonUtility.ToJson(this, true);
+        PlayerPrefs.SetString(saveKey, jsonData);
+        PlayerPrefs.Save();
+
+    }
+
+    public  void SaveEnergy(int num)
     {
         energy = num;
     }
@@ -39,7 +49,7 @@ public class CurrencyData : ScriptableObject
     {
         coins = num;
     }
-    
+
     public void UpdateCoins(TMP_Text coin)
     {
         coin.text = coins.ToString();
@@ -67,8 +77,9 @@ public class CurrencyData : ScriptableObject
 
     public void SaveButtonSkin(ThemeButtonSkinInfo data)
     {
-
+        
+        
+        
     }
-
 
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ButtonSkin 2
   m_EditorClassIdentifier: 
   ID: BS003
+  equip: 0
   alreadyBuy: 0
   itemName: Electronic Set
   itemImg: {fileID: 21300000, guid: 7bd3f296ce9bf374a866b39cae0a1e2f, type: 3}

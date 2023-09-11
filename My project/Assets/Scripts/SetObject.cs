@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class SetObject : MonoBehaviour
 {
     public static SetObject instance;
     public AudioSource audioSource;
+    
 
     [Header("SCENCE")]
     public GameObject menuScene;
@@ -34,15 +36,22 @@ public class SetObject : MonoBehaviour
     public GameObject buttonStorage;
     public GameObject themeStorage;
     public GameObject musicStorage;
-    int itemCountButtonSkin;
-    ThemeData data;
-    ThemeData currentButtonSkin;
+
+    [Header("Select MUSIC SCENE")]
+    public GameObject allBtn;
+    public GameObject storageMusicBtn;
+    public GameObject allMusic;
+    public GameObject storageMusic;
+    public Button all;
+    public Sprite allClick;
+    public Sprite allUnClick;
+    public Sprite storageMusicClick;
+    public Sprite storageMusicUnClick;
+    
 
     [Header("PLAY POPUP")]
     public GameObject helpPanel;
-    int itemCountMusic;
-    AllMusicData musicData;
-    AllMusicData currentMusicData;
+
 
     [Header("SHOP MENU")]
     public GameObject special;
@@ -89,17 +98,15 @@ public class SetObject : MonoBehaviour
         instance = this;
     }
     public void Start()
-    {
-        ServerApi.GetStorageButtonSkinData((d) => { data = d; }, (e) => { });
-        ServerApi.GetMusicData((d) => { musicData = d; }, (e) => { });
-        itemCountButtonSkin = data.skinData.Count;
-        itemCountMusic = musicData.getMusicData.Count;
+    {   
+        GameManager.LoadStoragePlayerData();
+        
         test = StateScene.menu;
         if (whatScene != test)
         {
             menuScene.SetActive(false);
             selectMusicScene.SetActive(true);
-            
+           
         }
     }
 
@@ -111,7 +118,39 @@ public class SetObject : MonoBehaviour
         play = true;
         menuScene.SetActive(false);
         selectMusicScene.SetActive(true);
+        allMusic.SetActive(true);
+        storageMusic.SetActive(false);
+        all.onClick.Invoke();
+        if (MenuButton.selectMode == 0)
+        {
+            MenuButton.instance.easyBtn.onClick.Invoke();
+        }
+        else if (MenuButton.selectMode == 1)
+        {
+            MenuButton.instance.normalBtn.onClick.Invoke();
+        }
+        else if (MenuButton.selectMode == 2)
+        {
+            MenuButton.instance.hardBtn.onClick.Invoke();
+        }
+    }
+
+    public void AllMusic()
+    {
+        allMusic.SetActive(true);
+        storageMusic.SetActive(false);
+        allBtn.GetComponent<Image>().sprite = allClick;
+        storageMusicBtn.GetComponent<Image>().sprite = storageMusicUnClick;
         MusicPopUp.instance.CheckMusic();
+    }
+
+    public void ShowMusicInStorage()
+    {
+        allMusic.SetActive(false);
+        storageMusic.SetActive(true);
+        allBtn.GetComponent<Image>().sprite = allUnClick;
+        storageMusicBtn.GetComponent<Image>().sprite = storageMusicClick;
+        MusicPopUp.instance.CheckMusicInStorage();
     }
 
     public void Help()
@@ -160,16 +199,9 @@ public class SetObject : MonoBehaviour
         buttonUI.SetActive(false);
         buttonSkinShow.SetActive(true);
         musicShow.SetActive(false);
-        ServerApi.GetStorageButtonSkinData((d) => { currentButtonSkin = d; }, (e) => { });
+        StorageShow.instance.CheckSkin();
 
-        if (itemCountButtonSkin <= currentButtonSkin.skinData.Count)
-        {
-            StorageShow.instance.CheckSkin();
-
-        } else if (itemCountButtonSkin == 1)
-        {
-            StorageShow.instance.DefaultButtonSkin();
-        }
+        
 
         
     }
@@ -267,7 +299,9 @@ public class SetObject : MonoBehaviour
         shopScene.SetActive(false);
         if (play == true)
         {
+
             selectMusicScene.SetActive(true);
+
         } else if (menu == true)
         {
             menuScene.SetActive(true);

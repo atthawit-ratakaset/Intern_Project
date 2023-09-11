@@ -9,7 +9,7 @@ public class StorageDisplay : MonoBehaviour
     public ThemeButtonSkinInfo items;
     public static ThemeButtonSkinInfo get;
     public Image image;
-    CurrencyData playerButtonSkin;
+    PlayerData playerData;
 
 
     [Header("PopUp")]
@@ -32,12 +32,12 @@ public class StorageDisplay : MonoBehaviour
 
     public void SetDataItem(ThemeButtonSkinInfo getValue)
     {
-        ServerApi.GetPlayerData((d) => { playerButtonSkin = d; }, (e) => { });
+        playerData = ServerApi.Load();
         get = getValue;
         itemName.text = get.itemName;
         itemImg.gameObject.GetComponent<Image>().sprite = get.itemImg;
         itemInfo.text = get.itemDetail;
-        if (get.itemName == playerButtonSkin.playerButtonSkin.itemName)
+        if (get.ID == playerData.btnSkinData)
         {
             equipped.SetActive(true);
             use.SetActive(false);
@@ -53,10 +53,11 @@ public class StorageDisplay : MonoBehaviour
 
     public void Equip()
     {
-        ServerApi.GetPlayerData((d) => { playerButtonSkin = d; }, (e) => { });
-        playerButtonSkin.SaveButtonSkin(get);
+        playerData = ServerApi.Load();
+        playerData.btnSkinData = get.ID;
         use.SetActive(false);
         equipped.SetActive(true);
-        Debug.Log(playerButtonSkin.playerButtonSkin.itemName);
+        ServerApi.Save();
+        
     }
 }

@@ -15,9 +15,9 @@ public class PopUpBuy : MonoBehaviour
     public TMP_Text alertText;
     public TMP_Text idName;
     public string IdObject;
-    private CurrencyData playerData;
+    
     string types;
-
+    PlayerData playerData;
     private void Start()
     {
         instance = this;
@@ -112,21 +112,22 @@ public class PopUpBuy : MonoBehaviour
     }
     public void DiamondsRefill()
     {
-        ServerApi.GetPlayerData((d) => { playerData = d; }, (e) => { });
+        playerData = ServerApi.Load();
 
         int currencyDimonds = playerData.diamonds;
         currencyDimonds += ItemDisplay.get.itemValue;
 
         playerData.SaveDiamonds(currencyDimonds);
-        playerData.Save();
+        
         popUpComfirm.SetActive(false);
         FinshBuy();
+        ServerApi.Save();
     }
 
 
     public void CoinsRefill()
     {
-        ServerApi.GetPlayerData((d) => { playerData = d; }, (e) => { });
+        playerData = ServerApi.Load();
 
         int currencyDimonds = playerData.diamonds;
         int currencyCoins = playerData.coins;
@@ -137,9 +138,10 @@ public class PopUpBuy : MonoBehaviour
 
             currencyCoins += ItemDisplay.get.itemValue;
             playerData.SaveCoins(currencyCoins);
-            playerData.Save();
+            
             popUpComfirm.SetActive(false);
             FinshBuy();
+            ServerApi.Save();
         } else if (currencyDimonds != ItemDisplay.get.price)
         {   
 
@@ -168,7 +170,7 @@ public class PopUpBuy : MonoBehaviour
 
     public void EnergyRefill()
     {
-        ServerApi.GetPlayerData((d) => { playerData = d; }, (e) => { });
+        playerData = ServerApi.Load();
         int currencyDimonds = playerData.diamonds;
         int currencyEnergy = playerData.energy;
         if (currencyDimonds >= ItemDisplay.get.price)
@@ -178,9 +180,10 @@ public class PopUpBuy : MonoBehaviour
 
             currencyEnergy += ItemDisplay.get.itemValue;
             playerData.SaveEnergy(currencyEnergy);
-            playerData.Save();
+            
             popUpComfirm.SetActive(false);
             FinshBuy();
+            ServerApi.Save();
         }
         else if (currencyDimonds != ItemDisplay.get.price)
         {

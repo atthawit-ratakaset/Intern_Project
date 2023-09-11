@@ -10,7 +10,10 @@ public class UpButtonGame : MonoBehaviour
     [Header ("NOTE OBJECT DISPLAY")]
     public GameObject Square;
     public SpriteRenderer spiteRenderer;
-    CurrencyData playerData;
+    PlayerData playerData;
+    ThemeData btnSkin;
+    bool equip = false;
+    ThemeButtonSkinInfo info;
 
 
     [HideInInspector]
@@ -47,7 +50,21 @@ public class UpButtonGame : MonoBehaviour
 
     void Start()
     {
-        ServerApi.GetPlayerData((d) => { playerData = d; }, (e) => { });
+        playerData = ServerApi.Load();
+        ServerApi.GetStorageButtonSkinData((d) => { btnSkin = d; }, (e) => { });
+
+        for (int i = 0; i < btnSkin.skinData.Count; i++)
+        {
+            if (btnSkin.skinData[i].ID == playerData.btnSkinData)
+            {
+                equip = true;
+                info = btnSkin.skinData[i];
+                break;
+            }
+        }
+        
+        
+
 
 
         hit = false;
@@ -63,7 +80,7 @@ public class UpButtonGame : MonoBehaviour
         subNote3 = false;
 
         //theSR.color = Color.blue;
-        theSR.sprite = playerData.playerButtonSkin.itemImg;
+        theSR.sprite = info.itemImg;
      
         Color color = theSR.material.color;
         color.a = 0.75f;

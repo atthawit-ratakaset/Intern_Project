@@ -17,6 +17,9 @@ public class MenuButton : MonoBehaviour
     public TMP_Text highScoreLoad;
     public TMP_Text playCounts;
 
+    bool x = false;
+
+
     [Header("LoadScene")]
     public GameObject load;
     public Image loadImage;
@@ -39,23 +42,32 @@ public class MenuButton : MonoBehaviour
     void Start()
     {
         instance = this;
-        if (selectMode == 0)
-        {
-            easyBtn.onClick.Invoke();
-        } else if (selectMode == 1)
-        {
-            normalBtn.onClick.Invoke();
-        } else if (selectMode == 2)
-        {
-            hardBtn.onClick.Invoke();
-        }
+
     }
 
 
     public void AlertPopShow()
     {
         alertPopUp.SetActive(true);
-        if (MusicButton.get.alreadyBuy == true)
+        PlayerData playerData = ServerApi.Load();
+
+        for (int i = 0; i < playerData.storageMusicData.Count; i++)
+        {
+
+            if (playerData.storageMusicData[i] == MusicButton.get.idSong)
+            {
+                x = true;
+                break;
+            }
+            else
+            {
+                x = false;
+            }
+
+
+        }
+
+        if (x == true)
         {
             name.text = null; 
             alertText.text = $"Not enough Energy, want to buy more?";
@@ -74,9 +86,27 @@ public class MenuButton : MonoBehaviour
     }
 
     public void AlertBuy()
-    {
+    {   
+        PlayerData playerData = ServerApi.Load();
+        for (int i = 0; i < playerData.storageMusicData.Count; i++)
+        {
+
+
+            if (playerData.storageMusicData[i] == MusicButton.get.idSong)
+            {
+                x = true;
+                break;
+            }
+            else
+            {
+                x = false;
+            }
+
+
+        }
+
         Cancel();
-        if (MusicButton.get.alreadyBuy == true)
+        if (x == true)
         {
             SetObject.instance.EnergyMenu();
         }
@@ -94,13 +124,8 @@ public class MenuButton : MonoBehaviour
         easy.SetActive(true);
         normal.SetActive(false);
         hard.SetActive(false);
-        if (MusicButton.get.alreadyBuy == false)
-        {
-            highScore.text = "No record";
-            playCounts.text = "No record";
-        }
-        else
-        {
+
+     
             if (MusicButton.get.highScoreEasy <= 0)
             {
                 highScore.text = "No record";
@@ -120,7 +145,7 @@ public class MenuButton : MonoBehaviour
             {
                 playCounts.text = MusicButton.get.playCountEasy.ToString();
             }
-        }
+        
     }
 
     public void GetNormalMode()
@@ -129,13 +154,8 @@ public class MenuButton : MonoBehaviour
         easy.SetActive(false);
         normal.SetActive(true);
         hard.SetActive(false);
-        if (MusicButton.get.alreadyBuy == false)
-        {
-            highScore.text = "No record";
-            playCounts.text = "No record";
-        }
-        else
-        {
+
+ 
             if (MusicButton.get.highScoreNormal <= 0)
             {
                 highScore.text = "No record";
@@ -155,7 +175,7 @@ public class MenuButton : MonoBehaviour
             {
                 playCounts.text = MusicButton.get.playCountNormal.ToString();
             }
-        }
+        
     }
 
     public void GetHardMode()
@@ -164,13 +184,7 @@ public class MenuButton : MonoBehaviour
         easy.SetActive(false);
         normal.SetActive(false);
         hard.SetActive(true);
-        if (MusicButton.get.alreadyBuy == false)
-        {
-            highScore.text = "No record";
-            playCounts.text = "No record";
-        }
-        else
-        {
+
             if (MusicButton.get.highScoreHard <= 0)
             {
                 highScore.text = "No record";
@@ -190,20 +204,38 @@ public class MenuButton : MonoBehaviour
             {
                 playCounts.text = MusicButton.get.playCountHard.ToString();
             }
-        }
+        
     }
 
     public void Test()
     {
-        ServerApi.GetPlayerData((d) => { currencyData = d; }, (e) => { });
-        currentEnergy = currencyData.energy;
-        if (MusicButton.get.alreadyBuy == true)
+        PlayerData playerData = ServerApi.Load();
+        currentEnergy = playerData.energy;
+        
+        for (int i = 0; i < playerData.storageMusicData.Count; i++)
+        {
+
+                if (playerData.storageMusicData[i] == MusicButton.get.idSong)
+                {
+                    x = true;
+                    break;
+                }
+                else
+                {
+                    x = false;
+                }
+
+        }
+
+
+        if (x == true)
         {
             if (currentEnergy >= 1)
             {
                 currentEnergy--;
-                currencyData.SaveEnergy(currentEnergy);
-                currencyData.Save();
+                playerData.SaveEnergy(currentEnergy);
+                ServerApi.Save();
+               
                 if (MusicButton.get != null)
                 {
                     scene = "PlayScene1";
@@ -217,7 +249,7 @@ public class MenuButton : MonoBehaviour
                 Debug.Log("Don't have Energy!");
             }
         }
-        else if (MusicButton.get.alreadyBuy == false)
+        else if (x == false)
         {
             AlertPopShow();
             Debug.Log("You do not have this music");

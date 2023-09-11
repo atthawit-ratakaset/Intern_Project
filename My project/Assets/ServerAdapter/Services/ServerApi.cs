@@ -3,15 +3,61 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Newtonsoft.Json;
 
 public static class ServerApi 
 {
+    private static string saveKey = "Playerdata";
+
     //private static GameServersAPI gameServersAPI;
     private static MockUPGameServerAPI gameServersAPI;
     private const byte autoRetry = 3;
 
+    private static PlayerData playerData;
 
     private static Dictionary<string, byte> countError = new Dictionary<string, byte>();
+
+    public static PlayerData Load()
+    {
+        if (playerData == null)
+        {
+            string data = PlayerPrefs.GetString(saveKey);
+
+            if (!string.IsNullOrEmpty(data))
+            {
+                playerData = JsonConvert.DeserializeObject<PlayerData>(data);
+
+                return playerData;
+            }
+            else
+            {
+                CurrencyData starterData = Resources.Load<CurrencyData>("Currency/PlayerData");
+                string[] starter = { "S01", "S02" };
+                playerData = new PlayerData();
+                playerData.coins = starterData.coins;
+                playerData.diamonds = starterData.diamonds;
+                playerData.energy = starterData.energy;
+                playerData.storageButtonSkinData.Add(starterData.btnSkinData);
+                playerData.storageMusicData.AddRange(starter);
+                playerData.btnSkinData = starterData.btnSkinData;
+                return playerData; 
+            }
+        }
+        else
+        {
+            return playerData;
+        }
+
+    }
+
+    public static void Save()
+    {
+        string jsonData = JsonConvert.SerializeObject(playerData); //JsonUtility.ToJson(this, true);
+        Debug.Log(jsonData);
+        PlayerPrefs.SetString(saveKey, jsonData);
+    }
+    
+    
 
     public static void InitAquaristaAPI()
     {

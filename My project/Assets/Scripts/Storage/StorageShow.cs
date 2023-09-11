@@ -9,8 +9,10 @@ public class StorageShow : MonoBehaviour
     public StorageDisplay buttonPrefab;
     public string path;
     public GameObject buttonParent;
-    public ThemeData getData;
+    ThemeData getData;
     public int itemCount;
+    PlayerData playerData;
+
 
     [Header("PopUp")]
     public TMP_Text itemName;
@@ -30,6 +32,7 @@ public class StorageShow : MonoBehaviour
 
     public void CheckSkin()
     {
+        
         ServerApi.GetStorageButtonSkinData((d) => { getData = d; }, (e) => { });
         DestroyObject(buttonParent);
             for (int i = 0; i < getData.skinData.Count; i++)
@@ -54,25 +57,6 @@ public class StorageShow : MonoBehaviour
             
         }
            
-    }
-
-    public void DefaultButtonSkin()
-    {
-        ServerApi.GetStorageButtonSkinData((d) => { getData = d; }, (e) => { });
-        StorageDisplay newButton = Instantiate(buttonPrefab, buttonParent.transform);
-        newButton.name = $"Music{0}";
-        newButton.items = getData.skinData[0];
-        newButton.itemName = itemName;
-        newButton.itemImg = itemImg;
-        newButton.itemInfo = itemInfo;
-        newButton.previewPopup = previewPopup;
-        newButton.use = use;
-        newButton.equipped = equipped;
-        newButton.useButton = useButton;
-
-        newButton.SetDataItem(getData.skinData[0]);
-       
-        
     }
 
     public void DestroyObject(GameObject gameObject)

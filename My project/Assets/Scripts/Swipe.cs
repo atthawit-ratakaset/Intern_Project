@@ -6,7 +6,7 @@ public class Swipe : MonoBehaviour
     public GameObject scrollbar;
     float scorll_pos = 0;
     float[] pos;
-    
+
 
     public void Start()
     {
@@ -50,20 +50,11 @@ public class Swipe : MonoBehaviour
                         
                         transform.GetChild(a).localScale = Vector2.Lerp(transform.GetChild(i).localScale, new Vector2(0.005f, 0.005f), 0.1f);
                         Color color = transform.GetChild(a).gameObject.GetComponent<MusicButton>().image.color;
-                        if (transform.GetChild(a).gameObject.GetComponent<MusicButton>().musicData.alreadyBuy == true)
-                        {
-                            color.a = 1f;
-                        } else
-                        {
-                            color.a = 0.5f;
-                        }
-                        transform.GetChild(a).gameObject.GetComponent<MusicButton>().image.color = color;
+
                         transform.GetChild(a).gameObject.GetComponent<MusicButton>().frame.SetActive(false);
                     } else
                     {
-                        Color color = transform.GetChild(a).gameObject.GetComponent<MusicButton>().image.color;
-                        color.a = 1f;
-                        transform.GetChild(a).gameObject.GetComponent<MusicButton>().image.color = color;
+
                         transform.GetChild(a).gameObject.GetComponent<MusicButton>().SetDataMusic(MusicPopUp.instance.getValue.getMusicData[a]);
                     }
                 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 
 [CreateAssetMenu(fileName = "ThemeData", menuName = "ThemeItemInfo/ThemeData", order = 0)]
 
@@ -13,7 +14,7 @@ public class ThemeData : ScriptableObject
     public void Load()
     {
         JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(saveKey), this);
-        Debug.Log("overwrite data");
+        Debug.Log("overwrite data"); 
     }
 
 
@@ -22,10 +23,12 @@ public class ThemeData : ScriptableObject
         if (saveKey.Equals(""))
             saveKey = this.name;
 
+        Debug.Log("save.....");
         string jsonData = JsonUtility.ToJson(this, true);
+        Debug.Log(jsonData);
         PlayerPrefs.SetString(saveKey, jsonData);
         PlayerPrefs.Save();
-
+    
     }
 
     public void Remove(ThemeButtonSkinInfo name)

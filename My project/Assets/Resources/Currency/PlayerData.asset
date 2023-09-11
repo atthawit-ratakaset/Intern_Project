@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   saveKey: PlayerData
-  playerName: 
-  energy: 5
-  coins: 10000
-  diamonds: 100
-  playerButtonSkin: {fileID: 11400000, guid: 892cc656faf2964499115fc32df293e3, type: 2}
+  playerName: Tester001
+  energy: 15
+  coins: 999999
+  diamonds: 999999
+  storageButtonSkinData: []
+  storageMusicData: []
+  btnSkinData: D01

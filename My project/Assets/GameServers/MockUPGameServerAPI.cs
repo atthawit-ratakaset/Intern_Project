@@ -44,8 +44,7 @@ public class MockUPGameServerAPI : IGameServersAdapter
     public async UniTask GetPlayerData(UnityAction<CurrencyData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
         CurrencyData data = Resources.Load<CurrencyData>("Currency/PlayerData");
-        data.Save();
-        data.Load();
+        
         onComplete?.Invoke(data);
     }
 
@@ -80,11 +79,11 @@ public class MockUPGameServerAPI : IGameServersAdapter
 
     public async UniTask IdMusic(IDObject idObject, UnityAction<AllMusicData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
-        CurrencyData data = Resources.Load<CurrencyData>("Currency/PlayerData");
+        PlayerData data = ServerApi.Load();
         int currencyDimonds = data.diamonds;
         AllMusicData shopMusic = Resources.Load<AllMusicData>("Shop/Music/ShopMusic");
         AllMusicData storageMusic = Resources.Load<AllMusicData>("Storage/Music/StorageMusic");
-        AllMusicData selectMusic = Resources.Load<AllMusicData>("Music/MusicData");
+        
 
         foreach (GetValue value in shopMusic.getMusicData)
         {
@@ -95,15 +94,16 @@ public class MockUPGameServerAPI : IGameServersAdapter
                     idObject.canBuy = true;
                     currencyDimonds -= value.price;
                     shopMusic.Remove(value);
-                    value.alreadyBuy = true;
+                    data.storageMusicData.Add(idObject.idItem);
                     shopMusic.Add(value);
                     shopMusic.Save(shopMusic);
                     data.SaveDiamonds(currencyDimonds);
                     storageMusic.Add(value);
                     storageMusic.Save(storageMusic);
-                    data.Save();
+                    
                     shopMusic.Save();
                     storageMusic.Save();
+                    ServerApi.Save();
                     MusicShopShow.instance.CheckSkin();
 
                 } else if (currencyDimonds < value.price){
@@ -115,7 +115,7 @@ public class MockUPGameServerAPI : IGameServersAdapter
 
     public async UniTask Test(IDObject idObject, UnityAction<ThemeData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
-        CurrencyData data = Resources.Load<CurrencyData>("Currency/PlayerData");
+        PlayerData data = ServerApi.Load();
         int currencyDimonds = data.diamonds;
         ThemeData themeShop = Resources.Load<ThemeData>("Shop/Theme/ButtonSkinData");
         ThemeData storageButtonSkinData = Resources.Load<ThemeData>("Storage/Button/ThemeData");
@@ -125,18 +125,20 @@ public class MockUPGameServerAPI : IGameServersAdapter
             {   
                 if (currencyDimonds >= buttonSkin.price)
                 {
-                 
+                    
                     currencyDimonds -= buttonSkin.price;
                     themeShop.Remove(buttonSkin);
-                    buttonSkin.alreadyBuy = true;
+                    data.storageButtonSkinData.Add(idObject.idItem);
                     themeShop.Add(buttonSkin);
                     themeShop.Save(themeShop);
                     data.SaveDiamonds(currencyDimonds);
                     idObject.canBuy = true;
                     storageButtonSkinData.Add(buttonSkin);
                     storageButtonSkinData.Save(storageButtonSkinData);
-                    data.Save();
+                    
                     themeShop.Save();
+                    
+                    ServerApi.Save();
                     storageButtonSkinData.Save();
                     ThemeShow.instance.CheckSkin();
                 } else if (currencyDimonds < buttonSkin.price)

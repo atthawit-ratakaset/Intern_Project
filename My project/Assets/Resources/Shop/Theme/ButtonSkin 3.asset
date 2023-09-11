@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ButtonSkin 3
   m_EditorClassIdentifier: 
   ID: BS004
+  equip: 0
   alreadyBuy: 0
   itemName: Glitch Set
   itemImg: {fileID: 21300000, guid: 1ddc8fe330278e64fb09d70a20de8f2b, type: 3}
