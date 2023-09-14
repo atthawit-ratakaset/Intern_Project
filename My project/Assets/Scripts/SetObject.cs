@@ -8,7 +8,7 @@ public class SetObject : MonoBehaviour
 {
     public static SetObject instance;
     public AudioSource audioSource;
-    
+
 
     [Header("SCENCE")]
     public GameObject menuScene;
@@ -16,6 +16,7 @@ public class SetObject : MonoBehaviour
     public GameObject shopScene;
 
     [Header("MENU POPUP")]
+    public GameObject mailScene;
     public GameObject helpPopUp;
     public GameObject settingPopUp;
     public GameObject storagePopUp;
@@ -26,6 +27,7 @@ public class SetObject : MonoBehaviour
     public GameObject update;
     public GameObject flashSale;
     public GameObject buttonUI;
+    public GameObject topUI;
 
     [Header("STORAGE TEXT AND MENU")]
     public TMP_Text buttonStorageText;
@@ -47,7 +49,7 @@ public class SetObject : MonoBehaviour
     public Sprite allUnClick;
     public Sprite storageMusicClick;
     public Sprite storageMusicUnClick;
-    
+
 
     [Header("PLAY POPUP")]
     public GameObject helpPanel;
@@ -93,24 +95,34 @@ public class SetObject : MonoBehaviour
     bool menu = true;
     bool play = false;
     bool help = false;
+    bool mail = false;
     public void Awake()
     {
         instance = this;
     }
     public void Start()
-    {   
+    {
         GameManager.LoadStoragePlayerData();
-        
+
         test = StateScene.menu;
         if (whatScene != test)
         {
             menuScene.SetActive(false);
             selectMusicScene.SetActive(true);
-           
+            allMusic.SetActive(true);
+            storageMusic.SetActive(false);
+            mailScene.SetActive(false);
         }
     }
 
 
+    public void MailScene()
+    {
+        mail = true;
+        mailScene.SetActive(true);
+        menuScene.SetActive(false);
+        selectMusicScene.SetActive(false);
+    }
 
     public void Play()
     {
@@ -184,7 +196,7 @@ public class SetObject : MonoBehaviour
     }
 
     public void Storage()
-    {   
+    {
         storagePopUp.SetActive(true);
         returnBtn.SetActive(true);
         buttonStorageText.color = new Color32(253, 6, 83, 255);
@@ -201,24 +213,49 @@ public class SetObject : MonoBehaviour
         musicShow.SetActive(false);
         StorageShow.instance.CheckSkin();
 
-        
 
-        
+
+
     }
     public void ReturnLobby()
     {
-
         play = false;
         menu = true;
         menuScene.SetActive(true);
         selectMusicScene.SetActive(false);
         storagePopUp.SetActive(false);
+        mailScene.SetActive(false);
+    }
+
+    public void exitStorage()
+    {
+        menuScene.SetActive(true);
+        selectMusicScene.SetActive(false);
+        storagePopUp.SetActive(false);
+        mailScene.SetActive(false);
         returnBtn.SetActive(false);
         proflie.SetActive(true);
         update.SetActive(true);
         flashSale.SetActive(true);
         buttonUI.SetActive(true);
+        topUI.SetActive(true);
         audioSource.clip = null;
+    }
+
+    public void exitMail ()
+    {
+        mail = false;
+        mailScene.SetActive(false);
+        if (play == true)
+        {   
+
+            selectMusicScene.SetActive(true);
+
+        }
+        else if (menu == true)
+        {
+            menuScene.SetActive(true);
+        }
     }
 
     public void StorageButton()
@@ -279,6 +316,7 @@ public class SetObject : MonoBehaviour
     {
         menuScene.SetActive(false);
         selectMusicScene.SetActive(false);
+        mailScene.SetActive(false);
         shopScene.SetActive(true);
         special.SetActive(true);
         music.SetActive(false);
@@ -299,13 +337,26 @@ public class SetObject : MonoBehaviour
         shopScene.SetActive(false);
         if (play == true)
         {
-
-            selectMusicScene.SetActive(true);
+            if (mail == true)
+            {
+                mailScene.SetActive(true);
+            }
+            else
+            {
+                selectMusicScene.SetActive(true);
+            }
 
         } else if (menu == true)
         {
-            menuScene.SetActive(true);
-        }
+            if (mail == true)
+            {
+                mailScene.SetActive(true);
+            }
+            else
+            {
+                menuScene.SetActive(true);
+            }
+        } 
 
     }
 
@@ -330,6 +381,7 @@ public class SetObject : MonoBehaviour
     {
         menuScene.SetActive(false);
         selectMusicScene.SetActive(false);
+        mailScene.SetActive(false);
         shopScene.SetActive(true);
         special.SetActive(false);
         music.SetActive(false);
@@ -347,6 +399,7 @@ public class SetObject : MonoBehaviour
     {
         menuScene.SetActive(false);
         selectMusicScene.SetActive(false);
+        mailScene.SetActive(false);
         shopScene.SetActive(true);
         special.SetActive(false);
         music.SetActive(false);
@@ -369,6 +422,7 @@ public class SetObject : MonoBehaviour
     {
         menuScene.SetActive(false);
         selectMusicScene.SetActive(false);
+        mailScene.SetActive(false);
         shopScene.SetActive(true);
         special.SetActive(false);
         music.SetActive(false);

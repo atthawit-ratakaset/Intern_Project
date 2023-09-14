@@ -1,19 +1,21 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using System;
+using TMPro;
 
 public class Energy : MonoBehaviour
 {
     public static Energy instance;
-    [SerializeField] TMP_Text energyText;
-    [HideInInspector]
-    public int maxEnergy = 10;
+    PlayerData playerData;
+
+
+    public string timeValue;
+
+    public int maxEnergy = 15;
     [HideInInspector]
     public int currentEnergy;
-    [HideInInspector]
-    public int restoreDuration = 20;
+
+    public int restoreDuration = 300;
     [HideInInspector]
     public DateTime nextEnergyTime;
     [HideInInspector]
@@ -24,34 +26,30 @@ public class Energy : MonoBehaviour
     void Start()
     {
         instance = this;
-        if (!PlayerPrefs.HasKey("currentEnergy"))
+        playerData = ServerApi.Load();
+        currentEnergy = playerData.energy;
+        if (!PlayerPrefs.HasKey("Playerdata"))
         {
-            PlayerPrefs.SetInt("currentEnergy", 10);
-            UpdateEnergy();
+
             Load();
             StartCoroutine(RestoreEnergy());
         }
         else
         {
+
             Load();
-            UpdateEnergy();
             StartCoroutine(RestoreEnergy());
         }
 
     }
 
-    private void Update()
-    {
-        Load();
-        UpdateEnergy();
-    }
 
     public void UseEnergy()
-    {
+    {   
         if(currentEnergy >= 1)
         {
             currentEnergy--;
-            UpdateEnergy();
+
             if (isRestoring == false)
             {
                 if(currentEnergy + 1 == maxEnergy)
@@ -60,7 +58,7 @@ public class Energy : MonoBehaviour
                 }
 
                 StartCoroutine(RestoreEnergy());
-            }
+            } 
         }
         else
         {
@@ -70,24 +68,33 @@ public class Energy : MonoBehaviour
 
     public IEnumerator RestoreEnergy()
     {
+
         UpdateEnergyTimer();
+
         isRestoring = true;
 
         while(currentEnergy < maxEnergy)
         {
+            
             DateTime currentDateTime = DateTime.Now;
             DateTime nextDateTime = nextEnergyTime;
             bool isEnergyAdding = false;
-
+            
             while (currentDateTime > nextDateTime)
-            {
+            {    
                 if (currentEnergy < maxEnergy)
-                {
+                {   
                     isEnergyAdding = true;
                     currentEnergy++;
-                    UpdateEnergy();
+                    playerData.energy = currentEnergy;
+                    currentEnergy = playerData.energy;
                     DateTime timeToAdd = lastEnergyTime > nextDateTime ? lastEnergyTime : nextDateTime;
+                    Debug.Log(timeToAdd);
+
                     nextDateTime = AddDuration(timeToAdd, restoreDuration);
+                    Debug.Log(playerData.energy);
+                    Debug.Log("Add energy" + currentEnergy);
+                    ServerApi.Save();
 
                 }
                 else
@@ -102,12 +109,11 @@ public class Energy : MonoBehaviour
                 nextEnergyTime = nextDateTime;
             }
 
-            UpdateEnergy();
             UpdateEnergyTimer();
             Save();
             yield return null; 
         }
-
+        Debug.Log("Energy full");
         isRestoring = false;
     }
 
@@ -130,32 +136,27 @@ public class Energy : MonoBehaviour
     public void UpdateEnergyTimer()
     {
         TimeSpan time = nextEnergyTime - DateTime.Now;
+        timeValue = String.Format("{0:D2} : {1:D1}", time.Minutes, time.Seconds);
+
     }
 
-    public void UpdateEnergy()
-    {
-        energyText.text = currentEnergy.ToString();
-    }
 
     public void Load()
     {
-        currentEnergy = PlayerPrefs.GetInt("currentEnergy");
         nextEnergyTime = StringToDate(PlayerPrefs.GetString("nextEnergyTime"));
         lastEnergyTime = StringToDate(PlayerPrefs.GetString("lastEnergyTime"));
-        
     }
 
     public void Save()
     {
-        PlayerPrefs.SetInt("currentEnergy", currentEnergy);
         PlayerPrefs.SetString("nextEnergyTime", nextEnergyTime.ToString());
         PlayerPrefs.SetString("lastEnergyTime", lastEnergyTime.ToString());
+        playerData.SaveEnergy(currentEnergy);
     }
 
     public void Reset()
     {
         currentEnergy = 10;
-        UpdateEnergy();
         Save();
     }
 }

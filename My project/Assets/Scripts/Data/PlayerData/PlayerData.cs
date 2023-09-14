@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEngine;
-using Newtonsoft.Json;
+
 
 public class PlayerData 
 {
@@ -16,38 +14,19 @@ public class PlayerData
     public List<string> storageMusicData = new List<string>();
     public string btnSkinData;
 
-    public void Load()
-    {
-
-    }
-
-
-    public void Save()
-    {
-        string jsonData = JsonConvert.SerializeObject(this);// JsonUtility.ToJson(this, true);
-        PlayerPrefs.SetString(saveKey, jsonData);
-        PlayerPrefs.Save();
-
-    }
-
     public  void SaveEnergy(int num)
     {
         energy = num;
     }
 
-    public void UpdateEnergy(TMP_Text energys)
-    {
-        energys.text = energy.ToString();
-    }
-
-    public void LoadEnergy(int energys)
-    {
-        energys = energy;
-    }
-
     public void SaveCoins(int num)
     {
         coins = num;
+    }
+    
+    public void UpdateEnergy(TMP_Text energys)
+    {
+        energys.text = $"{energy.ToString()} / {Energy.instance.maxEnergy}";
     }
 
     public void UpdateCoins(TMP_Text coin)
@@ -55,10 +34,6 @@ public class PlayerData
         coin.text = coins.ToString();
     }
 
-    public void LoadCoins(int coin)
-    {
-        coin = coins;
-    }
 
     public void SaveDiamonds(int num)
     {
@@ -70,16 +45,7 @@ public class PlayerData
         diamond.text = diamonds.ToString();
     }
 
-    public void LoadDiamonds(int diamond)
-    {
-        diamond = diamonds;
-    }
 
-    public void SaveButtonSkin(ThemeButtonSkinInfo data)
-    {
-        
-        
-        
-    }
+
 
 }

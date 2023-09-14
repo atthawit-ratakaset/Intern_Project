@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     public GameObject gameObject;
     public static ThemeData buttonSkin;
     public static AllMusicData musicData;
@@ -12,6 +13,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ServerApi.InitAquaristaAPI();
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }else
+        {
+            instance = this;
+        }
         DontDestroyOnLoad(gameObject);
         
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Newtonsoft.Json;
+using System;
 
 public static class ServerApi 
 {
@@ -26,7 +27,6 @@ public static class ServerApi
             if (!string.IsNullOrEmpty(data))
             {
                 playerData = JsonConvert.DeserializeObject<PlayerData>(data);
-
                 return playerData;
             }
             else
@@ -48,6 +48,16 @@ public static class ServerApi
             return playerData;
         }
 
+    }
+
+    private static void StartCoroutine(object p)
+    {
+        throw new NotImplementedException();
+    }
+
+    private static DateTime StringToDate(string v)
+    {
+        throw new NotImplementedException();
     }
 
     public static void Save()

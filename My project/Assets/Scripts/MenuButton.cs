@@ -233,15 +233,23 @@ public class MenuButton : MonoBehaviour
             if (currentEnergy >= 1)
             {
                 currentEnergy--;
-                playerData.SaveEnergy(currentEnergy);
-                ServerApi.Save();
-               
+
+                if (Energy.instance.isRestoring == false)
+                {
+                    if (currentEnergy + 1 == Energy.instance.maxEnergy)
+                    {
+                        Energy.instance.nextEnergyTime = Energy.instance.AddDuration(DateTime.Now, Energy.instance.restoreDuration);
+                    }
+
+                    StartCoroutine(Energy.instance.RestoreEnergy());
+                }
                 if (MusicButton.get != null)
                 {
                     scene = "PlayScene1";
                     StartCoroutine("LoadScene");
                 }
-
+                playerData.SaveEnergy(currentEnergy);
+                ServerApi.Save();
             }
             else
             {

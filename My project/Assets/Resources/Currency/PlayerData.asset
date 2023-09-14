@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75f6f0168e2d7a419a21c39b0ba6583, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  saveKey: PlayerData
+  saveKey: StarterData
   playerName: Tester001
   energy: 15
   coins: 999999
   diamonds: 999999
-  storageButtonSkinData: []
-  storageMusicData: []
   btnSkinData: D01
