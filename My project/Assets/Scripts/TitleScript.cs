@@ -1,54 +1,102 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class TitleScript : MonoBehaviour
 {
-    public GameObject gameName, play, credits, aboutUs;
+    public GameObject tapToStart, nameSetting, logoGame;
+    public TMP_InputField enterName;
+    bool haveId = false;
+    PlayerData playerData;
+
 
     [Header("LoadScene")]
     public GameObject load;
     public Image loadImage;
 
-    void start()
+    private void Start()
     {
-        gameName.SetActive(true);
-        play.SetActive(false);
-        credits.SetActive(false);
-        aboutUs.SetActive(false);
+        if (!PlayerPrefs.HasKey("Playerdata"))
+        {
+            haveId = false;
+
+        }
+        else
+        {
+            haveId = true;
+
+        }
+        tapToStart.SetActive(true);
+        logoGame.SetActive(true);
+        nameSetting.SetActive(false);
+        Debug.Log(haveId);
     }
 
     public void Play()
     {
-        StartCoroutine("Load");
+        if (haveId == false)
+        {
+            tapToStart.SetActive(false);
+            logoGame.SetActive(false);
+            nameSetting.SetActive(true);
+
+        }
+        else if (haveId == true)
+        {
+            tapToStart.SetActive(false);
+            StartCoroutine("Load");
+
+        }
+
+    }
+
+    public void PlayScene()
+    {
+
+        if (haveId == false)
+        {
+            tapToStart.SetActive(false);
+            logoGame.SetActive(true);
+            nameSetting.SetActive(false);
+            if (enterName.text != "")
+            {
+                playerData = ServerApi.Load();
+                playerData.playerName = enterName.text;
+                ServerApi.Save();
+                StartCoroutine("Load");
+
+            } else
+            {
+                playerData = ServerApi.Load();
+                playerData.playerName = "Tester001";
+                ServerApi.Save();
+                StartCoroutine("Load");
+            }
+
+        }
+        else
+        {
+            StartCoroutine("Load");
+
+        }
+
+
+
+
     }
 
     public IEnumerator Load()
-    {   
+    {
         load.SetActive(true);
         AsyncOperation loadScene = SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Single);
-        while(!loadScene.isDone)
+        while (!loadScene.isDone)
         {
             loadImage.fillAmount = loadScene.progress;
             yield return null;
         }
     }
 
-    public void ShowCredit()
-    {
-        gameName.SetActive(false);
-        play.SetActive(false);
-        credits.SetActive(false);
-        aboutUs.SetActive(true);
-    }
-
-    public void Back()
-    {
-        gameName.SetActive(true);
-        play.SetActive(true);
-        credits.SetActive(true);
-        aboutUs.SetActive(false);
-    }
 }

@@ -1,6 +1,6 @@
 
 
-public class UnlockRewardBody 
+public class UnlockRewardBody
 {
     public string itemNumber;
 }

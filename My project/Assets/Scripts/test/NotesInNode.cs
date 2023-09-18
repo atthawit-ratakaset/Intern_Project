@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NotesInNode : MonoBehaviour
@@ -20,7 +18,7 @@ public class NotesInNode : MonoBehaviour
         {
             obj.transform.Rotate(0f, 0f, -135f);
             obj.transform.position = pos.transform.position;
-                        
+
         }
         else if (endtarget == "B2")
         {

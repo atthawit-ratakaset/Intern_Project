@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MusicPopUp : MonoBehaviour
 {
@@ -15,16 +12,17 @@ public class MusicPopUp : MonoBehaviour
     public TMP_Text playCounts;
     int test;
     void Start()
-    {   
+    {
 
         instance = this;
         test = StateScene.menu;
         if (test != 0)
         {
             CheckMusic();
-        } else
+        }
+        else
         {
-            
+
         }
 
     }

@@ -1,7 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using UnityEngine.EventSystems;
 
 
 [CreateAssetMenu(fileName = "CurrencyItemInfo", menuName = "CurrencyItemInfo/CurrencyItemInfo", order = 0)]

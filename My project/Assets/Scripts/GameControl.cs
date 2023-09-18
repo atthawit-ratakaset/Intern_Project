@@ -1,23 +1,29 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using TMPro;    
 
 
 
-public class GameControl : MonoBehaviour 
-{   
-    [Header ("TYPES NOTE DATA")]
+public class GameControl : MonoBehaviour
+{
+    public SpriteRenderer theSR;
+
+    [Header("TYPES NOTE DATA")]
     public TypesNote types;
     List<NoteData> NotesEasy = new List<NoteData>();
     List<NoteData> NotesNormal = new List<NoteData>();
     List<NoteData> NotesHard = new List<NoteData>();
     List<NoteData> NotesEvent = new List<NoteData>();
     public static GameControl instance;
+    PlayerData playerData;
+    ThemeData bg;
+    ThemeBgInfo bgInfo;
+    bool equip = false;
 
-    [Header ("SYNC NOTE")]
+    [Header("SYNC NOTE")]
     public SpriteRenderer borderGame;
-    
-    [Header ("TARGET SCORE")]
+
+    [Header("TARGET SCORE")]
     public TMP_Text targetScore;
     int goalScore;
 
@@ -25,7 +31,7 @@ public class GameControl : MonoBehaviour
     float speed;
 
 
-    [Header ("HP BAR")]
+    [Header("HP BAR")]
     [SerializeField] GameObject CheckHp;
     public int maxHealth = 100;
     int currentHealth;
@@ -39,8 +45,9 @@ public class GameControl : MonoBehaviour
 
     [HideInInspector]
     public bool eventTime;
-    
-    void Awake() {
+
+    void Awake()
+    {
         instance = this;
         NotesEasy = MusicButton.get.Easy;
         NotesNormal = MusicButton.get.Normal;
@@ -48,17 +55,37 @@ public class GameControl : MonoBehaviour
         getMode = MenuButton.selectMode;
         NotesEvent = MusicButton.get.Event;
         goalScore = MusicButton.get.targetScore;
-        
+
     }
 
     void Start()
     {
-        Debug.Log(getMode);
+        playerData = ServerApi.Load();
+        ServerApi.GetStorageButtonSkinData((d) => { bg = d; }, (e) => { });
+
+        for (int i = 0; i < bg.bgData.Count; i++)
+        {
+            if (bg.bgData[i].ID == playerData.bgSkin)
+            {
+                equip = true;
+                bgInfo = bg.bgData[i];
+                break;
+            }
+        }
+
+        if (bgInfo.ID == "BG001")
+        {
+            theSR.sprite = MusicButton.get.bgSong;
+        } else
+        {
+
+        }
+
         GameModeCheck();
-        HpSetAtStart(); 
+        HpSetAtStart();
         MusicTimeCount();
         targetScore.text = $"Target: {goalScore}";
-      
+
     }
 
     void MusicTimeCount()
@@ -89,7 +116,7 @@ public class GameControl : MonoBehaviour
 
 
         if (musicPlayTime > 0)
-        {   
+        {
             musicPlayTime--;
             Invoke("MusicTimeCount", 1.0f);
         }
@@ -118,7 +145,7 @@ public class GameControl : MonoBehaviour
                 }
                 var note = Instantiate(NotesHard[i]);
                 note.gameObject.AddComponent<NoteSpeedUp>().setSpeed(speed);
-                
+
             }
             haveHp = true;
             CheckHp.SetActive(true);
@@ -127,7 +154,7 @@ public class GameControl : MonoBehaviour
         }
         else if (getMode == 1)
         {
-            
+
             for (int i = 0; i < NotesNormal.Count; i++)
             {
 
@@ -146,7 +173,8 @@ public class GameControl : MonoBehaviour
             CheckHp.SetActive(false);
             musicPlayTime = MusicButton.get.timerNormal + MusicButton.get.delay;
 
-        } else if (getMode == 0)
+        }
+        else if (getMode == 0)
         {
 
             for (int i = 0; i < NotesEasy.Count; i++)
@@ -179,24 +207,28 @@ public class GameControl : MonoBehaviour
             if (currentHealth <= 0)
             {
                 this.Wait(1f, ShowScore);
-         
+
                 MusicScript.instance.StopMusic();
             }
         }
-       
+
     }
-   
-    
+
+
     void HpSetAtStart()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        
+
     }
 
     void ShowScore()
-    {
-        Score.instance.ShowScore();
+    {   
+        if (currentHealth <= 0)
+        {
+            Score.instance.tryAgain.SetActive(true);
+        }
+        
     }
 
     public void EventTime()

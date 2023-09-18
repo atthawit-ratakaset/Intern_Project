@@ -1,9 +1,9 @@
+using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
-using System;
 
 public class MenuButton : MonoBehaviour
 {
@@ -16,7 +16,7 @@ public class MenuButton : MonoBehaviour
     public TMP_Text highScore;
     public TMP_Text highScoreLoad;
     public TMP_Text playCounts;
-
+    PlayerData playerData;
     bool x = false;
 
 
@@ -42,7 +42,7 @@ public class MenuButton : MonoBehaviour
     void Start()
     {
         instance = this;
-
+        playerData = ServerApi.Load();
     }
 
 
@@ -69,7 +69,7 @@ public class MenuButton : MonoBehaviour
 
         if (x == true)
         {
-            name.text = null; 
+            name.text = null;
             alertText.text = $"Not enough Energy, want to buy more?";
         }
         else
@@ -82,11 +82,11 @@ public class MenuButton : MonoBehaviour
     public void Cancel()
     {
         alertPopUp.SetActive(false);
-        
+
     }
 
     public void AlertBuy()
-    {   
+    {
         PlayerData playerData = ServerApi.Load();
         for (int i = 0; i < playerData.storageMusicData.Count; i++)
         {
@@ -115,7 +115,7 @@ public class MenuButton : MonoBehaviour
             SetObject.instance.MusicMenu();
         }
         name.text = null;
-      
+
     }
 
     public void GetEasyMode()
@@ -124,28 +124,17 @@ public class MenuButton : MonoBehaviour
         easy.SetActive(true);
         normal.SetActive(false);
         hard.SetActive(false);
-
-     
-            if (MusicButton.get.highScoreEasy <= 0)
-            {
-                highScore.text = "No record";
-                highScoreLoad.text = "No record";
-            }
-            else if (MusicButton.get.highScoreEasy > 0)
-            {
-                highScore.text = MusicButton.get.highScoreEasy.ToString();
-                
-            }
-
-            if (MusicButton.get.playCountEasy <= 0)
-            {
-                playCounts.text = "No record";
-            }
-            else if (MusicButton.get.playCountEasy > 0)
-            {
-                playCounts.text = MusicButton.get.playCountEasy.ToString();
-            }
-        
+        ScoreData songScore = playerData.allScore.Find(s => s.id == MusicButton.get.idSong && s.mode == selectMode);
+        if (songScore != null)
+        {
+            highScore.text = songScore.score.ToString();
+            playCounts.text = songScore.playCount.ToString();
+        }
+        else
+        {
+            highScore.text = "No record";
+            playCounts.text = "No record";
+        }
     }
 
     public void GetNormalMode()
@@ -154,28 +143,18 @@ public class MenuButton : MonoBehaviour
         easy.SetActive(false);
         normal.SetActive(true);
         hard.SetActive(false);
+        ScoreData songScore = playerData.allScore.Find(s => s.id == MusicButton.get.idSong && s.mode == selectMode);
+        if (songScore != null)
+        {
+            highScore.text = songScore.score.ToString();
+            playCounts.text = songScore.playCount.ToString();
+        }
+        else
+        {
+            highScore.text = "No record";
+            playCounts.text = "No record";
+        }
 
- 
-            if (MusicButton.get.highScoreNormal <= 0)
-            {
-                highScore.text = "No record";
-                highScoreLoad.text = "No record";
-            }
-            else if (MusicButton.get.highScoreNormal > 0)
-            {
-                highScore.text = MusicButton.get.highScoreNormal.ToString();
-                
-            }
-
-            if (MusicButton.get.playCountNormal <= 0)
-            {
-                playCounts.text = "No record";
-            }
-            else if (MusicButton.get.playCountNormal > 0)
-            {
-                playCounts.text = MusicButton.get.playCountNormal.ToString();
-            }
-        
     }
 
     public void GetHardMode()
@@ -184,46 +163,37 @@ public class MenuButton : MonoBehaviour
         easy.SetActive(false);
         normal.SetActive(false);
         hard.SetActive(true);
+        ScoreData songScore = playerData.allScore.Find(s => s.id == MusicButton.get.idSong && s.mode == selectMode);
+        if (songScore != null)
+        {
+            highScore.text = songScore.score.ToString();
+            playCounts.text = songScore.playCount.ToString();
+        }
+        else
+        {
+            highScore.text = "No record";
+            playCounts.text = "No record";
+        }
 
-            if (MusicButton.get.highScoreHard <= 0)
-            {
-                highScore.text = "No record";
-                highScoreLoad.text = "No record";
-            }
-            else if (MusicButton.get.highScoreHard > 0)
-            {
-                highScore.text = MusicButton.get.highScoreHard.ToString();
-                
-            }
-
-            if (MusicButton.get.playCountHard <= 0)
-            {
-                playCounts.text = "No record";
-            }
-            else if (MusicButton.get.playCountHard > 0)
-            {
-                playCounts.text = MusicButton.get.playCountHard.ToString();
-            }
-        
     }
 
     public void Test()
     {
         PlayerData playerData = ServerApi.Load();
         currentEnergy = playerData.energy;
-        
+
         for (int i = 0; i < playerData.storageMusicData.Count; i++)
         {
 
-                if (playerData.storageMusicData[i] == MusicButton.get.idSong)
-                {
-                    x = true;
-                    break;
-                }
-                else
-                {
-                    x = false;
-                }
+            if (playerData.storageMusicData[i] == MusicButton.get.idSong)
+            {
+                x = true;
+                break;
+            }
+            else
+            {
+                x = false;
+            }
 
         }
 
@@ -266,29 +236,54 @@ public class MenuButton : MonoBehaviour
     public IEnumerator LoadScene()
     {
         load.SetActive(true);
+        ScoreData songScore = playerData.allScore.Find(s => s.id == MusicButton.get.idSong && s.mode == selectMode);
         AsyncOperation loadScene = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Single);
         while (!loadScene.isDone)
         {
+            SetObject.instance.loadBg.sprite = MusicButton.get.bgSong;
             loadImage.GetComponent<Image>().sprite = MusicButton.get.image;
-            if (selectMode == 0)
+            if (songScore != null)
             {
-                levelMode.text = "Easy";
-                highScoreLoad.text = MusicButton.get.highScoreEasy.ToString();
+                if (selectMode == 0)
+                {
+                    levelMode.text = "Easy";
+
+                }
+                else if (selectMode == 1)
+                {
+                    levelMode.text = "Normal";
+
+                }
+                else if (selectMode == 2)
+                {
+                    levelMode.text = "Hard";
+
+                }
+                highScoreLoad.text = songScore.score.ToString();
             }
-            else if (selectMode == 1)
+            else
             {
-                levelMode.text = "Normal";
-                highScoreLoad.text = MusicButton.get.highScoreNormal.ToString();
-            }
-            else if (selectMode == 2)
-            {
-                levelMode.text = "Hard";
-                highScoreLoad.text = MusicButton.get.highScoreHard.ToString();
+                if (selectMode == 0)
+                {
+                    levelMode.text = "Easy";
+
+                }
+                else if (selectMode == 1)
+                {
+                    levelMode.text = "Normal";
+
+                }
+                else if (selectMode == 2)
+                {
+                    levelMode.text = "Hard";
+
+                }
+                highScoreLoad.text = "No record";
             }
             yield return null;
         }
     }
 
 
-    
+
 }

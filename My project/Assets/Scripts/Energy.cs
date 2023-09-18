@@ -1,7 +1,6 @@
-using UnityEngine;
-using System.Collections;
 using System;
-using TMPro;
+using System.Collections;
+using UnityEngine;
 
 public class Energy : MonoBehaviour
 {
@@ -26,6 +25,11 @@ public class Energy : MonoBehaviour
     void Start()
     {
         instance = this;
+
+
+    }
+    public void EnergyState()
+    {
         playerData = ServerApi.Load();
         currentEnergy = playerData.energy;
         if (!PlayerPrefs.HasKey("Playerdata"))
@@ -40,25 +44,23 @@ public class Energy : MonoBehaviour
             Load();
             StartCoroutine(RestoreEnergy());
         }
-
     }
 
-
     public void UseEnergy()
-    {   
-        if(currentEnergy >= 1)
+    {
+        if (currentEnergy >= 1)
         {
             currentEnergy--;
 
             if (isRestoring == false)
             {
-                if(currentEnergy + 1 == maxEnergy)
+                if (currentEnergy + 1 == maxEnergy)
                 {
                     nextEnergyTime = AddDuration(DateTime.Now, restoreDuration);
                 }
 
                 StartCoroutine(RestoreEnergy());
-            } 
+            }
         }
         else
         {
@@ -73,17 +75,17 @@ public class Energy : MonoBehaviour
 
         isRestoring = true;
 
-        while(currentEnergy < maxEnergy)
+        while (currentEnergy < maxEnergy)
         {
-            
+
             DateTime currentDateTime = DateTime.Now;
             DateTime nextDateTime = nextEnergyTime;
             bool isEnergyAdding = false;
-            
+
             while (currentDateTime > nextDateTime)
-            {    
+            {
                 if (currentEnergy < maxEnergy)
-                {   
+                {
                     isEnergyAdding = true;
                     currentEnergy++;
                     playerData.energy = currentEnergy;
@@ -111,9 +113,9 @@ public class Energy : MonoBehaviour
 
             UpdateEnergyTimer();
             Save();
-            yield return null; 
+            yield return null;
         }
-        Debug.Log("Energy full");
+        //Debug.Log("Energy full");
         isRestoring = false;
     }
 
@@ -127,7 +129,8 @@ public class Energy : MonoBehaviour
         if (String.IsNullOrEmpty(datetime))
         {
             return DateTime.Now;
-        } else
+        }
+        else
         {
             return DateTime.Parse(datetime);
         }

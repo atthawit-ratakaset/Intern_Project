@@ -10,7 +10,7 @@ public class Swipe : MonoBehaviour
 
     public void Start()
     {
-        
+
     }
 
     void Update()
@@ -26,18 +26,20 @@ public class Swipe : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             scorll_pos = scrollbar.GetComponent<Scrollbar>().value;
-        } else
+        }
+        else
         {
             for (int i = 0; i < pos.Length; i++)
             {
-                if (scorll_pos < pos[i] + (distance/2) && scorll_pos > pos[i] - (distance/2)) {
+                if (scorll_pos < pos[i] + (distance / 2) && scorll_pos > pos[i] - (distance / 2))
+                {
                     scrollbar.GetComponent<Scrollbar>().value = Mathf.Lerp(scrollbar.GetComponent<Scrollbar>().value, pos[i], 0.1f);
                 }
 
             }
         }
 
-     
+
 
         for (int i = 0; i < pos.Length; i++)
         {
@@ -46,13 +48,15 @@ public class Swipe : MonoBehaviour
                 transform.GetChild(i).localScale = Vector2.Lerp(transform.GetChild(i).localScale, new Vector2(1.0f, 1.0f), 0.1f);
                 for (int a = 0; a < pos.Length; a++)
                 {
-                    if (a != i) {
-                        
+                    if (a != i)
+                    {
+
                         transform.GetChild(a).localScale = Vector2.Lerp(transform.GetChild(i).localScale, new Vector2(0.005f, 0.005f), 0.1f);
                         Color color = transform.GetChild(a).gameObject.GetComponent<MusicButton>().image.color;
 
                         transform.GetChild(a).gameObject.GetComponent<MusicButton>().frame.SetActive(false);
-                    } else
+                    }
+                    else
                     {
 
                         transform.GetChild(a).gameObject.GetComponent<MusicButton>().SetDataMusic(MusicPopUp.instance.getValue.getMusicData[a]);

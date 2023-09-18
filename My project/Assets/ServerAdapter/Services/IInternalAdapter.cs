@@ -1,6 +1,6 @@
 using Cysharp.Threading.Tasks;
 
-public interface IInternalAdapter 
+public interface IInternalAdapter
 {
     UniTask<TOut> Get<TOut>(string requestPath);
     UniTask<TOut> Get<TOut, TInput>(string requestPath, TInput body);

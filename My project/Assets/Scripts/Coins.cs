@@ -1,8 +1,5 @@
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using System;
+using UnityEngine;
 
 public class Coins : MonoBehaviour
 {
@@ -44,7 +41,7 @@ public class Coins : MonoBehaviour
     public void Load()
     {
         currentCoin = PlayerPrefs.GetInt("currentCoin");
-        
+
     }
 
     public void Save()

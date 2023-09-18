@@ -1,12 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 public class NoteData : MonoBehaviour
 {
     public List<NoteNode> noteNodes = new List<NoteNode>();
-    
+
 
     private void Start()
     {

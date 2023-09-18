@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class DownButtonGame : UpButtonGame
 {
-   
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "NotesDown")
@@ -165,7 +162,7 @@ public class DownButtonGame : UpButtonGame
         {
             objs.Remove(objs[0]);
             noteType = NoteTypes.NormalNote;
-            
+
             if (objs.Count != 0)
             {
                 hit = true;
@@ -355,10 +352,10 @@ public class DownButtonGame : UpButtonGame
                 {
                     subNote3 = false;
                     spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
-                    
+
                     Color color = spiteRenderer.material.color;
                     color.a = 1f;
-                    spiteRenderer.material.color = color;                    
+                    spiteRenderer.material.color = color;
                     Square.transform.localScale = new Vector3(0f, 0f, 1f);
 
                 }

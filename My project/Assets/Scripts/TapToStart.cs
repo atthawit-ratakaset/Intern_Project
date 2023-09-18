@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TapToStart : MonoBehaviour
 {
-    public GameObject tapToStart, play, credits;
+    public GameObject tapToStart;
     void Update()
     {
         MenuScene();
@@ -15,8 +13,6 @@ public class TapToStart : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             tapToStart.SetActive(false);
-            play.SetActive(true);
-            credits.SetActive(true);
         }
     }
 }

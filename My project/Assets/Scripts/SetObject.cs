@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class SetObject : MonoBehaviour
@@ -9,6 +7,16 @@ public class SetObject : MonoBehaviour
     public static SetObject instance;
     public AudioSource audioSource;
 
+    [Header("Bg")]
+    public Image lobbyBg;
+    public Image selectSongBg;
+    public Image shopBg;
+    public Image mailBg;
+    public Image loadBg;
+    PlayerData playerData;
+    ThemeData bg;
+    ThemeBgInfo bgInfo;
+    bool equip = false;
 
     [Header("SCENCE")]
     public GameObject menuScene;
@@ -35,6 +43,7 @@ public class SetObject : MonoBehaviour
     public TMP_Text musicStorageText;
     public GameObject buttonSkinShow;
     public GameObject musicShow;
+    public GameObject bgShow;
     public GameObject buttonStorage;
     public GameObject themeStorage;
     public GameObject musicStorage;
@@ -103,6 +112,8 @@ public class SetObject : MonoBehaviour
     public void Start()
     {
         GameManager.LoadStoragePlayerData();
+        Energy.instance.EnergyState();
+        //UpdateBg();
 
         test = StateScene.menu;
         if (whatScene != test)
@@ -115,6 +126,28 @@ public class SetObject : MonoBehaviour
         }
     }
 
+
+    public void UpdateBg()
+    {
+        playerData = ServerApi.Load();
+        ServerApi.GetStorageButtonSkinData((d) => { bg = d; }, (e) => { });
+
+        for (int i = 0; i < bg.bgData.Count; i++)
+        {
+            if (bg.bgData[i].ID == playerData.bgSkin)
+            {
+                equip = true;
+                bgInfo = bg.bgData[i];
+                break;
+            }
+        }
+
+        lobbyBg.sprite = bgInfo.itemImg;
+        selectSongBg.sprite = bgInfo.itemImg;
+        shopBg.sprite = bgInfo.itemImg;
+        mailBg.sprite = bgInfo.itemImg;
+        loadBg.sprite = bgInfo.itemImg;
+    }
 
     public void MailScene()
     {
@@ -179,7 +212,8 @@ public class SetObject : MonoBehaviour
                 help = true;
                 helpPopUp.SetActive(true);
             }
-        } else if (play == true)
+        }
+        else if (play == true)
         {
             if (help == true)
             {
@@ -211,6 +245,7 @@ public class SetObject : MonoBehaviour
         buttonUI.SetActive(false);
         buttonSkinShow.SetActive(true);
         musicShow.SetActive(false);
+        bgShow.SetActive(false);
         StorageShow.instance.CheckSkin();
 
 
@@ -242,12 +277,12 @@ public class SetObject : MonoBehaviour
         audioSource.clip = null;
     }
 
-    public void exitMail ()
+    public void exitMail()
     {
         mail = false;
         mailScene.SetActive(false);
         if (play == true)
-        {   
+        {
 
             selectMusicScene.SetActive(true);
 
@@ -262,6 +297,7 @@ public class SetObject : MonoBehaviour
     {
         buttonSkinShow.SetActive(true);
         musicShow.SetActive(false);
+        bgShow.SetActive(false);
         StorageShow.instance.CheckSkin();
         audioSource.clip = null;
 
@@ -274,11 +310,12 @@ public class SetObject : MonoBehaviour
     }
 
     public void StorageTheme()
-    {   
+    {
+        bgShow.SetActive(true);
         buttonSkinShow.SetActive(false);
         musicShow.SetActive(false);
         audioSource.clip = null;
-
+        StorageShow.instance.CheckBgStorage();
         buttonStorageText.color = Color.white;
         themeStorageText.color = new Color32(253, 6, 83, 255);
         musicStorageText.color = Color.white;
@@ -289,6 +326,7 @@ public class SetObject : MonoBehaviour
 
     public void StorageMusic()
     {
+        bgShow.SetActive(false);
         buttonSkinShow.SetActive(false);
         musicShow.SetActive(true);
         MusicStorageShow.instance.CheckMusic();
@@ -346,7 +384,8 @@ public class SetObject : MonoBehaviour
                 selectMusicScene.SetActive(true);
             }
 
-        } else if (menu == true)
+        }
+        else if (menu == true)
         {
             if (mail == true)
             {
@@ -356,7 +395,7 @@ public class SetObject : MonoBehaviour
             {
                 menuScene.SetActive(true);
             }
-        } 
+        }
 
     }
 
@@ -486,7 +525,7 @@ public class SetObject : MonoBehaviour
         effectText.color = new Color32(253, 6, 83, 255);
         themeSet.SetActive(false);
         themeMenuText.color = new Color32(253, 6, 83, 255);
-        
+        ThemeShow.instance.CheckSkin();
     }
 
     public void NoteSkinMenu()
@@ -523,6 +562,7 @@ public class SetObject : MonoBehaviour
         effectText.color = new Color32(253, 6, 83, 255);
         themeSet.SetActive(true);
         themeMenuText.color = Color.white;
+        ThemeShow.instance.CheckSkin();
     }
 
     public void PopUpComfirm()
@@ -530,7 +570,7 @@ public class SetObject : MonoBehaviour
         popUpBuy.SetActive(true);
         popUpComfirm.SetActive(true);
         popUpFinsh.SetActive(false);
-        
+
     }
 }
 

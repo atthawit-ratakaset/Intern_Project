@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class UpButtonGame : MonoBehaviour
 {
 
     public SpriteRenderer theSR;
-    [Header ("NOTE OBJECT DISPLAY")]
+    [Header("NOTE OBJECT DISPLAY")]
     public GameObject Square;
     public SpriteRenderer spiteRenderer;
     PlayerData playerData;
@@ -24,12 +22,12 @@ public class UpButtonGame : MonoBehaviour
         DonotTap,
         MutiTap,
         LockNote
-       
+
     }
 
     [HideInInspector]
     public NoteTypes noteType;
-    
+
 
     [HideInInspector]
     public bool hit, subNote1, subNote2, subNote3, noteSp1, noteSp2, noteSp3, lock1, lock2, lock3;
@@ -43,9 +41,10 @@ public class UpButtonGame : MonoBehaviour
     [HideInInspector]
     public List<GameObject> objs = new List<GameObject>();
 
-    void Awake() {
+    void Awake()
+    {
 
-        
+
     }
 
     void Start()
@@ -62,8 +61,8 @@ public class UpButtonGame : MonoBehaviour
                 break;
             }
         }
-        
-        
+
+
 
 
 
@@ -81,13 +80,13 @@ public class UpButtonGame : MonoBehaviour
 
         //theSR.color = Color.blue;
         theSR.sprite = info.itemImg;
-     
+
         Color color = theSR.material.color;
         color.a = 0.75f;
         theSR.material.color = color;
-         
+
         Square.transform.localScale = new Vector3(0f, 0f, 1f);
-        
+
 
     }
 
@@ -99,37 +98,44 @@ public class UpButtonGame : MonoBehaviour
             color.a = 1f;
             spiteRenderer.material.color = color;
             spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
-        } else if (noteSp1 == true)
+        }
+        else if (noteSp1 == true)
         {
             Color color = spiteRenderer.material.color;
             color.a = 1f;
             spiteRenderer.material.color = color;
 
             spiteRenderer.sprite = GameControl.instance.types.sp1;
-        } else if (noteSp2 == true) {
+        }
+        else if (noteSp2 == true)
+        {
             Color color = spiteRenderer.material.color;
             color.a = 1f;
             spiteRenderer.material.color = color;
             spiteRenderer.sprite = GameControl.instance.types.xTap;
-        } else if (noteSp3 == true)
+        }
+        else if (noteSp3 == true)
         {
             Color color = spiteRenderer.material.color;
             color.a = 1f;
-            spiteRenderer.material.color = color; 
+            spiteRenderer.material.color = color;
             spiteRenderer.sprite = GameControl.instance.types.multiTap;
-        } else if (lock1 == true)
+        }
+        else if (lock1 == true)
         {
             Color color = spiteRenderer.material.color;
             color.a = 0.8f;
             spiteRenderer.material.color = color;
             spiteRenderer.sprite = GameControl.instance.types.unlock1;
-        } else if (lock2 == true)
+        }
+        else if (lock2 == true)
         {
             Color color = spiteRenderer.material.color;
             color.a = 0.8f;
             spiteRenderer.material.color = color;
             spiteRenderer.sprite = GameControl.instance.types.lock2;
-        } else if (lock3 == true)
+        }
+        else if (lock3 == true)
         {
             Color color = spiteRenderer.material.color;
             color.a = 0.8f;
@@ -179,8 +185,10 @@ public class UpButtonGame : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "NotesUp") {
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "NotesUp")
+        {
             noteType = NoteTypes.NormalNote;
             hit = true;
             CheckNoteInTypes();
@@ -188,8 +196,8 @@ public class UpButtonGame : MonoBehaviour
             Square.transform.localScale = new Vector3(0.35f, 0.35f, 1f);
             obj = other.gameObject;
             objs.Add(obj);
-            
-        } 
+
+        }
 
         if (other.gameObject.tag == "DoubleTapNoteUp")
         {
@@ -199,9 +207,9 @@ public class UpButtonGame : MonoBehaviour
             Square.transform.localScale = new Vector3(1f, 1f, 1f);
             obj = other.gameObject;
             objs.Add(obj);
-            
-        } 
-        
+
+        }
+
         if (other.gameObject.tag == "DonotTapUp")
         {
             noteType = NoteTypes.DonotTap;
@@ -254,7 +262,7 @@ public class UpButtonGame : MonoBehaviour
         }
 
 
-        if ((hit == true && subNote1 == true) || (noteSp1 == true && subNote1 == true) || 
+        if ((hit == true && subNote1 == true) || (noteSp1 == true && subNote1 == true) ||
             (noteSp2 == true && subNote1 == true) || (noteSp3 == true && subNote1 == true) || (lock1 == true && subNote1 == true) ||
             (lock2 == true && subNote1 == true) || (lock3 == true && subNote1 == true))
         {
@@ -325,24 +333,29 @@ public class UpButtonGame : MonoBehaviour
     }
 
 
-    void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.tag == "NotesUp") {
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "NotesUp")
+        {
             objs.Remove(objs[0]);
-            
-            if (objs.Count != 0) {
+
+            if (objs.Count != 0)
+            {
                 hit = true;
-            } else {
+            }
+            else
+            {
                 hit = false;
                 CheckNoteOutTypes();
 
             }
-        } 
+        }
         else if (other.gameObject.tag == "DoubleTapNoteUp")
         {
             objs.Remove(objs[0]);
             hp = 2;
             noteType = NoteTypes.DoubleTapNote;
-            
+
             if (objs.Count != 0)
             {
                 noteSp1 = true;
@@ -357,7 +370,7 @@ public class UpButtonGame : MonoBehaviour
         else if (other.gameObject.tag == "DonotTapUp")
         {
             objs.Remove(objs[0]);
-            
+
             noteType = NoteTypes.DonotTap;
 
             if (objs.Count != 0)
@@ -585,17 +598,19 @@ public class UpButtonGame : MonoBehaviour
                 }
                 break;
         }
-        
+
 
     }
 
-    public void DestroyNote() {
+    public void DestroyNote()
+    {
         Destroy(objs[0]);
         CheckNoteOutTypes();
     }
 
 
-    void ShowScore() {
+    void ShowScore()
+    {
         Score.instance.ShowScore();
     }
 

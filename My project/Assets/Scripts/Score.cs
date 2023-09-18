@@ -1,32 +1,32 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Score : MonoBehaviour
-{   
-    [Header ("SHOW SCORE POPUP")]
+{
+    [Header("SHOW SCORE POPUP")]
     [SerializeField] GameObject popUp;
+    [SerializeField] public GameObject tryAgain;
 
-    [Header ("HIDE OBJECT WHEN ENDGAME")]
+    [Header("HIDE OBJECT WHEN ENDGAME")]
     [SerializeField] List<GameObject> hide = new List<GameObject>();
 
-    [Header ("EFFECT")]
+    [Header("EFFECT")]
     public GameObject goodEffect;
     public GameObject perfectEffect;
     public GameObject missEffect;
     public GameObject badEffect;
 
 
-    [Header ("SCORE DATA")]
+    [Header("SCORE DATA")]
     public ScoreSetting point;
     public static Score instance;
 
-    [Header ("TEXT")]
+    [Header("TEXT")]
     public TMP_Text MissNoteScoreText;
     public TMP_Text GoodScoreText;
-    public  TMP_Text PerfectScoreText;
+    public TMP_Text PerfectScoreText;
     public TMP_Text TotalScoreText;
     public TMP_Text ShowScoreText;
     public TMP_Text BadScoreText;
@@ -35,7 +35,9 @@ public class Score : MonoBehaviour
     public TMP_Text coinsText;
 
     PlayerData playerData;
-    
+    ThemeData bg;
+    ThemeBgInfo bgInfo;
+    bool equip = false;
     public enum GetScore
     {
         Miss,
@@ -57,12 +59,49 @@ public class Score : MonoBehaviour
     int maxCombo = 0;
 
     CurrencyData currencyData;
-    private void Awake(){
+    private void Awake()
+    {
         instance = this;
     }
-    
+
     void Start()
     {
+        playerData = ServerApi.Load();
+        ServerApi.GetStorageButtonSkinData((d) => { bg = d; }, (e) => { });
+
+        for (int i = 0; i < bg.bgData.Count; i++)
+        {
+            if (bg.bgData[i].ID == playerData.bgSkin)
+            {
+                equip = true;
+                bgInfo = bg.bgData[i];
+                break;
+            }
+        }
+
+        goodEffect.GetComponent<SpriteRenderer>().sprite = bgInfo.good;
+        perfectEffect.GetComponent<SpriteRenderer>().sprite = bgInfo.perfect;
+        missEffect.GetComponent<SpriteRenderer>().sprite = bgInfo.miss;
+        badEffect.GetComponent<SpriteRenderer>().sprite = bgInfo.bad;
+
+        if (bgInfo.ID == "BG001")
+        {
+            goodEffect.transform.localScale = new Vector3(4f, 4f, 0);
+            perfectEffect.transform.localScale = new Vector3(4f, 4f, 0);
+            missEffect.transform.localScale = new Vector3(4f, 4f, 0);
+            badEffect.transform.localScale = new Vector3(4f, 4f, 0);
+        } else
+        {
+            
+            goodEffect.transform.localScale = new Vector3(0.4f, 0.4f, 0);
+            perfectEffect.transform.localScale = new Vector3(0.4f, 0.4f, 0);
+            missEffect.transform.localScale = new Vector3(0.4f, 0.4f, 0);
+            badEffect.transform.localScale = new Vector3(0.4f, 0.4f, 0);
+        }
+        
+
+
+
         BadScoreText.text = BadScore.ToString();
         MissNoteScoreText.text = MissNoteScore.ToString();
         GoodScoreText.text = GoodScore.ToString();
@@ -111,7 +150,7 @@ public class Score : MonoBehaviour
                 break;
 
             case GetScore.ResetCombo:
-                
+
                 if (Combo > maxCombo)
                 {
                     maxCombo = Combo;
@@ -125,7 +164,7 @@ public class Score : MonoBehaviour
     }
 
     public void CheckTotalScore()
-    {   
+    {
 
         if (TotalScore < 0)
         {
@@ -134,39 +173,42 @@ public class Score : MonoBehaviour
         TotalScoreText.text = (TotalScore < 10) ? "0" + TotalScore : TotalScore.ToString();
     }
 
-    public void ShowScore() {
-        playerData = ServerApi.Load();
+    public void ShowScore()
+    {
         popUp.SetActive(true);
         if (TotalScore < 1000)
         {
             coinsText.text = "20";
             playerData.coins += int.Parse(coinsText.text);
-            ServerApi.Save();
-        } else if (TotalScore < 10000)
+
+        }
+        else if (TotalScore < 10000)
         {
             coinsText.text = "50";
-            currencyData.coins += int.Parse(coinsText.text);
-            ServerApi.Save();
+            playerData.coins += int.Parse(coinsText.text);
+
         }
         if (maxCombo < Combo)
         {
             maxCombo = Combo;
-        } 
-        
-        for(int i = 0; i < hide.Count; i++)
+        }
+
+        for (int i = 0; i < hide.Count; i++)
         {
             hide[i].SetActive(false);
         }
+
         Time.timeScale = 0;
-        if (TotalScore < 0) {
+        if (TotalScore < 0)
+        {
             TotalScore = 0;
         }
         ShowScoreText.text = TotalScore.ToString();
         maxComboText.text = maxCombo.ToString();
         TotalScoreText.text = (TotalScore < 10) ? "0" + TotalScore : TotalScore.ToString();
-        MusicButton.get.SaveHighSroce(TotalScore);
-        MusicButton.get.AddPlayCount();
+        playerData.UpdateScore(MusicButton.get.idSong, MenuButton.selectMode, TotalScore);
+        ServerApi.Save();
     }
-    
+
 
 }

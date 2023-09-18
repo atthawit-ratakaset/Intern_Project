@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class Timer : MonoBehaviour
-{   
+{
     [Header("Component")]
     public TMP_Text timerTextMinutes;
     public TMP_Text timerTextSeconds;
 
-    
+
     private float timerTime;
     private bool isRunning;
 

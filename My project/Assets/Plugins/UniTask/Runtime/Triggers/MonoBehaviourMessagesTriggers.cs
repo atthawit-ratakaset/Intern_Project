@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 namespace Cysharp.Threading.Tasks.Triggers
 {
-#region FixedUpdate
+    #region FixedUpdate
 
     public interface IAsyncFixedUpdateHandler
     {
@@ -28,7 +28,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncFixedUpdateTrigger>(gameObject);
         }
-        
+
         public static AsyncFixedUpdateTrigger GetAsyncFixedUpdateTrigger(this Component component)
         {
             return component.gameObject.GetAsyncFixedUpdateTrigger();
@@ -63,9 +63,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncFixedUpdateHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).FixedUpdateAsync();
         }
     }
-#endregion
+    #endregion
 
-#region LateUpdate
+    #region LateUpdate
 
     public interface IAsyncLateUpdateHandler
     {
@@ -87,7 +87,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncLateUpdateTrigger>(gameObject);
         }
-        
+
         public static AsyncLateUpdateTrigger GetAsyncLateUpdateTrigger(this Component component)
         {
             return component.gameObject.GetAsyncLateUpdateTrigger();
@@ -122,9 +122,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncLateUpdateHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).LateUpdateAsync();
         }
     }
-#endregion
+    #endregion
 
-#region AnimatorIK
+    #region AnimatorIK
 
     public interface IAsyncOnAnimatorIKHandler
     {
@@ -146,7 +146,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncAnimatorIKTrigger>(gameObject);
         }
-        
+
         public static AsyncAnimatorIKTrigger GetAsyncAnimatorIKTrigger(this Component component)
         {
             return component.gameObject.GetAsyncAnimatorIKTrigger();
@@ -181,9 +181,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnAnimatorIKHandler)new AsyncTriggerHandler<int>(this, cancellationToken, true)).OnAnimatorIKAsync();
         }
     }
-#endregion
+    #endregion
 
-#region AnimatorMove
+    #region AnimatorMove
 
     public interface IAsyncOnAnimatorMoveHandler
     {
@@ -205,7 +205,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncAnimatorMoveTrigger>(gameObject);
         }
-        
+
         public static AsyncAnimatorMoveTrigger GetAsyncAnimatorMoveTrigger(this Component component)
         {
             return component.gameObject.GetAsyncAnimatorMoveTrigger();
@@ -240,9 +240,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnAnimatorMoveHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnAnimatorMoveAsync();
         }
     }
-#endregion
+    #endregion
 
-#region ApplicationFocus
+    #region ApplicationFocus
 
     public interface IAsyncOnApplicationFocusHandler
     {
@@ -264,7 +264,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncApplicationFocusTrigger>(gameObject);
         }
-        
+
         public static AsyncApplicationFocusTrigger GetAsyncApplicationFocusTrigger(this Component component)
         {
             return component.gameObject.GetAsyncApplicationFocusTrigger();
@@ -299,9 +299,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnApplicationFocusHandler)new AsyncTriggerHandler<bool>(this, cancellationToken, true)).OnApplicationFocusAsync();
         }
     }
-#endregion
+    #endregion
 
-#region ApplicationPause
+    #region ApplicationPause
 
     public interface IAsyncOnApplicationPauseHandler
     {
@@ -323,7 +323,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncApplicationPauseTrigger>(gameObject);
         }
-        
+
         public static AsyncApplicationPauseTrigger GetAsyncApplicationPauseTrigger(this Component component)
         {
             return component.gameObject.GetAsyncApplicationPauseTrigger();
@@ -358,9 +358,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnApplicationPauseHandler)new AsyncTriggerHandler<bool>(this, cancellationToken, true)).OnApplicationPauseAsync();
         }
     }
-#endregion
+    #endregion
 
-#region ApplicationQuit
+    #region ApplicationQuit
 
     public interface IAsyncOnApplicationQuitHandler
     {
@@ -382,7 +382,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncApplicationQuitTrigger>(gameObject);
         }
-        
+
         public static AsyncApplicationQuitTrigger GetAsyncApplicationQuitTrigger(this Component component)
         {
             return component.gameObject.GetAsyncApplicationQuitTrigger();
@@ -417,9 +417,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnApplicationQuitHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnApplicationQuitAsync();
         }
     }
-#endregion
+    #endregion
 
-#region AudioFilterRead
+    #region AudioFilterRead
 
     public interface IAsyncOnAudioFilterReadHandler
     {
@@ -441,7 +441,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncAudioFilterReadTrigger>(gameObject);
         }
-        
+
         public static AsyncAudioFilterReadTrigger GetAsyncAudioFilterReadTrigger(this Component component)
         {
             return component.gameObject.GetAsyncAudioFilterReadTrigger();
@@ -476,9 +476,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnAudioFilterReadHandler)new AsyncTriggerHandler<(float[] data, int channels)>(this, cancellationToken, true)).OnAudioFilterReadAsync();
         }
     }
-#endregion
+    #endregion
 
-#region BecameInvisible
+    #region BecameInvisible
 
     public interface IAsyncOnBecameInvisibleHandler
     {
@@ -500,7 +500,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncBecameInvisibleTrigger>(gameObject);
         }
-        
+
         public static AsyncBecameInvisibleTrigger GetAsyncBecameInvisibleTrigger(this Component component)
         {
             return component.gameObject.GetAsyncBecameInvisibleTrigger();
@@ -535,9 +535,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnBecameInvisibleHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnBecameInvisibleAsync();
         }
     }
-#endregion
+    #endregion
 
-#region BecameVisible
+    #region BecameVisible
 
     public interface IAsyncOnBecameVisibleHandler
     {
@@ -559,7 +559,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncBecameVisibleTrigger>(gameObject);
         }
-        
+
         public static AsyncBecameVisibleTrigger GetAsyncBecameVisibleTrigger(this Component component)
         {
             return component.gameObject.GetAsyncBecameVisibleTrigger();
@@ -594,9 +594,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnBecameVisibleHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnBecameVisibleAsync();
         }
     }
-#endregion
+    #endregion
 
-#region BeforeTransformParentChanged
+    #region BeforeTransformParentChanged
 
     public interface IAsyncOnBeforeTransformParentChangedHandler
     {
@@ -618,7 +618,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncBeforeTransformParentChangedTrigger>(gameObject);
         }
-        
+
         public static AsyncBeforeTransformParentChangedTrigger GetAsyncBeforeTransformParentChangedTrigger(this Component component)
         {
             return component.gameObject.GetAsyncBeforeTransformParentChangedTrigger();
@@ -653,9 +653,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnBeforeTransformParentChangedHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnBeforeTransformParentChangedAsync();
         }
     }
-#endregion
+    #endregion
 
-#region OnCanvasGroupChanged
+    #region OnCanvasGroupChanged
 
     public interface IAsyncOnCanvasGroupChangedHandler
     {
@@ -677,7 +677,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncOnCanvasGroupChangedTrigger>(gameObject);
         }
-        
+
         public static AsyncOnCanvasGroupChangedTrigger GetAsyncOnCanvasGroupChangedTrigger(this Component component)
         {
             return component.gameObject.GetAsyncOnCanvasGroupChangedTrigger();
@@ -712,9 +712,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnCanvasGroupChangedHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnCanvasGroupChangedAsync();
         }
     }
-#endregion
+    #endregion
 
-#region CollisionEnter
+    #region CollisionEnter
 
     public interface IAsyncOnCollisionEnterHandler
     {
@@ -736,7 +736,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncCollisionEnterTrigger>(gameObject);
         }
-        
+
         public static AsyncCollisionEnterTrigger GetAsyncCollisionEnterTrigger(this Component component)
         {
             return component.gameObject.GetAsyncCollisionEnterTrigger();
@@ -771,9 +771,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnCollisionEnterHandler)new AsyncTriggerHandler<Collision>(this, cancellationToken, true)).OnCollisionEnterAsync();
         }
     }
-#endregion
+    #endregion
 
-#region CollisionEnter2D
+    #region CollisionEnter2D
 
     public interface IAsyncOnCollisionEnter2DHandler
     {
@@ -795,7 +795,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncCollisionEnter2DTrigger>(gameObject);
         }
-        
+
         public static AsyncCollisionEnter2DTrigger GetAsyncCollisionEnter2DTrigger(this Component component)
         {
             return component.gameObject.GetAsyncCollisionEnter2DTrigger();
@@ -830,9 +830,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnCollisionEnter2DHandler)new AsyncTriggerHandler<Collision2D>(this, cancellationToken, true)).OnCollisionEnter2DAsync();
         }
     }
-#endregion
+    #endregion
 
-#region CollisionExit
+    #region CollisionExit
 
     public interface IAsyncOnCollisionExitHandler
     {
@@ -854,7 +854,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncCollisionExitTrigger>(gameObject);
         }
-        
+
         public static AsyncCollisionExitTrigger GetAsyncCollisionExitTrigger(this Component component)
         {
             return component.gameObject.GetAsyncCollisionExitTrigger();
@@ -889,9 +889,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnCollisionExitHandler)new AsyncTriggerHandler<Collision>(this, cancellationToken, true)).OnCollisionExitAsync();
         }
     }
-#endregion
+    #endregion
 
-#region CollisionExit2D
+    #region CollisionExit2D
 
     public interface IAsyncOnCollisionExit2DHandler
     {
@@ -913,7 +913,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncCollisionExit2DTrigger>(gameObject);
         }
-        
+
         public static AsyncCollisionExit2DTrigger GetAsyncCollisionExit2DTrigger(this Component component)
         {
             return component.gameObject.GetAsyncCollisionExit2DTrigger();
@@ -948,9 +948,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnCollisionExit2DHandler)new AsyncTriggerHandler<Collision2D>(this, cancellationToken, true)).OnCollisionExit2DAsync();
         }
     }
-#endregion
+    #endregion
 
-#region CollisionStay
+    #region CollisionStay
 
     public interface IAsyncOnCollisionStayHandler
     {
@@ -972,7 +972,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncCollisionStayTrigger>(gameObject);
         }
-        
+
         public static AsyncCollisionStayTrigger GetAsyncCollisionStayTrigger(this Component component)
         {
             return component.gameObject.GetAsyncCollisionStayTrigger();
@@ -1007,9 +1007,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnCollisionStayHandler)new AsyncTriggerHandler<Collision>(this, cancellationToken, true)).OnCollisionStayAsync();
         }
     }
-#endregion
+    #endregion
 
-#region CollisionStay2D
+    #region CollisionStay2D
 
     public interface IAsyncOnCollisionStay2DHandler
     {
@@ -1031,7 +1031,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncCollisionStay2DTrigger>(gameObject);
         }
-        
+
         public static AsyncCollisionStay2DTrigger GetAsyncCollisionStay2DTrigger(this Component component)
         {
             return component.gameObject.GetAsyncCollisionStay2DTrigger();
@@ -1066,9 +1066,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnCollisionStay2DHandler)new AsyncTriggerHandler<Collision2D>(this, cancellationToken, true)).OnCollisionStay2DAsync();
         }
     }
-#endregion
+    #endregion
 
-#region ControllerColliderHit
+    #region ControllerColliderHit
 
     public interface IAsyncOnControllerColliderHitHandler
     {
@@ -1090,7 +1090,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncControllerColliderHitTrigger>(gameObject);
         }
-        
+
         public static AsyncControllerColliderHitTrigger GetAsyncControllerColliderHitTrigger(this Component component)
         {
             return component.gameObject.GetAsyncControllerColliderHitTrigger();
@@ -1125,9 +1125,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnControllerColliderHitHandler)new AsyncTriggerHandler<ControllerColliderHit>(this, cancellationToken, true)).OnControllerColliderHitAsync();
         }
     }
-#endregion
+    #endregion
 
-#region Disable
+    #region Disable
 
     public interface IAsyncOnDisableHandler
     {
@@ -1149,7 +1149,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncDisableTrigger>(gameObject);
         }
-        
+
         public static AsyncDisableTrigger GetAsyncDisableTrigger(this Component component)
         {
             return component.gameObject.GetAsyncDisableTrigger();
@@ -1184,9 +1184,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnDisableHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnDisableAsync();
         }
     }
-#endregion
+    #endregion
 
-#region DrawGizmos
+    #region DrawGizmos
 
     public interface IAsyncOnDrawGizmosHandler
     {
@@ -1208,7 +1208,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncDrawGizmosTrigger>(gameObject);
         }
-        
+
         public static AsyncDrawGizmosTrigger GetAsyncDrawGizmosTrigger(this Component component)
         {
             return component.gameObject.GetAsyncDrawGizmosTrigger();
@@ -1243,9 +1243,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnDrawGizmosHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnDrawGizmosAsync();
         }
     }
-#endregion
+    #endregion
 
-#region DrawGizmosSelected
+    #region DrawGizmosSelected
 
     public interface IAsyncOnDrawGizmosSelectedHandler
     {
@@ -1267,7 +1267,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncDrawGizmosSelectedTrigger>(gameObject);
         }
-        
+
         public static AsyncDrawGizmosSelectedTrigger GetAsyncDrawGizmosSelectedTrigger(this Component component)
         {
             return component.gameObject.GetAsyncDrawGizmosSelectedTrigger();
@@ -1302,9 +1302,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnDrawGizmosSelectedHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnDrawGizmosSelectedAsync();
         }
     }
-#endregion
+    #endregion
 
-#region Enable
+    #region Enable
 
     public interface IAsyncOnEnableHandler
     {
@@ -1326,7 +1326,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncEnableTrigger>(gameObject);
         }
-        
+
         public static AsyncEnableTrigger GetAsyncEnableTrigger(this Component component)
         {
             return component.gameObject.GetAsyncEnableTrigger();
@@ -1361,9 +1361,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnEnableHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnEnableAsync();
         }
     }
-#endregion
+    #endregion
 
-#region GUI
+    #region GUI
 
     public interface IAsyncOnGUIHandler
     {
@@ -1385,7 +1385,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncGUITrigger>(gameObject);
         }
-        
+
         public static AsyncGUITrigger GetAsyncGUITrigger(this Component component)
         {
             return component.gameObject.GetAsyncGUITrigger();
@@ -1420,9 +1420,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnGUIHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnGUIAsync();
         }
     }
-#endregion
+    #endregion
 
-#region JointBreak
+    #region JointBreak
 
     public interface IAsyncOnJointBreakHandler
     {
@@ -1444,7 +1444,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncJointBreakTrigger>(gameObject);
         }
-        
+
         public static AsyncJointBreakTrigger GetAsyncJointBreakTrigger(this Component component)
         {
             return component.gameObject.GetAsyncJointBreakTrigger();
@@ -1479,9 +1479,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnJointBreakHandler)new AsyncTriggerHandler<float>(this, cancellationToken, true)).OnJointBreakAsync();
         }
     }
-#endregion
+    #endregion
 
-#region JointBreak2D
+    #region JointBreak2D
 
     public interface IAsyncOnJointBreak2DHandler
     {
@@ -1503,7 +1503,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncJointBreak2DTrigger>(gameObject);
         }
-        
+
         public static AsyncJointBreak2DTrigger GetAsyncJointBreak2DTrigger(this Component component)
         {
             return component.gameObject.GetAsyncJointBreak2DTrigger();
@@ -1538,9 +1538,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnJointBreak2DHandler)new AsyncTriggerHandler<Joint2D>(this, cancellationToken, true)).OnJointBreak2DAsync();
         }
     }
-#endregion
+    #endregion
 
-#region MouseDown
+    #region MouseDown
 #if !(UNITY_IPHONE || UNITY_ANDROID || UNITY_METRO)
 
     public interface IAsyncOnMouseDownHandler
@@ -1563,7 +1563,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncMouseDownTrigger>(gameObject);
         }
-        
+
         public static AsyncMouseDownTrigger GetAsyncMouseDownTrigger(this Component component)
         {
             return component.gameObject.GetAsyncMouseDownTrigger();
@@ -1599,9 +1599,9 @@ namespace Cysharp.Threading.Tasks.Triggers
         }
     }
 #endif
-#endregion
+    #endregion
 
-#region MouseDrag
+    #region MouseDrag
 #if !(UNITY_IPHONE || UNITY_ANDROID || UNITY_METRO)
 
     public interface IAsyncOnMouseDragHandler
@@ -1624,7 +1624,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncMouseDragTrigger>(gameObject);
         }
-        
+
         public static AsyncMouseDragTrigger GetAsyncMouseDragTrigger(this Component component)
         {
             return component.gameObject.GetAsyncMouseDragTrigger();
@@ -1660,9 +1660,9 @@ namespace Cysharp.Threading.Tasks.Triggers
         }
     }
 #endif
-#endregion
+    #endregion
 
-#region MouseEnter
+    #region MouseEnter
 #if !(UNITY_IPHONE || UNITY_ANDROID || UNITY_METRO)
 
     public interface IAsyncOnMouseEnterHandler
@@ -1685,7 +1685,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncMouseEnterTrigger>(gameObject);
         }
-        
+
         public static AsyncMouseEnterTrigger GetAsyncMouseEnterTrigger(this Component component)
         {
             return component.gameObject.GetAsyncMouseEnterTrigger();
@@ -1721,9 +1721,9 @@ namespace Cysharp.Threading.Tasks.Triggers
         }
     }
 #endif
-#endregion
+    #endregion
 
-#region MouseExit
+    #region MouseExit
 #if !(UNITY_IPHONE || UNITY_ANDROID || UNITY_METRO)
 
     public interface IAsyncOnMouseExitHandler
@@ -1746,7 +1746,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncMouseExitTrigger>(gameObject);
         }
-        
+
         public static AsyncMouseExitTrigger GetAsyncMouseExitTrigger(this Component component)
         {
             return component.gameObject.GetAsyncMouseExitTrigger();
@@ -1782,9 +1782,9 @@ namespace Cysharp.Threading.Tasks.Triggers
         }
     }
 #endif
-#endregion
+    #endregion
 
-#region MouseOver
+    #region MouseOver
 #if !(UNITY_IPHONE || UNITY_ANDROID || UNITY_METRO)
 
     public interface IAsyncOnMouseOverHandler
@@ -1807,7 +1807,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncMouseOverTrigger>(gameObject);
         }
-        
+
         public static AsyncMouseOverTrigger GetAsyncMouseOverTrigger(this Component component)
         {
             return component.gameObject.GetAsyncMouseOverTrigger();
@@ -1843,9 +1843,9 @@ namespace Cysharp.Threading.Tasks.Triggers
         }
     }
 #endif
-#endregion
+    #endregion
 
-#region MouseUp
+    #region MouseUp
 #if !(UNITY_IPHONE || UNITY_ANDROID || UNITY_METRO)
 
     public interface IAsyncOnMouseUpHandler
@@ -1868,7 +1868,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncMouseUpTrigger>(gameObject);
         }
-        
+
         public static AsyncMouseUpTrigger GetAsyncMouseUpTrigger(this Component component)
         {
             return component.gameObject.GetAsyncMouseUpTrigger();
@@ -1904,9 +1904,9 @@ namespace Cysharp.Threading.Tasks.Triggers
         }
     }
 #endif
-#endregion
+    #endregion
 
-#region MouseUpAsButton
+    #region MouseUpAsButton
 #if !(UNITY_IPHONE || UNITY_ANDROID || UNITY_METRO)
 
     public interface IAsyncOnMouseUpAsButtonHandler
@@ -1929,7 +1929,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncMouseUpAsButtonTrigger>(gameObject);
         }
-        
+
         public static AsyncMouseUpAsButtonTrigger GetAsyncMouseUpAsButtonTrigger(this Component component)
         {
             return component.gameObject.GetAsyncMouseUpAsButtonTrigger();
@@ -1965,9 +1965,9 @@ namespace Cysharp.Threading.Tasks.Triggers
         }
     }
 #endif
-#endregion
+    #endregion
 
-#region ParticleCollision
+    #region ParticleCollision
 
     public interface IAsyncOnParticleCollisionHandler
     {
@@ -1989,7 +1989,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncParticleCollisionTrigger>(gameObject);
         }
-        
+
         public static AsyncParticleCollisionTrigger GetAsyncParticleCollisionTrigger(this Component component)
         {
             return component.gameObject.GetAsyncParticleCollisionTrigger();
@@ -2024,9 +2024,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnParticleCollisionHandler)new AsyncTriggerHandler<GameObject>(this, cancellationToken, true)).OnParticleCollisionAsync();
         }
     }
-#endregion
+    #endregion
 
-#region ParticleSystemStopped
+    #region ParticleSystemStopped
 
     public interface IAsyncOnParticleSystemStoppedHandler
     {
@@ -2048,7 +2048,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncParticleSystemStoppedTrigger>(gameObject);
         }
-        
+
         public static AsyncParticleSystemStoppedTrigger GetAsyncParticleSystemStoppedTrigger(this Component component)
         {
             return component.gameObject.GetAsyncParticleSystemStoppedTrigger();
@@ -2083,9 +2083,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnParticleSystemStoppedHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnParticleSystemStoppedAsync();
         }
     }
-#endregion
+    #endregion
 
-#region ParticleTrigger
+    #region ParticleTrigger
 
     public interface IAsyncOnParticleTriggerHandler
     {
@@ -2107,7 +2107,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncParticleTriggerTrigger>(gameObject);
         }
-        
+
         public static AsyncParticleTriggerTrigger GetAsyncParticleTriggerTrigger(this Component component)
         {
             return component.gameObject.GetAsyncParticleTriggerTrigger();
@@ -2142,9 +2142,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnParticleTriggerHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnParticleTriggerAsync();
         }
     }
-#endregion
+    #endregion
 
-#region ParticleUpdateJobScheduled
+    #region ParticleUpdateJobScheduled
 #if UNITY_2019_3_OR_NEWER
 
     public interface IAsyncOnParticleUpdateJobScheduledHandler
@@ -2167,7 +2167,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncParticleUpdateJobScheduledTrigger>(gameObject);
         }
-        
+
         public static AsyncParticleUpdateJobScheduledTrigger GetAsyncParticleUpdateJobScheduledTrigger(this Component component)
         {
             return component.gameObject.GetAsyncParticleUpdateJobScheduledTrigger();
@@ -2203,9 +2203,9 @@ namespace Cysharp.Threading.Tasks.Triggers
         }
     }
 #endif
-#endregion
+    #endregion
 
-#region PostRender
+    #region PostRender
 
     public interface IAsyncOnPostRenderHandler
     {
@@ -2227,7 +2227,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncPostRenderTrigger>(gameObject);
         }
-        
+
         public static AsyncPostRenderTrigger GetAsyncPostRenderTrigger(this Component component)
         {
             return component.gameObject.GetAsyncPostRenderTrigger();
@@ -2262,9 +2262,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnPostRenderHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnPostRenderAsync();
         }
     }
-#endregion
+    #endregion
 
-#region PreCull
+    #region PreCull
 
     public interface IAsyncOnPreCullHandler
     {
@@ -2286,7 +2286,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncPreCullTrigger>(gameObject);
         }
-        
+
         public static AsyncPreCullTrigger GetAsyncPreCullTrigger(this Component component)
         {
             return component.gameObject.GetAsyncPreCullTrigger();
@@ -2321,9 +2321,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnPreCullHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnPreCullAsync();
         }
     }
-#endregion
+    #endregion
 
-#region PreRender
+    #region PreRender
 
     public interface IAsyncOnPreRenderHandler
     {
@@ -2345,7 +2345,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncPreRenderTrigger>(gameObject);
         }
-        
+
         public static AsyncPreRenderTrigger GetAsyncPreRenderTrigger(this Component component)
         {
             return component.gameObject.GetAsyncPreRenderTrigger();
@@ -2380,9 +2380,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnPreRenderHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnPreRenderAsync();
         }
     }
-#endregion
+    #endregion
 
-#region RectTransformDimensionsChange
+    #region RectTransformDimensionsChange
 
     public interface IAsyncOnRectTransformDimensionsChangeHandler
     {
@@ -2404,7 +2404,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncRectTransformDimensionsChangeTrigger>(gameObject);
         }
-        
+
         public static AsyncRectTransformDimensionsChangeTrigger GetAsyncRectTransformDimensionsChangeTrigger(this Component component)
         {
             return component.gameObject.GetAsyncRectTransformDimensionsChangeTrigger();
@@ -2439,9 +2439,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnRectTransformDimensionsChangeHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnRectTransformDimensionsChangeAsync();
         }
     }
-#endregion
+    #endregion
 
-#region RectTransformRemoved
+    #region RectTransformRemoved
 
     public interface IAsyncOnRectTransformRemovedHandler
     {
@@ -2463,7 +2463,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncRectTransformRemovedTrigger>(gameObject);
         }
-        
+
         public static AsyncRectTransformRemovedTrigger GetAsyncRectTransformRemovedTrigger(this Component component)
         {
             return component.gameObject.GetAsyncRectTransformRemovedTrigger();
@@ -2498,9 +2498,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnRectTransformRemovedHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnRectTransformRemovedAsync();
         }
     }
-#endregion
+    #endregion
 
-#region RenderImage
+    #region RenderImage
 
     public interface IAsyncOnRenderImageHandler
     {
@@ -2522,7 +2522,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncRenderImageTrigger>(gameObject);
         }
-        
+
         public static AsyncRenderImageTrigger GetAsyncRenderImageTrigger(this Component component)
         {
             return component.gameObject.GetAsyncRenderImageTrigger();
@@ -2557,9 +2557,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnRenderImageHandler)new AsyncTriggerHandler<(RenderTexture source, RenderTexture destination)>(this, cancellationToken, true)).OnRenderImageAsync();
         }
     }
-#endregion
+    #endregion
 
-#region RenderObject
+    #region RenderObject
 
     public interface IAsyncOnRenderObjectHandler
     {
@@ -2581,7 +2581,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncRenderObjectTrigger>(gameObject);
         }
-        
+
         public static AsyncRenderObjectTrigger GetAsyncRenderObjectTrigger(this Component component)
         {
             return component.gameObject.GetAsyncRenderObjectTrigger();
@@ -2616,9 +2616,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnRenderObjectHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnRenderObjectAsync();
         }
     }
-#endregion
+    #endregion
 
-#region ServerInitialized
+    #region ServerInitialized
 
     public interface IAsyncOnServerInitializedHandler
     {
@@ -2640,7 +2640,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncServerInitializedTrigger>(gameObject);
         }
-        
+
         public static AsyncServerInitializedTrigger GetAsyncServerInitializedTrigger(this Component component)
         {
             return component.gameObject.GetAsyncServerInitializedTrigger();
@@ -2675,9 +2675,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnServerInitializedHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnServerInitializedAsync();
         }
     }
-#endregion
+    #endregion
 
-#region TransformChildrenChanged
+    #region TransformChildrenChanged
 
     public interface IAsyncOnTransformChildrenChangedHandler
     {
@@ -2699,7 +2699,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncTransformChildrenChangedTrigger>(gameObject);
         }
-        
+
         public static AsyncTransformChildrenChangedTrigger GetAsyncTransformChildrenChangedTrigger(this Component component)
         {
             return component.gameObject.GetAsyncTransformChildrenChangedTrigger();
@@ -2734,9 +2734,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnTransformChildrenChangedHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnTransformChildrenChangedAsync();
         }
     }
-#endregion
+    #endregion
 
-#region TransformParentChanged
+    #region TransformParentChanged
 
     public interface IAsyncOnTransformParentChangedHandler
     {
@@ -2758,7 +2758,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncTransformParentChangedTrigger>(gameObject);
         }
-        
+
         public static AsyncTransformParentChangedTrigger GetAsyncTransformParentChangedTrigger(this Component component)
         {
             return component.gameObject.GetAsyncTransformParentChangedTrigger();
@@ -2793,9 +2793,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnTransformParentChangedHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnTransformParentChangedAsync();
         }
     }
-#endregion
+    #endregion
 
-#region TriggerEnter
+    #region TriggerEnter
 
     public interface IAsyncOnTriggerEnterHandler
     {
@@ -2817,7 +2817,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncTriggerEnterTrigger>(gameObject);
         }
-        
+
         public static AsyncTriggerEnterTrigger GetAsyncTriggerEnterTrigger(this Component component)
         {
             return component.gameObject.GetAsyncTriggerEnterTrigger();
@@ -2852,9 +2852,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnTriggerEnterHandler)new AsyncTriggerHandler<Collider>(this, cancellationToken, true)).OnTriggerEnterAsync();
         }
     }
-#endregion
+    #endregion
 
-#region TriggerEnter2D
+    #region TriggerEnter2D
 
     public interface IAsyncOnTriggerEnter2DHandler
     {
@@ -2876,7 +2876,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncTriggerEnter2DTrigger>(gameObject);
         }
-        
+
         public static AsyncTriggerEnter2DTrigger GetAsyncTriggerEnter2DTrigger(this Component component)
         {
             return component.gameObject.GetAsyncTriggerEnter2DTrigger();
@@ -2911,9 +2911,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnTriggerEnter2DHandler)new AsyncTriggerHandler<Collider2D>(this, cancellationToken, true)).OnTriggerEnter2DAsync();
         }
     }
-#endregion
+    #endregion
 
-#region TriggerExit
+    #region TriggerExit
 
     public interface IAsyncOnTriggerExitHandler
     {
@@ -2935,7 +2935,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncTriggerExitTrigger>(gameObject);
         }
-        
+
         public static AsyncTriggerExitTrigger GetAsyncTriggerExitTrigger(this Component component)
         {
             return component.gameObject.GetAsyncTriggerExitTrigger();
@@ -2970,9 +2970,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnTriggerExitHandler)new AsyncTriggerHandler<Collider>(this, cancellationToken, true)).OnTriggerExitAsync();
         }
     }
-#endregion
+    #endregion
 
-#region TriggerExit2D
+    #region TriggerExit2D
 
     public interface IAsyncOnTriggerExit2DHandler
     {
@@ -2994,7 +2994,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncTriggerExit2DTrigger>(gameObject);
         }
-        
+
         public static AsyncTriggerExit2DTrigger GetAsyncTriggerExit2DTrigger(this Component component)
         {
             return component.gameObject.GetAsyncTriggerExit2DTrigger();
@@ -3029,9 +3029,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnTriggerExit2DHandler)new AsyncTriggerHandler<Collider2D>(this, cancellationToken, true)).OnTriggerExit2DAsync();
         }
     }
-#endregion
+    #endregion
 
-#region TriggerStay
+    #region TriggerStay
 
     public interface IAsyncOnTriggerStayHandler
     {
@@ -3053,7 +3053,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncTriggerStayTrigger>(gameObject);
         }
-        
+
         public static AsyncTriggerStayTrigger GetAsyncTriggerStayTrigger(this Component component)
         {
             return component.gameObject.GetAsyncTriggerStayTrigger();
@@ -3088,9 +3088,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnTriggerStayHandler)new AsyncTriggerHandler<Collider>(this, cancellationToken, true)).OnTriggerStayAsync();
         }
     }
-#endregion
+    #endregion
 
-#region TriggerStay2D
+    #region TriggerStay2D
 
     public interface IAsyncOnTriggerStay2DHandler
     {
@@ -3112,7 +3112,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncTriggerStay2DTrigger>(gameObject);
         }
-        
+
         public static AsyncTriggerStay2DTrigger GetAsyncTriggerStay2DTrigger(this Component component)
         {
             return component.gameObject.GetAsyncTriggerStay2DTrigger();
@@ -3147,9 +3147,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnTriggerStay2DHandler)new AsyncTriggerHandler<Collider2D>(this, cancellationToken, true)).OnTriggerStay2DAsync();
         }
     }
-#endregion
+    #endregion
 
-#region Validate
+    #region Validate
 
     public interface IAsyncOnValidateHandler
     {
@@ -3171,7 +3171,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncValidateTrigger>(gameObject);
         }
-        
+
         public static AsyncValidateTrigger GetAsyncValidateTrigger(this Component component)
         {
             return component.gameObject.GetAsyncValidateTrigger();
@@ -3206,9 +3206,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnValidateHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnValidateAsync();
         }
     }
-#endregion
+    #endregion
 
-#region WillRenderObject
+    #region WillRenderObject
 
     public interface IAsyncOnWillRenderObjectHandler
     {
@@ -3230,7 +3230,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncWillRenderObjectTrigger>(gameObject);
         }
-        
+
         public static AsyncWillRenderObjectTrigger GetAsyncWillRenderObjectTrigger(this Component component)
         {
             return component.gameObject.GetAsyncWillRenderObjectTrigger();
@@ -3265,9 +3265,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnWillRenderObjectHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).OnWillRenderObjectAsync();
         }
     }
-#endregion
+    #endregion
 
-#region Reset
+    #region Reset
 
     public interface IAsyncResetHandler
     {
@@ -3289,7 +3289,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncResetTrigger>(gameObject);
         }
-        
+
         public static AsyncResetTrigger GetAsyncResetTrigger(this Component component)
         {
             return component.gameObject.GetAsyncResetTrigger();
@@ -3324,9 +3324,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncResetHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).ResetAsync();
         }
     }
-#endregion
+    #endregion
 
-#region Update
+    #region Update
 
     public interface IAsyncUpdateHandler
     {
@@ -3348,7 +3348,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncUpdateTrigger>(gameObject);
         }
-        
+
         public static AsyncUpdateTrigger GetAsyncUpdateTrigger(this Component component)
         {
             return component.gameObject.GetAsyncUpdateTrigger();
@@ -3383,9 +3383,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncUpdateHandler)new AsyncTriggerHandler<AsyncUnit>(this, cancellationToken, true)).UpdateAsync();
         }
     }
-#endregion
+    #endregion
 
-#region BeginDrag
+    #region BeginDrag
 
     public interface IAsyncOnBeginDragHandler
     {
@@ -3407,7 +3407,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncBeginDragTrigger>(gameObject);
         }
-        
+
         public static AsyncBeginDragTrigger GetAsyncBeginDragTrigger(this Component component)
         {
             return component.gameObject.GetAsyncBeginDragTrigger();
@@ -3442,9 +3442,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnBeginDragHandler)new AsyncTriggerHandler<PointerEventData>(this, cancellationToken, true)).OnBeginDragAsync();
         }
     }
-#endregion
+    #endregion
 
-#region Cancel
+    #region Cancel
 
     public interface IAsyncOnCancelHandler
     {
@@ -3466,7 +3466,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncCancelTrigger>(gameObject);
         }
-        
+
         public static AsyncCancelTrigger GetAsyncCancelTrigger(this Component component)
         {
             return component.gameObject.GetAsyncCancelTrigger();
@@ -3501,9 +3501,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnCancelHandler)new AsyncTriggerHandler<BaseEventData>(this, cancellationToken, true)).OnCancelAsync();
         }
     }
-#endregion
+    #endregion
 
-#region Deselect
+    #region Deselect
 
     public interface IAsyncOnDeselectHandler
     {
@@ -3525,7 +3525,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncDeselectTrigger>(gameObject);
         }
-        
+
         public static AsyncDeselectTrigger GetAsyncDeselectTrigger(this Component component)
         {
             return component.gameObject.GetAsyncDeselectTrigger();
@@ -3560,9 +3560,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnDeselectHandler)new AsyncTriggerHandler<BaseEventData>(this, cancellationToken, true)).OnDeselectAsync();
         }
     }
-#endregion
+    #endregion
 
-#region Drag
+    #region Drag
 
     public interface IAsyncOnDragHandler
     {
@@ -3584,7 +3584,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncDragTrigger>(gameObject);
         }
-        
+
         public static AsyncDragTrigger GetAsyncDragTrigger(this Component component)
         {
             return component.gameObject.GetAsyncDragTrigger();
@@ -3619,9 +3619,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnDragHandler)new AsyncTriggerHandler<PointerEventData>(this, cancellationToken, true)).OnDragAsync();
         }
     }
-#endregion
+    #endregion
 
-#region Drop
+    #region Drop
 
     public interface IAsyncOnDropHandler
     {
@@ -3643,7 +3643,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncDropTrigger>(gameObject);
         }
-        
+
         public static AsyncDropTrigger GetAsyncDropTrigger(this Component component)
         {
             return component.gameObject.GetAsyncDropTrigger();
@@ -3678,9 +3678,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnDropHandler)new AsyncTriggerHandler<PointerEventData>(this, cancellationToken, true)).OnDropAsync();
         }
     }
-#endregion
+    #endregion
 
-#region EndDrag
+    #region EndDrag
 
     public interface IAsyncOnEndDragHandler
     {
@@ -3702,7 +3702,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncEndDragTrigger>(gameObject);
         }
-        
+
         public static AsyncEndDragTrigger GetAsyncEndDragTrigger(this Component component)
         {
             return component.gameObject.GetAsyncEndDragTrigger();
@@ -3737,9 +3737,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnEndDragHandler)new AsyncTriggerHandler<PointerEventData>(this, cancellationToken, true)).OnEndDragAsync();
         }
     }
-#endregion
+    #endregion
 
-#region InitializePotentialDrag
+    #region InitializePotentialDrag
 
     public interface IAsyncOnInitializePotentialDragHandler
     {
@@ -3761,7 +3761,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncInitializePotentialDragTrigger>(gameObject);
         }
-        
+
         public static AsyncInitializePotentialDragTrigger GetAsyncInitializePotentialDragTrigger(this Component component)
         {
             return component.gameObject.GetAsyncInitializePotentialDragTrigger();
@@ -3796,9 +3796,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnInitializePotentialDragHandler)new AsyncTriggerHandler<PointerEventData>(this, cancellationToken, true)).OnInitializePotentialDragAsync();
         }
     }
-#endregion
+    #endregion
 
-#region Move
+    #region Move
 
     public interface IAsyncOnMoveHandler
     {
@@ -3820,7 +3820,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncMoveTrigger>(gameObject);
         }
-        
+
         public static AsyncMoveTrigger GetAsyncMoveTrigger(this Component component)
         {
             return component.gameObject.GetAsyncMoveTrigger();
@@ -3855,9 +3855,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnMoveHandler)new AsyncTriggerHandler<AxisEventData>(this, cancellationToken, true)).OnMoveAsync();
         }
     }
-#endregion
+    #endregion
 
-#region PointerClick
+    #region PointerClick
 
     public interface IAsyncOnPointerClickHandler
     {
@@ -3879,7 +3879,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncPointerClickTrigger>(gameObject);
         }
-        
+
         public static AsyncPointerClickTrigger GetAsyncPointerClickTrigger(this Component component)
         {
             return component.gameObject.GetAsyncPointerClickTrigger();
@@ -3914,9 +3914,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnPointerClickHandler)new AsyncTriggerHandler<PointerEventData>(this, cancellationToken, true)).OnPointerClickAsync();
         }
     }
-#endregion
+    #endregion
 
-#region PointerDown
+    #region PointerDown
 
     public interface IAsyncOnPointerDownHandler
     {
@@ -3938,7 +3938,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncPointerDownTrigger>(gameObject);
         }
-        
+
         public static AsyncPointerDownTrigger GetAsyncPointerDownTrigger(this Component component)
         {
             return component.gameObject.GetAsyncPointerDownTrigger();
@@ -3973,9 +3973,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnPointerDownHandler)new AsyncTriggerHandler<PointerEventData>(this, cancellationToken, true)).OnPointerDownAsync();
         }
     }
-#endregion
+    #endregion
 
-#region PointerEnter
+    #region PointerEnter
 
     public interface IAsyncOnPointerEnterHandler
     {
@@ -3997,7 +3997,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncPointerEnterTrigger>(gameObject);
         }
-        
+
         public static AsyncPointerEnterTrigger GetAsyncPointerEnterTrigger(this Component component)
         {
             return component.gameObject.GetAsyncPointerEnterTrigger();
@@ -4032,9 +4032,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnPointerEnterHandler)new AsyncTriggerHandler<PointerEventData>(this, cancellationToken, true)).OnPointerEnterAsync();
         }
     }
-#endregion
+    #endregion
 
-#region PointerExit
+    #region PointerExit
 
     public interface IAsyncOnPointerExitHandler
     {
@@ -4056,7 +4056,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncPointerExitTrigger>(gameObject);
         }
-        
+
         public static AsyncPointerExitTrigger GetAsyncPointerExitTrigger(this Component component)
         {
             return component.gameObject.GetAsyncPointerExitTrigger();
@@ -4091,9 +4091,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnPointerExitHandler)new AsyncTriggerHandler<PointerEventData>(this, cancellationToken, true)).OnPointerExitAsync();
         }
     }
-#endregion
+    #endregion
 
-#region PointerUp
+    #region PointerUp
 
     public interface IAsyncOnPointerUpHandler
     {
@@ -4115,7 +4115,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncPointerUpTrigger>(gameObject);
         }
-        
+
         public static AsyncPointerUpTrigger GetAsyncPointerUpTrigger(this Component component)
         {
             return component.gameObject.GetAsyncPointerUpTrigger();
@@ -4150,9 +4150,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnPointerUpHandler)new AsyncTriggerHandler<PointerEventData>(this, cancellationToken, true)).OnPointerUpAsync();
         }
     }
-#endregion
+    #endregion
 
-#region Scroll
+    #region Scroll
 
     public interface IAsyncOnScrollHandler
     {
@@ -4174,7 +4174,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncScrollTrigger>(gameObject);
         }
-        
+
         public static AsyncScrollTrigger GetAsyncScrollTrigger(this Component component)
         {
             return component.gameObject.GetAsyncScrollTrigger();
@@ -4209,9 +4209,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnScrollHandler)new AsyncTriggerHandler<PointerEventData>(this, cancellationToken, true)).OnScrollAsync();
         }
     }
-#endregion
+    #endregion
 
-#region Select
+    #region Select
 
     public interface IAsyncOnSelectHandler
     {
@@ -4233,7 +4233,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncSelectTrigger>(gameObject);
         }
-        
+
         public static AsyncSelectTrigger GetAsyncSelectTrigger(this Component component)
         {
             return component.gameObject.GetAsyncSelectTrigger();
@@ -4268,9 +4268,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnSelectHandler)new AsyncTriggerHandler<BaseEventData>(this, cancellationToken, true)).OnSelectAsync();
         }
     }
-#endregion
+    #endregion
 
-#region Submit
+    #region Submit
 
     public interface IAsyncOnSubmitHandler
     {
@@ -4292,7 +4292,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncSubmitTrigger>(gameObject);
         }
-        
+
         public static AsyncSubmitTrigger GetAsyncSubmitTrigger(this Component component)
         {
             return component.gameObject.GetAsyncSubmitTrigger();
@@ -4327,9 +4327,9 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnSubmitHandler)new AsyncTriggerHandler<BaseEventData>(this, cancellationToken, true)).OnSubmitAsync();
         }
     }
-#endregion
+    #endregion
 
-#region UpdateSelected
+    #region UpdateSelected
 
     public interface IAsyncOnUpdateSelectedHandler
     {
@@ -4351,7 +4351,7 @@ namespace Cysharp.Threading.Tasks.Triggers
         {
             return GetOrAddComponent<AsyncUpdateSelectedTrigger>(gameObject);
         }
-        
+
         public static AsyncUpdateSelectedTrigger GetAsyncUpdateSelectedTrigger(this Component component)
         {
             return component.gameObject.GetAsyncUpdateSelectedTrigger();
@@ -4386,6 +4386,6 @@ namespace Cysharp.Threading.Tasks.Triggers
             return ((IAsyncOnUpdateSelectedHandler)new AsyncTriggerHandler<BaseEventData>(this, cancellationToken, true)).OnUpdateSelectedAsync();
         }
     }
-#endregion
+    #endregion
 
 }

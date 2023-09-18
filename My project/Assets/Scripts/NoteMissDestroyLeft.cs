@@ -2,7 +2,7 @@ using UnityEngine;
 
 
 public class NoteMissDestroyLeft : MonoBehaviour
-{   
+{
     GameObject obj;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -63,7 +63,8 @@ public class NoteMissDestroyLeft : MonoBehaviour
         }
     }
 
-    void ShowScore() {
+    void ShowScore()
+    {
         Score.instance.ShowScore();
     }
 

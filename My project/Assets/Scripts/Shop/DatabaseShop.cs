@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DatabaseShop : MonoBehaviour
@@ -17,13 +15,13 @@ public class DatabaseShop : MonoBehaviour
 
     public static ThemeButtonSkinInfo GetID01(string ID)
     {
-        
+
         foreach (ThemeButtonSkinInfo data in instance.IDs.skinData)
         {
             if (data.ID == ID)
             {
                 return data;
-                
+
             }
         }
         return null;

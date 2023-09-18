@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SetActiveObject : MonoBehaviour
 {
-    public GameObject selectMusic, uiSelectMusic, uiButton, update, flashSale, modeQuit,  avartar, backMenu;
+    public GameObject selectMusic, uiSelectMusic, uiButton, update, flashSale, modeQuit, avartar, backMenu;
     void Start()
     {
-        
+
     }
 
     public void Play()

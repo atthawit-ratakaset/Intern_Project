@@ -15,6 +15,7 @@ MonoBehaviour:
   saveKey: StarterData
   playerName: Tester001
   energy: 15
-  coins: 999999
-  diamonds: 999999
-  btnSkinData: D01
+  coins: 1000
+  diamonds: 200
+  btnSkinData: BS01
+  bgSkin: BG001

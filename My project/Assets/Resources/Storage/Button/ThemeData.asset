@@ -15,3 +15,5 @@ MonoBehaviour:
   saveKey: StorageButtonSkin
   skinData:
   - {fileID: 11400000, guid: 892cc656faf2964499115fc32df293e3, type: 2}
+  bgData:
+  - {fileID: 11400000, guid: 14c825aace58755489b3f75862939344, type: 2}

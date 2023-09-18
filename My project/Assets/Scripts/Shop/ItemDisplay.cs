@@ -1,7 +1,6 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using UnityEngine.EventSystems;
 
 public class ItemDisplay : MonoBehaviour
 {
@@ -20,7 +19,7 @@ public class ItemDisplay : MonoBehaviour
     public void Start()
     {
         instance = this;
-        
+
         if (info.types == CurrencytypesItmes.DailyCoin || info.types == CurrencytypesItmes.DailyDiamond ||
                info.types == CurrencytypesItmes.DailyStamina)
         {
@@ -28,8 +27,9 @@ public class ItemDisplay : MonoBehaviour
             itemName.text = info.itemName;
             itemValue.text = info.itemValue.ToString();
             itemImg.gameObject.GetComponent<Image>().sprite = info.itemImg;
-        } else if (info.types == CurrencytypesItmes.Coin || info.types == CurrencytypesItmes.Diamond ||
-               info.types == CurrencytypesItmes.Stamina)
+        }
+        else if (info.types == CurrencytypesItmes.Coin || info.types == CurrencytypesItmes.Diamond ||
+             info.types == CurrencytypesItmes.Stamina)
         {
             button.onClick.AddListener(delegate () { PopUpToBuy(info); });
             itemImg.gameObject.GetComponent<Image>().sprite = info.itemImg;
@@ -38,16 +38,16 @@ public class ItemDisplay : MonoBehaviour
             icon.gameObject.GetComponent<Image>().sprite = info.currencyIcon;
             price.text = info.price.ToString();
         }
-        
+
     }
-    
+
     public void PopUpToBuy(CurrencyItemInfo data)
     {
         SetObject.instance.PopUpComfirm();
         get = data;
         PopUpBuy.instance.idName.text = get.itemName;
-        
+
     }
 
-    
+
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -14,7 +12,7 @@ public class Tester : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
 

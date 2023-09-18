@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UpAreaClick : MonoBehaviour
 {
-    [Header ("BUTTON SCRIPTS")]
+    [Header("BUTTON SCRIPTS")]
     public UpButtonGame button;
     public UpButtonGame button1;
     public UpButtonGame button2;
 
-    [Header ("AREA SCRIPTS")]
+    [Header("AREA SCRIPTS")]
     public UpAreaClick click1;
     public UpAreaClick click2;
 
-    [Header ("EFFECT")]
+    [Header("EFFECT")]
     public ParticleSystem particEffect;
     public AudioSource soundFX;
 
@@ -28,7 +26,7 @@ public class UpAreaClick : MonoBehaviour
         entry.eventID = EventTriggerType.PointerDown;
         entry.callback.AddListener((data) => { OnPointerDownDelegate(); });
         trigger.triggers.Add(entry);
-        
+
     }
 
     public void OnPointerDownDelegate()
@@ -65,7 +63,7 @@ public class UpAreaClick : MonoBehaviour
             if (button.hp == 0)
             {
                 button.DestroyNote();
-            } 
+            }
             else if (button.hp == 1)
             {
                 button.spiteRenderer.sprite = GameControl.instance.types.sp2;
@@ -82,7 +80,7 @@ public class UpAreaClick : MonoBehaviour
         else if (button.noteSp3 == true)
         {
             Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
-            Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);   
+            Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
         }
 
         else if (button.lock1 == true)
@@ -91,15 +89,16 @@ public class UpAreaClick : MonoBehaviour
             Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
             button.DestroyNote();
             if (button1.lock2 == true)
-                {
-                    button1.spiteRenderer.sprite = GameControl.instance.types.unlock2;
-                    unlock2 = true;
-            } else if (button2.lock2 == true)
-                {
-                    button2.spiteRenderer.sprite = GameControl.instance.types.unlock2;
-                    unlock2 = true;
-                }              
-            
+            {
+                button1.spiteRenderer.sprite = GameControl.instance.types.unlock2;
+                unlock2 = true;
+            }
+            else if (button2.lock2 == true)
+            {
+                button2.spiteRenderer.sprite = GameControl.instance.types.unlock2;
+                unlock2 = true;
+            }
+
         }
         else if (button.lock2 == true && (click1.unlock2 == true || click2.unlock2 == true))
         {
@@ -107,18 +106,18 @@ public class UpAreaClick : MonoBehaviour
             Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);
             button.DestroyNote();
 
-                if (button1.lock3 == true)
-                {
-                    button1.spiteRenderer.sprite = GameControl.instance.types.unlock3;
-                    unlock3 = true;
-                }
-                else if (button2.lock3 == true)
-                {
-                    button2.spiteRenderer.sprite = GameControl.instance.types.unlock3;
-                    unlock3 = true;
-                }
-            
-        } 
+            if (button1.lock3 == true)
+            {
+                button1.spiteRenderer.sprite = GameControl.instance.types.unlock3;
+                unlock3 = true;
+            }
+            else if (button2.lock3 == true)
+            {
+                button2.spiteRenderer.sprite = GameControl.instance.types.unlock3;
+                unlock3 = true;
+            }
+
+        }
         else if (button.lock3 == true && (click1.unlock3 == true || click2.unlock3 == true))
         {
             Score.instance.ScoreCalculationCase(Score.GetScore.Combo);

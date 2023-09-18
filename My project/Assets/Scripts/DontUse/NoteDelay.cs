@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NoteDelay : MonoBehaviour
@@ -12,7 +10,7 @@ public class NoteDelay : MonoBehaviour
     public bool LeftDown;
     public bool RightUp;
     public bool RightDown;
-    
+
 
     void Start()
     {
@@ -20,49 +18,66 @@ public class NoteDelay : MonoBehaviour
     }
 
     void Update()
-    {   
-        if (Down == true) {
+    {
+        if (Down == true)
+        {
             // Invoke("DelayNoteDown", DelayTime);
             this.Wait(DelayTime, DelayNoteDown);
-        } else if (Up == true) {
+        }
+        else if (Up == true)
+        {
             // Invoke("DelayNoteUp", DelayTime);
             this.Wait(DelayTime, DelayNoteUp);
-        } else if (LeftUp == true) {
+        }
+        else if (LeftUp == true)
+        {
             // Invoke("DelayNoteLeftUp", DelayTime);
             this.Wait(DelayTime, DelayNoteLeftUp);
-        } else if (LeftDown == true) {
+        }
+        else if (LeftDown == true)
+        {
             // Invoke("DelayNoteLeftDown", DelayTime);
             this.Wait(DelayTime, DelayNoteLeftDown);
-        } else if (RightUp == true) {
+        }
+        else if (RightUp == true)
+        {
             // Invoke("DelayNoteRightUp", DelayTime);
             this.Wait(DelayTime, DelayNoteRightUp);
-        } else if (RightDown == true) {
+        }
+        else if (RightDown == true)
+        {
             // Invoke("DelayNoteRightDown", DelayTime);
             this.Wait(DelayTime, DelayNoteRightDown);
         }
     }
 
-    void DelayNoteDown() {
-        transform.position -= new Vector3(0f, BeatTempo * Time.deltaTime, 0f);  
+    void DelayNoteDown()
+    {
+        transform.position -= new Vector3(0f, BeatTempo * Time.deltaTime, 0f);
     }
 
-    void DelayNoteUp() {
+    void DelayNoteUp()
+    {
         transform.position += new Vector3(0f, BeatTempo * Time.deltaTime, 0f);
     }
 
-    void DelayNoteLeftUp() {
+    void DelayNoteLeftUp()
+    {
         transform.position -= new Vector3((BeatTempo * Time.deltaTime), -(BeatTempo * Time.deltaTime), 0f);
     }
 
-    void DelayNoteLeftDown() {
+    void DelayNoteLeftDown()
+    {
         transform.position += new Vector3(-(BeatTempo * Time.deltaTime), -(BeatTempo * Time.deltaTime), 0f);
     }
-    
-    void DelayNoteRightUp() {
+
+    void DelayNoteRightUp()
+    {
         transform.position -= new Vector3(-(BeatTempo * Time.deltaTime), -(BeatTempo * Time.deltaTime), 0f);
     }
 
-    void DelayNoteRightDown() {
+    void DelayNoteRightDown()
+    {
         transform.position += new Vector3((BeatTempo * Time.deltaTime), -(BeatTempo * Time.deltaTime), 0f);
     }
 }

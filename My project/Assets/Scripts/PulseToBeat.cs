@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PulseToBeat : MonoBehaviour
@@ -12,7 +11,8 @@ public class PulseToBeat : MonoBehaviour
     void Start()
     {
         startsize = transform.localScale;
-        if (useTestBeat) {
+        if (useTestBeat)
+        {
             StartCoroutine(TestBeat());
         }
     }
@@ -22,12 +22,15 @@ public class PulseToBeat : MonoBehaviour
         transform.localScale = Vector3.Lerp(transform.localScale, startsize, Time.deltaTime * returnSpeed);
     }
 
-    public void Pulse() {
+    public void Pulse()
+    {
         transform.localScale = startsize * pulseSize;
     }
 
-    IEnumerator TestBeat() {
-        while (true) {
+    IEnumerator TestBeat()
+    {
+        while (true)
+        {
             yield return new WaitForSeconds(1f);
             Pulse();
         }

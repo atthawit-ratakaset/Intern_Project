@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,11 +40,11 @@ public class NoteNode : MonoBehaviour
 
     IEnumerator WaitAndPrint(NoteInNode note)
     {
-     
+
 
         yield return new WaitForSeconds(note.time);
-        var s =Instantiate(note);
-       
+        var s = Instantiate(note);
+
 
 
 

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed53ce0cd3f2ca040ba452f75f7697dd, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  ID: BG001
+  itemName: DefaultTheme
+  itemImg: {fileID: 21300000, guid: b58b1c76df0a60b4cb9c4bc2e7ff1abe, type: 3}
+  currencyIcon: {fileID: 21300000, guid: 8ccaba529af0bcf4abcb78bbec9d82c9, type: 3}
+  price: 0
+  itemDetail: Default Theme
+  hpIcon: {fileID: 21300000, guid: 8b1cfab16f2484a4cb3a61c27bfd1e38, type: 3}
+  hpBar: {fileID: 21300000, guid: 50b9096e1ecbdfd409636a1f2f5fdbdc, type: 3}
+  hpLine: {fileID: 21300000, guid: 63420d83e896151418569266bef3eb4e, type: 3}
+  bgImg: {fileID: 21300000, guid: 220a2b1b54f1d5f40996397b954590b3, type: 3}
+  idBtn: BS01
+  perfect: {fileID: 21300000, guid: f4f8e61f72fcfa146ab0a17e8bd0daf6, type: 3}
+  good: {fileID: 21300000, guid: eb728e37dfee74144bad5ba20f853685, type: 3}
+  bad: {fileID: 21300000, guid: 8eb1d89607269ca4980b040614e43891, type: 3}
+  miss: {fileID: 21300000, guid: 3fcfd2294f16df24ca837fbec7173d95, type: 3}
+  doubleTap1: {fileID: 21300000, guid: ed43f05ca285eac4595ccd69ba6704b4, type: 3}
+  doubleTap2: {fileID: 21300000, guid: a9f624d23329e7b4ea812879dcc04f89, type: 3}
+  noteUnlock: {fileID: 0}
+  noteLock: {fileID: 0}

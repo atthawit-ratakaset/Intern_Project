@@ -1,35 +1,38 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class ContinousGame : MonoBehaviour
-{   
+{
     public static ContinousGame instance;
     public GameObject popUpPause, score, combo, button;
 
-    [Header ("COUNDOWN TEXT")]
+    [Header("COUNDOWN TEXT")]
     public TMP_Text countDownText;
     int countDownTime = 3;
 
-    void Awake() {
+    void Awake()
+    {
         instance = this;
-    }  
+    }
 
-    void Start() {
+    void Start()
+    {
         score.SetActive(true);
         combo.SetActive(true);
         button.SetActive(true);
         popUpPause.SetActive(false);
     }
 
-    IEnumerator CountDownToStart() {
-        while (countDownTime > 0) {
+    IEnumerator CountDownToStart()
+    {
+        while (countDownTime > 0)
+        {
             countDownText.text = countDownTime.ToString();
 
             yield return new WaitForSecondsRealtime(1f);
 
-            countDownTime-- ;
+            countDownTime--;
         }
 
         yield return new WaitForSecondsRealtime(1f);
@@ -37,12 +40,14 @@ public class ContinousGame : MonoBehaviour
         countDownText.gameObject.SetActive(false);
         Time.timeScale = 1f;
         AudioSource[] audio = FindObjectsOfType<AudioSource>();
-        foreach (AudioSource a in audio) {
+        foreach (AudioSource a in audio)
+        {
             a.Play();
         }
     }
 
-    public void Coutinous() {
+    public void Coutinous()
+    {
         countDownTime = 3;
         countDownText.gameObject.SetActive(true);
         popUpPause.SetActive(false);

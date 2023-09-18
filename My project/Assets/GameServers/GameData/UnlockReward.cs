@@ -1,6 +1,6 @@
 
 
-public class UnlockReward 
+public class UnlockReward
 {
     public string unlockReward;
     public ErrorRequest apiCheckRequest;

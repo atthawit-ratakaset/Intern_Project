@@ -1,7 +1,6 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using UnityEngine.EventSystems;
 
 public class StorageDisplay : MonoBehaviour
 {
@@ -41,14 +40,15 @@ public class StorageDisplay : MonoBehaviour
         {
             equipped.SetActive(true);
             use.SetActive(false);
-        } else
+        }
+        else
         {
             use.SetActive(true);
             equipped.SetActive(false);
             useButton.onClick.RemoveAllListeners();
             useButton.onClick.AddListener(delegate () { Equip(); });
         }
-       
+
     }
 
     public void Equip()
@@ -58,6 +58,6 @@ public class StorageDisplay : MonoBehaviour
         use.SetActive(false);
         equipped.SetActive(true);
         ServerApi.Save();
-        
+
     }
 }

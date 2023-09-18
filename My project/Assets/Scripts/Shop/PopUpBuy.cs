@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -15,7 +13,7 @@ public class PopUpBuy : MonoBehaviour
     public TMP_Text alertText;
     public TMP_Text idName;
     public string IdObject;
-    
+
     string types;
     PlayerData playerData;
     private void Start()
@@ -24,12 +22,18 @@ public class PopUpBuy : MonoBehaviour
     }
     public void Buy()
     {
-
+        
         if (ButtonSkinDisplay.get != null)
         {
             IdObject = ButtonSkinDisplay.get.ID;
             GetIDButtonSkin(IdObject);
-           
+
+        }
+
+        if (ThemeBgDisplay.get != null)
+        {
+            IdObject = ThemeBgDisplay.get.ID;
+            GetIDBgSkin(IdObject);
         }
 
         if (ShopMusicDisplay.get != null)
@@ -41,27 +45,28 @@ public class PopUpBuy : MonoBehaviour
         if (ItemDisplay.get == null)
         {
 
-        } else
+        }
+        else
         {
             if (ItemDisplay.get.types == CurrencytypesItmes.Coin)
             {
                 CoinsRefill();
-                
-                
+
+
             }
             else if (ItemDisplay.get.types == CurrencytypesItmes.Stamina)
             {
                 EnergyRefill();
-                
+
             }
             else if (ItemDisplay.get.types == CurrencytypesItmes.Diamond)
             {
                 DiamondsRefill();
-                
+
             }
         }
 
-        
+
     }
 
     public void Cancel()
@@ -84,12 +89,31 @@ public class PopUpBuy : MonoBehaviour
             types = "Diamond";
             alertText.text = $"Not enough {types}, want to buy more?";
             alertPopUp.SetActive(true);
-        } else if (id.canBuy == true)
+        }
+        else if (id.canBuy == true)
         {
             popUpComfirm.SetActive(false);
             FinshBuy();
         }
 
+    }
+
+    void GetIDBgSkin(string ID)
+    {
+        IDObject id = new IDObject();
+        id.idItem = ID;
+        ServerApi.IdBg(id, (d) => { }, (e) => { });
+        if (id.canBuy == false)
+        {
+            types = "Diamond";
+            alertText.text = $"Not enough {types}, want to buy more?";
+            alertPopUp.SetActive(true);
+        }
+        else if (id.canBuy == true)
+        {
+            popUpComfirm.SetActive(false);
+            FinshBuy();
+        }
     }
 
     void GetIDMusic(string ID)
@@ -118,7 +142,7 @@ public class PopUpBuy : MonoBehaviour
         currencyDimonds += ItemDisplay.get.itemValue;
 
         playerData.SaveDiamonds(currencyDimonds);
-        
+
         popUpComfirm.SetActive(false);
         FinshBuy();
         ServerApi.Save();
@@ -138,12 +162,13 @@ public class PopUpBuy : MonoBehaviour
 
             currencyCoins += ItemDisplay.get.itemValue;
             playerData.SaveCoins(currencyCoins);
-            
+
             popUpComfirm.SetActive(false);
             FinshBuy();
             ServerApi.Save();
-        } else if (currencyDimonds != ItemDisplay.get.price)
-        {   
+        }
+        else if (currencyDimonds != ItemDisplay.get.price)
+        {
 
             types = "Diamond";
             alertText.text = $"Not enough {types}, want to buy more?";
@@ -159,10 +184,12 @@ public class PopUpBuy : MonoBehaviour
         if (types == "Coin")
         {
             SetObject.instance.CoinMenu();
-        }else if (types == "Diamond")
+        }
+        else if (types == "Diamond")
         {
             SetObject.instance.DiaondMenu();
-        }else if (types == "Energy")
+        }
+        else if (types == "Energy")
         {
             SetObject.instance.EnergyMenu();
         }
@@ -180,14 +207,14 @@ public class PopUpBuy : MonoBehaviour
 
             currencyEnergy += ItemDisplay.get.itemValue;
             playerData.SaveEnergy(currencyEnergy);
-            
+
             popUpComfirm.SetActive(false);
             FinshBuy();
             ServerApi.Save();
         }
         else if (currencyDimonds != ItemDisplay.get.price)
         {
-            
+
             types = "Diamond";
             alertText.text = $"Not enough {types}, want to buy more?";
             alertPopUp.SetActive(true);

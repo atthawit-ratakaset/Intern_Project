@@ -1,12 +1,11 @@
 using Cysharp.Threading.Tasks;
-using System.Collections;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Newtonsoft.Json;
-using System;
 
-public static class ServerApi 
+public static class ServerApi
 {
     private static string saveKey = "Playerdata";
 
@@ -32,15 +31,20 @@ public static class ServerApi
             else
             {
                 CurrencyData starterData = Resources.Load<CurrencyData>("Currency/PlayerData");
-                string[] starter = { "S01", "S02" };
+                string[] starterSong = { "S01", "S02" };
                 playerData = new PlayerData();
+
+                playerData.playerName = starterData.playerName;
                 playerData.coins = starterData.coins;
                 playerData.diamonds = starterData.diamonds;
                 playerData.energy = starterData.energy;
                 playerData.storageButtonSkinData.Add(starterData.btnSkinData);
-                playerData.storageMusicData.AddRange(starter);
+                playerData.storageMusicData.AddRange(starterSong);
+                playerData.storageBgSkinData.Add(starterData.bgSkin);
                 playerData.btnSkinData = starterData.btnSkinData;
-                return playerData; 
+                playerData.bgSkin = starterData.bgSkin;
+                playerData.allScore = new List<ScoreData>();
+                return playerData;
             }
         }
         else
@@ -66,8 +70,8 @@ public static class ServerApi
         Debug.Log(jsonData);
         PlayerPrefs.SetString(saveKey, jsonData);
     }
-    
-    
+
+
 
     public static void InitAquaristaAPI()
     {
@@ -98,7 +102,7 @@ public static class ServerApi
         });
     }
 
-   
+
 
     public static async UniTask UnlockReward(UnlockRewardBody request, UnityAction<UnlockReward> onComplete, UnityAction<ErrorRequest> onFailed)
     {
@@ -341,23 +345,23 @@ public static class ServerApi
     public static async UniTask Test(IDObject idObject, UnityAction<ThemeData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
         string code = $"Test";
-         gameServersAPI.Test(idObject, (data) =>
-          {
-              ClearCountAutoRetry(code);
-              
-              onComplete?.Invoke(data);
-          }, async (error) =>
-          {
-              Debug.Log("error");
-              await ErrorRequestCall(code, async () => { await Test(idObject, onComplete, onFailed); }, () =>
-              {
-                  onFailed?.Invoke(error);
+        gameServersAPI.Test(idObject, (data) =>
+         {
+             ClearCountAutoRetry(code);
 
-                  Debug.LogWarning($"Failed to get data from server. \n{error.messege}");
+             onComplete?.Invoke(data);
+         }, async (error) =>
+         {
+             Debug.Log("error");
+             await ErrorRequestCall(code, async () => { await Test(idObject, onComplete, onFailed); }, () =>
+             {
+                 onFailed?.Invoke(error);
 
-                  return;
-              });
-          });
+                 Debug.LogWarning($"Failed to get data from server. \n{error.messege}");
+
+                 return;
+             });
+         });
 
     }
 
@@ -373,6 +377,29 @@ public static class ServerApi
         {
             Debug.Log("error");
             await ErrorRequestCall(code, async () => { await IdMusic(idObject, onComplete, onFailed); }, () =>
+            {
+                onFailed?.Invoke(error);
+
+                Debug.LogWarning($"Failed to get data from server. \n{error.messege}");
+
+                return;
+            });
+        });
+
+    }
+
+    public static async UniTask IdBg(IDObject idObject, UnityAction<ThemeData> onComplete, UnityAction<ErrorRequest> onFailed)
+    {
+        string code = $"IdBg";
+        gameServersAPI.IdBg(idObject, (data) =>
+        {
+            ClearCountAutoRetry(code);
+
+            onComplete?.Invoke(data);
+        }, async (error) =>
+        {
+            Debug.Log("error");
+            await ErrorRequestCall(code, async () => { await IdBg(idObject, onComplete, onFailed); }, () =>
             {
                 onFailed?.Invoke(error);
 

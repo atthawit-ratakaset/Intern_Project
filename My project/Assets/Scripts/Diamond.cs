@@ -1,8 +1,5 @@
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using System;
+using UnityEngine;
 
 public class Diamond : MonoBehaviour
 {

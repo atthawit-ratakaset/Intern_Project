@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DownAreaClick : MonoBehaviour
-{   
-    [Header ("BUTTON SCRIPTS")]
+{
+    [Header("BUTTON SCRIPTS")]
     public DownButtonGame button;
     public DownButtonGame button1;
     public DownButtonGame button2;
 
-    [Header ("AREA SCRIPTS")]
+    [Header("AREA SCRIPTS")]
     public DownAreaClick click1;
     public DownAreaClick click2;
 
-    [Header ("EFFECT")]
+    [Header("EFFECT")]
     public ParticleSystem particEffect;
     public AudioSource soundFX;
 
@@ -69,7 +67,7 @@ public class DownAreaClick : MonoBehaviour
             }
             else if (button.hp == 1)
             {
-                
+
                 button.spiteRenderer.sprite = GameControl.instance.types.sp2;
             }
             GameControl.instance.EventTime();
@@ -88,7 +86,7 @@ public class DownAreaClick : MonoBehaviour
 
         }
 
-        else if (button.lock1 == true )
+        else if (button.lock1 == true)
         {
             Score.instance.ScoreCalculationCase(Score.GetScore.Combo);
             Score.instance.ScoreCalculationCase(Score.GetScore.Perfect);

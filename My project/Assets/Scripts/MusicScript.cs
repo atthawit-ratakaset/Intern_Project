@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MusicScript : MonoBehaviour
-{   
+{
     AudioSource gameMusic;
     public static MusicScript instance;
     AudioClip clip;
     private float musicDelay;
-    private float musicVolum = 1f; 
+    private float musicVolum = 1f;
 
-    private void Awake() {
+    private void Awake()
+    {
         instance = this;
-        Debug.Log(MusicButton.get);
         musicDelay = MusicButton.get.delay;
         clip = MusicButton.get.song;
         gameMusic = GetComponent<AudioSource>();
@@ -21,7 +19,6 @@ public class MusicScript : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(musicDelay);
         gameMusic.PlayDelayed(musicDelay);
 
     }
@@ -31,7 +28,8 @@ public class MusicScript : MonoBehaviour
         gameMusic.volume = musicVolum;
     }
 
-    public void StopMusic() {
+    public void StopMusic()
+    {
         gameMusic.Stop();
     }
 

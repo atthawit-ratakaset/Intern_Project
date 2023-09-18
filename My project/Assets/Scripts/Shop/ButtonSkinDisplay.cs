@@ -1,7 +1,6 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using UnityEngine.EventSystems;
 public class ButtonSkinDisplay : MonoBehaviour
 {
     public static ButtonSkinDisplay instance;
@@ -24,34 +23,36 @@ public class ButtonSkinDisplay : MonoBehaviour
         instance = this;
         playerData = ServerApi.Load();
         button.onClick.AddListener(delegate () { PopUpToBuy(info); });
-        
+
         for (int i = 0; i < playerData.storageButtonSkinData.Count; i++)
         {
             if (playerData.storageButtonSkinData[i] == info.ID)
             {
                 buy = true;
                 break;
-            } else
+            }
+            else
             {
                 buy = false;
-                
+
             }
         }
 
-        if(buy == false)
+        if (buy == false)
         {
             itemImg.gameObject.GetComponent<Image>().sprite = info.itemImg;
             itemName.text = info.itemName;
             icon.gameObject.GetComponent<Image>().sprite = info.currencyIcon;
             price.text = info.price.ToString();
-        } else
+        }
+        else
         {
             itemImg.gameObject.GetComponent<Image>().sprite = info.itemImg;
             itemName.text = info.itemName;
             priceButton.SetActive(false);
             alreadyBuy.SetActive(true);
         }
-        
+
     }
 
     public void PopUpToBuy(ThemeButtonSkinInfo data)

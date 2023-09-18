@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.IO.Ports;
 using System;
+using System.Collections.Generic;
+using System.IO.Ports;
+using UnityEngine;
 
 public class MainArduino : MonoBehaviour
 {
@@ -21,7 +20,7 @@ public class MainArduino : MonoBehaviour
     private void FindButtonsPlay(int buttonId)
     {
         //UpAreaClick button = buttonTest.Find(s => s.id == buttonId);
-       // button.OnPointerDownDelegate();
+        // button.OnPointerDownDelegate();
     }
 
     private void Update()
@@ -45,7 +44,7 @@ public class MainArduino : MonoBehaviour
             }
             catch (System.Exception)
             {
-                
+
             }
         }
     }

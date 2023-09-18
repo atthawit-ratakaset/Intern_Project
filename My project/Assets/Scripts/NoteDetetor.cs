@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NoteDetetor : MonoBehaviour
@@ -17,8 +15,8 @@ public class NoteDetetor : MonoBehaviour
         if (other.gameObject.tag == "NotesLeft")
         {
             left.SetActive(true);
-        } 
-        
+        }
+
         if (other.gameObject.tag == "NotesRight")
         {
             right.SetActive(true);
@@ -31,7 +29,7 @@ public class NoteDetetor : MonoBehaviour
         {
             left.SetActive(false);
         }
-        
+
         if (other.gameObject.tag == "NotesRight")
         {
             right.SetActive(false);

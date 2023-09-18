@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,22 +5,23 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject gameObject;
     public static ThemeData buttonSkin;
+    public static ThemeData btnShop;
     public static AllMusicData musicData;
     public static PlayerData playerData;
-    
+
+
     private void Start()
     {
         ServerApi.InitAquaristaAPI();
         if (instance != null)
         {
             Destroy(gameObject);
-        }else
+        }
+        else
         {
             instance = this;
         }
         DontDestroyOnLoad(gameObject);
-        
-
 
     }
 
@@ -35,47 +34,17 @@ public class GameManager : MonoBehaviour
         bool x = false;
         string id = "";
 
+        ThemeBgInfo bgInfo = null;
+        ThemeButtonSkinInfo btnInfo = null;
+        GetValue musicInfo = null;
+
+
         //StorageButtonSkinData
-        if (playerData.storageButtonSkinData.Count == 0)
+        if (playerData.storageButtonSkinData.Count == buttonSkin.skinData.Count)
         {
-            foreach (ThemeButtonSkinInfo skinInfo in buttonSkin.skinData)
-            {
-                playerData.storageButtonSkinData.Add(skinInfo.ID);
-            }
+            //Debug.Log("Correct btn skin list");
         }
-        else if (playerData.storageButtonSkinData.Count == buttonSkin.skinData.Count)
-        {
-            Debug.Log("Correct btn skin list");
-        } 
-        else if (playerData.storageButtonSkinData.Count > buttonSkin.skinData.Count)
-        {
-            for (int i = 0; i < playerData.storageButtonSkinData.Count; i++)
-            {
-                for (int a = 0; a < buttonSkin.skinData.Count; a++)
-                {
-                    if (playerData.storageButtonSkinData[i] == buttonSkin.skinData[a].ID)
-                    {
-                        x = true;
-                        id = null;
-                        break;
-                    } 
-                    else
-                    {
-                        x = false;
-                        id = playerData.storageButtonSkinData[i];
-                    }
-                }
-                if (x == true)
-                {
-                    Debug.Log(playerData.storageButtonSkinData[i] + " have!");
-                } else
-                {
-                    playerData.storageButtonSkinData.Remove(id);
-                    Debug.Log(id + " Don't have. So, Remove from list");
-                }
-            }
-        }
-        else
+        else if (playerData.storageButtonSkinData.Count > buttonSkin.skinData.Count || playerData.storageButtonSkinData.Count < buttonSkin.skinData.Count)
         {
             for (int i = 0; i < buttonSkin.skinData.Count; i++)
             {
@@ -91,6 +60,7 @@ public class GameManager : MonoBehaviour
                     {
                         x = false;
                         id = buttonSkin.skinData[i].ID;
+                        btnInfo = buttonSkin.skinData[i];
                     }
                 }
                 if (x == true)
@@ -99,35 +69,26 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    playerData.storageButtonSkinData.Add(id);
-                    Debug.Log(id + " Add to list");
+                    playerData.storageButtonSkinData.Remove(id);
+                    buttonSkin.RemoveBtnSkin(btnInfo);
+                    buttonSkin.Save();
                 }
             }
         }
 
 
-
-        //StorageMusicData
-        if (playerData.storageMusicData.Count == 0)
+        //StorageBgData
+        if (playerData.storageBgSkinData.Count == buttonSkin.bgData.Count)
         {
-            foreach (GetValue songInfo in musicData.getMusicData)
-            {
-                playerData.storageMusicData.Add(songInfo.idSong);
-            }
-        } 
-        else if (playerData.storageMusicData.Count == musicData.getMusicData.Count)
-        {
-            Debug.Log("Correct storage music list");
+            //Debug.Log("Correct bg list");
         }
-        else if (playerData.storageMusicData.Count > musicData.getMusicData.Count)
+        else if (playerData.storageBgSkinData.Count > buttonSkin.bgData.Count || playerData.storageBgSkinData.Count < buttonSkin.bgData.Count)
         {
-
-            for (int i = 0; i < playerData.storageMusicData.Count; i++)
+            for (int i = 0; i < buttonSkin.bgData.Count; i++)
             {
-
-                for (int a = 0; a < musicData.getMusicData.Count; a++)
+                for (int a = 0; a < playerData.storageBgSkinData.Count; a++)
                 {
-                    if (playerData.storageMusicData[i] == musicData.getMusicData[a].idSong)
+                    if (buttonSkin.bgData[i].ID == playerData.storageBgSkinData[a])
                     {
                         x = true;
                         id = null;
@@ -136,26 +97,35 @@ public class GameManager : MonoBehaviour
                     else
                     {
                         x = false;
-                        id = playerData.storageMusicData[i];
+                        id = buttonSkin.bgData[i].ID;
+                        bgInfo = buttonSkin.bgData[i];
                     }
                 }
                 if (x == true)
                 {
-                    Debug.Log(playerData.storageMusicData[i] + " have!");
+                    Debug.Log(buttonSkin.bgData[i].ID + " Already have!");
                 }
                 else
                 {
-                    playerData.storageMusicData.Remove(id);
-                    Debug.Log(id + " Don't have. So, Remove from list");
+                    playerData.storageBgSkinData.Remove(id);
+                    buttonSkin.RemoveBgSkin(bgInfo);
+                    buttonSkin.Save();
                 }
             }
-
         }
-        else
+        
+
+        //StorageMusicData
+        if (playerData.storageMusicData.Count == musicData.getMusicData.Count)
         {
+            //Debug.Log("Correct storage music list");
+        }
+        else if (playerData.storageMusicData.Count > musicData.getMusicData.Count || playerData.storageMusicData.Count < musicData.getMusicData.Count)
+        {
+
             for (int i = 0; i < musicData.getMusicData.Count; i++)
             {
-                
+
                 for (int a = 0; a < playerData.storageMusicData.Count; a++)
                 {
                     if (musicData.getMusicData[i].idSong == playerData.storageMusicData[a])
@@ -163,25 +133,33 @@ public class GameManager : MonoBehaviour
                         x = true;
                         id = null;
                         break;
-                    } else
+                    }
+                    else
                     {
                         x = false;
                         id = musicData.getMusicData[i].idSong;
+                        musicInfo = musicData.getMusicData[i];
                     }
                 }
                 if (x == true)
                 {
                     Debug.Log(musicData.getMusicData[i].idSong + " Already have!");
-                } else
+                }
+                else
                 {
-                    playerData.storageMusicData.Add(id);
-                    Debug.Log(id + " Add to list");
+                    playerData.storageMusicData.Remove(id);
+                    musicData.Remove(musicInfo);
+                    musicData.Save();
+
                 }
             }
+
         }
         
+
         ServerApi.Save();
     }
 
- 
+
+
 }

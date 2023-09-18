@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed53ce0cd3f2ca040ba452f75f7697dd, type: 3}
+  m_Name: ThemeBg
+  m_EditorClassIdentifier: 
+  ID: BG002
+  itemName: Theme2
+  itemImg: {fileID: 21300000, guid: 8bb762fc1b43a464fb2225386f9c541b, type: 3}
+  currencyIcon: {fileID: 21300000, guid: 8ccaba529af0bcf4abcb78bbec9d82c9, type: 3}
+  price: 120
+  itemDetail: CyberPunkTheme
+  hpIcon: {fileID: 21300000, guid: aa69153265a273a40b11028477f3248a, type: 3}
+  hpBar: {fileID: 21300000, guid: b95a3053fd2e53b4e97d0296c59d12ae, type: 3}
+  hpLine: {fileID: 21300000, guid: a4090c87e28300a419e53a0e987e99e5, type: 3}
+  bgImg: {fileID: 0}
+  idBtn: BS002
+  perfect: {fileID: 21300000, guid: 9280040190d50e14c89d0d5e14b8b0a0, type: 3}
+  good: {fileID: 21300000, guid: 581e72bac04d27c4e8e20c641a5566df, type: 3}
+  bad: {fileID: 21300000, guid: 0e689e1013f5ed04a826aea720b343ef, type: 3}
+  miss: {fileID: 21300000, guid: 65456872b03d7fd40abed476c45ec50e, type: 3}
+  doubleTap1: {fileID: 0}
+  doubleTap2: {fileID: 0}
+  noteUnlock: {fileID: 0}
+  noteLock: {fileID: 0}

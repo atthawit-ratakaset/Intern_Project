@@ -169,7 +169,7 @@ namespace Cysharp.Threading.Tasks
             }
 
             public bool MoveNext()
-            {   
+            {
                 if (completed)
                 {
                     TryReturn();
@@ -469,7 +469,7 @@ namespace Cysharp.Threading.Tasks
             }
 
             public bool MoveNext()
-            {   
+            {
                 if (completed)
                 {
                     TryReturn();
@@ -1416,7 +1416,7 @@ namespace Cysharp.Threading.Tasks
             }
 
             public bool MoveNext()
-            {   
+            {
                 if (completed)
                 {
                     TryReturn();

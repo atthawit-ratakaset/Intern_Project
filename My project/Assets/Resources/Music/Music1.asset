@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idSong: S01
   songName: Disco Funk
-  alreadyBuy: 1
   image: {fileID: 21300000, guid: 949c0c3c685fec14482a1df148a64404, type: 3}
   imageLock: {fileID: 0}
+  bgSong: {fileID: 21300000, guid: 220a2b1b54f1d5f40996397b954590b3, type: 3}
   song: {fileID: 8300000, guid: cc2e06e78c2f00f40b3bd5f4f7ee1b96, type: 3}
   Easy:
   - {fileID: -4224427041127809441, guid: 045676bcbbcff4c49a44cd0292656187, type: 3}
@@ -30,12 +30,6 @@ MonoBehaviour:
   Event:
   - {fileID: 9017009745824447844, guid: 303101709c3c941428f9602898ede421, type: 3}
   - {fileID: 8725365031948808650, guid: dbd0ca682ce3fe749b63809747e0f498, type: 3}
-  highScoreEasy: 1000
-  playCountEasy: 1
-  highScoreNormal: 2000
-  playCountNormal: 2
-  highScoreHard: 3000
-  playCountHard: 3
   delay: 4
   timerEasy: 97
   timerNormal: 50

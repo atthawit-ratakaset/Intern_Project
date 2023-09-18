@@ -65,6 +65,11 @@ public class GameServersAPI : IGameServersAdapter
         throw new System.NotImplementedException();
     }
 
+    public async UniTask IdBg(IDObject idObject, UnityAction<ThemeData> onComplete, UnityAction<ErrorRequest> onFailed)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public async UniTask IdMusic(IDObject idObject, UnityAction<AllMusicData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
         throw new System.NotImplementedException();

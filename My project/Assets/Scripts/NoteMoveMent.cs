@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NoteMoveMent : MonoBehaviour
-{   
+{
     public NoteSpeed noteSpeed;
     public bool Up;
     public bool Down;
@@ -14,7 +12,7 @@ public class NoteMoveMent : MonoBehaviour
     }
 
     void Update()
-    {   
+    {
         if (Up == true)
         {
             transform.position += new Vector3(0f, noteSpeed.beatTempo * Time.deltaTime, 0f);

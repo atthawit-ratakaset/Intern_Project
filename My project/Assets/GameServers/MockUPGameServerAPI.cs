@@ -1,6 +1,6 @@
 using Cysharp.Threading.Tasks;
-using UnityEngine.Events;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MockUPGameServerAPI : IGameServersAdapter
 {
@@ -14,7 +14,7 @@ public class MockUPGameServerAPI : IGameServersAdapter
     public async UniTask GetCoinData(UnityAction<CurrencyItemData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
         CurrencyItemData coins = Resources.Load<CurrencyItemData>("Shop/Coin/CoinData");
-        
+
         onComplete?.Invoke(coins);
     }
 
@@ -44,7 +44,7 @@ public class MockUPGameServerAPI : IGameServersAdapter
     public async UniTask GetPlayerData(UnityAction<CurrencyData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
         CurrencyData data = Resources.Load<CurrencyData>("Currency/PlayerData");
-        
+
         onComplete?.Invoke(data);
     }
 
@@ -77,13 +77,69 @@ public class MockUPGameServerAPI : IGameServersAdapter
         onComplete?.Invoke(data);
     }
 
+    public async UniTask IdBg(IDObject idObject, UnityAction<ThemeData> onComplete, UnityAction<ErrorRequest> onFailed)
+    {
+        PlayerData data = ServerApi.Load();
+        int currencyDimonds = data.diamonds;
+        ThemeData themeShop = Resources.Load<ThemeData>("Shop/Theme/ThemeData");
+        ThemeData storageBgData = Resources.Load<ThemeData>("Storage/Button/ThemeData");
+        foreach (ThemeBgInfo bg in themeShop.bgData)
+        {
+            if (bg.ID == idObject.idItem)
+            {
+                if (currencyDimonds >= bg.price)
+                {
+
+                    currencyDimonds -= bg.price;
+                    themeShop.RemoveBgSkin(bg);
+                    data.storageBgSkinData.Add(idObject.idItem);
+                    themeShop.AddBgSkin(bg);
+                    themeShop.Save(themeShop);
+                    data.SaveDiamonds(currencyDimonds);
+                    idObject.canBuy = true;
+                    storageBgData.AddBgSkin(bg);
+                    storageBgData.Save(storageBgData);
+                    data.storageButtonSkinData.Add(bg.idBtn);
+                    themeShop.Save();
+                    ServerApi.Save();
+                    storageBgData.Save();
+                    foreach (ThemeButtonSkinInfo btn in themeShop.skinData)
+                    {
+                        for (int i = 0; i < data.storageButtonSkinData.Count; i++)
+                        {
+                            if (btn.ID == data.storageButtonSkinData[i])
+                            {
+                                storageBgData.AddBtnSkin(btn);
+                                storageBgData.Save();
+                                ServerApi.Save();
+                                break;
+                            }
+                        }
+
+                    }
+                    ThemeShow.instance.CheckSkin();
+                }
+                else if (currencyDimonds < bg.price)
+                {
+                    idObject.canBuy = false;
+                }
+
+            }
+
+        }
+
+        onComplete?.Invoke(storageBgData);
+
+
+    }
+
     public async UniTask IdMusic(IDObject idObject, UnityAction<AllMusicData> onComplete, UnityAction<ErrorRequest> onFailed)
     {
         PlayerData data = ServerApi.Load();
         int currencyDimonds = data.diamonds;
         AllMusicData shopMusic = Resources.Load<AllMusicData>("Shop/Music/ShopMusic");
         AllMusicData storageMusic = Resources.Load<AllMusicData>("Storage/Music/StorageMusic");
-        
+
 
         foreach (GetValue value in shopMusic.getMusicData)
         {
@@ -100,13 +156,15 @@ public class MockUPGameServerAPI : IGameServersAdapter
                     data.SaveDiamonds(currencyDimonds);
                     storageMusic.Add(value);
                     storageMusic.Save(storageMusic);
-                    
+
                     shopMusic.Save();
                     storageMusic.Save();
                     ServerApi.Save();
                     MusicShopShow.instance.CheckSkin();
 
-                } else if (currencyDimonds < value.price){
+                }
+                else if (currencyDimonds < value.price)
+                {
                     idObject.canBuy = false;
                 }
             }
@@ -117,39 +175,40 @@ public class MockUPGameServerAPI : IGameServersAdapter
     {
         PlayerData data = ServerApi.Load();
         int currencyDimonds = data.diamonds;
-        ThemeData themeShop = Resources.Load<ThemeData>("Shop/Theme/ButtonSkinData");
+        ThemeData themeShop = Resources.Load<ThemeData>("Shop/Theme/ThemeData");
         ThemeData storageButtonSkinData = Resources.Load<ThemeData>("Storage/Button/ThemeData");
         foreach (ThemeButtonSkinInfo buttonSkin in themeShop.skinData)
         {
             if (buttonSkin.ID == idObject.idItem)
-            {   
+            {
                 if (currencyDimonds >= buttonSkin.price)
                 {
-                    
+
                     currencyDimonds -= buttonSkin.price;
-                    themeShop.Remove(buttonSkin);
+                    themeShop.RemoveBtnSkin(buttonSkin);
                     data.storageButtonSkinData.Add(idObject.idItem);
-                    themeShop.Add(buttonSkin);
+                    themeShop.AddBtnSkin(buttonSkin);
                     themeShop.Save(themeShop);
                     data.SaveDiamonds(currencyDimonds);
                     idObject.canBuy = true;
-                    storageButtonSkinData.Add(buttonSkin);
+                    storageButtonSkinData.AddBtnSkin(buttonSkin);
                     storageButtonSkinData.Save(storageButtonSkinData);
-                    
+
                     themeShop.Save();
-                    
+
                     ServerApi.Save();
                     storageButtonSkinData.Save();
                     ThemeShow.instance.CheckSkin();
-                } else if (currencyDimonds < buttonSkin.price)
+                }
+                else if (currencyDimonds < buttonSkin.price)
                 {
                     idObject.canBuy = false;
                 }
-              
+
             }
 
         }
-        
+
         onComplete?.Invoke(storageButtonSkinData);
 
     }
