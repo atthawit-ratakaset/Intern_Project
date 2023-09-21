@@ -38,12 +38,6 @@ public class Energy : MonoBehaviour
             Load();
             StartCoroutine(RestoreEnergy());
         }
-        else
-        {
-
-            Load();
-            StartCoroutine(RestoreEnergy());
-        }
     }
 
     public void UseEnergy()

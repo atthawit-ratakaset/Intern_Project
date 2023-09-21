@@ -285,5 +285,9 @@ public class MenuButton : MonoBehaviour
     }
 
 
+    public void TitleMenu()
+    {
+        SceneManager.LoadScene("Title");
+    }
 
 }

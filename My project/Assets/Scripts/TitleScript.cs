@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class TitleScript : MonoBehaviour
 {
-    public GameObject tapToStart, nameSetting, logoGame;
+    public GameObject tapToStart, nameSetting, logoGame, resetGame;
     public TMP_InputField enterName;
     bool haveId = false;
     PlayerData playerData;
@@ -31,6 +31,7 @@ public class TitleScript : MonoBehaviour
         }
         tapToStart.SetActive(true);
         logoGame.SetActive(true);
+        resetGame.SetActive(true);
         nameSetting.SetActive(false);
         Debug.Log(haveId);
     }
@@ -42,11 +43,13 @@ public class TitleScript : MonoBehaviour
             tapToStart.SetActive(false);
             logoGame.SetActive(false);
             nameSetting.SetActive(true);
+            resetGame.SetActive(false);
 
         }
         else if (haveId == true)
         {
             tapToStart.SetActive(false);
+            resetGame.SetActive(false);
             StartCoroutine("Load");
 
         }
@@ -99,4 +102,16 @@ public class TitleScript : MonoBehaviour
         }
     }
 
+
+    public void DeleteDataPref()
+    {
+        if (haveId == false)
+        {
+            Debug.Log("Don't have data to delete!!");
+        } else
+        {
+            PlayerPrefs.DeleteAll();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
 }
