@@ -3,13 +3,13 @@ using UnityEngine;
 public class FadeInNotes : MonoBehaviour
 {
     SpriteRenderer note;
-
+    
 
     void Start()
     {
         note = GetComponent<SpriteRenderer>();
         Color color = note.material.color;
-        color.a = 0f;
+        color.a = 1f;
         note.material.color = color;
     }
 

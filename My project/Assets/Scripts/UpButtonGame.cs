@@ -52,14 +52,23 @@ public class UpButtonGame : MonoBehaviour
         playerData = ServerApi.Load();
         ServerApi.GetStorageButtonSkinData((d) => { btnSkin = d; }, (e) => { });
 
-        for (int i = 0; i < btnSkin.skinData.Count; i++)
+        if (MenuButton.selectMode != 0 || MenuButton.selectMode != 1 || MenuButton.selectMode != 2)
         {
-            if (btnSkin.skinData[i].ID == playerData.btnSkinData)
+
+        } else 
+        {
+            for (int i = 0; i < btnSkin.skinData.Count; i++)
             {
-                equip = true;
-                info = btnSkin.skinData[i];
-                break;
+                if (btnSkin.skinData[i].ID == playerData.btnSkinData)
+                {
+                    equip = true;
+                    info = btnSkin.skinData[i];
+                    break;
+                }
             }
+
+
+            theSR.sprite = info.itemImg;
         }
 
 
@@ -79,7 +88,6 @@ public class UpButtonGame : MonoBehaviour
         subNote3 = false;
 
         //theSR.color = Color.blue;
-        theSR.sprite = info.itemImg;
 
         Color color = theSR.material.color;
         color.a = 0.75f;
