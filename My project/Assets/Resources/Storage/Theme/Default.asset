@@ -18,6 +18,7 @@ MonoBehaviour:
   currencyIcon: {fileID: 21300000, guid: 8ccaba529af0bcf4abcb78bbec9d82c9, type: 3}
   price: 0
   itemDetail: Default Theme
+  previewImg: {fileID: 21300000, guid: f7754d6c985fc4643a567371afc92907, type: 3}
   hpIcon: {fileID: 21300000, guid: 8b1cfab16f2484a4cb3a61c27bfd1e38, type: 3}
   hpBar: {fileID: 21300000, guid: 50b9096e1ecbdfd409636a1f2f5fdbdc, type: 3}
   hpLine: {fileID: 21300000, guid: 63420d83e896151418569266bef3eb4e, type: 3}

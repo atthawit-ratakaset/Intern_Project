@@ -74,6 +74,7 @@ public class PopUpBuy : MonoBehaviour
         ItemDisplay.get = null;
         ButtonSkinDisplay.get = null;
         ShopMusicDisplay.get = null;
+        ThemeBgDisplay.get = null;
         popUpBuy.SetActive(false);
         alertPopUp.SetActive(false);
 
@@ -229,6 +230,7 @@ public class PopUpBuy : MonoBehaviour
         ItemDisplay.get = null;
         ButtonSkinDisplay.get = null;
         ShopMusicDisplay.get = null;
+        ThemeBgDisplay.get = null;
     }
 
     public void CloseFinshPopUp()

@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
-
+using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour
 {
-    public SpriteRenderer theSR;
+    
+    public GameObject theSR;
 
     [Header("TYPES NOTE DATA")]
     public TypesNote types;
@@ -75,10 +75,12 @@ public class GameControl : MonoBehaviour
 
         if (bgInfo.ID == "BG001")
         {
-            theSR.sprite = MusicButton.get.bgSong;
+            theSR.GetComponent<SpriteRenderer>().sprite = MusicButton.get.bgSong;
+            theSR.transform.localScale = new Vector3(0.425f, 0.34f, 1f);
         } else
         {
-
+            theSR.GetComponent<SpriteRenderer>().sprite = bgInfo.bgImg;
+            theSR.transform.localScale = new Vector3(1.33f, 1.32f, 1f);
         }
 
         GameModeCheck();
@@ -227,6 +229,10 @@ public class GameControl : MonoBehaviour
         if (currentHealth <= 0)
         {
             Score.instance.tryAgain.SetActive(true);
+            Score.instance.tryAgain.GetComponent<Image>().sprite = bgInfo.bgImg;
+        } else
+        {
+            Score.instance.ShowScore();
         }
         
     }

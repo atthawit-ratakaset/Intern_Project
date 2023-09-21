@@ -19,6 +19,8 @@ public class StorageDisplayBg : MonoBehaviour
     public GameObject use;
     public GameObject equipped;
     public Button useButton;
+    public Button preview;
+    public Image previewImg;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,7 @@ public class StorageDisplayBg : MonoBehaviour
         instance = this;
         Button btn = GetComponent<Button>();
         btn.onClick.AddListener(delegate () { SetDataItem(items); });
+        preview.onClick.AddListener(delegate () { PreviewItems(); });
         image.gameObject.GetComponent<Image>().sprite = items.itemImg;
     }
 
@@ -56,10 +59,16 @@ public class StorageDisplayBg : MonoBehaviour
         playerData = ServerApi.Load();
         playerData.bgSkin = get.ID;
         playerData.btnSkinData = get.idBtn;
-        //SetObject.instance.UpdateBg();
         use.SetActive(false);
         equipped.SetActive(true);
         ServerApi.Save();
 
+    }
+
+
+    public void PreviewItems()
+    {
+        previewPopup.SetActive(true);
+        previewImg.sprite = get.previewImg;
     }
 }

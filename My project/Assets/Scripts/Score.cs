@@ -57,6 +57,7 @@ public class Score : MonoBehaviour
     int BadScore = 0;
     int Combo = 0;
     int maxCombo = 0;
+    int coinTotal = 0;
 
     CurrencyData currencyData;
     private void Awake()
@@ -117,6 +118,7 @@ public class Score : MonoBehaviour
         {
             case GetScore.Miss:
                 MissNoteScore += 1;
+                coinTotal += 0;
                 TotalScore -= point.missScore;
                 MissNoteScoreText.text = $"{MissNoteScore}";
                 Instantiate(missEffect, new Vector3(0f, 4.2f, 0f), Quaternion.identity);
@@ -124,6 +126,7 @@ public class Score : MonoBehaviour
 
             case GetScore.Good:
                 GoodScore += 1;
+                coinTotal += 2;
                 TotalScore += point.goodScore;
                 GoodScoreText.text = $"{GoodScore}";
                 Instantiate(goodEffect, new Vector3(0f, 4.2f, 0f), Quaternion.identity);
@@ -131,6 +134,7 @@ public class Score : MonoBehaviour
 
             case GetScore.Perfect:
                 PerfectScore += 1;
+                coinTotal += 3;
                 TotalScore += point.perfectScore;
                 PerfectScoreText.text = $"{PerfectScore}";
                 Instantiate(perfectEffect, new Vector3(0f, 4.2f, 0f), Quaternion.identity);
@@ -138,6 +142,7 @@ public class Score : MonoBehaviour
 
             case GetScore.Bad:
                 BadScore += 1;
+                coinTotal += 1;
                 TotalScore -= point.badScore;
                 BadScoreText.text = $"{BadScore}";
                 Instantiate(badEffect, new Vector3(0f, 4.2f, 0f), Quaternion.identity);
@@ -176,18 +181,15 @@ public class Score : MonoBehaviour
     public void ShowScore()
     {
         popUp.SetActive(true);
-        if (TotalScore < 1000)
+        popUp.GetComponent<Image>().sprite = bgInfo.bgImg;
+        if (TotalScore >= 0)
         {
-            coinsText.text = "20";
+            
+            coinsText.text = coinTotal.ToString();
             playerData.coins += int.Parse(coinsText.text);
 
         }
-        else if (TotalScore < 10000)
-        {
-            coinsText.text = "50";
-            playerData.coins += int.Parse(coinsText.text);
 
-        }
         if (maxCombo < Combo)
         {
             maxCombo = Combo;

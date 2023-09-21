@@ -19,8 +19,8 @@ public class ThemeData : ScriptableObject
     {
         if (saveKey.Equals(""))
             saveKey = this.name;
+
         string jsonData = JsonUtility.ToJson(this, true);
-        Debug.Log(jsonData);
         PlayerPrefs.SetString(saveKey, jsonData);
         PlayerPrefs.Save();
 

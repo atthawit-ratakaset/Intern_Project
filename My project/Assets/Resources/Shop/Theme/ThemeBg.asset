@@ -18,10 +18,11 @@ MonoBehaviour:
   currencyIcon: {fileID: 21300000, guid: 8ccaba529af0bcf4abcb78bbec9d82c9, type: 3}
   price: 120
   itemDetail: CyberPunkTheme
+  previewImg: {fileID: 21300000, guid: 2acba69d9f506a94ab8e31e3532e5dba, type: 3}
   hpIcon: {fileID: 21300000, guid: aa69153265a273a40b11028477f3248a, type: 3}
   hpBar: {fileID: 21300000, guid: b95a3053fd2e53b4e97d0296c59d12ae, type: 3}
   hpLine: {fileID: 21300000, guid: a4090c87e28300a419e53a0e987e99e5, type: 3}
-  bgImg: {fileID: 0}
+  bgImg: {fileID: 21300000, guid: cfbb61ebaeffb7141a1c8ceaf65c1bf3, type: 3}
   idBtn: BS002
   perfect: {fileID: 21300000, guid: 9280040190d50e14c89d0d5e14b8b0a0, type: 3}
   good: {fileID: 21300000, guid: 581e72bac04d27c4e8e20c641a5566df, type: 3}

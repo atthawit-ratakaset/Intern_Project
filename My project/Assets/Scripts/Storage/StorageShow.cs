@@ -12,8 +12,8 @@ public class StorageShow : MonoBehaviour
     public GameObject bgParent;
     ThemeData getData;
     public int itemCount;
-    PlayerData playerData;
 
+    public Image popUpPreview;
 
     [Header("PopUp Button Skin")]
     public TMP_Text itemName;
@@ -23,6 +23,7 @@ public class StorageShow : MonoBehaviour
     public GameObject use;
     public GameObject equipped;
     public Button useButton;
+    public Button previewBtn;
 
     [Header("PopUp Bg Skin")]
     public TMP_Text itemNameBg;
@@ -32,6 +33,7 @@ public class StorageShow : MonoBehaviour
     public GameObject useBg;
     public GameObject equippedBg;
     public Button useButtonBg;
+    public Button previewBg;
 
     void Start()
     {
@@ -57,6 +59,8 @@ public class StorageShow : MonoBehaviour
             newButton.use = use;
             newButton.equipped = equipped;
             newButton.useButton = useButton;
+            newButton.preview = previewBtn;
+            newButton.previewImg = popUpPreview;
 
             if (i == 0)
             {
@@ -85,6 +89,8 @@ public class StorageShow : MonoBehaviour
             newButton.use = useBg;
             newButton.equipped = equippedBg;
             newButton.useButton = useButtonBg;
+            newButton.preview = previewBg;
+            newButton.previewImg = popUpPreview;
 
             if (i == 0)
             {
@@ -103,5 +109,11 @@ public class StorageShow : MonoBehaviour
         {
             Destroy(gameObject.transform.GetChild(i).gameObject);
         }
+    }
+
+    public void ClosePreview()
+    {
+        previewPopup.SetActive(false);
+        previewPopupBg.SetActive(false);
     }
 }

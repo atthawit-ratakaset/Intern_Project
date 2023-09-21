@@ -10,5 +10,6 @@ public class ThemeButtonSkinInfo : ScriptableObject
     public Sprite currencyIcon;
     public int price;
     public string itemDetail;
+    public Sprite previewImg;
 
 }

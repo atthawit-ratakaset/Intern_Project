@@ -18,3 +18,4 @@ MonoBehaviour:
   currencyIcon: {fileID: 0}
   price: 0
   itemDetail: DefaultSkin
+  previewImg: {fileID: 21300000, guid: f7754d6c985fc4643a567371afc92907, type: 3}

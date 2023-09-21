@@ -33,6 +33,8 @@ public class PlaySceneMenu : MonoBehaviour
     public TMP_Text levelMode;
     public TMP_Text score;
 
+
+
     [HideInInspector]
     public int selectMode;
 
@@ -66,7 +68,7 @@ public class PlaySceneMenu : MonoBehaviour
         }
         else
         {
-            hpInside.transform.localPosition = new Vector3(5.5f, 14f, 0);
+            hpInside.transform.localPosition = new Vector3(1.5f, 10f, 0);
             
         }
 
@@ -171,15 +173,15 @@ public class PlaySceneMenu : MonoBehaviour
                 break;
             }
         }
-        if (bgInfo.ID == "BG001")
+        if (bgInfo.ID == "BG001" || bgInfo.bgImg == null)
         {
             loadbg.sprite = MusicButton.get.bgSong;
         }
         else
         {
-
+            loadbg.sprite = bgInfo.bgImg;
         }
-        
+
         AsyncOperation loadScene = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Single);
         while (!loadScene.isDone)
         {
@@ -273,13 +275,13 @@ public class PlaySceneMenu : MonoBehaviour
             }
         }
 
-        if (bgInfo.ID == "BG001")
+        if (bgInfo.ID == "BG001" || bgInfo.bgImg == null)
         {
             loadbg.sprite = MusicButton.get.bgSong;
         }
         else
         {
-
+            loadbg.sprite = bgInfo.bgImg;
         }
         AsyncOperation loadScene = SceneManager.LoadSceneAsync(GetCurrentBuildIndex(), LoadSceneMode.Single);
         while (!loadScene.isDone)
