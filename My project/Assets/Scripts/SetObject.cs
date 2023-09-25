@@ -103,6 +103,7 @@ public class SetObject : MonoBehaviour
     int test;
     bool menu = true;
     bool play = false;
+    bool storage = false;
     bool help = false;
     bool mail = false;
     public void Awake()
@@ -231,6 +232,7 @@ public class SetObject : MonoBehaviour
 
     public void Storage()
     {
+        storage = true;
         storagePopUp.SetActive(true);
         returnBtn.SetActive(true);
         buttonStorageText.color = new Color32(253, 6, 83, 255);
@@ -256,14 +258,23 @@ public class SetObject : MonoBehaviour
     {
         play = false;
         menu = true;
-        menuScene.SetActive(true);
-        selectMusicScene.SetActive(false);
-        storagePopUp.SetActive(false);
-        mailScene.SetActive(false);
+        if (storage)
+        {
+            menuScene.SetActive(true);
+            StorageMusic();
+        } else
+        {
+            menuScene.SetActive(true);
+            selectMusicScene.SetActive(false);
+            storagePopUp.SetActive(false);
+            mailScene.SetActive(false);
+        }
+
     }
 
     public void exitStorage()
     {
+        storage = false;
         menuScene.SetActive(true);
         selectMusicScene.SetActive(false);
         storagePopUp.SetActive(false);

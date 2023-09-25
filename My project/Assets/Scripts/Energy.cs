@@ -11,8 +11,7 @@ public class Energy : MonoBehaviour
     public string timeValue;
 
     public int maxEnergy = 15;
-    [HideInInspector]
-    public int currentEnergy;
+
 
     public int restoreDuration = 300;
     [HideInInspector]
@@ -31,24 +30,26 @@ public class Energy : MonoBehaviour
     public void EnergyState()
     {
         playerData = ServerApi.Load();
-        currentEnergy = playerData.energy;
         if (!PlayerPrefs.HasKey("Playerdata"))
         {
-
             Load();
             StartCoroutine(RestoreEnergy());
+        } else
+        {
+            Load();
+            StartCoroutine(RestoreEnergy());    
         }
     }
 
     public void UseEnergy()
     {
-        if (currentEnergy >= 1)
+        if (playerData.energy >= 1)
         {
-            currentEnergy--;
+            playerData.energy--;
 
             if (isRestoring == false)
             {
-                if (currentEnergy + 1 == maxEnergy)
+                if (playerData.energy + 1 == maxEnergy)
                 {
                     nextEnergyTime = AddDuration(DateTime.Now, restoreDuration);
                 }
@@ -69,7 +70,7 @@ public class Energy : MonoBehaviour
 
         isRestoring = true;
 
-        while (currentEnergy < maxEnergy)
+        while (playerData.energy < maxEnergy)
         {
 
             DateTime currentDateTime = DateTime.Now;
@@ -78,18 +79,14 @@ public class Energy : MonoBehaviour
 
             while (currentDateTime > nextDateTime)
             {
-                if (currentEnergy < maxEnergy)
+                if (playerData.energy < maxEnergy)
                 {
                     isEnergyAdding = true;
-                    currentEnergy++;
-                    playerData.energy = currentEnergy;
-                    currentEnergy = playerData.energy;
+                    playerData.energy++;
                     DateTime timeToAdd = lastEnergyTime > nextDateTime ? lastEnergyTime : nextDateTime;
                     Debug.Log(timeToAdd);
 
                     nextDateTime = AddDuration(timeToAdd, restoreDuration);
-                    Debug.Log(playerData.energy);
-                    Debug.Log("Add energy" + currentEnergy);
                     ServerApi.Save();
 
                 }
@@ -148,12 +145,6 @@ public class Energy : MonoBehaviour
     {
         PlayerPrefs.SetString("nextEnergyTime", nextEnergyTime.ToString());
         PlayerPrefs.SetString("lastEnergyTime", lastEnergyTime.ToString());
-        playerData.SaveEnergy(currentEnergy);
     }
 
-    public void Reset()
-    {
-        currentEnergy = 10;
-        Save();
-    }
 }

@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class MenuButton : MonoBehaviour
 {
     public static MenuButton instance;
-    CurrencyData currencyData;
     int currentEnergy;
     public GameObject alertPopUp;
     public TMP_Text alertText;
@@ -19,6 +18,11 @@ public class MenuButton : MonoBehaviour
     PlayerData playerData;
     bool x = false;
 
+    [Header("Bluetooth")]
+    public Image onOffBtn;
+    public Sprite onImg;
+    public Sprite offImg;
+    public static bool bluetoothOn;
 
     [Header("LoadScene")]
     public GameObject load;
@@ -43,6 +47,16 @@ public class MenuButton : MonoBehaviour
     {
         instance = this;
         playerData = ServerApi.Load();
+        Debug.Log(bluetoothOn);
+        if (bluetoothOn == true)
+        {
+            onOffBtn.sprite = onImg;
+        }
+        else if (bluetoothOn == false)
+        {
+            onOffBtn.sprite = offImg;
+        }
+
     }
 
 
@@ -180,7 +194,6 @@ public class MenuButton : MonoBehaviour
     public void Test()
     {
         PlayerData playerData = ServerApi.Load();
-        currentEnergy = playerData.energy;
 
         for (int i = 0; i < playerData.storageMusicData.Count; i++)
         {
@@ -200,25 +213,27 @@ public class MenuButton : MonoBehaviour
 
         if (x == true)
         {
-            if (currentEnergy >= 1)
-            {
-                currentEnergy--;
-
+            if (playerData.energy >= 1)
+            {   
+                
+                playerData.energy--;
+                
                 if (Energy.instance.isRestoring == false)
                 {
-                    if (currentEnergy + 1 == Energy.instance.maxEnergy)
+                    
+                    if (playerData.energy + 1 == Energy.instance.maxEnergy)
                     {
                         Energy.instance.nextEnergyTime = Energy.instance.AddDuration(DateTime.Now, Energy.instance.restoreDuration);
                     }
 
                     StartCoroutine(Energy.instance.RestoreEnergy());
                 }
+
                 if (MusicButton.get != null)
                 {
                     scene = "PlayScene1";
                     StartCoroutine("LoadScene");
                 }
-                playerData.SaveEnergy(currentEnergy);
                 ServerApi.Save();
             }
             else
@@ -288,6 +303,21 @@ public class MenuButton : MonoBehaviour
     public void TitleMenu()
     {
         SceneManager.LoadScene("Title");
+        StateScene.menu = 0;
     }
 
+    public void OnOffUpdate()
+    {
+        if (bluetoothOn == false)
+        {
+            onOffBtn.sprite = onImg;
+            GameManager.instance.ConnectBLE();
+            bluetoothOn = true;
+        } else if (bluetoothOn == true)
+        {
+            onOffBtn.sprite = offImg;
+            GameManager.instance.StopConnectBLE();
+            bluetoothOn = false;
+        }
+    }
 }

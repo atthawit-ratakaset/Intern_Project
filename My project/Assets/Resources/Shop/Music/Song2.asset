@@ -13,24 +13,30 @@ MonoBehaviour:
   m_Name: Song2
   m_EditorClassIdentifier: 
   idSong: S04
-  songName: Song4
-  alreadyBuy: 0
-  image: {fileID: 21300000, guid: 600e1dfe45134eb4b88026514d41609f, type: 3}
+  songName: Pop Rock
+  image: {fileID: 21300000, guid: a7d4d4b3af6cbd749b83f89d17024894, type: 3}
   imageLock: {fileID: 21300000, guid: 0183d28eb79df5443a2c7b8ea72d6c6b, type: 3}
-  song: {fileID: 0}
-  Easy: []
-  Normal: []
-  Hard: []
+  bgSong: {fileID: 21300000, guid: 200a0f8361305cb4ebc40920a96afb9a, type: 3}
+  song: {fileID: 8300000, guid: da9b0d30cbab96e4a96797e5ed814bc4, type: 3}
+  Easy:
+  - {fileID: -3253846344109624865, guid: 9a76ecd4d7e7c4049b8e43f02facaa25, type: 3}
+  - {fileID: 7400384355852512725, guid: 2c0ddbe74c04c60429575fe16b47b6e5, type: 3}
+  Normal:
+  - {fileID: 4885675805865821216, guid: 489d140988dfffe4e9ea70e2f8fe16d1, type: 3}
+  - {fileID: 987397995272454509, guid: e3c7e4da4cf23f8469b2ea722b3c6980, type: 3}
+  Hard:
+  - {fileID: 4654220236700405068, guid: 1a585b5b548f0b2429459f1d78aecbee, type: 3}
+  - {fileID: 5982614988337647823, guid: 82caf4f6482b38a47920e2f317ee458f, type: 3}
   Event: []
-  delay: 0
-  timerEasy: 0
-  timerNormal: 0
-  timerHard: 0
-  easySpeed: 0
-  normalSpeed: 0
-  hardSpeed: 0
-  eventSpeed: 0
-  targetScore: 0
-  songInfo: Song4
+  delay: 2
+  timerEasy: 85
+  timerNormal: 85
+  timerHard: 85
+  easySpeed: 170
+  normalSpeed: 340
+  hardSpeed: 510
+  eventSpeed: 340
+  targetScore: 1000
+  songInfo: Pop Lock
   price: 60
   currencyType: {fileID: 21300000, guid: 9f50105c4d5a2b64ebe52d69bd93f301, type: 3}

@@ -5,6 +5,7 @@ public class UpButtonGame : MonoBehaviour
 {
 
     public SpriteRenderer theSR;
+    public int checkId;
     [Header("NOTE OBJECT DISPLAY")]
     public GameObject Square;
     public SpriteRenderer spiteRenderer;
@@ -52,10 +53,7 @@ public class UpButtonGame : MonoBehaviour
         playerData = ServerApi.Load();
         ServerApi.GetStorageButtonSkinData((d) => { btnSkin = d; }, (e) => { });
 
-        if (MenuButton.selectMode != 0 || MenuButton.selectMode != 1 || MenuButton.selectMode != 2)
-        {
-
-        } else 
+        if (MenuButton.selectMode == 0 || MenuButton.selectMode == 1 || MenuButton.selectMode == 2)
         {
             for (int i = 0; i < btnSkin.skinData.Count; i++)
             {
@@ -69,6 +67,9 @@ public class UpButtonGame : MonoBehaviour
 
 
             theSR.sprite = info.itemImg;
+        } else 
+        {
+
         }
 
 
@@ -197,6 +198,13 @@ public class UpButtonGame : MonoBehaviour
     {
         if (other.gameObject.tag == "NotesUp")
         {
+            if (GameManager.isConnected)
+            {
+                if (checkId == 1)
+                {
+                    BluetoothService.WritetoBluetooth("1");
+                }
+            }
             noteType = NoteTypes.NormalNote;
             hit = true;
             CheckNoteInTypes();
@@ -279,11 +287,25 @@ public class UpButtonGame : MonoBehaviour
                 case NoteTypes.NormalNote:
                     if (other.gameObject.tag == "SubNote2Up")
                     {
+                        if (GameManager.isConnected)
+                        {
+                            if (checkId == 1)
+                            {
+                                BluetoothService.WritetoBluetooth("2");
+                            }
+                        }
                         subNote2 = true;
                         Square.transform.localScale = new Vector3(0.65f, 0.65f, 1f);
                     }
                     else if (other.gameObject.tag == "SubNote3Up")
                     {
+                        if (GameManager.isConnected)
+                        {
+                            if (checkId == 1)
+                            {
+                                BluetoothService.WritetoBluetooth("3");
+                            }
+                        }
                         subNote3 = true;
                         spiteRenderer.sprite = GameControl.instance.types.OneTap;
                         Square.transform.localScale = new Vector3(4.5f, 4.5f, 1f);
@@ -466,6 +488,13 @@ public class UpButtonGame : MonoBehaviour
             case NoteTypes.NormalNote:
                 if (other.gameObject.tag == "SubNote1Up")
                 {
+                    if (GameManager.isConnected)
+                    {
+                        if (checkId == 1)
+                        {
+                            BluetoothService.WritetoBluetooth("2");
+                        }
+                    }
                     subNote1 = false;
 
                     spiteRenderer.sprite = GameControl.instance.types.defaultSprite;
@@ -474,12 +503,26 @@ public class UpButtonGame : MonoBehaviour
                 }
                 else if (other.gameObject.tag == "SubNote2Up")
                 {
+                    if (GameManager.isConnected)
+                    {
+                        if (checkId == 1)
+                        {
+                            BluetoothService.WritetoBluetooth("1");
+                        }
+                    }
                     subNote2 = false;
 
                     Square.transform.localScale = new Vector3(0.35f, 0.35f, 1f);
                 }
                 else if (other.gameObject.tag == "SubNote3Up")
                 {
+                    if (GameManager.isConnected)
+                    {
+                        if (checkId == 1)
+                        {
+                            BluetoothService.WritetoBluetooth("4");
+                        }
+                    }
                     subNote3 = false;
 
                     Square.transform.localScale = new Vector3(0f, 0f, 1f);

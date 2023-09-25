@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,11 +9,28 @@ public class GameManager : MonoBehaviour
     public static ThemeData btnShop;
     public static AllMusicData musicData;
     public static PlayerData playerData;
-
+    public static bool isConnected;
 
     private void Start()
     {
         ServerApi.InitAquaristaAPI();
+        #if UNITY_2020_2_OR_NEWER
+        #if UNITY_ANDROID
+                if (!Permission.HasUserAuthorizedPermission(Permission.CoarseLocation)
+                   !Permission.HasUserAuthorizedPermission(Permission.FineLocation)
+                   !Permission.HasUserAuthorizedPermission("android.permission.BLUETOOTH_SCAN")
+                   !Permission.HasUserAuthorizedPermission("android.permission.BLUETOOTH_ADVERTISE")
+                   !Permission.HasUserAuthorizedPermission("android.permission.BLUETOOTH_CONNECT"))
+                            Permission.RequestUserPermissions(new string[] {
+                                Permission.CoarseLocation,
+                                    Permission.FineLocation,
+                                    "android.permission.BLUETOOTH_SCAN",
+                                    "android.permission.BLUETOOTH_ADVERTISE",
+                                     "android.permission.BLUETOOTH_CONNECT"
+                            });
+        #endif
+        #endif
+        BluetoothService.CreateBluetoothObject();
         if (instance != null)
         {
             Destroy(gameObject);
@@ -22,6 +40,8 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
         DontDestroyOnLoad(gameObject);
+
+
 
     }
 
@@ -160,6 +180,23 @@ public class GameManager : MonoBehaviour
         ServerApi.Save();
     }
 
+    public void ConnectBLE()
+    {
+        if (!isConnected)
+        {
+            isConnected = BluetoothService.StartBluetoothConnection("ESP32-TEST");
+            BluetoothService.Toast("ESP32-TEST" + " status: " + isConnected);
+            BluetoothService.WritetoBluetooth(isConnected ? "connect" : "Not connected");
+        }
+    }
+    public void StopConnectBLE()
+    {
+        if (isConnected)
+        {
+            BluetoothService.StopBluetoothConnection();
+            isConnected = false;
+        }
 
+    }
 
 }

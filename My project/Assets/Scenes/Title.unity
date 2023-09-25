@@ -531,7 +531,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1514911740}
   - component: {fileID: 1514911739}
-  - component: {fileID: 1514911738}
+  - component: {fileID: 1514911741}
   m_Layer: 0
   m_Name: ServerApi
   m_TagString: Untagged
@@ -539,23 +539,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1514911738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1514911737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19ec847144617624f9e408a125072b75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeValue: 
-  maxEnergy: 15
-  currentEnergy: 10
-  restoreDuration: 300
-  isRestoring: 0
 --- !u!114 &1514911739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,6 +567,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1514911741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514911737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ec847144617624f9e408a125072b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeValue: 
+  maxEnergy: 15
+  currentEnergy: 10
+  restoreDuration: 300
+  isRestoring: 0
 --- !u!1 &1553039253
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,9 @@ using UnityEngine.EventSystems;
 
 public class UpAreaClick : MonoBehaviour
 {
+
+    public int ID;
+
     [Header("BUTTON SCRIPTS")]
     public UpButtonGame button;
     public UpButtonGame button1;

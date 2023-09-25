@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DownAreaClick : MonoBehaviour
 {
+    public int ID;
+
     [Header("BUTTON SCRIPTS")]
     public DownButtonGame button;
     public DownButtonGame button1;
@@ -24,11 +27,11 @@ public class DownAreaClick : MonoBehaviour
         EventTrigger trigger = GetComponent<EventTrigger>();
         EventTrigger.Entry entry = new EventTrigger.Entry();
         entry.eventID = EventTriggerType.PointerDown;
-        entry.callback.AddListener((data) => { OnPointerDownDelegate((PointerEventData)data); });
+        entry.callback.AddListener((data) => { OnPointerDownDelegate(); });
         trigger.triggers.Add(entry);
     }
 
-    public void OnPointerDownDelegate(PointerEventData data)
+    public void OnPointerDownDelegate()
     {
         soundFX.Play();
         particEffect.Play();
@@ -130,4 +133,5 @@ public class DownAreaClick : MonoBehaviour
 
 
     }
+
 }

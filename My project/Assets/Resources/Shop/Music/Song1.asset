@@ -13,30 +13,30 @@ MonoBehaviour:
   m_Name: Song1
   m_EditorClassIdentifier: 
   idSong: S03
-  songName: Song3
-  alreadyBuy: 0
-  image: {fileID: 21300000, guid: a7d4d4b3af6cbd749b83f89d17024894, type: 3}
+  songName: Night City Lights
+  image: {fileID: 21300000, guid: aac37085c092725408caeedb7cffa5f1, type: 3}
   imageLock: {fileID: 21300000, guid: 0183d28eb79df5443a2c7b8ea72d6c6b, type: 3}
-  song: {fileID: 0}
-  Easy: []
-  Normal: []
-  Hard: []
+  bgSong: {fileID: 21300000, guid: 220a2b1b54f1d5f40996397b954590b3, type: 3}
+  song: {fileID: 8300000, guid: 4f425d4d423620c43bc732abd063b714, type: 3}
+  Easy:
+  - {fileID: 1899896759287509072, guid: c83eac3c5b3a21a49a82147705f3ff0a, type: 3}
+  - {fileID: 2687230058055198950, guid: e4d0781e25d8504459e3ff49e614691f, type: 3}
+  Normal:
+  - {fileID: 2447656952342218478, guid: a57cfd90e2a3fc64997fe307c80af787, type: 3}
+  - {fileID: -7132300226162612368, guid: 502fe90bb139cce4bba5c500b5a57459, type: 3}
+  Hard:
+  - {fileID: 6413205496601637564, guid: 8b7c527d340af614b9197c4fb9b63e03, type: 3}
+  - {fileID: 6297854740885259587, guid: 346292bc443680947ae0f5f8afcb733a, type: 3}
   Event: []
-  highScoreEasy: 0
-  playCountEasy: 0
-  highScoreNormal: 0
-  playCountNormal: 0
-  highScoreHard: 0
-  playCountHard: 0
-  delay: 0
-  timerEasy: 0
-  timerNormal: 0
-  timerHard: 0
-  easySpeed: 0
-  normalSpeed: 0
-  hardSpeed: 0
-  eventSpeed: 0
-  targetScore: 0
-  songInfo: Song3
+  delay: 2
+  timerEasy: 95
+  timerNormal: 95
+  timerHard: 95
+  easySpeed: 124
+  normalSpeed: 248
+  hardSpeed: 372
+  eventSpeed: 248
+  targetScore: 1000
+  songInfo: Night City Lights
   price: 60
   currencyType: {fileID: 21300000, guid: 9f50105c4d5a2b64ebe52d69bd93f301, type: 3}

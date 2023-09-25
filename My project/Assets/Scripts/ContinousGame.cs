@@ -50,6 +50,13 @@ public class ContinousGame : MonoBehaviour
     {
         countDownTime = 3;
         countDownText.gameObject.SetActive(true);
+        if (PlaySceneMenu.instance.bgInfo.ID == "BG001")
+        {
+            countDownText.color = Color.white;
+        } else
+        {
+            countDownText.color = Color.yellow;
+        }
         popUpPause.SetActive(false);
         StartCoroutine(CountDownToStart());
     }

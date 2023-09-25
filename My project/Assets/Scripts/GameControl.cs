@@ -60,6 +60,7 @@ public class GameControl : MonoBehaviour
 
     void Start()
     {
+
         playerData = ServerApi.Load();
         ServerApi.GetStorageButtonSkinData((d) => { bg = d; }, (e) => { });
 
@@ -241,7 +242,14 @@ public class GameControl : MonoBehaviour
     {
         if (Score.instance.TotalScore >= MusicButton.get.targetScore)
         {
-            eventTime = true;
+            if (MusicButton.get.Event.Count == 0)
+            {
+                eventTime = false;
+            } else
+            {
+                eventTime = true;
+            }
+            
         }
     }
 

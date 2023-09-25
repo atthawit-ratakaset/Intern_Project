@@ -18,7 +18,7 @@ public class PlaySceneMenu : MonoBehaviour
     int currentEnergy;
     int currentDiamond;
     ThemeData bg;
-    ThemeBgInfo bgInfo;
+    public ThemeBgInfo bgInfo;
     bool equip = false;
 
     [Header("HpBar")]
@@ -226,20 +226,10 @@ public class PlaySceneMenu : MonoBehaviour
     public void Retry()
     {
 
-        currentEnergy = playerData.energy;
-        if (currentEnergy >= 1)
+        if (playerData.energy >= 1)
         {
-            currentEnergy--;
-            playerData.SaveEnergy(currentEnergy);
-            if (Energy.instance.isRestoring == false)
-            {
-                if (Energy.instance.currentEnergy + 1 == Energy.instance.maxEnergy)
-                {
-                    Energy.instance.nextEnergyTime = Energy.instance.AddDuration(DateTime.Now, Energy.instance.restoreDuration);
-                }
-
-                StartCoroutine(Energy.instance.RestoreEnergy());
-            }
+            playerData.energy--;
+            Debug.Log(playerData.energy);
             ServerApi.Save();
             Time.timeScale = 1f;
             StartCoroutine("LoadRetry");

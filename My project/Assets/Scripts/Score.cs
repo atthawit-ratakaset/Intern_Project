@@ -187,6 +187,8 @@ public class Score : MonoBehaviour
             
             coinsText.text = coinTotal.ToString();
             playerData.coins += int.Parse(coinsText.text);
+            ShowScoreText.text = TotalScore.ToString();
+            maxComboText.text = maxCombo.ToString();
 
         }
 
@@ -205,8 +207,7 @@ public class Score : MonoBehaviour
         {
             TotalScore = 0;
         }
-        ShowScoreText.text = TotalScore.ToString();
-        maxComboText.text = maxCombo.ToString();
+
         TotalScoreText.text = (TotalScore < 10) ? "0" + TotalScore : TotalScore.ToString();
         playerData.UpdateScore(MusicButton.get.idSong, MenuButton.selectMode, TotalScore);
         ServerApi.Save();
