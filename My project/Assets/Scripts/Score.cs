@@ -181,7 +181,14 @@ public class Score : MonoBehaviour
     public void ShowScore()
     {
         popUp.SetActive(true);
-        popUp.GetComponent<Image>().sprite = bgInfo.bgImg;
+        if (bgInfo.ID == "BG001")
+        {
+            popUp.GetComponent<Image>().sprite = MusicButton.get.bgSong;
+        } else
+        {
+            popUp.GetComponent<Image>().sprite = bgInfo.bgImg;
+        }
+
         if (TotalScore >= 0)
         {
             

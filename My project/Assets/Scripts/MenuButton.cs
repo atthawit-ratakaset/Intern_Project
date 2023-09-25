@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class MenuButton : MonoBehaviour
 {
     public static MenuButton instance;
-    int currentEnergy;
     public GameObject alertPopUp;
     public TMP_Text alertText;
     public TMP_Text name;
@@ -23,6 +22,8 @@ public class MenuButton : MonoBehaviour
     public Sprite onImg;
     public Sprite offImg;
     public static bool bluetoothOn;
+    public GameObject bluetoothShow1;
+    public GameObject bluetoothShow2;
 
     [Header("LoadScene")]
     public GameObject load;
@@ -51,10 +52,14 @@ public class MenuButton : MonoBehaviour
         if (bluetoothOn == true)
         {
             onOffBtn.sprite = onImg;
+            bluetoothShow1.SetActive(true);
+            bluetoothShow2.SetActive(true);
         }
         else if (bluetoothOn == false)
         {
             onOffBtn.sprite = offImg;
+            bluetoothShow1.SetActive(false);
+            bluetoothShow2.SetActive(false);
         }
 
     }
@@ -312,11 +317,15 @@ public class MenuButton : MonoBehaviour
         {
             onOffBtn.sprite = onImg;
             GameManager.instance.ConnectBLE();
+            bluetoothShow1.SetActive(true);
+            bluetoothShow2.SetActive(true);
             bluetoothOn = true;
         } else if (bluetoothOn == true)
         {
             onOffBtn.sprite = offImg;
             GameManager.instance.StopConnectBLE();
+            bluetoothShow1.SetActive(false);
+            bluetoothShow2.SetActive(false);
             bluetoothOn = false;
         }
     }

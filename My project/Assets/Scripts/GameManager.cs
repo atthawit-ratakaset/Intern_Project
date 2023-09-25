@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,10 +18,10 @@ public class GameManager : MonoBehaviour
         #if UNITY_2020_2_OR_NEWER
         #if UNITY_ANDROID
                 if (!Permission.HasUserAuthorizedPermission(Permission.CoarseLocation)
-                   !Permission.HasUserAuthorizedPermission(Permission.FineLocation)
-                   !Permission.HasUserAuthorizedPermission("android.permission.BLUETOOTH_SCAN")
-                   !Permission.HasUserAuthorizedPermission("android.permission.BLUETOOTH_ADVERTISE")
-                   !Permission.HasUserAuthorizedPermission("android.permission.BLUETOOTH_CONNECT"))
+                ||   !Permission.HasUserAuthorizedPermission(Permission.FineLocation)
+                ||   !Permission.HasUserAuthorizedPermission("android.permission.BLUETOOTH_SCAN")
+                ||   !Permission.HasUserAuthorizedPermission("android.permission.BLUETOOTH_ADVERTISE")
+                ||   !Permission.HasUserAuthorizedPermission("android.permission.BLUETOOTH_CONNECT"))
                             Permission.RequestUserPermissions(new string[] {
                                 Permission.CoarseLocation,
                                     Permission.FineLocation,
