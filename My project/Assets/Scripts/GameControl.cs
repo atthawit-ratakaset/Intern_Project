@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour
 {
-    
+
     public GameObject theSR;
 
     [Header("TYPES NOTE DATA")]
@@ -18,7 +18,6 @@ public class GameControl : MonoBehaviour
     PlayerData playerData;
     ThemeData bg;
     ThemeBgInfo bgInfo;
-    bool equip = false;
 
     [Header("SYNC NOTE")]
     public SpriteRenderer borderGame;
@@ -68,7 +67,7 @@ public class GameControl : MonoBehaviour
         {
             if (bg.bgData[i].ID == playerData.bgSkin)
             {
-                equip = true;
+
                 bgInfo = bg.bgData[i];
                 break;
             }
@@ -78,7 +77,8 @@ public class GameControl : MonoBehaviour
         {
             theSR.GetComponent<SpriteRenderer>().sprite = MusicButton.get.bgSong;
             theSR.transform.localScale = new Vector3(0.425f, 0.34f, 1f);
-        } else
+        }
+        else
         {
             theSR.GetComponent<SpriteRenderer>().sprite = bgInfo.bgImg;
             theSR.transform.localScale = new Vector3(1.33f, 1.32f, 1f);
@@ -88,7 +88,6 @@ public class GameControl : MonoBehaviour
         HpSetAtStart();
         MusicTimeCount();
         targetScore.text = $"Target: {goalScore}";
-
     }
 
     void MusicTimeCount()
@@ -226,16 +225,17 @@ public class GameControl : MonoBehaviour
     }
 
     void ShowScore()
-    {   
+    {
         if (currentHealth <= 0)
         {
             Score.instance.tryAgain.SetActive(true);
             Score.instance.tryAgain.GetComponent<Image>().sprite = bgInfo.bgImg;
-        } else
+        }
+        else
         {
             Score.instance.ShowScore();
         }
-        
+
     }
 
     public void EventTime()
@@ -245,11 +245,12 @@ public class GameControl : MonoBehaviour
             if (MusicButton.get.Event.Count == 0)
             {
                 eventTime = false;
-            } else
+            }
+            else
             {
                 eventTime = true;
             }
-            
+
         }
     }
 

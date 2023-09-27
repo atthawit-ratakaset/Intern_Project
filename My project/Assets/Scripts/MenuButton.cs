@@ -11,9 +11,15 @@ public class MenuButton : MonoBehaviour
     public GameObject alertPopUp;
     public TMP_Text alertText;
     public TMP_Text name;
+    [Header ("Game")]
     public TMP_Text highScore;
     public TMP_Text highScoreLoad;
+    public TMP_Text modeText;
     public TMP_Text playCounts;
+    public TMP_Text timerTextMinutes;
+    private float timerTime;
+    private int minutesInt;
+    private int secondsInt;
     PlayerData playerData;
     bool x = false;
 
@@ -140,9 +146,12 @@ public class MenuButton : MonoBehaviour
     public void GetEasyMode()
     {
         selectMode = 0;
+        modeText.text = "Mode : Easy";
         easy.SetActive(true);
         normal.SetActive(false);
         hard.SetActive(false);
+        timerTime = MusicButton.get.timerEasy + MusicButton.get.delay;
+        Timer(timerTime);
         ScoreData songScore = playerData.allScore.Find(s => s.id == MusicButton.get.idSong && s.mode == selectMode);
         if (songScore != null)
         {
@@ -159,9 +168,12 @@ public class MenuButton : MonoBehaviour
     public void GetNormalMode()
     {
         selectMode = 1;
+        modeText.text = "Mode : Normal";
         easy.SetActive(false);
         normal.SetActive(true);
         hard.SetActive(false);
+        timerTime = MusicButton.get.timerNormal + MusicButton.get.delay;
+        Timer(timerTime);
         ScoreData songScore = playerData.allScore.Find(s => s.id == MusicButton.get.idSong && s.mode == selectMode);
         if (songScore != null)
         {
@@ -179,9 +191,12 @@ public class MenuButton : MonoBehaviour
     public void GetHardMode()
     {
         selectMode = 2;
+        modeText.text = "Mode : Hard";
         easy.SetActive(false);
         normal.SetActive(false);
         hard.SetActive(true);
+        timerTime = MusicButton.get.timerHard + MusicButton.get.delay;
+        Timer(timerTime);
         ScoreData songScore = playerData.allScore.Find(s => s.id == MusicButton.get.idSong && s.mode == selectMode);
         if (songScore != null)
         {
@@ -196,6 +211,12 @@ public class MenuButton : MonoBehaviour
 
     }
 
+    public void Timer(float time)
+    {
+        minutesInt = (int)time / 60;
+        secondsInt = (int)time % 60;
+        timerTextMinutes.text = $"{minutesInt} : {secondsInt}";
+    }
     public void Test()
     {
         PlayerData playerData = ServerApi.Load();
@@ -219,13 +240,13 @@ public class MenuButton : MonoBehaviour
         if (x == true)
         {
             if (playerData.energy >= 1)
-            {   
-                
+            {
+
                 playerData.energy--;
-                
+
                 if (Energy.instance.isRestoring == false)
                 {
-                    
+
                     if (playerData.energy + 1 == Energy.instance.maxEnergy)
                     {
                         Energy.instance.nextEnergyTime = Energy.instance.AddDuration(DateTime.Now, Energy.instance.restoreDuration);
@@ -320,7 +341,8 @@ public class MenuButton : MonoBehaviour
             bluetoothShow1.SetActive(true);
             bluetoothShow2.SetActive(true);
             bluetoothOn = true;
-        } else if (bluetoothOn == true)
+        }
+        else if (bluetoothOn == true)
         {
             onOffBtn.sprite = offImg;
             GameManager.instance.StopConnectBLE();

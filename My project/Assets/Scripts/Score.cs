@@ -37,7 +37,6 @@ public class Score : MonoBehaviour
     PlayerData playerData;
     ThemeData bg;
     ThemeBgInfo bgInfo;
-    bool equip = false;
     public enum GetScore
     {
         Miss,
@@ -74,7 +73,6 @@ public class Score : MonoBehaviour
         {
             if (bg.bgData[i].ID == playerData.bgSkin)
             {
-                equip = true;
                 bgInfo = bg.bgData[i];
                 break;
             }
@@ -91,15 +89,16 @@ public class Score : MonoBehaviour
             perfectEffect.transform.localScale = new Vector3(4f, 4f, 0);
             missEffect.transform.localScale = new Vector3(4f, 4f, 0);
             badEffect.transform.localScale = new Vector3(4f, 4f, 0);
-        } else
+        }
+        else
         {
-            
+
             goodEffect.transform.localScale = new Vector3(0.4f, 0.4f, 0);
             perfectEffect.transform.localScale = new Vector3(0.4f, 0.4f, 0);
             missEffect.transform.localScale = new Vector3(0.4f, 0.4f, 0);
             badEffect.transform.localScale = new Vector3(0.4f, 0.4f, 0);
         }
-        
+
 
 
 
@@ -184,14 +183,15 @@ public class Score : MonoBehaviour
         if (bgInfo.ID == "BG001")
         {
             popUp.GetComponent<Image>().sprite = MusicButton.get.bgSong;
-        } else
+        }
+        else
         {
             popUp.GetComponent<Image>().sprite = bgInfo.bgImg;
         }
 
         if (TotalScore >= 0)
         {
-            
+
             coinsText.text = coinTotal.ToString();
             playerData.coins += int.Parse(coinsText.text);
             ShowScoreText.text = TotalScore.ToString();

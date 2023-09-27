@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -19,7 +18,6 @@ public class PlaySceneMenu : MonoBehaviour
     int currentDiamond;
     ThemeData bg;
     public ThemeBgInfo bgInfo;
-    bool equip = false;
 
     [Header("HpBar")]
     public Image hpInside;
@@ -55,7 +53,7 @@ public class PlaySceneMenu : MonoBehaviour
         {
             if (bg.bgData[i].ID == playerData.bgSkin)
             {
-                equip = true;
+
                 bgInfo = bg.bgData[i];
                 break;
             }
@@ -69,7 +67,7 @@ public class PlaySceneMenu : MonoBehaviour
         else
         {
             hpInside.transform.localPosition = new Vector3(1.5f, 10f, 0);
-            
+
         }
 
         hpInside.sprite = bgInfo.hpLine;
@@ -140,6 +138,13 @@ public class PlaySceneMenu : MonoBehaviour
 
     public void ReturnMenuMusic()
     {
+        if (GameManager.isConnected)
+        {
+            if (UpButtonGame.instance.checkId == 1)
+            {
+                BluetoothService.WritetoBluetooth("4");
+            }
+        }
         menu = SetObject.instance.whatScene + 1;
         StateScene.menu = menu;
         Time.timeScale = 1f;
@@ -153,6 +158,13 @@ public class PlaySceneMenu : MonoBehaviour
     public void ReturnToLobby()
     {
         menu = 0;
+        if (GameManager.isConnected)
+        {
+            if (UpButtonGame.instance.checkId == 1)
+            {
+                BluetoothService.WritetoBluetooth("4");
+            }
+        }
         StateScene.menu = menu;
         Time.timeScale = 1f;
         scene = "Menu";
@@ -168,7 +180,6 @@ public class PlaySceneMenu : MonoBehaviour
         {
             if (bg.bgData[i].ID == playerData.bgSkin)
             {
-                equip = true;
                 bgInfo = bg.bgData[i];
                 break;
             }
@@ -225,7 +236,13 @@ public class PlaySceneMenu : MonoBehaviour
 
     public void Retry()
     {
-
+        if (GameManager.isConnected)
+        {
+            if (UpButtonGame.instance.checkId == 1)
+            {
+                BluetoothService.WritetoBluetooth("4");
+            }
+        }
         if (playerData.energy >= 1)
         {
             playerData.energy--;
@@ -259,7 +276,6 @@ public class PlaySceneMenu : MonoBehaviour
         {
             if (bg.bgData[i].ID == playerData.bgSkin)
             {
-                equip = true;
                 bgInfo = bg.bgData[i];
                 break;
             }

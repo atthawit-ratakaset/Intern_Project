@@ -30,7 +30,7 @@ public class StorageDisplay : MonoBehaviour
         btn.onClick.AddListener(delegate () { SetDataItem(items); });
         preview.onClick.AddListener(delegate () { PreviewItems(); });
         image.gameObject.GetComponent<Image>().sprite = items.itemImg;
-        
+
     }
 
     public void SetDataItem(ThemeButtonSkinInfo getValue)

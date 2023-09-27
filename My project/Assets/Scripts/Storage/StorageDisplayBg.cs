@@ -55,7 +55,7 @@ public class StorageDisplayBg : MonoBehaviour
     }
 
     public void Equip()
-    {   
+    {
         playerData = ServerApi.Load();
         playerData.bgSkin = get.ID;
         playerData.btnSkinData = get.idBtn;

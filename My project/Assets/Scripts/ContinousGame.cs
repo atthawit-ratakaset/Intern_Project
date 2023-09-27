@@ -53,7 +53,8 @@ public class ContinousGame : MonoBehaviour
         if (PlaySceneMenu.instance.bgInfo.ID == "BG001")
         {
             countDownText.color = Color.white;
-        } else
+        }
+        else
         {
             countDownText.color = Color.yellow;
         }

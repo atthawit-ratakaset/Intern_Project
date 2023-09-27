@@ -71,7 +71,8 @@ public class TitleScript : MonoBehaviour
                 ServerApi.Save();
                 StartCoroutine("Load");
 
-            } else
+            }
+            else
             {
                 playerData = ServerApi.Load();
                 playerData.playerName = "Tester001";
@@ -108,7 +109,8 @@ public class TitleScript : MonoBehaviour
         if (haveId == false)
         {
             Debug.Log("Don't have data to delete!!");
-        } else
+        }
+        else
         {
             PlayerPrefs.DeleteAll();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

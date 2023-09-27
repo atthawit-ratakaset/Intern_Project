@@ -16,7 +16,6 @@ public class SetObject : MonoBehaviour
     PlayerData playerData;
     ThemeData bg;
     ThemeBgInfo bgInfo;
-    bool equip = false;
 
     [Header("SCENCE")]
     public GameObject menuScene;
@@ -114,7 +113,6 @@ public class SetObject : MonoBehaviour
     {
         GameManager.LoadStoragePlayerData();
         Energy.instance.EnergyState();
-        //UpdateBg();
 
         test = StateScene.menu;
         if (whatScene != test)
@@ -127,6 +125,14 @@ public class SetObject : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            helpPopUp.SetActive(false);
+            helpPanel.SetActive(false);
+        }
+    }
 
     public void UpdateBg()
     {
@@ -137,7 +143,6 @@ public class SetObject : MonoBehaviour
         {
             if (bg.bgData[i].ID == playerData.bgSkin)
             {
-                equip = true;
                 bgInfo = bg.bgData[i];
                 break;
             }
@@ -262,7 +267,8 @@ public class SetObject : MonoBehaviour
         {
             menuScene.SetActive(true);
             StorageMusic();
-        } else
+        }
+        else
         {
             menuScene.SetActive(true);
             selectMusicScene.SetActive(false);

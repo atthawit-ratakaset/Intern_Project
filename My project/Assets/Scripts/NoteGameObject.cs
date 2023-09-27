@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,5 +14,10 @@ public class NoteGameObject : MonoBehaviour
     {
         noteInNodes = gameObject.GetComponentsInParent<NoteInNode>().ToList();
         //notesInNodes = gameObject.GetComponentsInParent<NotesInNode>().ToList();
+    }
+
+    internal List<NoteGameObject> ToList()
+    {
+        throw new NotImplementedException();
     }
 }

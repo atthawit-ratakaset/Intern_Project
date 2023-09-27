@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class MainArduino : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class MainArduino : MonoBehaviour
           || !Permission.HasUserAuthorizedPermission("android.permission.BLUETOOTH_SCAN")
           || !Permission.HasUserAuthorizedPermission("android.permission.BLUETOOTH_ADVERTISE")
           || !Permission.HasUserAuthorizedPermission("android.permission.BLUETOOTH_CONNECT"))
-                    Permission.RequestUserPermissions(new string[] {
+            Permission.RequestUserPermissions(new string[] {
                         Permission.CoarseLocation,
                             Permission.FineLocation,
                             "android.permission.BLUETOOTH_SCAN",

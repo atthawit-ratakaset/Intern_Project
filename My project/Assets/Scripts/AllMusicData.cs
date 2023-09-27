@@ -27,7 +27,7 @@ public class AllMusicData : ScriptableObject
     public void Load()
     {
         JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString(saveKey), this);
-       
+
     }
 
 

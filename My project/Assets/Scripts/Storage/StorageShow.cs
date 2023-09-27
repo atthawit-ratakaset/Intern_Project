@@ -73,7 +73,7 @@ public class StorageShow : MonoBehaviour
 
     }
 
-    public void CheckBgStorage() 
+    public void CheckBgStorage()
     {
         ServerApi.GetStorageButtonSkinData((d) => { getData = d; }, (e) => { });
         DestroyObject(bgParent);

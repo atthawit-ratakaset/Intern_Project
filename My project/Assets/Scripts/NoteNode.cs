@@ -6,8 +6,6 @@ public class NoteNode : MonoBehaviour
 {
     public List<NoteGameObject> gameObjects = new List<NoteGameObject>();
 
-
-
     private void Test1()
     {
         var target = gameObjects.Find(s => s.targetID == "1");

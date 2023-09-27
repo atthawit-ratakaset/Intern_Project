@@ -22,7 +22,7 @@ public class PopUpBuy : MonoBehaviour
     }
     public void Buy()
     {
-        
+
         if (ButtonSkinDisplay.get != null)
         {
             IdObject = ButtonSkinDisplay.get.ID;

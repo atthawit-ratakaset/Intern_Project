@@ -3,7 +3,7 @@ using UnityEngine;
 public class FadeInNotes : MonoBehaviour
 {
     SpriteRenderer note;
-    
+
 
     void Start()
     {

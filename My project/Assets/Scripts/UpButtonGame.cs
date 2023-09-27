@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UpButtonGame : MonoBehaviour
 {
-
+    public static UpButtonGame instance;
     public SpriteRenderer theSR;
     public int checkId;
     [Header("NOTE OBJECT DISPLAY")]
@@ -11,7 +11,6 @@ public class UpButtonGame : MonoBehaviour
     public SpriteRenderer spiteRenderer;
     PlayerData playerData;
     ThemeData btnSkin;
-    bool equip = false;
     ThemeButtonSkinInfo info;
 
 
@@ -51,15 +50,15 @@ public class UpButtonGame : MonoBehaviour
     void Start()
     {
         playerData = ServerApi.Load();
+        instance = this;
         ServerApi.GetStorageButtonSkinData((d) => { btnSkin = d; }, (e) => { });
 
-        if (MenuButton.selectMode == 0 || MenuButton.selectMode == 1 || MenuButton.selectMode == 2)
+        if ((MenuButton.selectMode == 0 || MenuButton.selectMode == 1 || MenuButton.selectMode == 2) && MusicButton.get != null)
         {
             for (int i = 0; i < btnSkin.skinData.Count; i++)
             {
                 if (btnSkin.skinData[i].ID == playerData.btnSkinData)
                 {
-                    equip = true;
                     info = btnSkin.skinData[i];
                     break;
                 }
@@ -67,7 +66,8 @@ public class UpButtonGame : MonoBehaviour
 
 
             theSR.sprite = info.itemImg;
-        } else 
+        }
+        else
         {
 
         }

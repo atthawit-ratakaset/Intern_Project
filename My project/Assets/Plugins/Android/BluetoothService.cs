@@ -54,7 +54,7 @@ public class BluetoothService
             {
                 string connectionStatus = BluetoothConnector.Call<string>("StartBluetoothConnection", DeviceName);
                 Toast("Start connection status: " + connectionStatus);
-                if (connectionStatus == "Connected") 
+                if (connectionStatus == "Connected")
                     return true;
 
             }
@@ -120,7 +120,7 @@ public class BluetoothService
                 BluetoothConnector.Call("PrintOnScreen", context, "Read data error");
             }
         }
-         
+
         return "";
 
     }

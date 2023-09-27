@@ -34,10 +34,11 @@ public class Energy : MonoBehaviour
         {
             Load();
             StartCoroutine(RestoreEnergy());
-        } else
+        }
+        else
         {
             Load();
-            StartCoroutine(RestoreEnergy());    
+            StartCoroutine(RestoreEnergy());
         }
     }
 
