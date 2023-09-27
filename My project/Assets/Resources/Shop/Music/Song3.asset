@@ -13,24 +13,30 @@ MonoBehaviour:
   m_Name: Song3
   m_EditorClassIdentifier: 
   idSong: S05
-  songName: Song5
-  image: {fileID: 21300000, guid: a7d4d4b3af6cbd749b83f89d17024894, type: 3}
+  songName: Array Door Punch
+  image: {fileID: 21300000, guid: 600e1dfe45134eb4b88026514d41609f, type: 3}
   imageLock: {fileID: 21300000, guid: 0183d28eb79df5443a2c7b8ea72d6c6b, type: 3}
-  bgSong: {fileID: 0}
-  song: {fileID: 0}
-  Easy: []
-  Normal: []
-  Hard: []
+  bgSong: {fileID: 21300000, guid: 220a2b1b54f1d5f40996397b954590b3, type: 3}
+  song: {fileID: 8300000, guid: 5273189b3b3af6c4ebdf03799f3ccbf9, type: 3}
+  Easy:
+  - {fileID: 1297208296426853758, guid: 832f46ef8f4556843a721a046a819e4a, type: 3}
+  - {fileID: 319854969991183132, guid: 35a934a728a449349ae73301e553e4a2, type: 3}
+  Normal:
+  - {fileID: -6427020985888425102, guid: c46d25f0740d4e040b0b3897c23b8425, type: 3}
+  - {fileID: 7519086864805920042, guid: 24ad721086e3bef4ab286d66394186a0, type: 3}
+  Hard:
+  - {fileID: -3099796859967980886, guid: db9095378c028b149ae2c6dee772b11c, type: 3}
+  - {fileID: 7650835334761076403, guid: 0761d030fad6ab14a893fc245c879b71, type: 3}
   Event: []
-  delay: 0
+  delay: 2
   timerEasy: 136
   timerNormal: 136
   timerHard: 136
-  easySpeed: 0
-  normalSpeed: 0
-  hardSpeed: 0
-  eventSpeed: 0
-  targetScore: 0
-  songInfo: Song5
+  easySpeed: 200
+  normalSpeed: 400
+  hardSpeed: 800
+  eventSpeed: 400
+  targetScore: 1000
+  songInfo: Array Door Punch
   price: 60
   currencyType: {fileID: 21300000, guid: 9f50105c4d5a2b64ebe52d69bd93f301, type: 3}
