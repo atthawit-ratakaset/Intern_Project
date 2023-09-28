@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class MusicScript : MonoBehaviour
 {
-    AudioSource gameMusic;
+    public AudioSource gameMusic;
+    PlayerData playerData;
     public static MusicScript instance;
     AudioClip clip;
-    private float musicDelay;
+    public float musicDelay;
     private float musicVolum = 1f;
 
     private void Awake()
@@ -19,7 +20,15 @@ public class MusicScript : MonoBehaviour
 
     void Start()
     {
-        gameMusic.PlayDelayed(musicDelay);
+        playerData = ServerApi.Load();
+        if (playerData.allScore.Count == 0)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            gameMusic.PlayDelayed(musicDelay);
+        }
 
     }
 

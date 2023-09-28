@@ -31,7 +31,7 @@ public class TitleScript : MonoBehaviour
         }
         tapToStart.SetActive(true);
         logoGame.SetActive(true);
-        resetGame.SetActive(true);
+        //resetGame.SetActive(true);
         nameSetting.SetActive(false);
         Debug.Log(haveId);
     }

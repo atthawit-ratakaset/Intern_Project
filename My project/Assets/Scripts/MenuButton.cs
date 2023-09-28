@@ -17,6 +17,8 @@ public class MenuButton : MonoBehaviour
     public TMP_Text modeText;
     public TMP_Text playCounts;
     public TMP_Text timerTextMinutes;
+    public TMP_Text modeRec;
+    public TMP_Text modeRec1;
     private float timerTime;
     private int minutesInt;
     private int secondsInt;
@@ -147,6 +149,8 @@ public class MenuButton : MonoBehaviour
     {
         selectMode = 0;
         modeText.text = "Mode : Easy";
+        modeRec.text = "Easy Mode low speed";
+        modeRec1.text = "Easy Mode low speed";
         easy.SetActive(true);
         normal.SetActive(false);
         hard.SetActive(false);
@@ -169,6 +173,8 @@ public class MenuButton : MonoBehaviour
     {
         selectMode = 1;
         modeText.text = "Mode : Normal";
+        modeRec.text = "Normal Mode normal speed";
+        modeRec1.text = "Normal Mode normal speed";
         easy.SetActive(false);
         normal.SetActive(true);
         hard.SetActive(false);
@@ -192,6 +198,8 @@ public class MenuButton : MonoBehaviour
     {
         selectMode = 2;
         modeText.text = "Mode : Hard";
+        modeRec.text = "Hard Mode high speed";
+        modeRec1.text = "Hard Mode high speed";
         easy.SetActive(false);
         normal.SetActive(false);
         hard.SetActive(true);

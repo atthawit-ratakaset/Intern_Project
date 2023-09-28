@@ -19,6 +19,8 @@ public class PlaySceneMenu : MonoBehaviour
     ThemeData bg;
     public ThemeBgInfo bgInfo;
 
+    public GameObject guideGame;
+
     [Header("HpBar")]
     public Image hpInside;
     public Image hpBar;
@@ -47,6 +49,16 @@ public class PlaySceneMenu : MonoBehaviour
         instance = this;
         playerData = ServerApi.Load();
         selectMode = GameControl.instance.getMode;
+        if (playerData.allScore.Count == 0)
+        {
+            Time.timeScale = 0;
+            guideGame.SetActive(true);
+            
+        } else
+        {
+            guideGame.SetActive(false);
+        }
+
         ServerApi.GetStorageButtonSkinData((d) => { bg = d; }, (e) => { });
 
         for (int i = 0; i < bg.bgData.Count; i++)
