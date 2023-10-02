@@ -966,6 +966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theSR: {fileID: 1332778259}
+  checkId: 0
   Square: {fileID: 166084504}
   spiteRenderer: {fileID: 166084506}
   noteType: 0
@@ -2200,6 +2201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec6738c43eba764ba2110b8c0e8ee60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
   button: {fileID: 916027177}
   button1: {fileID: 952762333}
   button2: {fileID: 1026254611}
@@ -2941,6 +2943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0a2dc1c73c51a48a208a8787ebad01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
   button: {fileID: 768901123}
   button1: {fileID: 1928711729}
   button2: {fileID: 49135048}
@@ -4665,6 +4668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0a2dc1c73c51a48a208a8787ebad01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
   button: {fileID: 49135048}
   button1: {fileID: 1928711729}
   button2: {fileID: 768901123}
@@ -6792,6 +6796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theSR: {fileID: 1279489041}
+  checkId: 0
   Square: {fileID: 718166535}
   spiteRenderer: {fileID: 718166537}
   noteType: 0
@@ -7004,6 +7009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec6738c43eba764ba2110b8c0e8ee60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
   button: {fileID: 1026254611}
   button1: {fileID: 916027177}
   button2: {fileID: 952762333}
@@ -7388,6 +7394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0a2dc1c73c51a48a208a8787ebad01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
   button: {fileID: 1928711729}
   button1: {fileID: 49135048}
   button2: {fileID: 768901123}
@@ -7887,6 +7894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theSR: {fileID: 1619097018}
+  checkId: 0
   Square: {fileID: 642710665}
   spiteRenderer: {fileID: 642710666}
   noteType: 0
@@ -8112,6 +8120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theSR: {fileID: 731036838}
+  checkId: 0
   Square: {fileID: 933541053}
   spiteRenderer: {fileID: 933541054}
   noteType: 0
@@ -8740,6 +8749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theSR: {fileID: 45686713}
+  checkId: 0
   Square: {fileID: 1971478702}
   spiteRenderer: {fileID: 1971478703}
   noteType: 0
@@ -9195,6 +9205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec6738c43eba764ba2110b8c0e8ee60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
   button: {fileID: 952762333}
   button1: {fileID: 916027177}
   button2: {fileID: 1026254611}
@@ -15254,6 +15265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theSR: {fileID: 2052005288}
+  checkId: 0
   Square: {fileID: 810188451}
   spiteRenderer: {fileID: 810188453}
   noteType: 0
@@ -17762,6 +17774,7 @@ GameObject:
   - component: {fileID: 2515275313538109950}
   - component: {fileID: 2515275313538109946}
   - component: {fileID: 2515275313538109952}
+  - component: {fileID: 2515275313538109953}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -17787,6 +17800,9 @@ MonoBehaviour:
   finshBuyText: {fileID: 1851530259}
   alertPopUp: {fileID: 1981925547}
   currencyTypes: {fileID: 1717584788}
+  bgInfo: {fileID: 0}
+  guideGame: {fileID: 0}
+  guideGameOk: {fileID: 0}
   hpInside: {fileID: 469869013}
   hpBar: {fileID: 105013010}
   hpIcon: {fileID: 492323979}
@@ -17798,3 +17814,25 @@ MonoBehaviour:
   selectMode: 0
   scene: 
   menu: 1
+--- !u!114 &2515275313538109953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2515275313538109951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2127c8d143b53d848bbaf1cd9ed88877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theSR: {fileID: 0}
+  types: {fileID: 11400000, guid: 301a62819d0fd8245856afa0242044c0, type: 2}
+  borderGame: {fileID: 0}
+  targetScore: {fileID: 0}
+  CheckHp: {fileID: 0}
+  maxHealth: 100
+  healthBar: {fileID: 0}
+  musicPlayTime: 0
+  getMode: 0
+  eventTime: 0
