@@ -263,6 +263,7 @@ public class SetObject : MonoBehaviour
     {
         play = false;
         menu = true;
+        MusicButton.get = null;
         if (storage)
         {
             menuScene.SetActive(true);

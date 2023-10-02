@@ -1,15 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GuideGame : MonoBehaviour
 {
+    public static GuideGame instance;
     public GameObject guide, page1, page2, page3, page4, page5, page6, next, back, ok;
-    int whatPage = 1;
+    
+    [HideInInspector]
+    public int whatPage = 1;
 
     private void Start()
     {
+        instance = this;
         CheckPage();
+        if (MusicButton.get != null)
+        {
+            ok.GetComponent<Button>().onClick.AddListener(delegate () { Finsh(); });
+        }
     }
 
     public void CheckPage()
@@ -113,6 +120,8 @@ public class GuideGame : MonoBehaviour
     {
         guide.SetActive(false);
         whatPage = 1;
+        CheckPage();
+        ok.GetComponent<Button>().onClick.RemoveAllListeners();
         if (MusicButton.get != null)
         {
             MusicScript.instance.gameMusic.PlayDelayed(MusicScript.instance.musicDelay);

@@ -20,6 +20,7 @@ public class PlaySceneMenu : MonoBehaviour
     public ThemeBgInfo bgInfo;
 
     public GameObject guideGame;
+    public Button guideGameOk;
 
     [Header("HpBar")]
     public Image hpInside;
@@ -319,5 +320,17 @@ public class PlaySceneMenu : MonoBehaviour
     {
         pause.SetActive(true);
         setting.SetActive(false);
+    }
+
+    public void GuideBook()
+    {
+        guideGame.SetActive(true);
+        guideGameOk.onClick.RemoveAllListeners();
+        guideGameOk.onClick.AddListener(delegate () { CloseGuideGame(); });
+    }
+
+    public void CloseGuideGame()
+    {
+        guideGame.SetActive(false);
     }
 }

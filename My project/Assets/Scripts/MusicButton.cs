@@ -23,7 +23,7 @@ public class MusicButton : MonoBehaviour
         playerData = ServerApi.Load();
         Button btn = GetComponent<Button>();
         btn.onClick.AddListener(delegate () { SetDataMusic(musicData); });
-        btn.onClick.AddListener(delegate () { MenuButton.instance.Test(); });
+        btn.onClick.AddListener(delegate () { MenuButton.instance.PlayPopUp(); });
 
         for (int i = 0; i < playerData.storageMusicData.Count; i++)
         {

@@ -11,7 +11,12 @@ public class MenuButton : MonoBehaviour
     public GameObject alertPopUp;
     public TMP_Text alertText;
     public TMP_Text name;
-    [Header ("Game")]
+
+    [Header("Game")]
+    public GameObject playPopUp;
+    public TMP_Text musicName;
+    public Button play;
+    public Button cancel;
     public TMP_Text highScore;
     public TMP_Text highScoreLoad;
     public TMP_Text modeText;
@@ -25,13 +30,15 @@ public class MenuButton : MonoBehaviour
     PlayerData playerData;
     bool x = false;
 
-    [Header("Bluetooth")]
+    [Header("Bluetooth And Setting")]
     public Image onOffBtn;
     public Sprite onImg;
     public Sprite offImg;
     public static bool bluetoothOn;
     public GameObject bluetoothShow1;
     public GameObject bluetoothShow2;
+    public GameObject gameGuide;
+    public Button gameGuideOk;
 
     [Header("LoadScene")]
     public GameObject load;
@@ -56,6 +63,8 @@ public class MenuButton : MonoBehaviour
     {
         instance = this;
         playerData = ServerApi.Load();
+        gameGuide.SetActive(false);
+        playPopUp.SetActive(false);
         Debug.Log(bluetoothOn);
         if (bluetoothOn == true)
         {
@@ -225,6 +234,22 @@ public class MenuButton : MonoBehaviour
         secondsInt = (int)time % 60;
         timerTextMinutes.text = $"{minutesInt} : {secondsInt}";
     }
+
+
+    public void PlayPopUp()
+    {
+        playPopUp.SetActive(true);
+        musicName.text = MusicButton.get.songName;
+        play.onClick.AddListener(delegate () { Test(); });
+        cancel.onClick.AddListener(delegate () { PlayPopUpCancel(); });
+    }
+
+
+    public void PlayPopUpCancel()
+    {
+        playPopUp.SetActive(false);
+    }
+
     public void Test()
     {
         PlayerData playerData = ServerApi.Load();
@@ -344,19 +369,40 @@ public class MenuButton : MonoBehaviour
     {
         if (bluetoothOn == false)
         {
-            onOffBtn.sprite = onImg;
             GameManager.instance.ConnectBLE();
-            bluetoothShow1.SetActive(true);
-            bluetoothShow2.SetActive(true);
-            bluetoothOn = true;
+            if (GameManager.isConnected)
+            {
+                onOffBtn.sprite = onImg;
+                bluetoothShow1.SetActive(true);
+                bluetoothShow2.SetActive(true);
+                bluetoothOn = true;
+            }
+
         }
         else if (bluetoothOn == true)
-        {
-            onOffBtn.sprite = offImg;
+        {   
             GameManager.instance.StopConnectBLE();
-            bluetoothShow1.SetActive(false);
-            bluetoothShow2.SetActive(false);
-            bluetoothOn = false;
+            if (!GameManager.isConnected)
+            {
+                onOffBtn.sprite = offImg;
+                bluetoothShow1.SetActive(false);
+                bluetoothShow2.SetActive(false);
+                bluetoothOn = false;
+            }
         }
+    }
+
+    public void GuideBook()
+    {
+        gameGuide.SetActive(true);
+        gameGuideOk.onClick.RemoveAllListeners();
+        gameGuideOk.onClick.AddListener(delegate () { CloseGuideGame(); });
+    }
+
+    public void CloseGuideGame()
+    {
+        gameGuide.SetActive(false);
+        GuideGame.instance.whatPage = 1;
+        GuideGame.instance.CheckPage();
     }
 }
