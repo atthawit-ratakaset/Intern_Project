@@ -22,7 +22,7 @@ public class MusicPopUp : MonoBehaviour
         }
         else
         {
-
+            CheckMusic();
         }
 
     }
