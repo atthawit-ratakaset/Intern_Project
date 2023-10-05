@@ -37,6 +37,6 @@ MonoBehaviour:
   hardSpeed: 372
   eventSpeed: 248
   targetScore: 1000
-  songInfo: Night City Lights
+  songInfo: By Motion Array
   price: 60
   currencyType: {fileID: 21300000, guid: 9f50105c4d5a2b64ebe52d69bd93f301, type: 3}

@@ -39,6 +39,6 @@ MonoBehaviour:
   hardSpeed: 600
   eventSpeed: 480
   targetScore: 600
-  songInfo: Song2
+  songInfo: By Motion Array
   price: 0
   currencyType: {fileID: 0}

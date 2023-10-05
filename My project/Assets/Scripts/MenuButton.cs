@@ -238,10 +238,35 @@ public class MenuButton : MonoBehaviour
 
     public void PlayPopUp()
     {
-        playPopUp.SetActive(true);
-        musicName.text = MusicButton.get.songName;
-        play.onClick.AddListener(delegate () { Test(); });
-        cancel.onClick.AddListener(delegate () { PlayPopUpCancel(); });
+        PlayerData playerData = ServerApi.Load();
+
+        for (int i = 0; i < playerData.storageMusicData.Count; i++)
+        {
+
+            if (playerData.storageMusicData[i] == MusicButton.get.idSong)
+            {
+                x = true;
+                break;
+            }
+            else
+            {
+                x = false;
+            }
+
+
+        }
+
+        if (x == true)
+        {
+            playPopUp.SetActive(true);
+            musicName.text = MusicButton.get.songName;
+            play.onClick.AddListener(delegate () { Test(); });
+            cancel.onClick.AddListener(delegate () { PlayPopUpCancel(); });
+        }
+        else
+        {
+            AlertPopShow();
+        }
     }
 
 
