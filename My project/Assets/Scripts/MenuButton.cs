@@ -278,7 +278,7 @@ public class MenuButton : MonoBehaviour
     public void Test()
     {
         PlayerData playerData = ServerApi.Load();
-
+        playPopUp.SetActive(false);
         for (int i = 0; i < playerData.storageMusicData.Count; i++)
         {
 

@@ -107,7 +107,7 @@ public class MockUPGameServerAPI : IGameServersAdapter
                     {
                         for (int i = 0; i < data.storageButtonSkinData.Count; i++)
                         {
-                            if (btn.ID == data.storageButtonSkinData[i])
+                            if (btn.ID == data.storageButtonSkinData[i] && btn.ID == bg.idBtn)
                             {
                                 storageBgData.AddBtnSkin(btn);
                                 storageBgData.Save();
