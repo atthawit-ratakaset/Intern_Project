@@ -230,6 +230,7 @@ public class GameControl : MonoBehaviour
         {
             Score.instance.tryAgain.SetActive(true);
             Score.instance.tryAgain.GetComponent<Image>().sprite = bgInfo.bgImg;
+            Time.timeScale = 0;
         }
         else
         {
