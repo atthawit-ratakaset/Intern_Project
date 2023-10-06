@@ -312,7 +312,7 @@ public class PlaySceneMenu : MonoBehaviour
 
     public void SettingVoloum()
     {
-        pause.SetActive(false);
+        pause.SetActive(true);
         setting.SetActive(true);
     }
 
