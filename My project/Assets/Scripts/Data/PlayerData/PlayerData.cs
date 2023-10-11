@@ -22,7 +22,6 @@ public class PlayerData
         energy = num;
 
     }
-
     public void SaveCoins(int num)
     {
         coins = num;
